@@ -147,6 +147,7 @@
     <value>Pag-angkin ng Halaga #{0:N0} mula {1} para sa {2} {3:N2} ay inaprubahan.</value>
     <comment>{2} is the currency.</comment>
   </data>
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Aksyon</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -206,6 +207,7 @@
     <value>Ang hovercraft ko ay puno ng eels</value>
     <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
   </data>
+  
   <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
     <value>Anong halaga ang iyong sinusubok sa halip (sa {0})?</value>
     <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
@@ -282,6 +284,13 @@
     <value>Kabuuang halang ng invoice (sa {0})</value>
     <comment>{0} is the organization's main currency.</comment>
   </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Kabuuang bahagi ng VAT ({0})</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Lumikha</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>Paglalarawan</value>
     <comment>Free-text description of invoice</comment>
@@ -296,6 +305,7 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Ito ay kung saan ka maghahain ng mga talaan na natanggap sa iyong organisasyon ("Mga Akawnt na Babayaran"). Ipasok ang pangalan ng tagapagtustos, halaga, takdang petsa, ang reperensiya ng talaan, at mag-upload ng imahe sa natanggap na talaan. Tsaka, pumili ng badyet. Ang may-ari ng badyet ay kailangang magpatotoo, gaya ng dati. (Ang mga naka-roadmap na mga pagpapalawak sa hinaharap sa mekanismo na ito ay sumasaklaw sa mga order ng pagbili at mga listahan ng mga tagapagtustos.)</value>
   </data>
+  
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Natanggap na Paparating na Talaan</value>
   </data>
@@ -324,6 +334,34 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>Mangyaring ipasok ang akawnt sa bangko ng tagapagtustos o katumbas.</value>
   </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Mangyaring ipasok ang halaga ng pera (sa {0}) ang mga kahilingan ng invoice.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Mangyaring tukuyin ang isang badyet upang singilin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Mangyaring mag-upload ng isa o higit pang mga dokumento ng orihinal na invoice.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Mangyaring pumili ng opsyon.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Mangyaring ilarawan kung ano ang pagbili na ito.</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Paglikha ng Outbound Invoice</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Lumikha</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Paglikha ng Outbound Invoice</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Papalabas ng Invoice #{0:N0} filed.</value>
+  </data>
   <data name="Donate_Explain" xml:space="preserve">
     <value>Ang kodigong QR na ito ay para sa mga donasyon sa {0}. Basahin ito mula sa bitcoin wallet ng iyong telepono upang makasagawa ng isang donasyon, o mag-abuloy mula sa iyong kompyuter diretso sa [{1}] (iyan ay isang Bitcoin Cash address).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -331,6 +369,10 @@
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>Nakatanggap ng {0} {1:N2} ({2:N0} microcoins o "bits"). Salamat!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Natanggap ang mga Pondo ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
   </data>
   <data name="Donate_FundsReceivedNative" xml:space="preserve">
     <value>Nakatanggap ng {0} na mga microcoin ("bits"). Salamat!</value>
@@ -372,12 +414,59 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>Badyet</value>
   </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Kahilingan</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>Klase ng Gastos</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Paglalarawan</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Mag-upload ng Expensify CSV</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;MALI: Hindi makakapagsuri sa Expensify CSV.&lt;/strong&gt; Kung ang CSV payl na ito mula sa Extensify, pagkatapos ang Swarmops ay nangangailangan sa mga hanay na "Timestamp", "Halaga", "Mangangalakal", "Komento", "Kategoriya", "MCC", "Orihinal na Salapi", at "Orihinal na Halaga" na naroroon sa payl. Kung ang organisasyon mag-uulat ng VAT, pagkatapos ang isang karagdagang hanay na tinatawag na "VAT" ay kinakailangan. &lt;/p&gt;&lt;p&gt;Hindi nakapagpatuloy sa payl na ito.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;MALI: Ang payl na CSV ng Expensify ay nawawalan ng kinakailangan na mga patlang sa datos.&lt;/strong&gt; Ang payl ay napapakita na ito ay nawawalan ng hindi bababa sa isa na mga patlang na kinakailangan ng naka-default na CSV propayl ng Expensify. Sumangguni sa teknikal na dokumentasyon at ihambing sa payl na sinubukan mong i-upload. (Ito ay isang posibleng dahilan ng kamalian, syempre, na sinubukan mong i-upload ang isang ganap na maling payl &amp;ndash; baka isang larawan sa halip na isang CSV ng Expensify &amp;ndash; at iyon ang dahilan para sa nawawala na inaasahang datos.)&lt;/p&gt;&lt;p&gt;Hindi nakapagproseso sa payl na ito.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;MALI: Ang payl na Expensify CSV ay hindi nagkakaroon ng patlang para sa VAT.&lt;/strong&gt; Dahil ang organisasyon na ito ay nag-uulat ng Value Added Tax (VAT) sa mga awtoridad, ito ay kinakailangan na tukuyin sa bawat paggastos na basehan. Mangyaring paganahin ang VAT sa Expensify at lumikha ng isang bagong pang-luwas na propayl ng CSV na nagluluwas sa ilalim ng header ng hanay na "VAT". Kung ang iyong pangkat ay nakalikha na nitong propayl ng CSV, pwede mo nang piliin ito kapag nag-e-eksport sa CSV.&lt;/p&gt;&lt;p&gt;Hindi nakapagproseso sa payl na ito.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Kung mayroon kang maraming mga ulat sa gastos, maaari mong tipunin ang mga ito sa Expensify at mag-upload ng isang ulat ng Expensify CSV dito (na nakuha mo mula sa Expensify sa ilalim ng mga Ulat, I-export, bilang CSV.) Ang Swarmops ay gagamit ng Expensify upang kunin ang lahat ng mga indibidwal na resibo at mag-log ang mga ito bilang hiwalay na claim sa gastos para sa tamang accounting.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Upang gumana ito, dahil ang {0} mga ulat ng VAT sa mga awtoridad sa buwis, kinakailangan mong baguhin ang default na profile ng Expensify CSV upang isama ang VAT, kung saan ang default ay hindi. May higit pa ang mga pahina ng tulong sa Expensify kung paano ito gagawin at kung gumagamit ka ng Expensifyy sa isang batayan ng koponan, ang iyong patakaran sa Expensify ay dapat na magkaroon ng isang profile ng export na CSV na pinagana ng VAT.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Batay sa mga setting ng samahan, ang profile ng export na "Default CSV" sa Expensify ay dapat sapat para sa Swarmops.</value>
+  </data>
+  
+  
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Ang salapi sa talaan ng Expensify ay</value>
+  </data>
+  
+  
+  
+  
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Mag-upload ng Iba Pang CSV Payl ng Expensify?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>aking sarili</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Ito ay isang pag-angkin ng gasto mula kay?</value>
   </data>
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>Mga Detalye ng Iyong Bangko</value>
@@ -401,6 +490,9 @@
   <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
     <value>Dahil ito ang iyong sariling badyet, ang pagpapatunay ay kumpleto na. Ang pagpapatunay lamang ang kinakailangan.</value>
   </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Mag-upload ng Expensify Report Para sa Pagbabayad</value>
+  </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Mag-upload ng mga Imahe ng Resibo</value>
   </data>
@@ -417,24 +509,71 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Mangyaring ilarawan kung sa ano ang pagbili na ito.</value>
   </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>VAT ng kabuuang ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Listahan ng mga Inbound Invoice</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Nagpadala ng invoice</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Inililista nito ang pinakabagong 100 na mga invoice, pinagsunod-sunod ng kanilang takdang petsa simula sa pinakabago muna.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Mga Inbound Invoice</value>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Naipadala</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Kustomer</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Listahan ng mga Invoice na Papalabas</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Inililista nito ang 100 pinaka-kamailang mga invoice na papalabas, pinagsunod-sunod kapag sila ay nilikha, pinakabago muna.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Kabuuang Halaga</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Takdang Petsa</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Ilista ang mga Invoice na Papalabas</value>
+  </data>
+  
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Halaga</value>
     <comment>Amount to be paid out</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Binayaran</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>Tatanggap</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
   </data>
+  
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Mga Gastos na Handa na Para Payout</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Ang mga ito ay ang iba't ibang uri ng mga gastos sa organisasyon na nakapasa sa lahat ng mga hadlang para sa payout. Sila ay handa na mabayaran sa tatanggap. Narito kung saan mo tinitingnan ang mga ito bilang bayad (marahil habang nakabukas ang iyong bangko sa isa pang window).</value>
   </data>
+  
+  
+  
+  
+  
+  
   <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
     <value>Ipakita ang OCR para sa mga mobile app</value>
   </data>
@@ -445,6 +584,7 @@
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Magbayad ng Pera</value>
   </data>
+  
   <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
     <value>Hindi ma-undo ang payout #{0}: ito ay naisaayos o isinara na.</value>
   </data>
@@ -497,6 +637,9 @@
   </data>
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>Badyet</value>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Hiling</value>
   </data>
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Mga detalye ng iyong Bangko</value>
@@ -555,145 +698,4 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Ang mga resibo para sa Claim ng Gastusin #{0:N0} para sa {1} {2:N2} ay napatunayan na.</value>
   </data>
-  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Lumikha</value>
-    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
-    <value>Mangyaring ipasok ang halaga ng pera (sa {0}) ang mga kahilingan ng invoice.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
-    <value>Mangyaring tukuyin ang isang badyet upang singilin.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
-    <value>Mangyaring mag-upload ng isa o higit pang mga dokumento ng orihinal na invoice.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
-    <value>Mangyaring pumili ng opsyon.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
-    <value>Mangyaring ilarawan kung ano ang pagbili na ito.</value>
-  </data>
-  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
-    <value>Kahilingan</value>
-    <comment>Could also be "file" (as verb) or equivalent</comment>
-  </data>
-  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
-    <value>Hiling</value>
-  </data>
-  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
-    <value>Kabuuang bahagi ng VAT ({0})</value>
-  </data>
-  <data name="FileExpenseClaim_Vat" xml:space="preserve">
-    <value>VAT ng kabuuang ({0})</value>
-  </data>
-  <data name="ListInboundInvoices_Header" xml:space="preserve">
-    <value>Listahan ng mga Inbound Invoice</value>
-  </data>
-  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
-    <value>Nagpadala ng invoice</value>
-  </data>
-  <data name="ListInboundInvoices_Info" xml:space="preserve">
-    <value>Inililista nito ang pinakabagong 100 na mga invoice, pinagsunod-sunod ng kanilang takdang petsa simula sa pinakabago muna.</value>
-  </data>
-  <data name="ListInboundInvoices_Title" xml:space="preserve">
-    <value>Mga Inbound Invoice</value>
-  </data>
-  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
-    <value>Paglikha ng Outbound Invoice</value>
-  </data>
-  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Lumikha</value>
-    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
-  </data>
-  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
-    <value>Paglikha ng Outbound Invoice</value>
-  </data>
-  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
-    <value>Papalabas ng Invoice #{0:N0} filed.</value>
-  </data>
-  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
-    <value>Natanggap ang mga Pondo ({0})</value>
-    <comment>The {0} will be replaced with currency name.</comment>
-  </data>
-  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
-    <value>Naipadala</value>
-  </data>
-  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
-    <value>Kustomer</value>
-  </data>
-  <data name="ListOutboundInvoices_Header" xml:space="preserve">
-    <value>Listahan ng mga Invoice na Papalabas</value>
-  </data>
-  <data name="ListOutboundInvoices_Info" xml:space="preserve">
-    <value>Inililista nito ang 100 pinaka-kamailang mga invoice na papalabas, pinagsunod-sunod kapag sila ay nilikha, pinakabago muna.</value>
-  </data>
-  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
-    <value>Kabuuang Halaga</value>
-  </data>
-  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
-    <value>Takdang Petsa</value>
-  </data>
-  <data name="ListOutboundInvoices_Title" xml:space="preserve">
-    <value>Ilista ang mga Invoice na Papalabas</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
-    <value>Mag-upload ng Expensify CSV</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
-    <value>Kung mayroon kang maraming mga ulat sa gastos, maaari mong tipunin ang mga ito sa Expensify at mag-upload ng isang ulat ng Expensify CSV dito (na nakuha mo mula sa Expensify sa ilalim ng mga Ulat, I-export, bilang CSV.) Ang Swarmops ay gagamit ng Expensify upang kunin ang lahat ng mga indibidwal na resibo at mag-log ang mga ito bilang hiwalay na claim sa gastos para sa tamang accounting.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
-    <value>Upang gumana ito, dahil ang {0} mga ulat ng VAT sa mga awtoridad sa buwis, kinakailangan mong baguhin ang default na profile ng Expensify CSV upang isama ang VAT, kung saan ang default ay hindi. May higit pa ang mga pahina ng tulong sa Expensify kung paano ito gagawin at kung gumagamit ka ng Expensifyy sa isang batayan ng koponan, ang iyong patakaran sa Expensify ay dapat na magkaroon ng isang profile ng export na CSV na pinagana ng VAT.</value>
-    <comment>{0} is the organization name.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
-    <value>Batay sa mga setting ng samahan, ang profile ng export na "Default CSV" sa Expensify ay dapat sapat para sa Swarmops.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
-    <value>Ang salapi sa talaan ng Expensify ay</value>
-  </data>
-  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
-    <value>Mag-upload ng Expensify Report Para sa Pagbabayad</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;MALI: Hindi makakapagsuri sa Expensify CSV.&lt;/strong&gt; Kung ang CSV payl na ito mula sa Extensify, pagkatapos ang Swarmops ay nangangailangan sa mga hanay na "Timestamp", "Halaga", "Mangangalakal", "Komento", "Kategoriya", "MCC", "Orihinal na Salapi", at "Orihinal na Halaga" na naroroon sa payl. Kung ang organisasyon mag-uulat ng VAT, pagkatapos ang isang karagdagang hanay na tinatawag na "VAT" ay kinakailangan. &lt;/p&gt;&lt;p&gt;Hindi nakapagpatuloy sa payl na ito.&lt;/p&gt;</value>
-    <comment>Do not translate the Expensify column field names.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;MALI: Ang payl na Expensify CSV ay hindi nagkakaroon ng patlang para sa VAT.&lt;/strong&gt; Dahil ang organisasyon na ito ay nag-uulat ng Value Added Tax (VAT) sa mga awtoridad, ito ay kinakailangan na tukuyin sa bawat paggastos na basehan. Mangyaring paganahin ang VAT sa Expensify at lumikha ng isang bagong pang-luwas na propayl ng CSV na nagluluwas sa ilalim ng header ng hanay na "VAT". Kung ang iyong pangkat ay nakalikha na nitong propayl ng CSV, pwede mo nang piliin ito kapag nag-e-eksport sa CSV.&lt;/p&gt;&lt;p&gt;Hindi nakapagproseso sa payl na ito.&lt;/p&gt;</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
-    <value>Mag-upload ng Iba Pang CSV Payl ng Expensify?</value>
-    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
-    <value>aking sarili</value>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
-    <value>Ito ay isang pag-angkin ng gasto mula kay?</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;MALI: Ang payl na CSV ng Expensify ay nawawalan ng kinakailangan na mga patlang sa datos.&lt;/strong&gt; Ang payl ay napapakita na ito ay nawawalan ng hindi bababa sa isa na mga patlang na kinakailangan ng naka-default na CSV propayl ng Expensify. Sumangguni sa teknikal na dokumentasyon at ihambing sa payl na sinubukan mong i-upload. (Ito ay isang posibleng dahilan ng kamalian, syempre, na sinubukan mong i-upload ang isang ganap na maling payl &amp;ndash; baka isang larawan sa halip na isang CSV ng Expensify &amp;ndash; at iyon ang dahilan para sa nawawala na inaasahang datos.)&lt;/p&gt;&lt;p&gt;Hindi nakapagproseso sa payl na ito.&lt;/p&gt;</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 </root>

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>crwdns6556696:0{0:N2}crwdne6556696:0</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>crwdns6556707:0{0}crwdnd6556707:0{1}crwdnd6556707:0{2:N2}crwdne6556707:0</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,60 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>crwdns6556695:0crwdne6556695:0</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>crwdns6556579:0crwdne6556579:0</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>crwdns6556580:0{0}crwdne6556580:0</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>crwdns6556581:0crwdne6556581:0</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>crwdns6556582:0{0:HH:mm}crwdne6556582:0</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>crwdns6556583:0crwdne6556583:0</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>crwdns6556584:0crwdne6556584:0</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>crwdns6556585:0crwdne6556585:0</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>crwdns6556586:0crwdne6556586:0</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>crwdns6556587:0crwdne6556587:0</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>crwdns6556588:0crwdne6556588:0</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>crwdns6556589:0crwdne6556589:0</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>crwdns6556590:0crwdne6556590:0</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>crwdns6556591:0{0:HH:mm}crwdne6556591:0</value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>crwdns6556592:0crwdne6556592:0</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>crwdns6555020:0crwdne6555020:0</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>crwdns6556669:0crwdne6556669:0</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>crwdns6556668:0crwdne6556668:0</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>crwdns6555021:0crwdne6555021:0</value>
@@ -188,6 +243,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>crwdns6556256:0crwdne6556256:0</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>crwdns6556670:0crwdne6556670:0</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>crwdns6556257:0crwdne6556257:0</value>
@@ -271,6 +329,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>crwdns6555633:0crwdne6555633:0</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>crwdns6556576:0crwdne6556576:0</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>crwdns6555585:0crwdne6555585:0</value>
   </data>
@@ -304,71 +365,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>crwdns6555593:0crwdne6555593:0</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>crwdns6556576:0crwdne6556576:0</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>crwdns6556577:0crwdne6556577:0</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>crwdns6556578:0crwdne6556578:0</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>crwdns6556579:0crwdne6556579:0</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>crwdns6556580:0{0}crwdne6556580:0</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>crwdns6556581:0crwdne6556581:0</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>crwdns6556582:0{0:HH:mm}crwdne6556582:0</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>crwdns6556583:0crwdne6556583:0</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>crwdns6556584:0crwdne6556584:0</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>crwdns6556585:0crwdne6556585:0</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>crwdns6556586:0crwdne6556586:0</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>crwdns6556587:0crwdne6556587:0</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>crwdns6556588:0crwdne6556588:0</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>crwdns6556589:0crwdne6556589:0</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>crwdns6556590:0crwdne6556590:0</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>crwdns6556591:0{0:HH:mm}crwdne6556591:0</value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>crwdns6556592:0crwdne6556592:0</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>crwdns6556668:0crwdne6556668:0</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>crwdns6556669:0crwdne6556669:0</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>crwdns6556670:0crwdne6556670:0</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>crwdns6556696:0{0:N2}crwdne6556696:0</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>crwdns6556577:0crwdne6556577:0</value>
   </data>
 </root>

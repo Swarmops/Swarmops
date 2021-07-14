@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;TI GBA ERUKU&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Iye ti o jẹ fifiransẹ kere ju owo ti o yẹ lọ fun didapada fun ọ, eyi ti o jẹ {0:N2} microcoins. Owo ti o firansẹ ni a npe ni "eruku" ni bayi lori nẹtiwọki bitcoin, ati pe ko jẹ gbigbe mọ.&lt;br/&gt;&lt;br/&gt;Fi iye ti o ga si ranṣẹ lati ṣe idanwo echo.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>Eyi jẹ koodu QR fun idanwo echo bitcoin fun gbogbo iṣàgbékalẹ̀ Swarmops yii, kii ṣe fun {0} nikan. Ka lati inu apo owo bitcoin foonu rẹ lati ṣe idanwo echo naa, tabi firanṣẹ lati ori kọmputa rẹ taara si [{1}] (iyen jẹ Adirẹsi Bitcoin Cash). Iye naa (ayọkuro owo awakusa ti o je {2:N2} microcoins) ma jẹ didapada fun ọ ni iṣẹju aaya diẹ ti o n bo.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,62 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Idanwo Echo Bitcoin ti Swarmops</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Isafarawe Ti Nṣiṣẹ</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>O ni akoko isafarawe ti nṣiṣe lọwọ bi {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Pari isafarawe.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;SAFARAWE ENIYAN?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Eyi ko wa fun mimu ni yẹpẹrẹ, ati pe ti o ko ba ṣe eyi fun awọn idi imọran ẹrọ, o tun le lodi si ofin didale ori awọn ofin ibile.&lt;br/&gt;&lt;br/&gt;Idi ti irinṣẹ yii ni lati ṣatunṣe awọn aiṣedeede imọ-ẹrọ. Ohun gbogbo ti wa ni igbasilẹ.&lt;br/&gt;&lt;br/&gt;Tesiwaju?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE DOPIN&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Isafarawe dopin ni {0:HH:mm} UTC. O n ṣe bi ara rẹ lẹẹkansi.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE DI KIKỌ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ko yẹ ki o se isafarawe ẹnikan ti o jẹ oluṣakoso rẹ gangan.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE DI KIKỌ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ko yẹ ki o se isafarawe ẹlomiran pẹlu iwọle ipele ilana.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>O nilo lati yan eniyan ti o ma safarawe.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Ti o ba nilo lati se isafarawe ara rẹ, a daba pe ki o jade kuro ni Swarmops ki o si wa iru iranlowo miiran.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE DI KIKỌ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;O dabi pe o ko ni awọn anfaani ti o to lati se isafarawe elomiran.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Se isafarawe olumulo miiran</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Se isafarawe</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Eniyan ti o ma se isafarawe rẹ</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;ISAFARAWE NSISE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Isafarawe bẹrẹ ni {0:HH:mm} UTC. Eyi ni Dasibodu bi eniyan ti o safarawe rẹ ma se ri. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Irinṣẹ isatunṣe yii gba ọ laaye lati se isafarawe ti olumulo miiran lati ri ati ni iriri Swarmops bi ti wọn nigbati o ba wọle.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IKILO:&lt;/strong&gt; Eyi jẹ irinṣẹ irẹburu gíga ti o yẹ ki o lo fun idagbasoke imọ ẹrọ ati atilẹyin ti o nilo nikan. Lilo eyi ko yẹ ki o jẹ mimu ni yẹpẹrẹ.&lt;/p&gt;
+&lt;p&gt;Gbogbo awon isafarawe ti wa ni igbasilẹ titlai, gbogbo ati eyikeyi awọn igbese ti o je gbigbe nigbati isafarawe waye ni o wa fun awari bi ti bẹẹ, atipe olumulo ti won safarawe rẹ ma gba alaye nipa irẹburu naa.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Awon ajafeto ma je pipe</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(kose lo)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Awọn ti ko di ọmọ ẹgbẹ n jẹ</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Ajo ipele-ipile</value>
@@ -188,6 +245,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Ti iṣowo</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Ijọba</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Alailere</value>
@@ -269,6 +329,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Awọn iwifunni Alabojuto Lati Orukọ</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Ibori Orukọ agbalejo Backend</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>Ibudo SMTP gbọdọ jẹ nọmba. Ko le yanju agbalejo:ibudo.</value>
   </data>
@@ -302,73 +365,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>O yẹ ki o lo HTTPS nikan fun iru aaye ayelujara bii eyi. Ṣugbọn o ti mọ eyi tẹlẹ, ṣe o ko mọ?</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>Ibori Orukọ agbalejo Backend</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>Ibudo WebSocket (Frontend)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>Ibudo WebSocket (Backend)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>Isafarawe Ti Nṣiṣẹ</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>O ni akoko isafarawe ti nṣiṣe lọwọ bi {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Pari isafarawe.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;SAFARAWE ENIYAN?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Eyi ko wa fun mimu ni yẹpẹrẹ, ati pe ti o ko ba ṣe eyi fun awọn idi imọran ẹrọ, o tun le lodi si ofin didale ori awọn ofin ibile.&lt;br/&gt;&lt;br/&gt;Idi ti irinṣẹ yii ni lati ṣatunṣe awọn aiṣedeede imọ-ẹrọ. Ohun gbogbo ti wa ni igbasilẹ.&lt;br/&gt;&lt;br/&gt;Tesiwaju?</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;ISAFARAWE DOPIN&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Isafarawe dopin ni {0:HH:mm} UTC. O n ṣe bi ara rẹ lẹẹkansi.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt;ISAFARAWE DI KIKỌ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ko yẹ ki o se isafarawe ẹnikan ti o jẹ oluṣakoso rẹ gangan.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;ISAFARAWE DI KIKỌ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ko yẹ ki o se isafarawe ẹlomiran pẹlu iwọle ipele ilana.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>O nilo lati yan eniyan ti o ma safarawe.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Ti o ba nilo lati se isafarawe ara rẹ, a daba pe ki o jade kuro ni Swarmops ki o si wa iru iranlowo miiran.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;ISAFARAWE DI KIKỌ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;O dabi pe o ko ni awọn anfaani ti o to lati se isafarawe elomiran.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>Se isafarawe olumulo miiran</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>Se isafarawe</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>Eniyan ti o ma se isafarawe rẹ</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;ISAFARAWE NSISE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Isafarawe bẹrẹ ni {0:HH:mm} UTC. Eyi ni Dasibodu bi eniyan ti o safarawe rẹ ma se ri. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>&lt;p&gt;Irinṣẹ isatunṣe yii gba ọ laaye lati se isafarawe ti olumulo miiran lati ri ati ni iriri Swarmops bi ti wọn nigbati o ba wọle.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;IKILO:&lt;/strong&gt; Eyi jẹ irinṣẹ irẹburu gíga ti o yẹ ki o lo fun idagbasoke imọ ẹrọ ati atilẹyin ti o nilo nikan. Lilo eyi ko yẹ ki o jẹ mimu ni yẹpẹrẹ.&lt;/p&gt;
-&lt;p&gt;Gbogbo awon isafarawe ti wa ni igbasilẹ titlai, gbogbo ati eyikeyi awọn igbese ti o je gbigbe nigbati isafarawe waye ni o wa fun awari bi ti bẹẹ, atipe olumulo ti won safarawe rẹ ma gba alaye nipa irẹburu naa.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Awọn ti ko di ọmọ ẹgbẹ n jẹ</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(kose lo)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Ijọba</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;TI GBA ERUKU&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Iye ti o jẹ fifiransẹ kere ju owo ti o yẹ lọ fun didapada fun ọ, eyi ti o jẹ {0:N2} microcoins. Owo ti o firansẹ ni a npe ni "eruku" ni bayi lori nẹtiwọki bitcoin, ati pe ko jẹ gbigbe mọ.&lt;br/&gt;&lt;br/&gt;Fi iye ti o ga si ranṣẹ lati ṣe idanwo echo.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>Ibudo WebSocket (Frontend)</value>
   </data>
 </root>

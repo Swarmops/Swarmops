@@ -117,17 +117,111 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>fi akọọlẹ kun</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
   <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
     <value>Ṣẹda akọọlẹ ipilẹ tuntun</value>
+  </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>Eyi ni akọọlẹ awọn Gbese. Iru awọn akọọlẹ bẹ saba ma n ni isiro ni odi, niwọn ti wọn jẹ aṣoju awọn ohun-ini odi ninu ajọ naa. Isiro iṣaaju ti o tẹ wọle tẹlẹ ti jẹ yiyipada si odi.</value>
+  </data>
+  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
+    <value>Orukọ Akọọlẹ</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
+    <value>Ṣe akọọlẹ yii ṣii fun awọn iṣowo?</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
+    <value>Nṣiṣẹ</value>
+  </data>
+  
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Alabojuto</value>
+  </data>
+  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
+    <value>Isuna (isiro je &lt;span id="SpanTextCurrency"&gt;foo&lt;/span&gt; &lt;span id="SpanEditBalance"&gt;bar&lt;/span&gt;)</value>
+    <comment>foo, bar replaced on load with actual values</comment>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
+    <value>Se awọn eniyan le lo akọọlẹ yii fun awọn ijabọ inawo?</value>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
+    <value>Ti o ṣe na</value>
+  </data>
+  
+  <data name="AccountPlan_Edit_Header" xml:space="preserve">
+    <value>N satunkọ Akọọle</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
+    <value>Imudaṣiṣẹ</value>
+    <comment>Automatic connections to bank, blockchain etc.</comment>
+  </data>
+  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
+    <value>Àtòpọ̀</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
+    <value>Awọn isẹ oojọ</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>Isiro Iṣaaju (ti o nwole sinu {0}), {1}</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
+  </data>
+  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
+    <value>Akọọle Obi tabi egbe</value>
+  </data>
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>Eyi jẹ Akọọlẹ Awon inawo. Iru awọn akọọlẹ bẹẹ saba ma n ni isuna ni odi, niwọn ti wọn fa adinku awọn ohun ini lati inu ajọ. Isuna ti o gbero je yiyipada si odi.</value>
+    <comment>Displayed as a message box</comment>
+  </data>
+  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
+    <value>Akoole</value>
+  </data>
+  <data name="AccountPlan_Header_Balance" xml:space="preserve">
+    <value>Isiro</value>
+  </data>
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>Isuna</value>
+  </data>
+  <data name="AccountPlan_Header_Edit" xml:space="preserve">
+    <value>Ṣatunkọ</value>
+  </data>
+  <data name="AccountPlan_Header_Flags" xml:space="preserve">
+    <value>Awọn asia</value>
   </data>
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Eyi ni àpapọ alaye awọn iroyin iṣowo ti inu iwe leja iṣowo rẹ. O le ṣe itọju diẹ lati ibi, ti o ba tun je pe ọpọlọpọ awọn iṣẹ ojoojumọ jẹ pinpin si awọn eniti o ni isuna.</value>
   </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>Akọọlẹ tuntun</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
+    <value>Safihan Awọn akọọlẹ ti Koṣiṣẹ(&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
+    <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
   <data name="AccountPlan_PageTitle" xml:space="preserve">
     <value>Atẹ ti Awọn Akọọlẹ</value>
   </data>
+  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
+    <value>Ipadanu ti a Fojusun {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
+    <value>Ere ti a Fojusun {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Akoole</value>
+  </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>Awọn ohun ini XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
+    <value>(ayipada)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
   </data>
   <data name="BalanceSheet_ContentHeader" xml:space="preserve">
     <value>Balance Sheet fun {0},</value>
@@ -147,8 +241,27 @@
   <data name="BalanceSheet_Info" xml:space="preserve">
     <value>Balance Sheet jẹ àpapọ alaye awon ohun ini ati awọn gbese ni aworan kan ni logan, ati pe o ma n je lilo lati wo bi awọn esi yoo ṣe ni ipa lori ilera iṣowo owo ti ajo naa. O tun le fẹ lati wo &lt;a href="ProfitLossStatement"&gt;ikede ere atiadanu&lt;/a&gt; eyi ti o jẹ àpapọ alaye ti owo ti o wole ati inawo.</value>
   </data>
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>Balance Sheet jẹ àpapọ alaye awon ohun ini ati awọn gbese ni aworan kan logan, ati pe o ma n je lilo lati wo bi awọn esi yoo ṣe ni ipa lori ilera iṣowo owo ti ajo naa. O tun le fẹ lati wo &lt;a href="BalanceSheet"&gt;balance sheet ti o gasi&lt;/a&gt; fun alaye diẹ sii, tabi &lt;a href="ProfitLossStatement"&gt;ikede ere atiadanu&lt;/a&gt; eyi ti o jẹ àpapọ alaye ti owo ti o wole ati inawo.</value>
+  </data>
+  <data name="BalanceSheet_Liabilities" xml:space="preserve">
+    <value>Awọn gbese XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
+    <value>(ayipada)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>Adanu titi di ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
   <data name="BalanceSheet_PageTitle" xml:space="preserve">
     <value>Balance Sheet</value>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>Ere titi di ({0})</value>
+    <comment>The {0} is the year of the report</comment>
   </data>
   <data name="BalanceSheet_Q1" xml:space="preserve">
     <value>Ayipada Q1</value>
@@ -165,6 +278,416 @@
   <data name="BalanceSheet_StartYear" xml:space="preserve">
     <value>Bẹrẹ-XXXX</value>
     <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>Apejuwe isowo naa ko le wa lofo.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>Iṣowo naa nilo ẹri ti rira.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>Iye VAT naa ko dabi pe o jẹ titẹ ni daadaa.</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>Deede Awọn ibaamu Fun Iye yii</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>Iye to Baramu Sugbọn Ni Deeti / Aago Airotẹlẹ</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>Iye ti o wa Laarin Ifarada 5%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>Akoole</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>Iye</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>Apejuwe</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>Diẹ ninu awọn iṣowo owo ti a gbe wọle ko le ṣe sopọ pẹlu isiro alaifọwọyi ti n lọ lọwọ. Eyi ni ibiti o ti ma se asopọ alafọwọyi iru awọn isowo bẹ lati mu wọn "peye" (ti isowo kan ba ni apakan pere ti o ti pari, bi owo ti a fi ranṣẹ si ajọ ti ko ni akọsile ohun ti owo naa wa fun, a ma sọ pe isowo naa "ko peye" ati "isanwo to wa ni asorọ", ani wipe, ko si ninu akọọlẹ iwe iṣowo ikeji rẹ).</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>Isiro</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>Se ibaamu iwe iye-owo oja</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>Baamu</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
+    <value>Baamu</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>Samisi bi Rira Taara</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
+    <value>Pa ijabọ VAT de</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
+    <value>Se imudọgba iyatọ ti o lodi si akọọle yii:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
+    <value>Ṣe ibaamu isowo naa si iwe iye-owo oja ti o njade:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>Isowo naa baramu pelu isanwojade yii:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
+    <value>Isowo naa baramu pelu isanwojade owo-ajeji yii:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Iye rira ẹjawo-taara ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>Gbe idiyele rira lo si iṣuna yi</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>Gbe iwe oja tabi iwe miiran ga</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>Se imudojuiwọn apejuwe isowo</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>Ẹya ti VAT ti iye naa</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
+    <value>Isowo yii jẹ isanwo/ipada fun ijabọ VAT yii:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
+    <value>Iṣowo ko peye nipasẹ &lt;span id="spanTransactionUnbalancedBy"&gt;+FOO,BAR.QX&lt;/span&gt;. Ṣe o fẹ lati...</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
+    <value>Se imudọgba alafọwọyi si isowo yii ni ilodi si akọọle kan?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
+    <value>Ṣe ibaamu eyi si iwe iye-owo oja ti o njade ti o wa ni sisi?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>Ṣe ibaamu eyi si iwe iye-owo oja ti o njade ti o wa ni sisi ni owo ti ko pewọn (ifarada 5% ti forex)?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
+    <value>Ṣe ibaamu iyatọ isowo naa si ibi isanwojade ti o wa ni ṣiṣi, ti ko ni ibaamu?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>Ṣe itoka isowo naa si isanwojade owo-ajeji kan (iye ifarada {0}%)?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>Ṣe ami si eyi bi rira taara-lati inu- akoole?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
+    <value>Pa ijabọ VAT kan de pẹlu isowo yii?</value>
+  </data>
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>Mimu peye/Minu baramu Isowo #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; Lati &lt;span id="spanModalTransactionDate"&gt;yyyy-mmm-dd&lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>Eyi ti o ni ibaamu ju</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>(Kosi awon isanwojade ti o sii sile)</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>(Kosi awọn isanwojade ti o tọ fun ibaamu)</value>
+  </data>
+  
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>Iye ti o wa Laarin Ifarada 1%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
+    <value>Iwe iye-owo oja ti o njade #{0:N0} fun {1}, pari ni {2:yyyy-MMM-dd}: {3}</value>
+    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
+  </data>
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>Mu peye &amp; Mu baramu Awọn isowo</value>
+  </data>
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>Isanwojade #{0:N0}, {5} (nreti ni{1:yyyy-MMM-dd}) fun {2}: {3} {4:N2}</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>-- Mu Isanwojade kan --</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>Iye ti o wa Laarin Ifarada 10%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
+    <value>Ijabọ VAT fun itayọ {1:yyyy-MMM}</value>
+  </data>
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>Adirẹẹsi Bitcoin</value>
+  </data>
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>Balansi microcoins</value>
+  </data>
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>Ona Imujade</value>
+  </data>
+  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
+    <value>Ko si awọn owo kankan ninu hotwallet naa.</value>
+  </data>
+  <data name="BitcoinHotwallet_Header" xml:space="preserve">
+    <value>Ifọsiwẹwẹ Hotwallet</value>
+    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
+  </data>
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>Eyi safihan ifọsiwẹwẹ awọn adirẹsi hotwallet ti bitcoin ti ajọ naa ati isiro. (Awọn adirẹẹsi ofifo ati awọn adirẹẹsi ti a ti lo ri ni iṣaaju ko han.)</value>
+  </data>
+  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
+    <value>Hot Wallet ti Bitcoin</value>
+  </data>
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>Hash ti Isowo</value>
+  </data>
+  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
+    <value>Iṣowo to njade ti ko je nina</value>
+    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
+  </data>
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>Iye {0}</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>Isuna vs Iye Gangan</value>
+  </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>YTD ti a reti</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>Oju ewe yii n ṣe afihan ifọsiwẹwẹ ti isuna ni afiwe si ifọsiwẹwẹ ti abajade gangan titi di igba yii.</value>
+  </data>
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>Isuna vs Iye Gangan</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>Ipadanu Odọọdun</value>
+  </data>
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>Ere Odọọdun</value>
+  </data>
+  
+  
+  
+  
+  
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Ṣẹda {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  
+  
+  
+  
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Awọn ijabọ ọdọọdun</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  <data name="EndOfMonth_Header_Cryptocurrency" xml:space="preserve">
+    <value>Owo kiripito</value>
+    <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>&lt;strong&gt;FO IGBEGA IWE?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Iwe yii ni a nilo fun akọsilẹ iṣẹ. Idi kan soso ti o yẹ lati fo iwe ni wipe ko wa laaye nitori pe awọn iṣẹ naa ko ti bẹrẹ iṣẹ, bii nigbati isẹ kan ba bẹrẹ ni Oṣu Keje ninu ọdun kan kii yoo ni awọn iwe fun Osu kini ti ọdun naa&lt;br/&gt;&lt;br/&gt;A ko ni beere lọwọ rẹ lẹẹkansi lati gbe iwe yii ga ti o ba fo ni bayii.</value>
+  </data>
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Ilana-iṣe-ti-Ipari-Osu: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>Sagbega Ikede Banki ({1}) for {0} for {2}</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  
+  
+  
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>Orukọ Akọọlẹ</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>Isiro peye:</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
+    <value>Ṣẹda Iṣowo</value>
+    <comment>Text on button for executing create</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
+    <value>Deeti ati akoko ti isowo (UTC)</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
+    <value>Apejuwe Isowo</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
+    <value>Nṣẹda Isowo tuntun</value>
+    <comment>Header of dialog</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
+    <value>Akọọlẹ ti ila ibu isowo kini</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
+    <value>Iye ti ila ibu isowo kini</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
+    <value>Fi isowo tuntun kun</value>
+    <comment>Option in sidebar</comment>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>Apejuwe / Akoole</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>N wo / N satunkọ Isowo #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>(Kosi data idunadura)</value>
+  </data>
+  
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>Leja Gbogboogbo fun</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>Fi awọn ila ibu kun isowo</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>Awọn alaye ti titele isowo alaifọwọyi</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>fun</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>Ṣayẹwo</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>Isiro Ti nwọle</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>Kosi Isiro Iṣaaju</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>Eyi ni awọn igbasilẹ ti lẹja iwe iṣowo oniwọle-meji fun awọn inawo ti ajọ naa. O le ṣàyẹwò wọn nibi ni kikun fun awon idi iṣatunyẹwo. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;O n wo akọọlẹ P &amp; L lọwọlọwọ, nitorina awọn ami wa ni idakeji - owo ti o wọle ni ami ayọkuro ti inawo ni ami afikun&lt;/strong&gt; nitori bi iwe iṣowo oniwọle-meji ti Venetian ṣe ma n ṣiṣẹ.&lt;/span&gt;</value>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>N sayẹwo Isowo #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>Ibẹẹrẹ orukọ</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>Ti wole</value>
+  </data>
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>Ko si awọn isowo kankan ninu akọọlẹ yii fun akoko ti o yan.</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>Isiro Ti njade</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>Isiro Ipari</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>Isiro Ipari (titi di akoko yi)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>Ṣayẹwo Awon lẹja</value>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>(Jowo mu akọọlẹ kan.)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>Ijẹrisi nipasẹ {0} ni {1:yyyy-MMM-dd}</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>ni idapo pelu</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>(alaye ni kunkun ti a dimu)</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>Jọwọ yan akọọlẹ kan lati le fi ila ibu kan kun isowo yii.</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
+    <value>&lt;strong&gt;Iwe iye-owo oja Ti nwọle #{0:N0}&lt;/strong&gt; lati {1}:</value>
+    <comment>the {1} is the supplier name</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>Jẹ ṣiṣe nipasẹ {0}.</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>Oṣuwọn owo ise {0} {1:N2}, awọn atunṣe apapọ {2:+N2;-N2;none}, apapọ owo ise {3:N2}, owo ori ti o je yiyokuro {4:N2}, awọn atunṣe ojulowo {5:+N2;-N2;none}, isanwojade {6:N2}.</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>Eyi ni &lt;strong&gt;Isanwojade #{0:N0}.&lt;/strong&gt; O jẹ isanwojade fun</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>Ifọwọsi iwe nipasẹ {0} ni {1:yyyy-MMM-dd}</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>Isowo yii se apade ijabo VAT fun {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>Isowo yii sii ijabo VAT fun {0}.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>Isowo yii gba isanwo fun Iwe iye-owo oja ti o njade#{0:N0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>Isowo yii san {0}.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>Isowo yii san iwe iye-owo oja ti nwọle #{0:N0} lati {1}.</value>
+  </data>
+  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
+    <value>Isowo &lt;span class="spanAnnoyingBlink"&gt;KO PEYE:&lt;/span&gt; iye ti o sonu</value>
   </data>
   <data name="ProfitLossStatement_AccountName" xml:space="preserve">
     <value>Akoole</value>
@@ -219,6 +742,34 @@
     <value>Seto Awon isuna Tuntun</value>
     <comment>Text on submit button</comment>
   </data>
+  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
+    <value>Owo ori Afikun</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
+    <value>Owo ori Iyokuro</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
+    <value>Apapọ Owo oya</value>
+  </data>
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>Wo awọn iwe owo ori (awọn fọọmu owo ori ti o ti pari) fun iwe isanwo ajo naa, eyi ti o rọrun fun ọ lati daakọ si awọn fọọmu owo ori rẹ gangan, tabi boya tẹjade paapaa bi o ṣe wa. Iṣẹ-ṣiṣe ati awọn fọọmu gangan yatọ nipasẹ orilẹ-ede ati nigbamiiran ma da lori koodu third-party ati awon plugin.</value>
+  </data>
+  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
+    <value>Awọn fọọmu Owo ori Iwe isanwo</value>
+  </data>
+  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
+    <value>Awọn fọọmu Owo ori Oṣooṣu Fun</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
+    <value>Apapo Iye</value>
+  </data>
+  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
+    <value>Apapo Owo ori</value>
+  </data>
+  
   <data name="UploadBankFiles_AccountStatement" xml:space="preserve">
     <value>Ikede Akoole</value>
   </data>
@@ -248,6 +799,9 @@
   <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
     <value>&lt;h3&gt;Faili banki ko se gbe wọle.&lt;/h3&gt;&lt;p&gt;Eyi ni ọkan ninu awọn idi mẹta: o padanu diẹ ninu awọn apejuwe ninu ilana dawunlodi, banki naa ti yi ọna rẹ pada, tabi o ti gbe faili ti ko tọ rara 
  ga lairotẹlẹ (bi aworan kan lati inu ayeye ti o ṣe gbẹhin dipo awọn akojọ iṣowo). Awọn isowo kankan ko je gbigbewọle rara. &lt;strong&gt;Jọwọ tun gbiyanju.&lt;/strong&gt;</value>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Ko si awọn akọọlẹ dukia ti a ṣeto fun adaṣiṣẹ, nitorina ko si awọn akọọlẹ kankan to satilẹyin gbigbe data ga ni akoko yii. Pada si Dasibọdu.</value>
   </data>
   <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
     <value>Faili ti a nreti</value>
@@ -326,6 +880,16 @@ Lẹhin ti o gbe wọle, iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&
     <value>&lt;p&gt;Faili naa ti &lt;strong&gt;je gbigbe wole pelu aseyori.&lt;/strong&gt; {0:N0} awọn isowo tuntun ti di gbigbe wọle; {1:N0} won je sisonu bi awọn ẹda awọn ohun ti o ti wa ni Swarmops tẹlẹ. Iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&gt;&lt;p&gt;Faili naa ni awọn iṣowo lati {2:yyyy-MMM-dd} si {3:yyyy-MMM-dd}.&lt;/p&gt;</value>
     <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
   </data>
+  
+  
+  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Faili awọn isanwo naa jẹ &lt;strong&gt;gbigbe wole pelu aseyori.&lt;/strong&gt; {1:N0} (awọn) isanwo ni {0:N0} (awọn)akojọpọ, ti apapọ {3} {2:N2}, jẹ gbigbe wole.&lt;/p&gt;</value>
+    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Faili isanwo naa jẹ &lt;strong&gt;gbigbe wole pelu aseyori.&lt;/strong&gt; {1:N0} (awọn) isanwo ni {0:N0} (awọn)akojọpọ, ti apapọ {3} {2:N2}, jẹ gbigbe wole.&lt;/p&gt;&lt;p&gt;(Bakannaa ẹda (awọn) isanwo {5:N0} na tun wa ni {4:N0} (awọn)akojọpọ.)&lt;/p&gt;</value>
+    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
+  </data>
   <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
     <value>&lt;p&gt;Faili naa je gbigbe wọle, ṣugbọn &lt;strong&gt;abajade iṣiro akọọle naa ko baamu.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Lẹhin gbigbe wọle {0:N0} awọn isowo (ati sisọnu {1:N0} awọn ẹda), gbogbo faili naa ti je yiyanju. Sibẹsibẹ, abajade isiro akọọle ni Swarmops kii ṣe bakanna bi ti ikede banki naa; iyatọ ti {3} {2:N2} kan wa.&lt;/p&gt;
 &lt;p&gt;Jọwọ ṣe igbiyanju lati ṣagbega ikede akọọle tuntun kan. Ti iyen ba si mu aibamu waye, o le nilo lati gbiyanju &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;ṣatunṣe ìsiṣẹpọ&lt;/a&gt; akọọle banki naa pẹlu asọye faili ikede akọọle kan.&lt;/p&gt;</value>
@@ -394,461 +958,9 @@ Lẹhin ti o gbe wọle, iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&
   <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
     <value>Ṣe akojọ Awọn akọọle ti ko ti yanju</value>
   </data>
-  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
-    <value>Orukọ Akọọlẹ</value>
-  </data>
-  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
-    <value>Ṣe akọọlẹ yii ṣii fun awọn iṣowo?</value>
-  </data>
-  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
-    <value>Nṣiṣẹ</value>
-  </data>
-  
-  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
-    <value>Alabojuto</value>
-  </data>
-  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
-    <value>Isuna (isiro je &lt;span id="SpanTextCurrency"&gt;foo&lt;/span&gt; &lt;span id="SpanEditBalance"&gt;bar&lt;/span&gt;)</value>
-    <comment>foo, bar replaced on load with actual values</comment>
-  </data>
-  <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
-    <value>Se awọn eniyan le lo akọọlẹ yii fun awọn ijabọ inawo?</value>
-  </data>
-  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
-    <value>Ti o ṣe na</value>
-  </data>
-  
-  <data name="AccountPlan_Edit_Header" xml:space="preserve">
-    <value>N satunkọ Akọọle</value>
-  </data>
-  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
-    <value>Imudaṣiṣẹ</value>
-    <comment>Automatic connections to bank, blockchain etc.</comment>
-  </data>
-  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
-    <value>Àtòpọ̀</value>
-  </data>
-  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
-    <value>Awọn isẹ oojọ</value>
-  </data>
-  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
-    <value>Akọọle Obi tabi egbe</value>
-  </data>
-  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
-    <value>Eyi jẹ Akọọlẹ Awon inawo. Iru awọn akọọlẹ bẹẹ saba ma n ni isuna ni odi, niwọn ti wọn fa adinku awọn ohun ini lati inu ajọ. Isuna ti o gbero je yiyipada si odi.</value>
-    <comment>Displayed as a message box</comment>
-  </data>
-  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
-    <value>Akoole</value>
-  </data>
-  <data name="AccountPlan_Header_Balance" xml:space="preserve">
-    <value>Isiro</value>
-  </data>
-  <data name="AccountPlan_Header_Budget" xml:space="preserve">
-    <value>Isuna</value>
-  </data>
-  <data name="AccountPlan_Header_Edit" xml:space="preserve">
-    <value>Ṣatunkọ</value>
-  </data>
-  <data name="AccountPlan_Header_Flags" xml:space="preserve">
-    <value>Awọn asia</value>
-  </data>
-  <data name="InspectLedgers_Header_For" xml:space="preserve">
-    <value>fun</value>
-    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
-  </data>
-  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
-    <value>Ṣayẹwo</value>
-    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
-  </data>
-  <data name="InspectLedgers_PageTitle" xml:space="preserve">
-    <value>Ṣayẹwo Awon lẹja</value>
-  </data>
-  
-  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
-    <value>Isiro Ti nwọle</value>
-  </data>
-  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
-    <value>Kosi Isiro Iṣaaju</value>
-  </data>
-  <data name="InspectLedgers_Info" xml:space="preserve">
-    <value>Eyi ni awọn igbasilẹ ti lẹja iwe iṣowo oniwọle-meji fun awọn inawo ti ajọ naa. O le ṣàyẹwò wọn nibi ni kikun fun awon idi iṣatunyẹwo. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;O n wo akọọlẹ P &amp; L lọwọlọwọ, nitorina awọn ami wa ni idakeji - owo ti o wọle ni ami ayọkuro ti inawo ni ami afikun&lt;/strong&gt; nitori bi iwe iṣowo oniwọle-meji ti Venetian ṣe ma n ṣiṣẹ.&lt;/span&gt;</value>
-  </data>
-  
-  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
-    <value>Ko si awọn isowo kankan ninu akọọlẹ yii fun akoko ti o yan.</value>
-  </data>
-  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
-    <value>Isiro Ti njade</value>
-  </data>
-  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
-    <value>Isiro Ipari</value>
-  </data>
-  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
-    <value>Isiro Ipari (titi di akoko yi)</value>
-    <comment>Displayed if the end-balance date isn't reached yet</comment>
-  </data>
-  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
-    <value>(Jowo mu akọọlẹ kan.)</value>
-    <comment>Displayed initially and when no valid account selected</comment>
-  </data>
-  <data name="InspectLedgers_TransactionId" xml:space="preserve">
-    <value>Tx#</value>
-    <comment>Keep VERY short.</comment>
-  </data>
-  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
-    <value>&lt;br/&gt;&lt;p&gt;Faili awọn isanwo naa jẹ &lt;strong&gt;gbigbe wole pelu aseyori.&lt;/strong&gt; {1:N0} (awọn) isanwo ni {0:N0} (awọn)akojọpọ, ti apapọ {3} {2:N2}, jẹ gbigbe wole.&lt;/p&gt;</value>
-    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
-  </data>
-  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
-    <value>&lt;br/&gt;&lt;p&gt;Faili isanwo naa jẹ &lt;strong&gt;gbigbe wole pelu aseyori.&lt;/strong&gt; {1:N0} (awọn) isanwo ni {0:N0} (awọn)akojọpọ, ti apapọ {3} {2:N2}, jẹ gbigbe wole.&lt;/p&gt;&lt;p&gt;(Bakannaa ẹda (awọn) isanwo {5:N0} na tun wa ni {4:N0} (awọn)akojọpọ.)&lt;/p&gt;</value>
-    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
-  </data>
-  <data name="AccountPlan_AddAccount" xml:space="preserve">
-    <value>fi akọọlẹ kun</value>
-    <comment>Displayed as link in parens after account group name</comment>
-  </data>
-  <data name="AccountPlan_NewAccount" xml:space="preserve">
-    <value>Akọọlẹ tuntun</value>
-    <comment>the name of newly-created accounts, before rename</comment>
-  </data>
-  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
-    <value>Eyi ni akọọlẹ awọn Gbese. Iru awọn akọọlẹ bẹ saba ma n ni isiro ni odi, niwọn ti wọn jẹ aṣoju awọn ohun-ini odi ninu ajọ naa. Isiro iṣaaju ti o tẹ wọle tẹlẹ ti jẹ yiyipada si odi.</value>
-  </data>
-  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
-    <value>Isiro Iṣaaju (ti o nwole sinu {0}), {1}</value>
-    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
-  </data>
-  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
-    <value>Safihan Awọn akọọlẹ ti Koṣiṣẹ(&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
-    <comment>The {0} is the number of inactive accounts.</comment>
-  </data>
-  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
-    <value>Ipadanu ti a Fojusun {0}</value>
-    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
-  </data>
-  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
-    <value>Ere ti a Fojusun {0}</value>
-    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
-  </data>
-  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
-    <value>Owo ori Afikun</value>
-    <comment>If applicable, translate to local legal tax term</comment>
-  </data>
-  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
-    <value>Owo ori Iyokuro</value>
-    <comment>If applicable, translate to local legal tax term</comment>
-  </data>
-  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
-    <value>Apapọ Owo oya</value>
-  </data>
-  <data name="TaxForms_Payroll_Info" xml:space="preserve">
-    <value>Wo awọn iwe owo ori (awọn fọọmu owo ori ti o ti pari) fun iwe isanwo ajo naa, eyi ti o rọrun fun ọ lati daakọ si awọn fọọmu owo ori rẹ gangan, tabi boya tẹjade paapaa bi o ṣe wa. Iṣẹ-ṣiṣe ati awọn fọọmu gangan yatọ nipasẹ orilẹ-ede ati nigbamiiran ma da lori koodu third-party ati awon plugin.</value>
-  </data>
-  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
-    <value>Awọn fọọmu Owo ori Iwe isanwo</value>
-  </data>
-  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
-    <value>Awọn fọọmu Owo ori Oṣooṣu Fun</value>
-    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
-  </data>
-  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
-    <value>Apapo Iye</value>
-  </data>
-  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
-    <value>Apapo Owo ori</value>
-  </data>
-  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
-    <value>N wo / N satunkọ Isowo #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
-    <comment>The transaction id is replaced client-side on display</comment>
-  </data>
-  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
-    <value>N sayẹwo Isowo #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
-    <comment>The transaction id is replaced client-side on display</comment>
-  </data>
-  <data name="InspectLedgers_AccountName" xml:space="preserve">
-    <value>Orukọ Akọọlẹ</value>
-  </data>
-  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
-    <value>Isiro peye:</value>
-  </data>
-  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
-    <value>(Kosi data idunadura)</value>
-  </data>
-  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
-    <value>Ibẹẹrẹ orukọ</value>
-  </data>
-  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
-    <value>Ti wole</value>
-  </data>
-  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
-    <value>Isowo &lt;span class="spanAnnoyingBlink"&gt;KO PEYE:&lt;/span&gt; iye ti o sonu</value>
-  </data>
-  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
-    <value>Fi awọn ila ibu kun isowo</value>
-    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
-  </data>
-  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
-    <value>Awọn alaye ti titele isowo alaifọwọyi</value>
-    <comment>(this means the transaction is locked from editing)</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
-    <value>Ijẹrisi nipasẹ {0} ni {1:yyyy-MMM-dd}</value>
-  </data>
-  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
-    <value>ni idapo pelu</value>
-    <comment>Inserted between transaction causes.</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
-    <value>&lt;strong&gt;Iwe iye-owo oja Ti nwọle #{0:N0}&lt;/strong&gt; lati {1}:</value>
-    <comment>the {1} is the supplier name</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
-    <value>Eyi ni &lt;strong&gt;Isanwojade #{0:N0}.&lt;/strong&gt; O jẹ isanwojade fun</value>
-  </data>
-  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
-    <value>Ifọwọsi iwe nipasẹ {0} ni {1:yyyy-MMM-dd}</value>
-    <comment>"Document" refers to receipts, invoices, etc.</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
-    <value>Jẹ ṣiṣe nipasẹ {0}.</value>
-    <comment>As in "payout executed by": who actually paid the money?</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
-    <value>Oṣuwọn owo ise {0} {1:N2}, awọn atunṣe apapọ {2:+N2;-N2;none}, apapọ owo ise {3:N2}, owo ori ti o je yiyokuro {4:N2}, awọn atunṣe ojulowo {5:+N2;-N2;none}, isanwojade {6:N2}.</value>
-    <comment>The "none"s in the format strings need to be translated.</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
-    <value>Jọwọ yan akọọlẹ kan lati le fi ila ibu kan kun isowo yii.</value>
-  </data>
-  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
-    <value>Ipadanu Odọọdun</value>
-  </data>
-  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
-    <value>Ere Odọọdun</value>
-  </data>
-  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
-    <value>(alaye ni kunkun ti a dimu)</value>
-  </data>
-  
-  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
-    <value>Akoole</value>
-    <comment>Usually the account name. Can also be "several".</comment>
-  </data>
-  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
-    <value>Iye</value>
-  </data>
-  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
-    <value>Apejuwe</value>
-  </data>
-  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
-    <value>Tx#</value>
-    <comment>Keep VERY short.</comment>
-  </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Diẹ ninu awọn iṣowo owo ti a gbe wọle ko le ṣe sopọ pẹlu isiro alaifọwọyi ti n lọ lọwọ. Eyi ni ibiti o ti ma se asopọ alafọwọyi iru awọn isowo bẹ lati mu wọn "peye" (ti isowo kan ba ni apakan pere ti o ti pari, bi owo ti a fi ranṣẹ si ajọ ti ko ni akọsile ohun ti owo naa wa fun, a ma sọ pe isowo naa "ko peye" ati "isanwo to wa ni asorọ", ani wipe, ko si ninu akọọlẹ iwe iṣowo ikeji rẹ).</value>
-  </data>
-  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
-    <value>Mimu peye/Minu baramu Isowo #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; Lati &lt;span id="spanModalTransactionDate"&gt;yyyy-mmm-dd&lt;/span&gt;</value>
-    <comment>The span text is replaced runtime.</comment>
-  </data>
-  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
-    <value>Mu peye &amp; Mu baramu Awọn isowo</value>
-  </data>
-  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
-    <value>Deede Awọn ibaamu Fun Iye yii</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
-    <value>Iye to Baramu Sugbọn Ni Deeti / Aago Airotẹlẹ</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
-    <value>Iye ti o wa Laarin Ifarada 5%</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
-    <value>Isiro</value>
-    <comment>This is a verb in the imperative form - it's on a button.</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
-    <value>Baamu</value>
-    <comment>This is a verb in the imperative form - it's on a button.</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
-    <value>Se imudọgba iyatọ ti o lodi si akọọle yii:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
-    <value>Isowo naa baramu pelu isanwojade yii:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
-    <value>Iṣowo ko peye nipasẹ &lt;span id="spanTransactionUnbalancedBy"&gt;+FOO,BAR.QX&lt;/span&gt;. Ṣe o fẹ lati...</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
-    <value>Se imudọgba alafọwọyi si isowo yii ni ilodi si akọọle kan?</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
-    <value>Ṣe ibaamu iyatọ isowo naa si ibi isanwojade ti o wa ni ṣiṣi, ti ko ni ibaamu?</value>
-  </data>
-  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
-    <value>(Kosi awon isanwojade ti o sii sile)</value>
-  </data>
-  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
-    <value>(Kosi awọn isanwojade ti o tọ fun ibaamu)</value>
-  </data>
-  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
-    <value>Iye ti o wa Laarin Ifarada 1%</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
-    <value>-- Mu Isanwojade kan --</value>
-  </data>
-  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
-    <value>Iye ti o wa Laarin Ifarada 10%</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
-    <value>Isanwojade #{0:N0}, {5} (nreti ni{1:yyyy-MMM-dd}) fun {2}: {3} {4:N2}</value>
-    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
-    <value>Isowo naa baramu pelu isanwojade owo-ajeji yii:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
-    <value>Ṣe itoka isowo naa si isanwojade owo-ajeji kan (iye ifarada {0}%)?</value>
-  </data>
-  <data name="BudgetActual_ContentHeader" xml:space="preserve">
-    <value>Isuna vs Iye Gangan</value>
-  </data>
-  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
-    <value>YTD ti a reti</value>
-    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
-  </data>
-  <data name="BudgetActual_Info" xml:space="preserve">
-    <value>Oju ewe yii n ṣe afihan ifọsiwẹwẹ ti isuna ni afiwe si ifọsiwẹwẹ ti abajade gangan titi di igba yii.</value>
-  </data>
-  <data name="BudgetActual_PageTitle" xml:space="preserve">
-    <value>Isuna vs Iye Gangan</value>
-    <comment>Financial budget vs. Actual financial outcome</comment>
-  </data>
-  <data name="BitcoinHotwallet_Address" xml:space="preserve">
-    <value>Adirẹẹsi Bitcoin</value>
-  </data>
-  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
-    <value>Balansi microcoins</value>
-  </data>
-  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
-    <value>Ona Imujade</value>
-  </data>
-  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
-    <value>Iye {0}</value>
-    <comment>The {0} is the organization currency.</comment>
-  </data>
-  <data name="BitcoinHotwallet_Header" xml:space="preserve">
-    <value>Ifọsiwẹwẹ Hotwallet</value>
-    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
-  </data>
-  <data name="BitcoinHotwallet_Info" xml:space="preserve">
-    <value>Eyi safihan ifọsiwẹwẹ awọn adirẹsi hotwallet ti bitcoin ti ajọ naa ati isiro. (Awọn adirẹẹsi ofifo ati awọn adirẹẹsi ti a ti lo ri ni iṣaaju ko han.)</value>
-  </data>
-  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
-    <value>Hot Wallet ti Bitcoin</value>
-  </data>
-  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
-    <value>Ko si awọn owo kankan ninu hotwallet naa.</value>
-  </data>
-  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
-    <value>Hash ti Isowo</value>
-  </data>
-  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
-    <value>Iṣowo to njade ti ko je nina</value>
-    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
-  </data>
-  <data name="BalanceSheet_Assets" xml:space="preserve">
-    <value>Awọn ohun ini XXXX</value>
-    <comment>For the simplified view - XXXX is replaced with year</comment>
-  </data>
-  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
-    <value>(ayipada)</value>
-    <comment>Change from previous year's close, which is same as from start of this year</comment>
-  </data>
-  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
-    <value>Balance Sheet jẹ àpapọ alaye awon ohun ini ati awọn gbese ni aworan kan logan, ati pe o ma n je lilo lati wo bi awọn esi yoo ṣe ni ipa lori ilera iṣowo owo ti ajo naa. O tun le fẹ lati wo &lt;a href="BalanceSheet"&gt;balance sheet ti o gasi&lt;/a&gt; fun alaye diẹ sii, tabi &lt;a href="ProfitLossStatement"&gt;ikede ere atiadanu&lt;/a&gt; eyi ti o jẹ àpapọ alaye ti owo ti o wole ati inawo.</value>
-  </data>
-  <data name="BalanceSheet_Liabilities" xml:space="preserve">
-    <value>Awọn gbese XXXX</value>
-    <comment>For the simplified view - XXXX is replaced with year</comment>
-  </data>
-  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
-    <value>(ayipada)</value>
-    <comment>Change from previous year's close, which is same as from start of this year</comment>
-  </data>
-  <data name="BalanceSheet_LossToDate" xml:space="preserve">
-    <value>Adanu titi di ({0})</value>
-    <comment>The {0} is the year of the report</comment>
-  </data>
-  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
-    <value>Ere titi di ({0})</value>
-    <comment>The {0} is the year of the report</comment>
-  </data>
-  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
-    <value>Ṣẹda Iṣowo</value>
-    <comment>Text on button for executing create</comment>
-  </data>
-  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
-    <value>Deeti ati akoko ti isowo (UTC)</value>
-  </data>
-  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
-    <value>Apejuwe Isowo</value>
-  </data>
-  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
-    <value>Nṣẹda Isowo tuntun</value>
-    <comment>Header of dialog</comment>
-  </data>
-  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
-    <value>Akọọlẹ ti ila ibu isowo kini</value>
-  </data>
-  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
-    <value>Iye ti ila ibu isowo kini</value>
-  </data>
-  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
-    <value>Fi isowo tuntun kun</value>
-    <comment>Option in sidebar</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
-    <value>Se ibaamu iwe iye-owo oja</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
-    <value>Ṣe ibaamu isowo naa si iwe iye-owo oja ti o njade:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
-    <value>Ṣe ibaamu eyi si iwe iye-owo oja ti o njade ti o wa ni sisi?</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
-    <value>Ṣe ibaamu eyi si iwe iye-owo oja ti o njade ti o wa ni sisi ni owo ti ko pewọn (ifarada 5% ti forex)?</value>
-  </data>
-  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
-    <value>Eyi ti o ni ibaamu ju</value>
-    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
-  </data>
-  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
-    <value>Iwe iye-owo oja ti o njade #{0:N0} fun {1}, pari ni {2:yyyy-MMM-dd}: {3}</value>
-    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
-  </data>
-  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
-    <value>Ijabọ VAT fun itayọ {1:yyyy-MMM}</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
-    <value>Baamu</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
-    <value>Pa ijabọ VAT de</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
-    <value>Isowo yii jẹ isanwo/ipada fun ijabọ VAT yii:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
-    <value>Pa ijabọ VAT kan de pẹlu isowo yii?</value>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>-- ko si nkankan lati jabọ --</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
   </data>
   <data name="ViewVatReports_Footer_Total" xml:space="preserve">
     <value>Awọn apapọ Ijabọ</value>
@@ -868,6 +980,9 @@ Lẹhin ti o gbe wọle, iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&
   <data name="ViewVatReports_Header_Inbound" xml:space="preserve">
     <value>VAT ti nwọle</value>
   </data>
+  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
+    <value>Ko si awọn ijabọ VAT fun ajọ yii</value>
+  </data>
   <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
     <value>VAT ti njade</value>
   </data>
@@ -877,129 +992,19 @@ Lẹhin ti o gbe wọle, iṣiro akọọlẹ ni Swarmops ba ti banki mu.&lt;/p&
   <data name="ViewVatReports_Info" xml:space="preserve">
     <value>O n wo ijabọ VAT ti a fi se eto. Awọn VAT ti nwọle ati ti o njade jade, ati ti apapọ owo isowo, ti jẹ kikọ silẹ fun akoko ijabọ naa. Ijabọ yii ṣetan lati jẹ fifiransẹ si awọn alaṣẹ owo-ori.</value>
   </data>
-  <data name="ViewVatReports_PageTitle" xml:space="preserve">
-    <value>Awọn ijabọ VAT</value>
-    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
-  </data>
-  <data name="ViewVatReports_Title_View" xml:space="preserve">
-    <value>Wo</value>
-    <comment>This is the word or words before the name of the displayed VAT report.</comment>
-  </data>
-  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
-    <value>Ko si awọn ijabọ VAT fun ajọ yii</value>
-  </data>
   <data name="ViewVatReports_NoReports" xml:space="preserve">
     <value>Kosi awọn ijabọ VAT kankan lati safihan. Eleyi le jẹ nitori wipe akoko ijabọ VAT ni kikun ko ti pe tan, nitorina ko ti ṣee ṣe lati ṣeda ijabọ kan na.</value>
   </data>
-  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
-    <value>-- ko si nkankan lati jabọ --</value>
-    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  <data name="ViewVatReports_PageTitle" xml:space="preserve">
+    <value>Awọn ijabọ VAT</value>
+    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
   </data>
   <data name="ViewVatReports_ReportTotals" xml:space="preserve">
     <value>Awọn apapọ fun ijabọ yii</value>
     <comment>Displayed as description of footer</comment>
   </data>
-  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
-    <value>Apejuwe isowo naa ko le wa lofo.</value>
+  <data name="ViewVatReports_Title_View" xml:space="preserve">
+    <value>Wo</value>
+    <comment>This is the word or words before the name of the displayed VAT report.</comment>
   </data>
-  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
-    <value>Iṣowo naa nilo ẹri ti rira.</value>
-  </data>
-  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
-    <value>Iye VAT naa ko dabi pe o jẹ titẹ ni daadaa.</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
-    <value>Samisi bi Rira Taara</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
-    <value>Iye rira ẹjawo-taara ({0})</value>
-    <comment>{0} is the currency</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
-    <value>Gbe idiyele rira lo si iṣuna yi</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
-    <value>Gbe iwe oja tabi iwe miiran ga</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
-    <value>Se imudojuiwọn apejuwe isowo</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
-    <value>Ẹya ti VAT ti iye naa</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
-    <value>Ṣe ami si eyi bi rira taara-lati inu- akoole?</value>
-  </data>
-  <data name="InspectLedgers_Detail" xml:space="preserve">
-    <value>Apejuwe / Akoole</value>
-    <comment>As in, description of a transaction OR the full name of an account</comment>
-  </data>
-  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
-    <value>Leja Gbogboogbo fun</value>
-    <comment>This phrase is followed by dropdowns for year and month</comment>
-  </data>
-  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
-    <value>Isowo yii se apade ijabo VAT fun {0}.</value>
-    <comment>{0} will be a time period, like "Jan 2017".</comment>
-  </data>
-  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
-    <value>Isowo yii sii ijabo VAT fun {0}.</value>
-    <comment>{0} will be a time period, like "Jan 2017".</comment>
-  </data>
-  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
-    <value>Isowo yii gba isanwo fun Iwe iye-owo oja ti o njade#{0:N0}.</value>
-  </data>
-  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
-    <value>Isowo yii san {0}.</value>
-  </data>
-  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
-    <value>Isowo yii san iwe iye-owo oja ti nwọle #{0:N0} lati {1}.</value>
-  </data>
-  
-  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
-    <value>Ko si awọn akọọlẹ dukia ti a ṣeto fun adaṣiṣẹ, nitorina ko si awọn akọọlẹ kankan to satilẹyin gbigbe data ga ni akoko yii. Pada si Dasibọdu.</value>
-  </data>
-  
-  
-  
-  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
-    <value>Ṣẹda {0}</value>
-    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
-  </data>
-  
-  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
-    <value>Awọn ijabọ ọdọọdun</value>
-    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
-  </data>
-  
-  
-  
-  
-  
-  <data name="EndOfMonth_Title" xml:space="preserve">
-    <value>Ilana-iṣe-ti-Ipari-Osu: {0:MMMM yyyy}</value>
-    <comment>Parameter zero is the month that's just ended</comment>
-  </data>
-  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
-    <value>Sagbega Ikede Banki ({1}) for {0} for {2}</value>
-    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
-  </data>
-  
-  
-  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
-    <value>&lt;strong&gt;FO IGBEGA IWE?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Iwe yii ni a nilo fun akọsilẹ iṣẹ. Idi kan soso ti o yẹ lati fo iwe ni wipe ko wa laaye nitori pe awọn iṣẹ naa ko ti bẹrẹ iṣẹ, bii nigbati isẹ kan ba bẹrẹ ni Oṣu Keje ninu ọdun kan kii yoo ni awọn iwe fun Osu kini ti ọdun naa&lt;br/&gt;&lt;br/&gt;A ko ni beere lọwọ rẹ lẹẹkansi lati gbe iwe yii ga ti o ba fo ni bayii.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  <data name="EndOfMonth_Header_Cryptocurrency" xml:space="preserve">
-    <value>Owo kiripito</value>
-    <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
-  </data>
-  
-  
-  
 </root>

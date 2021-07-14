@@ -121,6 +121,9 @@
     <value>Incaricare un altra persona...</value>
     <comment>To an existing position that accepts multiple people (like "assistants")</comment>
   </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(Incarica nella mia organizzazione)</value>
+  </data>
   <data name="Positions_AssignFifthPerson" xml:space="preserve">
     <value>Incaricare una quinta persona...</value>
   </data>
@@ -154,6 +157,16 @@
     <value>Incaricare</value>
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;ABBANDONARE QUESTO INCARICO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; questo è il &lt;strong&gt;vostro&lt;/strong&gt; incarica. Abbandonare il proprio incarico è l'equivalente di dire: "MI DIMETTO". Quest'azione avrà effetto immediato. Questo è ciò che desideri fare?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;REVOCARE INCARICO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Desideri rimuovere &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; dall'incarico di &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Questo è l'equivalente di licenziare qualcuno e di solito deve rispettare le leggi locali e i processi interni.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Creare un nuovo incarico...</value>
+  </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
     <value>Incarica persona come &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt;&lt;span id='{0}_modalGeographyName'&gt;&lt;/span&gt;</value>
     <comment>Header for new assignment dialog</comment>
@@ -164,16 +177,8 @@
   <data name="Positions_PleaseSelectPerson" xml:space="preserve">
     <value>Si prega di selezionare una persona da incaricare.</value>
   </data>
-  <data name="Positions_Vacant" xml:space="preserve">
-    <value>(Il ruolo è vacante)</value>
-    <comment>For unassigned positions</comment>
-  </data>
-  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;ABBANDONARE QUESTO INCARICO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; questo è il &lt;strong&gt;vostro&lt;/strong&gt; incarica. Abbandonare il proprio incarico è l'equivalente di dire: "MI DIMETTO". Quest'azione avrà effetto immediato. Questo è ciò che desideri fare?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
-  <data name="Positions_ConfirmTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;REVOCARE INCARICO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Desideri rimuovere &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; dall'incarico di &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Questo è l'equivalente di licenziare qualcuno e di solito deve rispettare le leggi locali e i processi interni.&lt;br/&gt;&lt;br/&gt;</value>
-    <comment>{0} is the person name, {1} is the position title.</comment>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Leader dei compartimenti</value>
   </data>
   <data name="Positions_TerminateNo" xml:space="preserve">
     <value>Non terminare</value>
@@ -187,13 +192,8 @@
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>Revoca incarico</value>
   </data>
-  <data name="Positions_AssignElsewhere" xml:space="preserve">
-    <value>(Incarica nella mia organizzazione)</value>
-  </data>
-  <data name="Positions_CreatePosition" xml:space="preserve">
-    <value>Creare un nuovo incarico...</value>
-  </data>
-  <data name="Positions_Subleaders" xml:space="preserve">
-    <value>Leader dei compartimenti</value>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(Il ruolo è vacante)</value>
+    <comment>For unassigned positions</comment>
   </data>
 </root>

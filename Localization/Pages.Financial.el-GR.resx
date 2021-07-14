@@ -132,6 +132,7 @@
     <value>Παρακαλώ επιλέξτε έναν προϋπολογισμό για την ανάθεση της χρέωσης.</value>
   </data>
   
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Ενέργεια</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -175,6 +176,10 @@
   <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
     <value>Απορρίπτω το αίτημά σας για κεφάλαια επειδή...</value>
     <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Το ποσό θα πρέπει να μην περιλαμβάνει τυχόν καθορισμένο ΦΠΑ!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
   <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
     <value>Τι ποσό επιβεβαιώνετε εναλλακτικά (σε {0});</value>
@@ -224,6 +229,13 @@
     <value>Συνολικό ποσό Τιμολογίου (σε {0})</value>
     <comment>{0} is the organization's main currency.</comment>
   </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Μέρος ΦΠΑ του συνολικού ({0})</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Δημιουργήστε</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>Περιγραφή</value>
     <comment>Free-text description of invoice</comment>
@@ -238,6 +250,7 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Εδώ μπορείτε να καταθέσετε τιμολόγια που λήφθηκαν στον οργανισμό σας (''Πληρωτέοι Λογαριασμοί''). Εισάγετε το όνομα του προμηθευτή, ποσό, ημερομηνία πληρωμής, τον κωδικό αναφοράς τιμολογίου, και ανεβάστε μια εικόνα του ληφθέντος τιμολογίου. Επίσης, επιλέξτε έναν προϋπολογισμό. Ο ιδιοκτήτης του προϋπολογισμού θα πρέπει να πραγματοποιήσει επιβεβαίωση, ως συνήθως. (Οι μελλοντικές επεκτάσεις αυτού του μηχανισμού περιλαμβάνουν εντολές αγορών και λίστες προμηθευτών.)</value>
   </data>
+  
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Ελήφθη Εισερχόμενο Τιμολόγιο</value>
   </data>
@@ -266,6 +279,34 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>Παρακαλώ εισάγετε τον τραπεζικό λογαριασμό του προμηθευτή ή άλλο ισοδύναμό του.</value>
   </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε το ποσό χρήματος (σε {0}) που απαιτεί το τιμολόγιο.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Παρακαλώ καθορίστε έναν προϋπολογισμό στον οποίο θα γίνει η χρέωση.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Παρακαλώ ανεβάστε ένα ή περισσότερα έγγραφα του αρχικού τιμολογίου.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Παρακαλώ κάντε μια επιλογή.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Παρακαλώ περιγράψτε αυτήν την αγορά.</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Πραγματοποιείται Δημιουργία Εξερχόμενου Τιμολογίου</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Δημιουργία</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Πραγματοποιείται Δημιουργία Εξερχόμενου Τιμολογίου</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Το Εξερχόμενο Τιμολόγιο #{0:N0} κατατέθηκε.</value>
+  </data>
   <data name="Donate_Explain" xml:space="preserve">
     <value>Αυτός είναι ένας κωδικός QR για δωρεές στον οργανισμό {0}. Σκανάρετέ τον με το πορτοφόλι bitcoin του κινητού σας για να πραγματοποιήσετε μια δωρεά, ή πραγματοποιήστε δωρεά απευθείας από τον υπολογιστή σας στην διεύθυνση [{1}] (αυτή είναι μια διεύθυνση Bitcoin Cash).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -273,6 +314,10 @@
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>Ελήφθησαν {0} {1:N2} ({2:N0} microcoins ή "bits"). Ευχαριστούμε!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Ελήφθησαν Κεφάλαια ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
   </data>
   <data name="Donate_FundsReceivedNative" xml:space="preserve">
     <value>Ελήφθησαν {0} microcoins ("bits"). Ευχαριστούμε!</value>
@@ -314,12 +359,74 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>Προϋπολογισμός</value>
   </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Υποβολή αιτήματος</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>Τύπος Χρέωσης</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Περιγραφή</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Ανεβάστε Expensify CSV</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ΣΦΑΛΜΑ: Αδύνατη η ανάλυση του αρχείου Expensify CSV.&lt;/strong&gt; Αν αυτό είναι αρχείο CSV από το Expensify, τότε το Swarmops χρειάζεται την παρουσία των στηλών "Timestamp", "Ποσό", "Έμπορος", "Σχόλιο", "Κατηγορία", "MCC", "Αρχικό Νόμισμα", και "Αρχικό Ποσό" στο αρχείο. Αν ο οργανισμός υποβάλλει δήλωση ΦΠΑ, τότε απαιτείται η παρουσία μιας ακόμα στήλης με το όνομα "ΦΠΑ".&lt;/p&gt;&lt;p&gt;Αδύνατη η συνέχιση με αυτό το αρχείο.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ΣΦΑΛΜΑ: Το αρχείο Expensify CSV δεν διαθέτει κάποια απαιτούμενα πεδία δεδομένων.&lt;/strong&gt; Το αρχείο φαίνεται να μην διαθέτει τουλάχιστον ένα από τα απαιτούμενα πεδία του προκαθορισμένου προφίλ CSV του Expensify. Ανατρέξτε στην τεχνική τεκμηρίωση και πραγματοποιήστε σύγκριση με το αρχείο που επιχειρήσατε να ανεβάσετε. (Είναι μια πιο πιθανή αιτία σφάλματος, φυσικά, το ενδεχόμενο να προσπαθήσατε να ανεβάσετε το λάθος αρχείο &amp;ndash; ίσως μια φωτογραφία αντί ενός αρχείου Expensify CSV &amp;ndash; και να είναι αυτή η αιτία για την απουσία των αναμενόμενων δεδομένων.)&lt;/p&gt;&lt;p&gt;Αδύνατη η επεξεργασία αυτού του αρχείου.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ΣΦΑΛΜΑ: Το αρχείο Expensify CSV δεν διαθέτει πεδίο ΦΠΑ.&lt;/strong&gt; Εφόσον αυτός ο οργανισμός υποβάλλει δήλωση Φόρου Προστιθέμενης Αξίας (ΦΠΑ) στις φορολογικές αρχές, θα πρέπει να καθορίζεται για κάθε δαπάνη. Παρακαλώ ενεργοποιήστε τον ΦΠΑ στο Expensify και δημιουργήστε ένα νέο προφίλ εξαγωγής CSV που πραγματοποιεί εξαγωγή αυτού κάτω από την επικεφαλίδα στήλης "ΦΠΑ". Αν η ομάδα σας έχει ήδη δημιουργήσει ένα τέτοιο προφίλ CSV, ίσως να χρειαστεί να το επιλέξετε όταν πραγματοποιείτε εξαγωγή ως CSV.&lt;/p&gt;&lt;p&gt;Αδύνατη η επεξεργασία αυτού του αρχείου.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Αν έχετε πολλές αναφορές εξόδων, μπορείτε να τις συγκεντρώσετε με το Expensify και να ανεβάσετε εδώ μια αναφορά Expensify CSV (την οποία μπορείτε να αποκτήσετε στο Expensify κάτω από τις Αναφορές, και να πραγματοποιήσετε Εξαγωγή ως CSV). Το Swarmops θα χρησιμοποιήσει το Expensify προκειμένου να συγκεντρώσει όλες τις ατομικές αποδείξεις και να τις καταγράψει ως ξεχωριστές διεκδικήσεις εξόδων για λόγους ορθής λογιστικής.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Για να λειτουργήσει αυτό, εφόσον ο οργανισμός {0} υποβάλλει δήλωση ΦΠΑ στις φορολογικές αρχές, θα χρειαστεί να τροποποιήσετε το προεπιλεγμένο προφίλ Expensify CSV για να συμπεριλάβετε τον ΦΠΑ, τον οποίο δεν περιλαμβάνει το προεπιλεγμένο. Οι σελίδες βοήθειας του Expensify περιέχουν περισσότερες πληροφορίες σχετικά με το πώς γίνεται αυτό και αν χρησιμοποιείτε το Expensify ως ομάδα, τότε η Expensify πολιτική σας θα πρέπει ήδη να διαθέτει ένα προφίλ εξαγωγής σε μορφή CSV που να περιλαμβάνει τον ΦΠΑ.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Με βάση τις ρυθμίσεις του οργανισμού, το ''Προεπιλεγμένο CSV'' προφίλ εξαγωγής στο Expensify θα πρέπει να είναι επαρκές για το Swarmops.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Όλες οι διεκδικήσεις εξόδων χρειάζονται τον καθορισμό ενός προϋπολογισμού πριν από την υποβολή.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>Δεν υπάρχουν εγγραφές Expensify για υποβολή</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Το νόμισμα της αναφοράς Expensify είναι</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Όλα είναι έτοιμα για την υποβολή μιας διεκδίκησης</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>Όλα είναι έτοιμα για την υποβολή {0} διεκδικήσεων</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Η διεκδίκηση κατατέθηκε επιτυχώς.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>Κατατέθηκαν επιτυχώς {0} διεκδικήσεις.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Θα Ανεβάσετε Άλλο Αρχείο Expensify CSV;</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>εμένα</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Αυτή είναι μια διεκδίκηση εξόδων από ποιόν;</value>
   </data>
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>Το Δελτίο Τραπεζικών Στοιχείων Σας</value>
@@ -343,6 +450,9 @@
   <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
     <value>Καθώς αυτός είναι ο δικός σας προϋπολογισμός, η επιβεβαίωση έχει ήδη ολοκληρωθεί. Μόνο η επικύρωση είναι αναγκαία.</value>
   </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Ανέβασμα Αναφοράς Expensify Για Αποζημίωση</value>
+  </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Ανεβάστε Εικόνες Αποδείξεων</value>
   </data>
@@ -359,17 +469,61 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Παρακαλώ περιγράψτε αυτήν την αγορά.</value>
   </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>ΦΠΑ του συνόλου ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Παράθεση Εισερχόμενων Τιμολογίων</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Αποστολέας τιμολογίου</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Εδώ παρατίθενται τα 100 πιο πρόσφατα τιμολόγια, ταξινομημένα με βάση την ημερομηνία πληρωμής τους, από το πιο πρόσφατο έως το παλαιότερο.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Εισερχόμενα Τιμολόγια</value>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Εστάλη</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Πελάτης</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Πραγματοποιείται Παράθεση Εξερχόμενων Τιμολογίων</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Εδώ παρατίθενται τα 100 πιο πρόσφατα εξερχόμενα τιμολόγια, ταξινομημένα με βάση την ημερομηνία δημιουργίας τους, από το πιο πρόσφατο έως το παλαιότερο.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Συνολικό Ποσό</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Ημερομηνία Πληρωμής</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Παράθεση Εξερχόμενων Τιμολογίων</value>
+  </data>
+  
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Ποσό</value>
     <comment>Amount to be paid out</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Πληρώθηκε</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>Παραλήπτης</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Κωδικός Αναφοράς</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Χρεώσεις Έτοιμες Για Πληρωμή</value>
@@ -377,6 +531,12 @@
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Αυτές είναι οι διάφορες μορφές χρεώσεων του οργανισμού που έχουν περάσει όλα τα εμπόδια για πληρωμή. Είναι έτοιμες να καταβληθούν στον παραλήπτη. Εδώ μπορείτε να σημειώσετε ότι πραγματοποιείται η πληρωμή τους (πιθανώς ενώ έχετε την τράπεζά σας ανοικτή σε κάποιο άλλο παράθυρο).</value>
   </data>
+  
+  
+  
+  
+  
+  
   <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
     <value>Εμφάνιση OCR για εφαρμογές κινητών συσκευών</value>
   </data>
@@ -387,6 +547,7 @@
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Πληρωμή Χρημάτων</value>
   </data>
+  
   <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
     <value>Δεν μπορείτε να κάνετε αναίρεση της πληρωμής #{0}: έχει ήδη διευθετηθεί ή κλείσει.</value>
   </data>
@@ -439,6 +600,9 @@
   </data>
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>Προϋπολογισμός</value>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Υποβολή αιτήματος</value>
   </data>
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Το Δελτίο Τραπεζικών Στοιχείων Σας</value>
@@ -495,166 +659,4 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Οι αποδείξεις για την Διεκδίκηση Εξόδων #{0:N0} για {1} {2:N2} έχουν επικυρωθεί.</value>
   </data>
-  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Δημιουργήστε</value>
-    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
-    <value>Παρακαλώ εισάγετε το ποσό χρήματος (σε {0}) που απαιτεί το τιμολόγιο.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
-    <value>Παρακαλώ καθορίστε έναν προϋπολογισμό στον οποίο θα γίνει η χρέωση.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
-    <value>Παρακαλώ ανεβάστε ένα ή περισσότερα έγγραφα του αρχικού τιμολογίου.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
-    <value>Παρακαλώ κάντε μια επιλογή.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
-    <value>Παρακαλώ περιγράψτε αυτήν την αγορά.</value>
-  </data>
-  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
-    <value>Υποβολή αιτήματος</value>
-    <comment>Could also be "file" (as verb) or equivalent</comment>
-  </data>
-  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
-    <value>Υποβολή αιτήματος</value>
-  </data>
-  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
-    <value>Μέρος ΦΠΑ του συνολικού ({0})</value>
-  </data>
-  <data name="FileExpenseClaim_Vat" xml:space="preserve">
-    <value>ΦΠΑ του συνόλου ({0})</value>
-  </data>
-  <data name="ListInboundInvoices_Header" xml:space="preserve">
-    <value>Παράθεση Εισερχόμενων Τιμολογίων</value>
-  </data>
-  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
-    <value>Αποστολέας τιμολογίου</value>
-  </data>
-  <data name="ListInboundInvoices_Info" xml:space="preserve">
-    <value>Εδώ παρατίθενται τα 100 πιο πρόσφατα τιμολόγια, ταξινομημένα με βάση την ημερομηνία πληρωμής τους, από το πιο πρόσφατο έως το παλαιότερο.</value>
-  </data>
-  <data name="ListInboundInvoices_Title" xml:space="preserve">
-    <value>Εισερχόμενα Τιμολόγια</value>
-  </data>
-  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
-    <value>Πραγματοποιείται Δημιουργία Εξερχόμενου Τιμολογίου</value>
-  </data>
-  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Δημιουργία</value>
-    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
-  </data>
-  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
-    <value>Πραγματοποιείται Δημιουργία Εξερχόμενου Τιμολογίου</value>
-  </data>
-  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
-    <value>Το Εξερχόμενο Τιμολόγιο #{0:N0} κατατέθηκε.</value>
-  </data>
-  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
-    <value>Ελήφθησαν Κεφάλαια ({0})</value>
-    <comment>The {0} will be replaced with currency name.</comment>
-  </data>
-  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
-    <value>Εστάλη</value>
-  </data>
-  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
-    <value>Πελάτης</value>
-  </data>
-  <data name="ListOutboundInvoices_Header" xml:space="preserve">
-    <value>Πραγματοποιείται Παράθεση Εξερχόμενων Τιμολογίων</value>
-  </data>
-  <data name="ListOutboundInvoices_Info" xml:space="preserve">
-    <value>Εδώ παρατίθενται τα 100 πιο πρόσφατα εξερχόμενα τιμολόγια, ταξινομημένα με βάση την ημερομηνία δημιουργίας τους, από το πιο πρόσφατο έως το παλαιότερο.</value>
-  </data>
-  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
-    <value>Συνολικό Ποσό</value>
-  </data>
-  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
-    <value>Ημερομηνία Πληρωμής</value>
-  </data>
-  <data name="ListOutboundInvoices_Title" xml:space="preserve">
-    <value>Παράθεση Εξερχόμενων Τιμολογίων</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
-    <value>Ανεβάστε Expensify CSV</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
-    <value>Αν έχετε πολλές αναφορές εξόδων, μπορείτε να τις συγκεντρώσετε με το Expensify και να ανεβάσετε εδώ μια αναφορά Expensify CSV (την οποία μπορείτε να αποκτήσετε στο Expensify κάτω από τις Αναφορές, και να πραγματοποιήσετε Εξαγωγή ως CSV). Το Swarmops θα χρησιμοποιήσει το Expensify προκειμένου να συγκεντρώσει όλες τις ατομικές αποδείξεις και να τις καταγράψει ως ξεχωριστές διεκδικήσεις εξόδων για λόγους ορθής λογιστικής.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
-    <value>Για να λειτουργήσει αυτό, εφόσον ο οργανισμός {0} υποβάλλει δήλωση ΦΠΑ στις φορολογικές αρχές, θα χρειαστεί να τροποποιήσετε το προεπιλεγμένο προφίλ Expensify CSV για να συμπεριλάβετε τον ΦΠΑ, τον οποίο δεν περιλαμβάνει το προεπιλεγμένο. Οι σελίδες βοήθειας του Expensify περιέχουν περισσότερες πληροφορίες σχετικά με το πώς γίνεται αυτό και αν χρησιμοποιείτε το Expensify ως ομάδα, τότε η Expensify πολιτική σας θα πρέπει ήδη να διαθέτει ένα προφίλ εξαγωγής σε μορφή CSV που να περιλαμβάνει τον ΦΠΑ.</value>
-    <comment>{0} is the organization name.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
-    <value>Με βάση τις ρυθμίσεις του οργανισμού, το ''Προεπιλεγμένο CSV'' προφίλ εξαγωγής στο Expensify θα πρέπει να είναι επαρκές για το Swarmops.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
-    <value>Το νόμισμα της αναφοράς Expensify είναι</value>
-  </data>
-  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
-    <value>Ανέβασμα Αναφοράς Expensify Για Αποζημίωση</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;ΣΦΑΛΜΑ: Αδύνατη η ανάλυση του αρχείου Expensify CSV.&lt;/strong&gt; Αν αυτό είναι αρχείο CSV από το Expensify, τότε το Swarmops χρειάζεται την παρουσία των στηλών "Timestamp", "Ποσό", "Έμπορος", "Σχόλιο", "Κατηγορία", "MCC", "Αρχικό Νόμισμα", και "Αρχικό Ποσό" στο αρχείο. Αν ο οργανισμός υποβάλλει δήλωση ΦΠΑ, τότε απαιτείται η παρουσία μιας ακόμα στήλης με το όνομα "ΦΠΑ".&lt;/p&gt;&lt;p&gt;Αδύνατη η συνέχιση με αυτό το αρχείο.&lt;/p&gt;</value>
-    <comment>Do not translate the Expensify column field names.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;ΣΦΑΛΜΑ: Το αρχείο Expensify CSV δεν διαθέτει πεδίο ΦΠΑ.&lt;/strong&gt; Εφόσον αυτός ο οργανισμός υποβάλλει δήλωση Φόρου Προστιθέμενης Αξίας (ΦΠΑ) στις φορολογικές αρχές, θα πρέπει να καθορίζεται για κάθε δαπάνη. Παρακαλώ ενεργοποιήστε τον ΦΠΑ στο Expensify και δημιουργήστε ένα νέο προφίλ εξαγωγής CSV που πραγματοποιεί εξαγωγή αυτού κάτω από την επικεφαλίδα στήλης "ΦΠΑ". Αν η ομάδα σας έχει ήδη δημιουργήσει ένα τέτοιο προφίλ CSV, ίσως να χρειαστεί να το επιλέξετε όταν πραγματοποιείτε εξαγωγή ως CSV.&lt;/p&gt;&lt;p&gt;Αδύνατη η επεξεργασία αυτού του αρχείου.&lt;/p&gt;</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
-    <value>Θα Ανεβάσετε Άλλο Αρχείο Expensify CSV;</value>
-    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
-    <value>εμένα</value>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
-    <value>Αυτή είναι μια διεκδίκηση εξόδων από ποιόν;</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;ΣΦΑΛΜΑ: Το αρχείο Expensify CSV δεν διαθέτει κάποια απαιτούμενα πεδία δεδομένων.&lt;/strong&gt; Το αρχείο φαίνεται να μην διαθέτει τουλάχιστον ένα από τα απαιτούμενα πεδία του προκαθορισμένου προφίλ CSV του Expensify. Ανατρέξτε στην τεχνική τεκμηρίωση και πραγματοποιήστε σύγκριση με το αρχείο που επιχειρήσατε να ανεβάσετε. (Είναι μια πιο πιθανή αιτία σφάλματος, φυσικά, το ενδεχόμενο να προσπαθήσατε να ανεβάσετε το λάθος αρχείο &amp;ndash; ίσως μια φωτογραφία αντί ενός αρχείου Expensify CSV &amp;ndash; και να είναι αυτή η αιτία για την απουσία των αναμενόμενων δεδομένων.)&lt;/p&gt;&lt;p&gt;Αδύνατη η επεξεργασία αυτού του αρχείου.&lt;/p&gt;</value>
-  </data>
-  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
-    <value>(Το ποσό θα πρέπει να μην περιλαμβάνει τυχόν καθορισμένο ΦΠΑ!)</value>
-    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
-    <value>Όλες οι διεκδικήσεις εξόδων χρειάζονται τον καθορισμό ενός προϋπολογισμού πριν από την υποβολή.</value>
-    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
-    <value>Δεν υπάρχουν εγγραφές Expensify για υποβολή</value>
-    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
-    <value>Όλα είναι έτοιμα για την υποβολή μιας διεκδίκησης</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
-    <value>Όλα είναι έτοιμα για την υποβολή {0} διεκδικήσεων</value>
-    <comment>The {0} is replaced by a number, 2 or higher</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
-    <value>Η διεκδίκηση κατατέθηκε επιτυχώς.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
-    <value>Κατατέθηκαν επιτυχώς {0} διεκδικήσεις.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Κωδικός Αναφοράς</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  
 </root>

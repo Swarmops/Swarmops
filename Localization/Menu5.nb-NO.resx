@@ -125,9 +125,19 @@
   </data>
   
   
+  
+  
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geografitre</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   <data name="Menu5_Communications" xml:space="preserve">
@@ -161,6 +171,7 @@
   
   
   
+  
   <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
     <value>Innkommende fakturaer</value>
   </data>
@@ -173,6 +184,8 @@
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Utbetal</value>
   </data>
+  
+  
   
   
   
@@ -197,6 +210,11 @@
   <data name="Menu5_Governance_Vote" xml:space="preserve">
     <value>Stem</value>
   </data>
+  
+  
+  
+  
+  
   
   
   
@@ -232,6 +250,11 @@
   
   
   
+  
+  
+  
+  
+  
   <data name="Menu5_People" xml:space="preserve">
     <value>Personer</value>
   </data>
@@ -240,33 +263,10 @@
   </data>
   
   
+  
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Medlemsoversikt</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

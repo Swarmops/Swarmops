@@ -147,6 +147,10 @@
     <value>Zahtev za refundaciju #{0:N0} od {1} za {2} {3:N2} je potvrđen.</value>
     <comment>{2} is the currency.</comment>
   </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Odobrenje za refundaciju troškova #{0:N0}, od {1}, je povučeno. Neće biti isplaćeno osim ako ne date potvrdu.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Prihvatanje</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -205,6 +209,10 @@
   <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
     <value>Odbijam da dam pristanak za trošenje sredstava jer...</value>
     <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Ukupan iznos se mora dati bez uračunatog PDV-a)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
   <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
     <value>Koliki iznos odobravate (u {0})?</value>
@@ -282,6 +290,13 @@
     <value>Faktura na ukupan iznos (u {0})</value>
     <comment>{0} is the organization's main currency.</comment>
   </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Udeo PDV-a u ukupnoj sumi ({0})</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Kreiraj</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>Opis</value>
     <comment>Free-text description of invoice</comment>
@@ -296,6 +311,7 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Ovo je mesto na kome arhivirate fakture koje pristignu u Vašu organizaciju ("Računi, za isplatu"). Unesite ime dobavljača, krajnji rok, reference koje se odnose na fakturu i otpremite (upload) fotografiju prispele fakture. Zatim, selektujte budžet iz koga se isplaćuje. Posle toga, vlasnik budžeta daje potvrdu. (Planira se da novije verzije programa podržavaju ekspanzije koje će obuhvatati liste za nabavke i liste dobavljača.)</value>
   </data>
+  
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Nova faktura, primljena</value>
   </data>
@@ -324,6 +340,34 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>Molimo Vas, unesite broj bankovnog računa dobavljača.</value>
   </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Molimo Vas, unesite iznos novca (u {0}) koji se potražuje fakturom.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Molimo Vas, izaberite budžet iz koga se isplaćuje.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Molimo Vas, pošaljite jedan ili više dokumenata koji se odnose na originalnu fakturu.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Molimo Vas da odaberete opciju.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Molimo Vas, dajte obrazloženje za navedenu kupovinu.</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Kreiraj izlaznu fakturu</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Kreiraj</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Kreiraj izlaznu fakturu</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Izlazna faktura #{0:N0}, otpremanje.</value>
+  </data>
   <data name="Donate_Explain" xml:space="preserve">
     <value>Ovo je QR za donacije koje idu na ime "{0}". Pročitajte ga preko bitcoin novčanika na Vašem telefonu kako biste donirali, ili donirajte direktno sa svog računara, na [{1}] (ovo je adresa za Bitcoin Cash{0}).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -331,6 +375,10 @@
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>Primljeno {0} {1:N2} ({2:N0} microcoins-a, ili "bits"). Hvala Vam!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Primljena sredstva ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
   </data>
   <data name="Donate_FundsReceivedNative" xml:space="preserve">
     <value>Primljeno {0} microcoin-a ("bits"). Hvala Vam!</value>
@@ -372,12 +420,74 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>Budžet</value>
   </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Zahtev</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>Tip rashoda</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Opis</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Otpremi Expensify CSV</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;GREŠKA: Nije moguće razrešiti (parse) Expensify CSV.&lt;/strong&gt; Ako je ovo CSV fajl iz Expensify-a, onda su za Swarmops potrebne kolone: "Vreme i datum", "Iznos", "Trgovac", "Komentar", "Kategorija", "MCC", "Originalna valuta", i "Originalni iznos". Ako organizacija prijavljuje PDV, onda je potrebna i kolona "PDV".&lt;/p&gt;&lt;p&gt;Sve u svemu, sa ovim fajlom ne može da se nastavi.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;GREŠKA: Expensify CSV fajlu nedostaju tražena polja.&lt;/strong&gt; Čini se da najmanje jedno traženo polje nedostaje datom Expensify CSV profilu. Uporedite podrazumevani profil sa svojim fajlom ili konsultujte tehničku dokumentaciju. (mada je verovatnoća mala, proverite da niste pokušali da otpremite potpuno pogrešan fajl, &amp;ndash; recimo fotografiju umesto Expensify CSV, &amp;ndash; te zbog toga nedostaju traženi podaci.)&lt;/p&gt;&lt;p&gt;U svakom slučaju, sa podnetim fajlom se ne može nastaviti.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;GREŠKA: Expensify CSV fajl ne sadrži polje za PDV.&lt;/strong&gt; Pošto organizacija ima obavezu da prijavljuje porez vlastima (PDV), to se mora prikazati za svaku stavku u troškovima. Molimo Vas da obezbedite kolonu za PDV u programu Expensify i da kreirate novi CSV export profil koji će sadržati kolonu pod imenom "PDV". Ako ste Vi ili Vaš tim već kreirali takav CSV profil, jednostavno ga selektujte kada vršite izvoz CSV-a.&lt;/p&gt;&lt;p&gt;Sa ovim fajlom se ne može nastaviti.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Ako imate puno izveštaja o troškovima, možete ih sve sakupiti pomoću Expensify, a zatim možete sa ove stranice otpremiti Expensify CSV izveštaj (kreira se iz Expensify, uđete na Reports, Export, as CSV). Swarmops će koristiti Expensify kako bi pohvatao (fetch) sve pojedinačne račune i arhivirao ih kao posebne stavke, pogodne za računovodstvene poslove.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Kako bi ovo funkcionisalo, pošto {0} prijavljuje PDV poreskim organima, moraćete da modifikujete podrazumevani Expensify CSV kako biste uključili PDV. Ako koristite Expensify u svom timu, trebalo bi da je PDV već uvršćen, a ako ne, onda je najbolje da za uputstva pogledate help stranicu u okviru programa Expensify.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Prema podešavanjima organizacije, "Default CSV" eksport profil u Expensify bi trebalo da odgovara potrebama Swarmops-a.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Pre slanja, svi zahtevi za refundaciju moraju imati definisan budžet iz koga se isplaćuje.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>Nema Expensify izveštaja spremnih za slanje</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Valuta koju koristi Expensify izveštaj je</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Spreman da podnese zahtev</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>Spreman da podnese {0} zahteva</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Zahtev je uspešno je arhiviran i poslat.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>Uspešno je arhivirano {0} zahteva.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Otpremanje drugog Expensify CSV fajla?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>Za sebe</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Od koga se traži ova refundacija?</value>
   </data>
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>Vaši bankarski detalji</value>
@@ -401,6 +511,9 @@
   <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
     <value>Pošto je ovo Vaš sopstveni budžet, potvrđivanje je skoro završeno. Potrebno je još samo izvršiti validaciju.</value>
   </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Otpremi Expensify izveštaj radi ostvarivanja naknade</value>
+  </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Otpremi slike računa</value>
   </data>
@@ -417,23 +530,103 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Molimo Vas, dajte obrazloženje za navedenu kupovinu.</value>
   </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>Udeo PDV-a u ukupnoj sumi ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Lista ulaznih faktura</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Pošiljalac fakture</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Ovo je lista poslednjih 100 faktura, sortiranih po krajnjem roku, od najnovije.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Ulazne fakture</value>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Poslato</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Klijent</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Lista izlaznih faktura</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Ovo je lista 100 najnovijih izlaznih faktura, sortiranih po datumu kreiranja, od najnovijeg.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Ukupan iznos</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Krajnji rok</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Lista izlaznih faktura</value>
+  </data>
+  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
+    <value>...i ovo</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
+    <value>Skeniraj ovo</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Iznos</value>
     <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_CurrencyMethod" xml:space="preserve">
+    <value>Valuta, metod</value>
+    <comment>"Method" refers to the method of payout -- wire transfer, direct deposit, giro service, etc.</comment>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Plaćeno</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
+    <value>Plati</value>
+    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
+  </data>
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>Primalac</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referenca</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Troškovi spremni za isplatu</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Ovi obrasci pristigli u Organizaciju su savladali sve prepreke pre isplaćivanja. Sve isplate su spremne. Ovde možete pratiti kako se isplate realizuju (u drugom prozoru možete otvoriti servis banke).</value>
+  </data>
+  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
+    <value>Ovo je isplaćeno</value>
+    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
+  </data>
+  <data name="PayOutMoney_Modal_CurrencyAmount" xml:space="preserve">
+    <value>Valuta i iznos</value>
+    <comment>Will be a label for something like "USD 10,000.00"</comment>
+  </data>
+  <data name="PayOutMoney_Modal_Header" xml:space="preserve">
+    <value>Odmah izvrši plaćanje, ručno</value>
+    <comment>Displayed as header over the details of a payment to be made manually (as opposed to with bitcoin/crypto)</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr1" xml:space="preserve">
+    <value>Da li skenirate ovu uplatu?</value>
+    <comment>In longer form, the question would be "Are you using a mobile phone or other device to capture this payment data automatically?". Some banking apps can scan QR codes or specially formatted number sequences.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr2" xml:space="preserve">
+    <value>Prikaži u formatu za mašinsko očitavanje</value>
+    <comment>Don't make this string much longer than it is.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
+    <value>Metod transfera</value>
+    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
   </data>
   <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
     <value>Prikaži OCR za mobilne aplikacije</value>
@@ -444,6 +637,10 @@
   </data>
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Isplati novac</value>
+  </data>
+  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
+    <value>Isplata kasni</value>
+    <comment>"Late" in this context means "after its due date".</comment>
   </data>
   <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
     <value>Ne možete opozvati isplatu #{0}: već je dogovorena ili zatvorena.</value>
@@ -497,6 +694,9 @@
   </data>
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>Budžet</value>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Zahtev</value>
   </data>
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Vaši bankarski detalji</value>
@@ -554,203 +754,5 @@
   </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Računi koji se odnose na zahtev za refundaciju #{0:N0} za {1} {2:N2} su validirani.</value>
-  </data>
-  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Kreiraj</value>
-    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
-    <value>Molimo Vas, unesite iznos novca (u {0}) koji se potražuje fakturom.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
-    <value>Molimo Vas, izaberite budžet iz koga se isplaćuje.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
-    <value>Molimo Vas, pošaljite jedan ili više dokumenata koji se odnose na originalnu fakturu.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
-    <value>Molimo Vas da odaberete opciju.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
-    <value>Molimo Vas, dajte obrazloženje za navedenu kupovinu.</value>
-  </data>
-  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
-    <value>Zahtev</value>
-    <comment>Could also be "file" (as verb) or equivalent</comment>
-  </data>
-  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
-    <value>Zahtev</value>
-  </data>
-  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
-    <value>Udeo PDV-a u ukupnoj sumi ({0})</value>
-  </data>
-  <data name="FileExpenseClaim_Vat" xml:space="preserve">
-    <value>Udeo PDV-a u ukupnoj sumi ({0})</value>
-  </data>
-  <data name="ListInboundInvoices_Header" xml:space="preserve">
-    <value>Lista ulaznih faktura</value>
-  </data>
-  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
-    <value>Pošiljalac fakture</value>
-  </data>
-  <data name="ListInboundInvoices_Info" xml:space="preserve">
-    <value>Ovo je lista poslednjih 100 faktura, sortiranih po krajnjem roku, od najnovije.</value>
-  </data>
-  <data name="ListInboundInvoices_Title" xml:space="preserve">
-    <value>Ulazne fakture</value>
-  </data>
-  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
-    <value>Kreiraj izlaznu fakturu</value>
-  </data>
-  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Kreiraj</value>
-    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
-  </data>
-  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
-    <value>Kreiraj izlaznu fakturu</value>
-  </data>
-  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
-    <value>Izlazna faktura #{0:N0}, otpremanje.</value>
-  </data>
-  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
-    <value>Primljena sredstva ({0})</value>
-    <comment>The {0} will be replaced with currency name.</comment>
-  </data>
-  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
-    <value>Poslato</value>
-  </data>
-  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
-    <value>Klijent</value>
-  </data>
-  <data name="ListOutboundInvoices_Header" xml:space="preserve">
-    <value>Lista izlaznih faktura</value>
-  </data>
-  <data name="ListOutboundInvoices_Info" xml:space="preserve">
-    <value>Ovo je lista 100 najnovijih izlaznih faktura, sortiranih po datumu kreiranja, od najnovijeg.</value>
-  </data>
-  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
-    <value>Ukupan iznos</value>
-  </data>
-  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
-    <value>Krajnji rok</value>
-  </data>
-  <data name="ListOutboundInvoices_Title" xml:space="preserve">
-    <value>Lista izlaznih faktura</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
-    <value>Otpremi Expensify CSV</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
-    <value>Ako imate puno izveštaja o troškovima, možete ih sve sakupiti pomoću Expensify, a zatim možete sa ove stranice otpremiti Expensify CSV izveštaj (kreira se iz Expensify, uđete na Reports, Export, as CSV). Swarmops će koristiti Expensify kako bi pohvatao (fetch) sve pojedinačne račune i arhivirao ih kao posebne stavke, pogodne za računovodstvene poslove.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
-    <value>Kako bi ovo funkcionisalo, pošto {0} prijavljuje PDV poreskim organima, moraćete da modifikujete podrazumevani Expensify CSV kako biste uključili PDV. Ako koristite Expensify u svom timu, trebalo bi da je PDV već uvršćen, a ako ne, onda je najbolje da za uputstva pogledate help stranicu u okviru programa Expensify.</value>
-    <comment>{0} is the organization name.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
-    <value>Prema podešavanjima organizacije, "Default CSV" eksport profil u Expensify bi trebalo da odgovara potrebama Swarmops-a.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
-    <value>Valuta koju koristi Expensify izveštaj je</value>
-  </data>
-  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
-    <value>Otpremi Expensify izveštaj radi ostvarivanja naknade</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;GREŠKA: Nije moguće razrešiti (parse) Expensify CSV.&lt;/strong&gt; Ako je ovo CSV fajl iz Expensify-a, onda su za Swarmops potrebne kolone: "Vreme i datum", "Iznos", "Trgovac", "Komentar", "Kategorija", "MCC", "Originalna valuta", i "Originalni iznos". Ako organizacija prijavljuje PDV, onda je potrebna i kolona "PDV".&lt;/p&gt;&lt;p&gt;Sve u svemu, sa ovim fajlom ne može da se nastavi.&lt;/p&gt;</value>
-    <comment>Do not translate the Expensify column field names.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;GREŠKA: Expensify CSV fajl ne sadrži polje za PDV.&lt;/strong&gt; Pošto organizacija ima obavezu da prijavljuje porez vlastima (PDV), to se mora prikazati za svaku stavku u troškovima. Molimo Vas da obezbedite kolonu za PDV u programu Expensify i da kreirate novi CSV export profil koji će sadržati kolonu pod imenom "PDV". Ako ste Vi ili Vaš tim već kreirali takav CSV profil, jednostavno ga selektujte kada vršite izvoz CSV-a.&lt;/p&gt;&lt;p&gt;Sa ovim fajlom se ne može nastaviti.&lt;/p&gt;</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
-    <value>Otpremanje drugog Expensify CSV fajla?</value>
-    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
-    <value>Za sebe</value>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
-    <value>Od koga se traži ova refundacija?</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;GREŠKA: Expensify CSV fajlu nedostaju tražena polja.&lt;/strong&gt; Čini se da najmanje jedno traženo polje nedostaje datom Expensify CSV profilu. Uporedite podrazumevani profil sa svojim fajlom ili konsultujte tehničku dokumentaciju. (mada je verovatnoća mala, proverite da niste pokušali da otpremite potpuno pogrešan fajl, &amp;ndash; recimo fotografiju umesto Expensify CSV, &amp;ndash; te zbog toga nedostaju traženi podaci.)&lt;/p&gt;&lt;p&gt;U svakom slučaju, sa podnetim fajlom se ne može nastaviti.&lt;/p&gt;</value>
-  </data>
-  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
-    <value>(Ukupan iznos se mora dati bez uračunatog PDV-a)</value>
-    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
-    <value>Pre slanja, svi zahtevi za refundaciju moraju imati definisan budžet iz koga se isplaćuje.</value>
-    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
-    <value>Nema Expensify izveštaja spremnih za slanje</value>
-    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
-    <value>Spreman da podnese zahtev</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
-    <value>Spreman da podnese {0} zahteva</value>
-    <comment>The {0} is replaced by a number, 2 or higher</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
-    <value>Zahtev je uspešno je arhiviran i poslat.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
-    <value>Uspešno je arhivirano {0} zahteva.</value>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Odobrenje za refundaciju troškova #{0:N0}, od {1}, je povučeno. Neće biti isplaćeno osim ako ne date potvrdu.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_CurrencyMethod" xml:space="preserve">
-    <value>Valuta, metod</value>
-    <comment>"Method" refers to the method of payout -- wire transfer, direct deposit, giro service, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
-    <value>Plati</value>
-    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
-  </data>
-  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
-    <value>Ovo je isplaćeno</value>
-    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
-  </data>
-  <data name="PayOutMoney_Modal_CurrencyAmount" xml:space="preserve">
-    <value>Valuta i iznos</value>
-    <comment>Will be a label for something like "USD 10,000.00"</comment>
-  </data>
-  <data name="PayOutMoney_Modal_Header" xml:space="preserve">
-    <value>Odmah izvrši plaćanje, ručno</value>
-    <comment>Displayed as header over the details of a payment to be made manually (as opposed to with bitcoin/crypto)</comment>
-  </data>
-  <data name="PayOutMoney_Modal_LabelOcr1" xml:space="preserve">
-    <value>Da li skenirate ovu uplatu?</value>
-    <comment>In longer form, the question would be "Are you using a mobile phone or other device to capture this payment data automatically?". Some banking apps can scan QR codes or specially formatted number sequences.</comment>
-  </data>
-  <data name="PayOutMoney_Modal_LabelOcr2" xml:space="preserve">
-    <value>Prikaži u formatu za mašinsko očitavanje</value>
-    <comment>Don't make this string much longer than it is.</comment>
-  </data>
-  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
-    <value>Metod transfera</value>
-    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
-  </data>
-  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
-    <value>...i ovo</value>
-    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
-  </data>
-  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
-    <value>Skeniraj ovo</value>
-    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referenca</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
-    <value>Isplata kasni</value>
-    <comment>"Late" in this context means "after its due date".</comment>
   </data>
 </root>

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;TOZ TOPLANDI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Gönderilen miktar size geri gönderilmesi için öngörülen ücret olan {0:N2} mikrokoinden daha düşük. Gönderdiğiniz para artık bitcoin ağında "toz" olarak geçmekte, ve tekrar taşınmayacak.&lt;br/&gt;&lt;br/&gt;Eko testi yapmak için daha yüksek bir miktar gönderiniz.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>Bu, sadece {0} için değil, Swarmops kurulumunun tamamı için bitcoin eko testi için QR koddur. Eko testini gerçekleştirmek için telefonunuzun bitcoin cüzdanından okuyun ya da bilgisayarınızdan direkt olarak [{1}](bu bir Bitcoin Cash adresidir) adresine gönderin. Sonraki bir kaç saniye içinde miktar ({2:N2} mikrokoin olan daha az madenci ücreti) size geri gönderilecektir.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,63 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Swarmops Bitcoin Eko Testi</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Kişileştirme Aktif</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>{0} olarak aktif bir kişileştirme oturumunuz bulunuyor. &lt;a href="javascript:terminateImpersonation();"&gt;Kişileştirmeyi Sonlandır.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;ŞAHIS KİŞİLEŞTİRİLSİN Mİ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bu hafife alınmamalıdır, ve bunu teknik sebeplerden dolayı yapmıyorsanız yerel kanunlarınıza bağlı olarak illegal dahi olabilir. &lt;br/&gt;&lt;br/&gt;Bu aracın amacı teknik arızaları gidermektir. Her şey kayıt altına alınır.&lt;br/&gt;&lt;br/&gt;Devam edilsin mi?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME İPTAL EDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Kişileştirme {0:HH:mm} UTC
+'de iptal edildi. Yeniden kendiniz olarak davranıyorsunuz.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME REDDEDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Direkt olarak manejeriniz olan birisini kişileştiremezsiniz.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME REDDEDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Sistem çapında erişimi olan başka birisini kişileştiremezsiniz.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Kişileştirmek için bir kişi seçmelisiniz.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Eğer kendinizi kişileştirmeniz gerekiyorsa Swarmops'dan çıkış yaparak farklı bir yardım aramanızı öneririz.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME REDDEDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Başka birini kişileştirmek için yeterli yetkiye sahip değilsiniz gibi gözüküyor.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Başka bir kullanıcıyı kişileştir</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Kişileştir</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Kişileştirilecek şahıs</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;KİŞİLEŞTİRME AKTİF&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Kişileştirme {0:HH:mm} UTC'de başladı. Bu, kontrol panelinin kişileştirilen şahsın göreceği şeklidir. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Bu hata ayıklama aracı, sizin başka bir kullancıyı kişileştirerek Swarmops'u onların giriş yaptığında gördüğü şekilde görmenize olanak sağlar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;UYARI:&lt;/strong&gt;Bu, teknik geliştirme ve talep edilen destek için, kullanılması son derece önerilmeyen bir araçtır. Bunun kullanılması hafife alınmamalıdır.&lt;/p&gt;
+&lt;p&gt;Bütün kişileştirmeler kalıcı olarak kayıt altına alınır, kişileştirilmiş durumdayken yapılan bütün ve herbir eylem olduğu gibi izlenebilirdir, ve kişileştirilen kullanıcı bu durumdan haberdar edilecektir.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Aktivistler aranacaktır</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(uygulanamaz)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Henüz üye olmayanlar şu şekilde anılır</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Kök-düzeyi organizasyon</value>
@@ -188,6 +246,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Ticari</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Hükümet</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Kar amacı gütmeyen</value>
@@ -269,6 +330,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>İsimden Admin Bildirimleri</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Arka Plan Sunucu Adı Geçersiz Kılma</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>SMTP portu sayısal olmalıdır. Ana makine: port ayrıştırılamıyor.</value>
   </data>
@@ -302,74 +366,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Bu tür bir web sitesi için mutlaka, mutlaka, MUTLAKA HTTPS kullanmalısınız. Ama bunu zaten biliyordunuz, değil mi?</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>Arka Plan Sunucu Adı Geçersiz Kılma</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>WebSoket Portu (Ön Plan)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>WebSoket Portu (Arka Plan)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>Kişileştirme Aktif</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>{0} olarak aktif bir kişileştirme oturumunuz bulunuyor. &lt;a href="javascript:terminateImpersonation();"&gt;Kişileştirmeyi Sonlandır.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;ŞAHIS KİŞİLEŞTİRİLSİN Mİ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bu hafife alınmamalıdır, ve bunu teknik sebeplerden dolayı yapmıyorsanız yerel kanunlarınıza bağlı olarak illegal dahi olabilir. &lt;br/&gt;&lt;br/&gt;Bu aracın amacı teknik arızaları gidermektir. Her şey kayıt altına alınır.&lt;br/&gt;&lt;br/&gt;Devam edilsin mi?</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;KİŞİLEŞTİRME İPTAL EDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Kişileştirme {0:HH:mm} UTC
-'de iptal edildi. Yeniden kendiniz olarak davranıyorsunuz.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt;KİŞİLEŞTİRME REDDEDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Direkt olarak manejeriniz olan birisini kişileştiremezsiniz.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;KİŞİLEŞTİRME REDDEDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Sistem çapında erişimi olan başka birisini kişileştiremezsiniz.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>Kişileştirmek için bir kişi seçmelisiniz.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Eğer kendinizi kişileştirmeniz gerekiyorsa Swarmops'dan çıkış yaparak farklı bir yardım aramanızı öneririz.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;KİŞİLEŞTİRME REDDEDİLDİ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Başka birini kişileştirmek için yeterli yetkiye sahip değilsiniz gibi gözüküyor.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>Başka bir kullanıcıyı kişileştir</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>Kişileştir</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>Kişileştirilecek şahıs</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;KİŞİLEŞTİRME AKTİF&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Kişileştirme {0:HH:mm} UTC'de başladı. Bu, kontrol panelinin kişileştirilen şahsın göreceği şeklidir. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>&lt;p&gt;Bu hata ayıklama aracı, sizin başka bir kullancıyı kişileştirerek Swarmops'u onların giriş yaptığında gördüğü şekilde görmenize olanak sağlar.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;UYARI:&lt;/strong&gt;Bu, teknik geliştirme ve talep edilen destek için, kullanılması son derece önerilmeyen bir araçtır. Bunun kullanılması hafife alınmamalıdır.&lt;/p&gt;
-&lt;p&gt;Bütün kişileştirmeler kalıcı olarak kayıt altına alınır, kişileştirilmiş durumdayken yapılan bütün ve herbir eylem olduğu gibi izlenebilirdir, ve kişileştirilen kullanıcı bu durumdan haberdar edilecektir.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Henüz üye olmayanlar şu şekilde anılır</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(uygulanamaz)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Hükümet</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;TOZ TOPLANDI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Gönderilen miktar size geri gönderilmesi için öngörülen ücret olan {0:N2} mikrokoinden daha düşük. Gönderdiğiniz para artık bitcoin ağında "toz" olarak geçmekte, ve tekrar taşınmayacak.&lt;br/&gt;&lt;br/&gt;Eko testi yapmak için daha yüksek bir miktar gönderiniz.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>WebSoket Portu (Ön Plan)</value>
   </data>
 </root>

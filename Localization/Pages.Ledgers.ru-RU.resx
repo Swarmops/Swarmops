@@ -117,15 +117,204 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  
   <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
     <value>Создать новую учетную запись root</value>
   </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>Это счет пассивов. Такие счета обычно имеют сальдо в отрицательном, поскольку они представляют собой отрицательные активы в организации. Введенный начальный баланс был изменен на "негативный".</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>Это счет расходов. Такие счета, как правило, имеют отрицательный бюджет, поскольку они истощают активы организации. Предлагаемый бюджет был изменен на "негативный".</value>
+    <comment>Displayed as a message box</comment>
+  </data>
+  
+  
+  
+  
+  
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Это обзор финансовых счетов в бухгалтерской книге. Вы можете сделать некоторое обслуживание здесь, даже если большинство ежедневных операций должны быть делегированы владельцам бюджета.</value>
   </data>
   
+  
+  
+  
+  
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Учетная запись</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>Описание проводки не может быть пустым.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>Сопоставьте это с открытым исходящим счетом-фактурой в нестандартной валюте (5% допуск Форекс)?</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>Это показывает разбивку адресов и баланса bitcoin hotwallet организации. (Пустые и ранее используемые адреса не отображаются.)</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>Детали слежения Autotransaction</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>Выберите счет, чтобы добавить строку к этой транзакции.</value>
   </data>
   
   
@@ -164,10 +353,20 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
     <value>Инструкции По Загрузке Банка</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
+  
   
   
   
@@ -203,6 +402,10 @@
   <data name="UploadBankFiles_PaymentFileUploadedHeader" xml:space="preserve">
     <value>Загруженный Файл Оплаты</value>
   </data>
+  
+  
+  
+  
   
   
   
@@ -262,207 +465,9 @@
   
   
   
-  
-  
-  
-  
-  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
-    <value>Это счет расходов. Такие счета, как правило, имеют отрицательный бюджет, поскольку они истощают активы организации. Предлагаемый бюджет был изменен на "негативный".</value>
-    <comment>Displayed as a message box</comment>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
-    <value>Это счет пассивов. Такие счета обычно имеют сальдо в отрицательном, поскольку они представляют собой отрицательные активы в организации. Введенный начальный баланс был изменен на "негативный".</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
-    <value>Детали слежения Autotransaction</value>
-    <comment>(this means the transaction is locked from editing)</comment>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
-    <value>Выберите счет, чтобы добавить строку к этой транзакции.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="BitcoinHotwallet_Info" xml:space="preserve">
-    <value>Это показывает разбивку адресов и баланса bitcoin hotwallet организации. (Пустые и ранее используемые адреса не отображаются.)</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
-    <value>Сопоставьте это с открытым исходящим счетом-фактурой в нестандартной валюте (5% допуск Форекс)?</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   <data name="ViewVatReports_NoReports" xml:space="preserve">
     <value>Нет отчетов по НДС для отображения. Вероятно, это связано с тем, что еще не истек полный отчетный период НДС, поэтому создать отчет пока не удалось.</value>
   </data>
-  
-  
-  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
-    <value>Описание проводки не может быть пустым.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

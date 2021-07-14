@@ -126,8 +126,14 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Δημιουργία Νέου Οργανισμού</value>
   </data>
-  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
-    <value>Ρυθμίσεις Οργανισμού</value>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Αποσφαλμάτωση</value>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Δοκιμή Echo Bitcoin Hotwallet</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Προσωποποίηση</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Γεωγραφικό Δέντρο</value>
@@ -135,8 +141,27 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Συμπλέγματα Οργανισμού</value>
   </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Ρυθμίσεις Οργανισμού</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>Στελέχωση Οργανισμού</value>
+  </data>
   <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>Ρυθμίσεις Συστήματος</value>
+  </data>
+  
+  
+  
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Δημιουργήθηκε στις {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} γραμμές κώδικα</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Αναφορά Σφάλματος Swarmops (στο Github)</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>Επικοινωνίες</value>
@@ -187,6 +212,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Δημιουργία Παραγγελίας Αγοράς</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Δωρεά κεφαλαίων</value>
+  </data>
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Βοηθός Gigs</value>
   </data>
@@ -226,6 +254,8 @@
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Αίτημα Προκαταβολής Μετρητών</value>
   </data>
+  
+  
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>Αποστολή Νέου Τιμολογίου</value>
   </data>
@@ -272,6 +302,15 @@
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Ισολογισμός</value>
   </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>Υπόλοιπα &amp; Αντιστοίχιση Συναλλαγών</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Hotwallet Bitcoin</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Προϋπολογισμός Vs Πραγματικών Ποσών</value>
+  </data>
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>Αποτυχία κλεισίματος Βιβλίων για {0}</value>
   </data>
@@ -284,6 +323,8 @@
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>Αποσφαλμάτωση Λογιστικών Βιβλίων, Λογαριασμών</value>
   </data>
+  
+  
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Εισαγωγή Τραπεζικών Δεδομένων</value>
   </data>
@@ -296,13 +337,25 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Μισθοδοσία</value>
   </data>
+  
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Δήλωση Κέρδους &amp; Ζημίας</value>
   </data>
   
   
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Φορολογικά έντυπα</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Φορολογικά Έντυπα Μισθοδοσίας</value>
+  </data>
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Μεταφόρτωση Τραπεζικών Αρχείων</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>Αναφορές ΦΠΑ</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
   </data>
   <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
     <value>Λίστα Εκκρεμών Λογαριασμών</value>
@@ -361,6 +414,7 @@
   <data name="Menu5_People_AddPerson" xml:space="preserve">
     <value>Προσθήκη [Regular]</value>
   </data>
+  
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>Λίστα / Εύρεση Ατόμων</value>
   </data>
@@ -376,6 +430,9 @@
   <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>Διαχείριση Εθελοντών</value>
   </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>Ο τοπικός μου Οργανισμός</value>
+  </data>
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Νέο Συνέδριο</value>
   </data>
@@ -385,63 +442,6 @@
   <data name="Menu5_People_SelfSignup" xml:space="preserve">
     <value>Σελίδα αυτο-εγγραφής</value>
   </data>
-  
-  
-  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
-    <value>Φορολογικά έντυπα</value>
-  </data>
-  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
-    <value>Φορολογικά Έντυπα Μισθοδοσίας</value>
-  </data>
-  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
-    <value>Υπόλοιπα &amp; Αντιστοίχιση Συναλλαγών</value>
-  </data>
-  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
-    <value>Στελέχωση Οργανισμού</value>
-  </data>
-  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
-    <value>Ο τοπικός μου Οργανισμός</value>
-  </data>
-  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
-    <value>Δωρεά κεφαλαίων</value>
-  </data>
-  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
-    <value>Προϋπολογισμός Vs Πραγματικών Ποσών</value>
-  </data>
-  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
-    <value>Hotwallet Bitcoin</value>
-  </data>
-  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
-    <value>Δημιουργήθηκε στις {0:MMM d, yyyy}</value>
-    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
-  </data>
-  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
-    <value>{0:N0} γραμμές κώδικα</value>
-  </data>
-  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
-    <value>Αναφορά Σφάλματος Swarmops (στο Github)</value>
-  </data>
-  <data name="Menu5_Administration_Debug" xml:space="preserve">
-    <value>Αποσφαλμάτωση</value>
-  </data>
-  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
-    <value>Προσωποποίηση</value>
-  </data>
-  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
-    <value>Αναφορές ΦΠΑ</value>
-    <comment>This is a European thing (Value Added Tax).</comment>
-  </data>
-  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
-    <value>Δοκιμή Echo Bitcoin Hotwallet</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

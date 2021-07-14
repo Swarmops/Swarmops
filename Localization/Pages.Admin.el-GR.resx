@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;ΣΥΛΟΛΙΚΟ ΠΟΣΟ ΣΚΟΝΗΣ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;To ποσό που αποστέλλεται είναι μικρότερο από το ποσό εξόδων συναλλαγής που απαιτείται για να σας το επιστρέψουμε, που είναι {0:N2} microcoins. Τα χρήματα που στείλατε αποκαλούνται «σκόνη» στο δίκτυο του bitcoin, και δε θα μετακινηθούν ξανά.&lt;br/&gt;&lt;br/&gt;Στείλτε ένα μεγαλύτερο ποσό για να εκτελέσετε μια δοκιμή echo.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>Αυτός είναι ένας κωδικός QR για δοκιμή bitcoin echo που αφορά όλη την εγκατάσταση Swarmops, και όχι μόνο τον οργανισμό {0}. Σκανάρετέ τον με το πορτοφόλι bitcoin του κινητού σας για να πραγματοποιήσετε τη δοκιμή echo, ή στείλτε από τον υπολογιστή σας άμεσα στη διεύθυνση [{1}] (που είναι μία διεύθυνση Bitcoin Cash). Το ποσό (αφαιρώντας τα έξοδα συναλλαγής των {2:N2} microcoins) θα σας επιστραφεί μέσα στα επόμενα δευτερόλεπτα.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,62 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Δοκιμή Echo για το Bitcoin στο Swarmops</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Ενεργή Προσωποποίηση</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Υπάρχει μία ενεργή συνεδρία προσωποποίησης του λογαριασμού {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Τερματισμός προσωποποίησης.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;ΠΡΟΣΩΠΟΠΟΙΗΣΗ ΑΤΟΜΟΥ;&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Η συγκεκριμένη ενέργεια θα πρέπει να πραγματοποιείται με πλήρη γνώση και συνέπεια, και αν δεν το κάνετε για τεχνικούς λόγους, πιθανόν να είναι παράνομο σύμφωνα με τους τοπικούς νόμους.&lt;br/&gt;&lt;br/&gt;Σκοπός αυτού του εργαλείου είναι να επιδιορθώσει τεχνικές δυσλειτουργίες. Τα πάντα καταγράφονται.&lt;br/&gt;&lt;br/&gt;Συνέχεια;</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;ΤΕΡΜΑΤΙΣΜΟΣ ΠΡΟΣΩΠΟΠΟΙΗΣΗΣ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Τερματισμός προσωποποίησης στις {0:HH:mm} UTC. Πλέον ενεργείτε με τα προσωπικά σας στοιχεία.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;ΜΗ ΕΠΙΤΡΕΠΤΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Δεν μπορείτε να πραγματοποιήσετε προσωποποίηση σε κάποιον που είναι διευθυντής σας.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;ΜΗ ΕΠΙΤΡΕΠΤΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Δεν μπορείτε να πραγματοποιήσετε προσωποποίηση σε χρήστη που έχει πρόσβαση σε επίπεδο συστήματος.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Επιλέξτε ένα άτομο για να πραγματοποιήσετε προσωποποίηση.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Εάν επιθυμείτε να πραγματοποιήσετε προσωποποίηση του εαυτού σας, σας συστήνουμε να αποσυνδεθείτε από το Swarmops και να αναζητήσετε άλλου είδους βοήθεια.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;ΜΗ ΕΠΙΤΡΕΠΤΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Τα δικαιώματα χρήστη που έχετε δεν επαρκούν για να πραγματοποιήσετε προσωποποίηση άλλου χρήστη.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Προσωποποίηση άλλου χρήστη</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Προσωποποίηση</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Χρήστης προς προσωποποίηση</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;ΕΝΕΡΓΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Έναρξη προσωποποίησης στις {0:HH:mm} UTC. Αυτός είναι ο πίνακας ελέγχου όπως τον βλέπει ο χρήστης που προσωποποιείτε. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Αυτό το εργαλείο αποσφαλμάτωσης σας επιτρέπει να προσωποποιήσετε έναν άλλο χρήση ώστε να δείτε το Swarmops με τον τρόπο που το βλέπει όταν συνδέεται.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ΠΡΟΣΟΧΗ:&lt;/strong&gt; Αυτό είναι ένα αρκετά παρεμβατικό εργαλείο που θα πρέπει να χρησιμοποιείται μόνο για λόγους τεχνικής ανάπτυξης και για υποστήριξη. Πρέπει να χρησιμοποιείται με απόλυτη επίγνωση αυτών των πληροφοριών.&lt;/p&gt;
+&lt;p&gt;Όλες οι προσωποποιήσεις καταγράφονται, κάθε ενέργεια κατά τη διάρκειά της προσωποποίησης είναι ανιχνεύσιμη, και ο χρήστης που έχει προσωποποιηθεί, θα ενημερωθεί για την παρέμβαση.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Οι ακτιβιστές θα ονομάζονται</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(μη εφαρμόσιμο)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Ονομασία μη επιβεβαιωμένων μελών</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Γονικός Οργανισμός</value>
@@ -188,6 +245,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Εμπορικός</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Κυβερνητικό</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Μη κερδοσκοπικός</value>
@@ -269,6 +329,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Όνομα Ειδοποιήσεων Διαχειριστή</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Παράκαμψη Ονόματος Εξυπηρετητή Παρασκηνίου</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>Η θύρα SMTP πρέπει να είναι αριθμός. Αδυναμία ανάλυσης "διακομιστή:θύρα".</value>
   </data>
@@ -302,73 +365,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Θα πρέπει, πρέπει, ΠΡΕΠΕΙ στα αλήθεια να χρησιμοποιήσετε HTTPS για μία τέτοια ιστοσελίδα. Αλλά σίγουρα ήδη το γνωρίζατε, σωστά;</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>Παράκαμψη Ονόματος Εξυπηρετητή Παρασκηνίου</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>Θύρα WebSocket (Διεπαφή)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>Θύρα WebSocket (Παρασκήνιο)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>Ενεργή Προσωποποίηση</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>Υπάρχει μία ενεργή συνεδρία προσωποποίησης του λογαριασμού {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Τερματισμός προσωποποίησης.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;ΠΡΟΣΩΠΟΠΟΙΗΣΗ ΑΤΟΜΟΥ;&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Η συγκεκριμένη ενέργεια θα πρέπει να πραγματοποιείται με πλήρη γνώση και συνέπεια, και αν δεν το κάνετε για τεχνικούς λόγους, πιθανόν να είναι παράνομο σύμφωνα με τους τοπικούς νόμους.&lt;br/&gt;&lt;br/&gt;Σκοπός αυτού του εργαλείου είναι να επιδιορθώσει τεχνικές δυσλειτουργίες. Τα πάντα καταγράφονται.&lt;br/&gt;&lt;br/&gt;Συνέχεια;</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;ΤΕΡΜΑΤΙΣΜΟΣ ΠΡΟΣΩΠΟΠΟΙΗΣΗΣ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Τερματισμός προσωποποίησης στις {0:HH:mm} UTC. Πλέον ενεργείτε με τα προσωπικά σας στοιχεία.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt;ΜΗ ΕΠΙΤΡΕΠΤΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Δεν μπορείτε να πραγματοποιήσετε προσωποποίηση σε κάποιον που είναι διευθυντής σας.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;ΜΗ ΕΠΙΤΡΕΠΤΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Δεν μπορείτε να πραγματοποιήσετε προσωποποίηση σε χρήστη που έχει πρόσβαση σε επίπεδο συστήματος.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>Επιλέξτε ένα άτομο για να πραγματοποιήσετε προσωποποίηση.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Εάν επιθυμείτε να πραγματοποιήσετε προσωποποίηση του εαυτού σας, σας συστήνουμε να αποσυνδεθείτε από το Swarmops και να αναζητήσετε άλλου είδους βοήθεια.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;ΜΗ ΕΠΙΤΡΕΠΤΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Τα δικαιώματα χρήστη που έχετε δεν επαρκούν για να πραγματοποιήσετε προσωποποίηση άλλου χρήστη.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>Προσωποποίηση άλλου χρήστη</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>Προσωποποίηση</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>Χρήστης προς προσωποποίηση</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;ΕΝΕΡΓΗ ΠΡΟΣΩΠΟΠΟΙΗΣΗ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Έναρξη προσωποποίησης στις {0:HH:mm} UTC. Αυτός είναι ο πίνακας ελέγχου όπως τον βλέπει ο χρήστης που προσωποποιείτε. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>&lt;p&gt;Αυτό το εργαλείο αποσφαλμάτωσης σας επιτρέπει να προσωποποιήσετε έναν άλλο χρήση ώστε να δείτε το Swarmops με τον τρόπο που το βλέπει όταν συνδέεται.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;ΠΡΟΣΟΧΗ:&lt;/strong&gt; Αυτό είναι ένα αρκετά παρεμβατικό εργαλείο που θα πρέπει να χρησιμοποιείται μόνο για λόγους τεχνικής ανάπτυξης και για υποστήριξη. Πρέπει να χρησιμοποιείται με απόλυτη επίγνωση αυτών των πληροφοριών.&lt;/p&gt;
-&lt;p&gt;Όλες οι προσωποποιήσεις καταγράφονται, κάθε ενέργεια κατά τη διάρκειά της προσωποποίησης είναι ανιχνεύσιμη, και ο χρήστης που έχει προσωποποιηθεί, θα ενημερωθεί για την παρέμβαση.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Ονομασία μη επιβεβαιωμένων μελών</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(μη εφαρμόσιμο)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Κυβερνητικό</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;ΣΥΛΟΛΙΚΟ ΠΟΣΟ ΣΚΟΝΗΣ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;To ποσό που αποστέλλεται είναι μικρότερο από το ποσό εξόδων συναλλαγής που απαιτείται για να σας το επιστρέψουμε, που είναι {0:N2} microcoins. Τα χρήματα που στείλατε αποκαλούνται «σκόνη» στο δίκτυο του bitcoin, και δε θα μετακινηθούν ξανά.&lt;br/&gt;&lt;br/&gt;Στείλτε ένα μεγαλύτερο ποσό για να εκτελέσετε μια δοκιμή echo.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>Θύρα WebSocket (Διεπαφή)</value>
   </data>
 </root>

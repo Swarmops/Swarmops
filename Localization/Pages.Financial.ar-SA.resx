@@ -132,6 +132,7 @@
     <value>يرجى تحديد ميزانية لإعادة توجيه الرسوم.</value>
   </data>
   
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>الإجراء</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -175,6 +176,10 @@
   <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
     <value>حوامتي البرمائية مليئة بالثعابين المائية</value>
     <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(لا يجب ان يتضمن المبلغ أي ضريبة محددة على القيمة المضافة)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
   <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
     <value>ما هو المبلغ الذي تقوم بالمصادقة عليه بدلا من ذلك (في{0})؟</value>
@@ -224,6 +229,13 @@
     <value>مبلغ الفاتورة الكلي (في{0})</value>
     <comment>{0} is the organization's main currency.</comment>
   </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>جزء ضريبة القيمة المضافة من المجموع ({0})</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>إنشاء</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>الوصف</value>
     <comment>Free-text description of invoice</comment>
@@ -238,6 +250,7 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>هنا يمكنك تسجيل الفواتير الواردة لمنظمتك ("الحسابات المدينة"). أدخل اسم المورد، المبلغ، تاريخ الاستحقاق، الرقم المرجعي للفاتورة، وارفع صورة الفاتورة. أيضاً اختر بند الميزانية. وسوف تحتاج الفاتورة إلى الاعتماد والتصديق من المسؤول عن الميزانية كالعادة. (وستتضمن النسخ القادمة من هذه الآلية طلبات الشراء وقوائم الموردين)</value>
   </data>
+  
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>استلام فاتورة واردة</value>
   </data>
@@ -266,6 +279,34 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>الرجاء إدخال الحساب البنكي للمورد أو ما يكافؤه.</value>
   </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>المرجو إدخال المبلغ (ب {0}) الذي تتطلبه الفاتورة.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>المرجو تحديد الميزانية المخصصة للصرف.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>المرجو تحميل الوثيقة او مجموعة الوثائق الخاصة بالفاتورة الأصلية.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>يُرجى تحديد الخيار.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>المرجو وصف هذه العملية الشرائية.</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>إنشاء الفاتورة الصادرة</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>إنشاء</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>إنشاء فاتورة صادرة</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>الفاتورة الصادرة #{0:N0} تم أرشفتها.</value>
+  </data>
   <data name="Donate_Explain" xml:space="preserve">
     <value>هذا كود رمز الإستجابة السريع لإنجاز التبرعات لـ {0}. قم بمسحه عن طريق محفظة البتكوين على هاتفك من أجل التبرع، أو تبرع مباشرة من على حاسوبك إلى [{1}] (هذا عنوان للبتكوين كاش Bitcoin Cash).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -273,6 +314,10 @@
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>تم التوصل بـ {0} {1:N2} ({2:N0} microcoins أو "bits"). شكرا!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>الرصيد المستلم ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
   </data>
   <data name="Donate_FundsReceivedNative" xml:space="preserve">
     <value>تم التوصل بـ {0} microcoins ("bits"). شكرا!</value>
@@ -314,12 +359,74 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>الميزانية</value>
   </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>طلب</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>نوع التكلفة</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>الوصف</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>رفع Expensify CSV</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;خطأ: يتعذر تحليل Expensify CSV. &lt;/strong&gt; إذا كان هذا ملف CSV من Expensify ، فإن Swarmops سيحتاج إلى الأعمدة التالية "Timestamp" ، "Amount" ، "Merchant" ، "Comment" ، "Category" ، "MCC" ، "Original Currency" ، و "Original Amount" من أجل أن تكون متواجدة بالملف. وإذا قامت المنظمة بالإبلاغ عن الضريبة على القيمة المضافة، فإن عمود إضافي باسم "VAT" سوف تتم إضافته.&lt;/p&gt;&lt;p&gt;يتعذر المضي قدما بهذا الملف.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt; خطأ: يفتقد ملف Expensify CSV حقول البيانات المطلوبة.&lt;/strong&gt; يبدو أن الملف يفتقد على الأقل إلى حقل من الحقول المطلوبة لملف التعريف CSV الافتراضي الخاص بـ Expensify. قم بالرجوع إلى الوثائق الفنية وقارنها بالملف الذي حاولت رفعه. (بالطبع، و أكثر سبب محتمل لهذا الخطأ، أنك حاولت رفع الملف الخاطئ بالكامل &amp;ndash; ربما صورة بدلاً من Expensify CSV &amp;ndash; وهذا هو سبب افتقاد البيانات المتوقعة.)&lt;/p&gt;&lt;p&gt;يتعذر معالجة هذا الملف.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;خطأ: لا يحتوي ملف Expensify CSV على حقل الضريبة على القيمة المضافة.&lt;/strong&gt; منذ ابلاغ هذه المنظمة عن قيمة الضريبة المضافة (الضريبة على القيمة المضافة) الى السلطات، يجب تحديد هذا على أساس كل حساب. الرجاء تمكين ضريبة القيمة المضافة في Expensify وإنشاء ملف تعريف تصدير CSV جديد يقوم بتصدير هذا تحت رأس العمود "الضريبة على القيمة المضافة". إذا قام فريقك سابقا بإنشاء ملف تعريف CSV ، فقد تحتاج فقط إلى تحديده عند التصدير إلى CSV.&lt;/p&gt;&lt;p&gt; يتعذر معالجة هذا الملف.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>إذا كان لديك العديد من تقارير النفقات، فيمكنك جمعها باستخدام Expensify ورفع تقرير Expensify CSV هنا (الذي تحصل عليه من عند Expensify تحت التقارير، التصدير، ك CSV). سوف تستخدم Swarmops الـ Expensify لجلب جميع الإيصالات الفردية وتسجيلها كمطالبات نفقة منفصلة للمحاسبة المناسبة.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>لكي يعمل هذا، بما أن {0} يقوم بإرسال تقارير الضريبة على القيمة المضافة إلى السلطات الضريبية، سوف تحتاج لتعديل الصفحة الرئيسية الافتراضية لـ Expensify CSV لكي تشمل الضريبة على القيمة المضافة، والتي لا تشملها هته الصفحة الافتراضية. تتوفر صفحات المساعدة لـ Expensify على مزيد من المعلومات حول كيفية القيام بذلك وإذا كنت تستخدم Expensify كفريق، فإن سياسة الـ Expensify لديك يجب أن تتوفر على بروفايل يسمح بتصدير الضريبة على القيمة المضافة بصيغة CSV.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>حسب إعدادت المنظمة، فإن "الـCSV الإفتراضي" لبروفايل التصدير على Expensify يجب أن يكون كافيا بالنسبة لـ Swarmops.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>تحتاج كل طلبات النفقات الى ميزانية قبل تقديمها.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>لا توجد اي تسجيلات لـ Expensify للعرض</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>عملة تقرير الـ Expensify هي</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>على استعداد لتقديم مطالبة واحدة</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>على استعداد لتقديم {0} مطالبة</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>تم تقديم طلبك بنجاح.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>تم تقديم {0} طلبيات بنجاح.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>رفع ملف Expensify CSV اخر؟</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>نفسي</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>من المطالب بهذه النفقة؟</value>
   </data>
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>تفاصيل معلومات حسابك البنكي</value>
@@ -343,6 +450,9 @@
   <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
     <value>بما أن هذه الميزانية خاصة بك، فإن المصادقة قد تمت فعلاً. وبقيت عملية المطابقة الضرورية.</value>
   </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>رفع تقرير الـ Expensify للسداد</value>
+  </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>رفع صور الإيصالات</value>
   </data>
@@ -359,17 +469,61 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>الرجاء وصف هذه العملية الشرائية.</value>
   </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>ضريبة القيمة المضافة من الإجمالي ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>قائمة الفواتير الواردة</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>مرسل الفاتورة</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>هذه اللائحة تضم أخر 100 فاتورة. مرتبة حسب تاريخ الإستحقاق مع الأحدث أولا.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>الفواتير الواردة</value>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>تم الارسال</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>العميل</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>قائمة الفواتير الصادرة</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>هذا سرد للفواتير المائة 100 الصادرة مؤخرا, مرتبة حسب تاريخ انشائها, الأحدث اولا.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>المبلغ الاجمالي</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>تاريخ الإستحقاق</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>لائحة الفواتير الصادرة</value>
+  </data>
+  
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>المبلغ</value>
     <comment>Amount to be paid out</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>دفعت</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>المُستلم</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>المرجع</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>النفقات الجاهزة للتعويض</value>
@@ -377,6 +531,12 @@
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>هذه هي الأشكال المتنوعة للنفقات التي سيتم دفعها للمنظمة والتي اجتازت كل العقبات لدفع التعويضات. إنها جاهزة الآن لتدفع للمستلم. هنا يتم التحقق منها أثناء إجراء عملية الدفع (ربما أثناء فتحك لنافذة المصرف الخاص بك في إطار آخر).</value>
   </data>
+  
+  
+  
+  
+  
+  
   <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
     <value>اظهار الOCR لتطبيقات الهاتف</value>
   </data>
@@ -387,6 +547,7 @@
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>المطالبات الجاهزة لدفع التعويض</value>
   </data>
+  
   <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
     <value>لا يمكن التراجع عن التعويض رقم {0}: لقد تمت تسويته أو إغلاقه.</value>
   </data>
@@ -439,6 +600,9 @@
   </data>
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>الميزانية</value>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>طلب</value>
   </data>
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>تفاصيل معلومات حسابك البنكي</value>
@@ -495,166 +659,4 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>تمت مطابقة إيصالات المطالبة المالية رقم {0:N0} الخاصة بـ {1}{2:N2}.</value>
   </data>
-  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>إنشاء</value>
-    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
-    <value>المرجو إدخال المبلغ (ب {0}) الذي تتطلبه الفاتورة.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
-    <value>المرجو تحديد الميزانية المخصصة للصرف.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
-    <value>المرجو تحميل الوثيقة او مجموعة الوثائق الخاصة بالفاتورة الأصلية.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
-    <value>يُرجى تحديد الخيار.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
-    <value>المرجو وصف هذه العملية الشرائية.</value>
-  </data>
-  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
-    <value>طلب</value>
-    <comment>Could also be "file" (as verb) or equivalent</comment>
-  </data>
-  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
-    <value>طلب</value>
-  </data>
-  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
-    <value>جزء ضريبة القيمة المضافة من المجموع ({0})</value>
-  </data>
-  <data name="FileExpenseClaim_Vat" xml:space="preserve">
-    <value>ضريبة القيمة المضافة من الإجمالي ({0})</value>
-  </data>
-  <data name="ListInboundInvoices_Header" xml:space="preserve">
-    <value>قائمة الفواتير الواردة</value>
-  </data>
-  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
-    <value>مرسل الفاتورة</value>
-  </data>
-  <data name="ListInboundInvoices_Info" xml:space="preserve">
-    <value>هذه اللائحة تضم أخر 100 فاتورة. مرتبة حسب تاريخ الإستحقاق مع الأحدث أولا.</value>
-  </data>
-  <data name="ListInboundInvoices_Title" xml:space="preserve">
-    <value>الفواتير الواردة</value>
-  </data>
-  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
-    <value>إنشاء الفاتورة الصادرة</value>
-  </data>
-  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>إنشاء</value>
-    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
-  </data>
-  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
-    <value>إنشاء فاتورة صادرة</value>
-  </data>
-  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
-    <value>الفاتورة الصادرة #{0:N0} تم أرشفتها.</value>
-  </data>
-  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
-    <value>الرصيد المستلم ({0})</value>
-    <comment>The {0} will be replaced with currency name.</comment>
-  </data>
-  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
-    <value>تم الارسال</value>
-  </data>
-  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
-    <value>العميل</value>
-  </data>
-  <data name="ListOutboundInvoices_Header" xml:space="preserve">
-    <value>قائمة الفواتير الصادرة</value>
-  </data>
-  <data name="ListOutboundInvoices_Info" xml:space="preserve">
-    <value>هذا سرد للفواتير المائة 100 الصادرة مؤخرا, مرتبة حسب تاريخ انشائها, الأحدث اولا.</value>
-  </data>
-  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
-    <value>المبلغ الاجمالي</value>
-  </data>
-  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
-    <value>تاريخ الإستحقاق</value>
-  </data>
-  <data name="ListOutboundInvoices_Title" xml:space="preserve">
-    <value>لائحة الفواتير الصادرة</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
-    <value>رفع Expensify CSV</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
-    <value>إذا كان لديك العديد من تقارير النفقات، فيمكنك جمعها باستخدام Expensify ورفع تقرير Expensify CSV هنا (الذي تحصل عليه من عند Expensify تحت التقارير، التصدير، ك CSV). سوف تستخدم Swarmops الـ Expensify لجلب جميع الإيصالات الفردية وتسجيلها كمطالبات نفقة منفصلة للمحاسبة المناسبة.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
-    <value>لكي يعمل هذا، بما أن {0} يقوم بإرسال تقارير الضريبة على القيمة المضافة إلى السلطات الضريبية، سوف تحتاج لتعديل الصفحة الرئيسية الافتراضية لـ Expensify CSV لكي تشمل الضريبة على القيمة المضافة، والتي لا تشملها هته الصفحة الافتراضية. تتوفر صفحات المساعدة لـ Expensify على مزيد من المعلومات حول كيفية القيام بذلك وإذا كنت تستخدم Expensify كفريق، فإن سياسة الـ Expensify لديك يجب أن تتوفر على بروفايل يسمح بتصدير الضريبة على القيمة المضافة بصيغة CSV.</value>
-    <comment>{0} is the organization name.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
-    <value>حسب إعدادت المنظمة، فإن "الـCSV الإفتراضي" لبروفايل التصدير على Expensify يجب أن يكون كافيا بالنسبة لـ Swarmops.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
-    <value>عملة تقرير الـ Expensify هي</value>
-  </data>
-  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
-    <value>رفع تقرير الـ Expensify للسداد</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;خطأ: يتعذر تحليل Expensify CSV. &lt;/strong&gt; إذا كان هذا ملف CSV من Expensify ، فإن Swarmops سيحتاج إلى الأعمدة التالية "Timestamp" ، "Amount" ، "Merchant" ، "Comment" ، "Category" ، "MCC" ، "Original Currency" ، و "Original Amount" من أجل أن تكون متواجدة بالملف. وإذا قامت المنظمة بالإبلاغ عن الضريبة على القيمة المضافة، فإن عمود إضافي باسم "VAT" سوف تتم إضافته.&lt;/p&gt;&lt;p&gt;يتعذر المضي قدما بهذا الملف.&lt;/p&gt;</value>
-    <comment>Do not translate the Expensify column field names.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;خطأ: لا يحتوي ملف Expensify CSV على حقل الضريبة على القيمة المضافة.&lt;/strong&gt; منذ ابلاغ هذه المنظمة عن قيمة الضريبة المضافة (الضريبة على القيمة المضافة) الى السلطات، يجب تحديد هذا على أساس كل حساب. الرجاء تمكين ضريبة القيمة المضافة في Expensify وإنشاء ملف تعريف تصدير CSV جديد يقوم بتصدير هذا تحت رأس العمود "الضريبة على القيمة المضافة". إذا قام فريقك سابقا بإنشاء ملف تعريف CSV ، فقد تحتاج فقط إلى تحديده عند التصدير إلى CSV.&lt;/p&gt;&lt;p&gt; يتعذر معالجة هذا الملف.&lt;/p&gt;</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
-    <value>رفع ملف Expensify CSV اخر؟</value>
-    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
-    <value>نفسي</value>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
-    <value>من المطالب بهذه النفقة؟</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt; خطأ: يفتقد ملف Expensify CSV حقول البيانات المطلوبة.&lt;/strong&gt; يبدو أن الملف يفتقد على الأقل إلى حقل من الحقول المطلوبة لملف التعريف CSV الافتراضي الخاص بـ Expensify. قم بالرجوع إلى الوثائق الفنية وقارنها بالملف الذي حاولت رفعه. (بالطبع، و أكثر سبب محتمل لهذا الخطأ، أنك حاولت رفع الملف الخاطئ بالكامل &amp;ndash; ربما صورة بدلاً من Expensify CSV &amp;ndash; وهذا هو سبب افتقاد البيانات المتوقعة.)&lt;/p&gt;&lt;p&gt;يتعذر معالجة هذا الملف.&lt;/p&gt;</value>
-  </data>
-  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
-    <value>(لا يجب ان يتضمن المبلغ أي ضريبة محددة على القيمة المضافة)</value>
-    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
-    <value>تحتاج كل طلبات النفقات الى ميزانية قبل تقديمها.</value>
-    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
-    <value>لا توجد اي تسجيلات لـ Expensify للعرض</value>
-    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
-    <value>على استعداد لتقديم مطالبة واحدة</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
-    <value>على استعداد لتقديم {0} مطالبة</value>
-    <comment>The {0} is replaced by a number, 2 or higher</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
-    <value>تم تقديم طلبك بنجاح.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
-    <value>تم تقديم {0} طلبيات بنجاح.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>المرجع</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  
 </root>

@@ -121,6 +121,9 @@
     <value>Αναθέστε ένα άλλο άτομο...</value>
     <comment>To an existing position that accepts multiple people (like "assistants")</comment>
   </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(ανάθεση στον Οργανισμό μου)</value>
+  </data>
   <data name="Positions_AssignFifthPerson" xml:space="preserve">
     <value>Αναθέστε ένα πέμπτο άτομο...</value>
   </data>
@@ -154,6 +157,16 @@
     <value>Αναθέστε</value>
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;ΤΕΡΜΑΤΙΣΜΟΣ ΑΝΑΘΕΣΗΣ;&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Αυτή είναι η θέση &lt;strong&gt;σας&lt;/strong&gt;. Ο τερματισμός της δικής σας ανάθεσης ισοδυναμεί με ΠΑΡΑΙΤΗΣΗ και πραγματοποιείται άμεσα. Είναι σίγουρα αυτό που θέλετε να κάνετε;&lt;br/&gt; &lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;ΤΕΡΜΑΤΙΣΜΟΣ ΑΝΑΘΕΣΗΣ;&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Θέλετε να τερματίσετε τον &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; από την θέση &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt; που του έχει ανατεθεί; Αυτό είναι ισοδύναμο της απόλυσης κάποιου και συνήθως πρέπει να γίνεται σύμφωνα με τις εσωτερικές διαδικασίες και την τοπική νομοθεσία. &lt;br/&gt; &lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Δημιουργία νέας θέσης...</value>
+  </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
     <value>Αναθέστε ένα άτομο ως &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt; &lt;span id='{0}_modalGeographyName'&gt;&lt;/span&gt;</value>
     <comment>Header for new assignment dialog</comment>
@@ -164,16 +177,8 @@
   <data name="Positions_PleaseSelectPerson" xml:space="preserve">
     <value>Παρακαλώ επιλέξτε ένα πρόσωπο για να αναθέσετε.</value>
   </data>
-  <data name="Positions_Vacant" xml:space="preserve">
-    <value>(η θέση είναι κενή)</value>
-    <comment>For unassigned positions</comment>
-  </data>
-  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;ΤΕΡΜΑΤΙΣΜΟΣ ΑΝΑΘΕΣΗΣ;&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Αυτή είναι η θέση &lt;strong&gt;σας&lt;/strong&gt;. Ο τερματισμός της δικής σας ανάθεσης ισοδυναμεί με ΠΑΡΑΙΤΗΣΗ και πραγματοποιείται άμεσα. Είναι σίγουρα αυτό που θέλετε να κάνετε;&lt;br/&gt; &lt;br/&gt;</value>
-  </data>
-  <data name="Positions_ConfirmTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;ΤΕΡΜΑΤΙΣΜΟΣ ΑΝΑΘΕΣΗΣ;&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Θέλετε να τερματίσετε τον &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; από την θέση &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt; που του έχει ανατεθεί; Αυτό είναι ισοδύναμο της απόλυσης κάποιου και συνήθως πρέπει να γίνεται σύμφωνα με τις εσωτερικές διαδικασίες και την τοπική νομοθεσία. &lt;br/&gt; &lt;br/&gt;</value>
-    <comment>{0} is the person name, {1} is the position title.</comment>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Ηγέτες τμημάτων</value>
   </data>
   <data name="Positions_TerminateNo" xml:space="preserve">
     <value>Να Μην Τερματιστεί</value>
@@ -187,13 +192,8 @@
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>Τερματισμός Ανάθεσης</value>
   </data>
-  <data name="Positions_AssignElsewhere" xml:space="preserve">
-    <value>(ανάθεση στον Οργανισμό μου)</value>
-  </data>
-  <data name="Positions_CreatePosition" xml:space="preserve">
-    <value>Δημιουργία νέας θέσης...</value>
-  </data>
-  <data name="Positions_Subleaders" xml:space="preserve">
-    <value>Ηγέτες τμημάτων</value>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(η θέση είναι κενή)</value>
+    <comment>For unassigned positions</comment>
   </data>
 </root>

@@ -126,8 +126,14 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>创建新组织</value>
   </data>
-  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
-    <value>组织设置</value>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>调试</value>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>比特币热钱包回复测试</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>假冒用户</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>地理树</value>
@@ -135,8 +141,27 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>组织集群</value>
   </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>组织设置</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>组织人员配置</value>
+  </data>
   <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>系统设置</value>
+  </data>
+  
+  
+  
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>于 {0:MMM d, yyyy} 建立</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} 行代码</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>(在 Github 上) 报告 Swarmops 的漏洞</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>沟通</value>
@@ -187,6 +212,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>创建购买订单</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>捐赠资金</value>
+  </data>
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>演出助理</value>
   </data>
@@ -226,6 +254,8 @@
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>请求现金预支</value>
   </data>
+  
+  
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>发送新发票</value>
   </data>
@@ -272,6 +302,15 @@
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>资产负债表</value>
   </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>平账和匹配交易</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>比特币热钱包</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>预算与实际支出</value>
+  </data>
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>无法结算 {0} 的分类账</value>
   </data>
@@ -284,6 +323,8 @@
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>调试分类账，账户</value>
   </data>
+  
+  
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>导入银行数据</value>
   </data>
@@ -296,13 +337,25 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>工资名单</value>
   </data>
+  
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>损益表</value>
   </data>
   
   
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>税单</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>工资税表单</value>
+  </data>
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>上传银行文件</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>增值税报告</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
   </data>
   <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
     <value>列出未结算的账户</value>
@@ -361,6 +414,7 @@
   <data name="Menu5_People_AddPerson" xml:space="preserve">
     <value>添加[Regular]</value>
   </data>
+  
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>列举/查找人员</value>
   </data>
@@ -376,6 +430,9 @@
   <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>管理志愿者</value>
   </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>我的本地组织</value>
+  </data>
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>新会议</value>
   </data>
@@ -385,63 +442,6 @@
   <data name="Menu5_People_SelfSignup" xml:space="preserve">
     <value>自注册页面</value>
   </data>
-  
-  
-  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
-    <value>税单</value>
-  </data>
-  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
-    <value>工资税表单</value>
-  </data>
-  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
-    <value>平账和匹配交易</value>
-  </data>
-  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
-    <value>组织人员配置</value>
-  </data>
-  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
-    <value>我的本地组织</value>
-  </data>
-  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
-    <value>捐赠资金</value>
-  </data>
-  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
-    <value>预算与实际支出</value>
-  </data>
-  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
-    <value>比特币热钱包</value>
-  </data>
-  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
-    <value>于 {0:MMM d, yyyy} 建立</value>
-    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
-  </data>
-  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
-    <value>{0:N0} 行代码</value>
-  </data>
-  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
-    <value>(在 Github 上) 报告 Swarmops 的漏洞</value>
-  </data>
-  <data name="Menu5_Administration_Debug" xml:space="preserve">
-    <value>调试</value>
-  </data>
-  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
-    <value>假冒用户</value>
-  </data>
-  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
-    <value>增值税报告</value>
-    <comment>This is a European thing (Value Added Tax).</comment>
-  </data>
-  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
-    <value>比特币热钱包回复测试</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

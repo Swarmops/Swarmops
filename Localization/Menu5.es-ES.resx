@@ -126,8 +126,14 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Crear nueva organización</value>
   </data>
-  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
-    <value>Configuración de organización</value>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Depurar</value>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Prueba Eco de la cartera caliente Bitcoin</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Personificar</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Arbol geográfico</value>
@@ -135,8 +141,27 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Organización de grupos</value>
   </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Configuración de organización</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>Organización de personal</value>
+  </data>
   <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>Configuración de sistema</value>
+  </data>
+  
+  
+  
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Construido en {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} lineas de código</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Informar un error a Swarmops (en Github)</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>Comunicación</value>
@@ -187,6 +212,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Crear pedido de compra</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Donar fondos</value>
+  </data>
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Asistente de eventos</value>
   </data>
@@ -225,6 +253,11 @@
   </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Solicitar adelanto de efectivo</value>
+  </data>
+  
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Mi salario</value>
+    <comment>This lists salary payments for the logged on individual</comment>
   </data>
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>Enviar Nueva Factura</value>
@@ -272,6 +305,15 @@
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Hoja de balances</value>
   </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>Balancear e igualar transacciones</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Cartera caliente Bitcoin</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Presupuesto vs Actual</value>
+  </data>
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>No se puede cerrar libros de auditoría para {0}</value>
   </data>
@@ -284,6 +326,8 @@
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>Depurar libros de contabilidad, cuentas</value>
   </data>
+  
+  
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importar datos bancarios</value>
   </data>
@@ -296,13 +340,25 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Nómina</value>
   </data>
+  
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Declaración de ganancias y pérdidas</value>
   </data>
   
   
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Formularios de impuestos</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Formularios para impuestos de nómina</value>
+  </data>
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Cargar archivos de banca</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>Informes de VAT</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
   </data>
   <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
     <value>Listar cuentas pendientes</value>
@@ -361,6 +417,7 @@
   <data name="Menu5_People_AddPerson" xml:space="preserve">
     <value>Añadir [Regular]</value>
   </data>
+  
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>Listar/encontrar personas</value>
   </data>
@@ -376,6 +433,9 @@
   <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>Gestionar voluntarios</value>
   </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>Mi organización local</value>
+  </data>
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Nueva Conferencia</value>
   </data>
@@ -385,66 +445,6 @@
   <data name="Menu5_People_SelfSignup" xml:space="preserve">
     <value>Auto-registro de página</value>
   </data>
-  
-  
-  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
-    <value>Formularios de impuestos</value>
-  </data>
-  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
-    <value>Formularios para impuestos de nómina</value>
-  </data>
-  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
-    <value>Balancear e igualar transacciones</value>
-  </data>
-  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
-    <value>Organización de personal</value>
-  </data>
-  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
-    <value>Mi organización local</value>
-  </data>
-  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
-    <value>Donar fondos</value>
-  </data>
-  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
-    <value>Presupuesto vs Actual</value>
-  </data>
-  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
-    <value>Cartera caliente Bitcoin</value>
-  </data>
-  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
-    <value>Construido en {0:MMM d, yyyy}</value>
-    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
-  </data>
-  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
-    <value>{0:N0} lineas de código</value>
-  </data>
-  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
-    <value>Informar un error a Swarmops (en Github)</value>
-  </data>
-  <data name="Menu5_Administration_Debug" xml:space="preserve">
-    <value>Depurar</value>
-  </data>
-  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
-    <value>Personificar</value>
-  </data>
-  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
-    <value>Informes de VAT</value>
-    <comment>This is a European thing (Value Added Tax).</comment>
-  </data>
-  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
-    <value>Prueba Eco de la cartera caliente Bitcoin</value>
-  </data>
-  
-  
-  
-  <data name="Menu5_Financial_Salary" xml:space="preserve">
-    <value>Mi salario</value>
-    <comment>This lists salary payments for the logged on individual</comment>
-  </data>
-  
-  
-  
-  
   
   <data name="Menu5_Reports" xml:space="preserve">
     <value>Informes</value>

@@ -122,6 +122,7 @@
   
   
   
+  
   <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
     <value>À espera de transação...</value>
   </data>
@@ -129,8 +130,26 @@
     <value>Transação detectada, a verificar...</value>
   </data>
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Ativistas serão chamados de</value>
+  </data>
+  
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Ainda-não-membros são chamados</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Organização base</value>
@@ -171,6 +190,7 @@
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Comercial</value>
   </data>
+  
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Sem fins lucrativos</value>
   </data>
@@ -251,6 +271,7 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Notificações de Admin do Nome</value>
   </data>
+  
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>O porto SMTP deve ser numérico. Não foi possível compreender o host:port.</value>
   </data>
@@ -284,27 +305,6 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Deveria realmente, realmente, REALMENTE utilizar HTTPS para um website como este. Mas já sabia disso, não é verdade?</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Ainda-não-membros são chamados</value>
-  </data>
-  
   
   
 </root>

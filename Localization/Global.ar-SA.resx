@@ -141,6 +141,23 @@
     <value>لوحة المعلومات</value>
     <comment>Title of default page</comment>
   </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>حدث خطأ عام وغير محدد أثناء الاتصال مع خادم نظام سوارموبس. هل ما زالت الشكبة متصلة والخادم متوافراً؟</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>لم يفهم Swarmops مبلغ العملة الخاصة بك. ( ألف دولار و صفر سنت تكتب على هذا الشكل "{0:N2}".) حاول مرة اخرى؟</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>يبدو أن مستخدمًا آخر كان سباقا لهذه العملية ؛ تغيرت قاعدة البيانات اثناء قيامك بالبحث. يرجى فحص الشروط المتغيرة وإعادة المحاولة مع ما كنت تريد القيام به.</value>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>حدث خطأ غير محدد أثناء محاولة ادخال هذه القيمة.</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>الحساب</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
   <data name="Financial_Actuals" xml:space="preserve">
     <value>البيانات الفعلية</value>
   </data>
@@ -149,6 +166,41 @@
   </data>
   <data name="Financial_ActualsToDate" xml:space="preserve">
     <value>البيانات الفعلية منذ بداية العام</value>
+  </data>
+  
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>المبلغ</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>ضريبة القيمة المضافة</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>الضريبة على القيمة المضافة</value>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>الأصول</value>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>سلسلة</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>نقدا</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>النواة</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>الذهب</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>إرث</value>
+    <comment>Keep short - seven chars max</comment>
   </data>
   <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
     <value>السجلات المحاسبية</value>
@@ -162,20 +214,100 @@
   <data name="Financial_CashAdvance" xml:space="preserve">
     <value>المقدم</value>
   </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>السلفة النقدية رقم #{0:N0} لـ {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>السلفة النقدية رقم #{0:N0} استرداد</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>السلف النقدية {0} الاسترداد</value>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>السلف</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>السلف النقدية</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>السلف النقدية {0} لـ {1}</value>
+  </data>
   <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
     <value>سلفة نقدية رقم {0}</value>
   </data>
   <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
     <value>سلف نقدية {0}</value>
   </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>الزبون / العميل</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>النفقات</value>
+  </data>
+  
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>الخصوم</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>تاريخ الاستحقاق</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  
+  
+  
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>صرف</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>المطالبة المالية رقم #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>النفقات</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>مطالبات نفقات</value>
   </data>
   <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
     <value>صرف رقم #{0:N0}</value>
   </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>صرف رقم #{0:N0} (ناقص مقدما رقم #{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>صرف رقم #{0:N0} (ناقص السلف)</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>مطالبة مالية رقم #{0:N0} من قبل {1}</value>
+  </data>
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>النفقات {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>النفقات {0} (ناقص السلفة رقم{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>النفقات {0} (ناقص السلف)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>المطالبات المالية {0} عن طريق {1}</value>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>السجل العام</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>الفواتير</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>الفواتير الواردة</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>فاتورة واردة رقم #{0:N0}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>الفاتورة الواردة رقم #{0:N0} من قبل {1}</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>الإيراد</value>
   </data>
   <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>الفاتورة</value>
@@ -183,15 +315,61 @@
   <data name="Financial_InvoiceOutbound" xml:space="preserve">
     <value>الفاتوره</value>
   </data>
+  
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>الفواتير</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>الفواتير الصادرة</value>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>الفاتورة الصادرة #{0:N0} لـ {1}</value>
+  </data>
+  
+  
   <data name="Financial_Parley" xml:space="preserve">
     <value>المؤتمر</value>
+  </data>
+  
+  
+  
+  
+  
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>الربح/الخسارة السنوية لتاريخ ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>صورة إيصال {0} لـ{1}</value>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>سجل الرواتب {0} للفترة {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>ضرائب الرواتب للفترة {0:yyyy-MMM}</value>
   </data>
   <data name="Financial_Salary" xml:space="preserve">
     <value>المرتب</value>
   </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>راتب رقم #{0:N0} للفترة {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>راتب رقم #{0:N0} للفترة {1:yyyy-MMM} لـ {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>راتب رقم #{0:N0}</value>
+  </data>
   <data name="Financial_SalarySpecification" xml:space="preserve">
     <value>مرتبات شهر {0:yyyy-MMM}</value>
     <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>الضرائب على الراتب رقم #{0:N0} للفترة {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>المورد</value>
   </data>
   <data name="Financial_TaxesSpecification" xml:space="preserve">
     <value>الضرائب على المرتبات {0}</value>
@@ -203,126 +381,9 @@
     <value>رجل الضرائب</value>
     <comment>Used as recipient for taxes.</comment>
   </data>
-  <data name="Financial_YearlyResult" xml:space="preserve">
-    <value>النتائج السنوية</value>
-  </data>
-  <data name="Global_ASAP" xml:space="preserve">
-    <value>في أسرع وقت ممكن</value>
-    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
-  </data>
-  <data name="Global_Cancel" xml:space="preserve">
-    <value>الغاء</value>
-    <comment>Displayed as cancellation link on changing something</comment>
-  </data>
-  <data name="Global_Change" xml:space="preserve">
-    <value>تغيير؟</value>
-    <comment>Link after describing what the user is looking at, allowing a change.</comment>
-  </data>
-  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
-    <value>انقر فوق الصورة لتكبيرها.</value>
-    <comment>Displayed where thumbnails can be enlarged modally.</comment>
-  </data>
-  <data name="Global_Confirm" xml:space="preserve">
-    <value>تأكيد</value>
-    <comment>Displayed as confirmation link on changing something</comment>
-  </data>
-  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
-    <value>--حدد الميزانية/الحساب--</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
-    <value>--حدد المنظمة--</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_GoThere" xml:space="preserve">
-    <value>الذهاب إلى هناك...</value>
-    <comment>Link after describing something.</comment>
-  </data>
-  <data name="Global_NoOwner" xml:space="preserve">
-    <value>لا أحد</value>
-    <comment>Displayed when an account/position etc is vacant</comment>
-  </data>
-  <data name="Global_Owner" xml:space="preserve">
-    <value>صاحب الحساب</value>
-  </data>
-  <data name="Global_ProcessingFile" xml:space="preserve">
-    <value>معالجة  الملف...</value>
-    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
-  </data>
-  <data name="Global_UploadFile" xml:space="preserve">
-    <value>رفع ملف</value>
-    <comment>Displayed on "Submit" button next to file upload controls.</comment>
-  </data>
-  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
-    <value>رفع ملف إلى سوارموبس</value>
-    <comment>Used as header above upload sections.</comment>
-  </data>
-  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
-    <value>الرجاء اختيار ملف لرفعه.</value>
-    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
-  </data>
-  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
-    <value>أنت الآن مسجل دخولك في منظمة &lt;strong&gt;{0}&lt;/strong&gt;. هل تريد التبديل إلى منظمة أخرى؟</value>
-  </data>
-  <data name="Sidebar_Actions" xml:space="preserve">
-    <value>إجراءات</value>
-    <comment>List of shortcuts to likely actions</comment>
-  </data>
-  <data name="Sidebar_Actions_None" xml:space="preserve">
-    <value>لا إجراءات مقترحة في هذه المرحلة.</value>
-    <comment>No shortcuts from this page right now.</comment>
-  </data>
-  <data name="Sidebar_Information" xml:space="preserve">
-    <value>معلومات</value>
-    <comment>Information about current page</comment>
-  </data>
-  <data name="Sidebar_Todo" xml:space="preserve">
-    <value>مهام</value>
-    <comment>List of todo items</comment>
-  </data>
-  <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>&lt;strong&gt;واضح:&lt;/strong&gt;ليس هنالك أي إجراء عاجل. يا للروعة!</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
-  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
-    <value>سيتم وضع الإجراءات هنا.</value>
-    <comment>Placeholder for future action items. Temporary.</comment>
-  </data>
-  <data name="Financial_CashAdvances" xml:space="preserve">
-    <value>السلف</value>
-  </data>
-  <data name="Financial_CashAdvancesLong" xml:space="preserve">
-    <value>السلف النقدية</value>
-  </data>
-  <data name="Financial_ExpenseClaims" xml:space="preserve">
-    <value>النفقات</value>
-  </data>
-  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
-    <value>مطالبات نفقات</value>
-  </data>
-  <data name="Financial_InboundInvoices" xml:space="preserve">
-    <value>الفواتير</value>
-  </data>
-  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
-    <value>الفواتير الواردة</value>
-  </data>
-  <data name="Financial_OutboundInvoices" xml:space="preserve">
-    <value>الفواتير</value>
-  </data>
-  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
-    <value>الفواتير الصادرة</value>
-  </data>
-  <data name="Global_NA" xml:space="preserve">
-    <value>لا ينطبق</value>
-  </data>
-  <data name="Global_NALong" xml:space="preserve">
-    <value>لا ينطبق</value>
-  </data>
-  <data name="Global_AsOfNow" xml:space="preserve">
-    <value>وحتى الآن</value>
-  </data>
-  <data name="Global_Today" xml:space="preserve">
-    <value>اليوم</value>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
   </data>
   <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
     <value>نوع التكلفة</value>
@@ -332,84 +393,262 @@
     <value>مشروع</value>
     <comment>Tagging costs/income to projects</comment>
   </data>
-  <data name="Sidebar_Related" xml:space="preserve">
-    <value>ذات الصلة</value>
-    <comment>List of shortcuts to related actions to current one</comment>
+  
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>النتائج السنوية</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>صرف رقم #{0:N0} (ناقص مقدما رقم #{1:N0})</value>
+  
+  
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>منذ بداية السنة</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>صرف رقم #{0:N0} (ناقص السلف)</value>
+  
+  <data name="Global_2FA" xml:space="preserve">
+    <value>المصادقة ذات العاملين</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
-    <value>النفقات {0} (ناقص السلفة رقم{1})</value>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>المصادقة ذات العامل الثنائي</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
-    <value>النفقات {0} (ناقص السلف)</value>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>المصادقة ذات العاملين</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>مطالبة مالية رقم #{0:N0} من قبل {1}</value>
+  <data name="Global_Action" xml:space="preserve">
+    <value>الإجراء</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
   </data>
-  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
-    <value>الفاتورة الواردة رقم #{0:N0} من قبل {1}</value>
+  <data name="Global_Add" xml:space="preserve">
+    <value>اضافة</value>
+    <comment>as in "add element", "add row", etc</comment>
   </data>
-  <data name="Financial_ReceiptSpecification" xml:space="preserve">
-    <value>صورة إيصال {0} لـ{1}</value>
+  <data name="Global_Address" xml:space="preserve">
+    <value>العنوان</value>
+    <comment>As in physical location</comment>
   </data>
-  <data name="Global_ImageSpecification" xml:space="preserve">
-    <value>صورة {0} من {1}</value>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>الكل</value>
   </data>
-  <data name="Financial_DueDate" xml:space="preserve">
-    <value>تاريخ الاستحقاق</value>
-    <comment>For invoices and similar</comment>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>في أسرع وقت ممكن</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
   </data>
-  <data name="Financial_Supplier" xml:space="preserve">
-    <value>المورد</value>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>وحتى الآن</value>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>الغاء</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>تغيير؟</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>مدينة</value>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>انقر فوق الصورة لتكبيرها.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>تأكيد</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>الدولة</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>إنشاء</value>
+    <comment>Like "Create Organization"</comment>
   </data>
   <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
     <value>الإنجليزية (الولايات المتحدة)</value>
     <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
   </data>
-  <data name="Global_No" xml:space="preserve">
-    <value>لا</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>مُخصّص</value>
+    <comment>As in "show me the advanced options"</comment>
   </data>
-  <data name="Global_Yes" xml:space="preserve">
-    <value>نعم</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Date" xml:space="preserve">
+    <value>التاريخ</value>
+    <comment>As in calendar date, for example January 21</comment>
   </data>
-  <data name="Financial_Asset" xml:space="preserve">
-    <value>الأصول</value>
+  
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>yyyy, MMM d</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
-  <data name="Financial_Cost" xml:space="preserve">
-    <value>النفقات</value>
+  
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>شهر/يوم/سنة (MM/DD/YYYY)</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Financial_Debt" xml:space="preserve">
-    <value>الخصوم</value>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>yyyy, MMM d</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
-  <data name="Financial_Income" xml:space="preserve">
-    <value>الإيراد</value>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
   </data>
-  <data name="Global_SelectOne" xml:space="preserve">
-    <value>-- اختر واحدا --</value>
-    <comment>Shown in dropdowns when selection required</comment>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>يرجى التعريف لتمكين هذه الميزة</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>الوصف</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>حمل هذا</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>مستندات</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>--حدد الميزانية/الحساب--</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>--حدد المنظمة--</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>لقد قمت بالتو بالدخول لـ&lt;strong&gt;منظمة الـ sandbox.&lt;br/&gt;&lt;br/&gt; هذا محيط أمن من خلاله يمكنك تجربة جميع خواص الـ Swarmops من دون إلحاق أي ضرر لبيانات الإنتاج. قم بالإستمتاع كما شئت، وقم بالرجوع إلى محيط الإنتاج الخاص بك عندما تنتهي من التجارب.</value>
+  </data>
+  
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>يتعذر الاتصال بـ WebSocket. لن تتوفر تحديثات مباشرة فيما بعد.</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>أنثى</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>لا يمكن لهذا الحقل ان يكون فارغا.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>رفع ملف النتائج</value>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>اعلام</value>
+    <comment>As in a table column header</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>المنطقة الجغرافية</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>إبدأ</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>الذهاب إلى هناك...</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>صورة {0} من {1}</value>
+  </data>
+  
+  
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>البريد</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>ذكر</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>الحد الادنى/ الحد الاقصى</value>
+    <comment>note the spaces</comment>
   </data>
   <data name="Global_Missing" xml:space="preserve">
     <value>- مفقود -</value>
     <comment>When a record or similar is missing. Used in grids.</comment>
   </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>شهر</value>
+  </data>
+  
   <data name="Global_Multiple" xml:space="preserve">
     <value>- متعدد -</value>
     <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>لا ينطبق</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>لا ينطبق</value>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>الاسم</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>لا</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>ليس هنالك أي إجراء عاجل. يا للروعة!</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(لا يوجد تطابق)</value>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>لا أحد</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>لم يتم تحديد اي مبرر.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>ملاحظات</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(ملغاة ، باطلة، منعدمة)</value>
+    <comment>Used when something is determined invalid</comment>
   </data>
   <data name="Global_Off" xml:space="preserve">
     <value>إغلاق</value>
     <comment>Off (as opposed to On)</comment>
   </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>الضابط</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>الضابط</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>الضابط</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>الضباط</value>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>موافق</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
   <data name="Global_On" xml:space="preserve">
     <value>فتح</value>
     <comment>On (as opposed to Off)</comment>
+  </data>
+  
+  <data name="Global_Organization" xml:space="preserve">
+    <value>المنظمة</value>
   </data>
   <data name="Global_Organization_Commercial" xml:space="preserve">
     <value>تجاري</value>
@@ -423,44 +662,27 @@
     <value>غير ربحي</value>
     <comment>Non-profit (activist, political parties)</comment>
   </data>
-  <data name="Global_Geography" xml:space="preserve">
-    <value>المنطقة الجغرافية</value>
-    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
-  </data>
-  <data name="Global_Action" xml:space="preserve">
-    <value>الإجراء</value>
-    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
-  </data>
-  <data name="Global_Mail" xml:space="preserve">
-    <value>البريد</value>
-    <comment>Somebody's email address.</comment>
-  </data>
-  <data name="Global_Name" xml:space="preserve">
-    <value>الاسم</value>
-    <comment>A plain person's first and last name</comment>
-  </data>
-  <data name="Global_Notes" xml:space="preserve">
-    <value>ملاحظات</value>
-    <comment>Small notes in a grid, maybe in icon form</comment>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>صاحب الحساب</value>
   </data>
   <data name="Global_Phone" xml:space="preserve">
     <value>الهاتف</value>
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>
-  <data name="Global_Custom" xml:space="preserve">
-    <value>مُخصّص</value>
-    <comment>As in "show me the advanced options"</comment>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>الرمز البريدي</value>
   </data>
-  <data name="Global_Create" xml:space="preserve">
-    <value>إنشاء</value>
-    <comment>Like "Create Organization"</comment>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>متابعة</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
   </data>
-  <data name="Global_AllYear" xml:space="preserve">
-    <value>الكل</value>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>معالجة  الملف...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
-  <data name="Global_Description" xml:space="preserve">
-    <value>الوصف</value>
-    <comment>As a general header of any description field</comment>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>التقدم</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
   <data name="Global_Q1" xml:space="preserve">
     <value>الربع 1</value>
@@ -478,89 +700,91 @@
     <value>الربع 4</value>
     <comment>Fourth quarter of the year</comment>
   </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>-- اختر واحدا --</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>قم بارساله لي عبر البريد الاكتروني</value>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(متعدد)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- اختيار - متعدد --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  
+  
+  
+  <data name="Global_Submit" xml:space="preserve">
+    <value>إرسال</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>النظام</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
   <data name="Global_Timestamp" xml:space="preserve">
     <value>التوقيت</value>
   </data>
-  <data name="Ledgers_Balance" xml:space="preserve">
-    <value>الرصيد</value>
-    <comment>As in 'account balance', not as in staying upright</comment>
+  <data name="Global_Today" xml:space="preserve">
+    <value>اليوم</value>
   </data>
-  <data name="Ledgers_Credit" xml:space="preserve">
-    <value>دائن</value>
+  <data name="Global_Total" xml:space="preserve">
+    <value>المجموع</value>
+    <comment>Used as footer in tables, summarizing something</comment>
   </data>
-  <data name="Ledgers_Debit" xml:space="preserve">
-    <value>مدين</value>
-  </data>
-  <data name="Global_Organization" xml:space="preserve">
-    <value>المنظمة</value>
-  </data>
-  <data name="Sidebar_Help" xml:space="preserve">
-    <value>المساعده</value>
-  </data>
-  <data name="Global_Female" xml:space="preserve">
-    <value>أنثى</value>
-    <comment>Legal gender</comment>
-  </data>
-  <data name="Global_Male" xml:space="preserve">
-    <value>ذكر</value>
-    <comment>Legal gender</comment>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter ID</value>
   </data>
   <data name="Global_UnknownUndisclosed" xml:space="preserve">
     <value>غير معروف أو غير مصرح به</value>
     <comment>Used for gender et al</comment>
   </data>
-  <data name="Global_DateFormatShortReadable" xml:space="preserve">
-    <value>شهر/يوم/سنة (MM/DD/YYYY)</value>
-    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>رفع</value>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>yyyy, MMM d</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>رفع ملف</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  <data name="Timespan_FiveYears" xml:space="preserve">
-    <value>خمس سنوات</value>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>رفع ملف إلى سوارموبس</value>
+    <comment>Used as header above upload sections.</comment>
   </data>
-  <data name="Timespan_Forever" xml:space="preserve">
-    <value>مدى الحياة</value>
-    <comment>Like "a lifetime membership"</comment>
-  </data>
-  <data name="Timespan_OneMonth" xml:space="preserve">
-    <value>شهر واحد</value>
-  </data>
-  <data name="Timespan_OneYear" xml:space="preserve">
-    <value>سنة واحدة</value>
-  </data>
-  <data name="Timespan_TwoYears" xml:space="preserve">
-    <value>سنتان</value>
-    <comment>Like "a two-year membership"</comment>
-  </data>
-  <data name="Global_Address" xml:space="preserve">
-    <value>العنوان</value>
-    <comment>As in physical location</comment>
-  </data>
-  <data name="Global_City" xml:space="preserve">
-    <value>مدينة</value>
-  </data>
-  <data name="Global_Country" xml:space="preserve">
-    <value>الدولة</value>
-    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
-  </data>
-  <data name="Global_DateOfBirth" xml:space="preserve">
-    <value>تاريخ الميلاد</value>
-    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
-  </data>
-  <data name="Global_PostalCode" xml:space="preserve">
-    <value>الرمز البريدي</value>
-  </data>
-  <data name="Error_AjaxCallException" xml:space="preserve">
-    <value>حدث خطأ عام وغير محدد أثناء الاتصال مع خادم نظام سوارموبس. هل ما زالت الشكبة متصلة والخادم متوافراً؟</value>
-  </data>
-  <data name="Global_Month" xml:space="preserve">
-    <value>شهر</value>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>الرجاء اختيار ملف لرفعه.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
   <data name="Global_View" xml:space="preserve">
     <value>عرض</value>
     <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>متطوع</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>متطوع</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>متطوع</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>متطوعين</value>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>إنهاء</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>جاري العمل...</value>
   </data>
   <data name="Global_Year" xml:space="preserve">
     <value>سنة</value>
@@ -572,216 +796,40 @@
     <value>سنة {0}</value>
     <comment>As in "the year X".</comment>
   </data>
-  <data name="Global_DefineToEnable" xml:space="preserve">
-    <value>يرجى التعريف لتمكين هذه الميزة</value>
-    <comment>shown as watermark on some edit boxes</comment>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>نعم</value>
+    <comment>For yes/no options</comment>
   </data>
-  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
-    <value>السلفة النقدية رقم #{0:N0} لـ {1}</value>
+  
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>الرصيد</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
   </data>
-  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
-    <value>السلفة النقدية رقم #{0:N0} استرداد</value>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>دائن</value>
   </data>
-  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
-    <value>السلف النقدية {0} الاسترداد</value>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>مدين</value>
   </data>
-  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
-    <value>السلف النقدية {0} لـ {1}</value>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;بيتد صفحتان-FACTOR "بنجاح تمكين مصادقة"&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;عند تسجيل الدخول إلى هذا النظام من الآن فصاعدا، تحتاج إلى استخدام تطبيق بيتد (BitId) الذي إستخدمته توا من أجل مسح الرقم التسلسلي.</value>
   </data>
-  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
-    <value>المطالبة المالية رقم #{0:N0}</value>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>المصادقة ذات عاملين لـ BitID لم يتم تفعيلها بعد.</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
-    <value>المطالبات المالية {0} عن طريق {1}</value>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>قم بمسح هذا الكود لتفعيل BitID</value>
   </data>
-  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
-    <value>فاتورة واردة رقم #{0:N0}</value>
-  </data>
-  <data name="Global_System" xml:space="preserve">
-    <value>النظام</value>
-    <comment>as in "Created by: System" for roles, transactions etc.</comment>
-  </data>
-  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
-    <value>سجل الرواتب {0} للفترة {1:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
-    <value>ضرائب الرواتب للفترة {0:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
-    <value>راتب رقم #{0:N0} للفترة {1:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
-    <value>راتب رقم #{0:N0} للفترة {1:yyyy-MMM} لـ {2}</value>
-    <comment>0 is identity, 1 is month, 2 is name</comment>
-  </data>
-  <data name="Financial_SalaryIdentity" xml:space="preserve">
-    <value>راتب رقم #{0:N0}</value>
-  </data>
-  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
-    <value>الضرائب على الراتب رقم #{0:N0} للفترة {1:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_Account" xml:space="preserve">
-    <value>الحساب</value>
-    <comment>as in bookkeeping or ledger account</comment>
-  </data>
-  <data name="Financial_Amount" xml:space="preserve">
-    <value>المبلغ</value>
-    <comment>as in amount of money</comment>
-  </data>
-  <data name="Global_Add" xml:space="preserve">
-    <value>اضافة</value>
-    <comment>as in "add element", "add row", etc</comment>
-  </data>
-  <data name="Global_Several_Display" xml:space="preserve">
-    <value>(متعدد)</value>
-    <comment>Displayed when multiple items</comment>
-  </data>
-  <data name="Global_Several_SelectOne" xml:space="preserve">
-    <value>-- اختيار - متعدد --</value>
-    <comment>Displayed when multiple choice</comment>
-  </data>
-  <data name="Sidebar_Options" xml:space="preserve">
-    <value>الخيارات</value>
-    <comment>For various page-specific checkboxes etc</comment>
-  </data>
-  <data name="Global_LoadingPlaceholder" xml:space="preserve">
-    <value>[...loading...]</value>
-  </data>
-  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
-    <value>[...]</value>
-  </data>
-  <data name="Global_NoMatch" xml:space="preserve">
-    <value>(لا يوجد تطابق)</value>
-  </data>
-  <data name="Global_Working" xml:space="preserve">
-    <value>جاري العمل...</value>
-  </data>
-  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
-    <value>يتعذر الاتصال بـ WebSocket. لن تتوفر تحديثات مباشرة فيما بعد.</value>
-  </data>
-  <data name="Error_CurrencyParsing" xml:space="preserve">
-    <value>لم يفهم Swarmops مبلغ العملة الخاصة بك. ( ألف دولار و صفر سنت تكتب على هذا الشكل "{0:N2}".) حاول مرة اخرى؟</value>
-    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
-  </data>
-  <data name="Global_NoReasonGiven" xml:space="preserve">
-    <value>لم يتم تحديد اي مبرر.</value>
-    <comment>As inter-activist communication when denying resources, et cetera</comment>
-  </data>
-  <data name="Global_NoActionItems" xml:space="preserve">
-    <value>ليس هنالك أي إجراء عاجل. يا للروعة!</value>
-  </data>
-  <data name="Global_MinMax" xml:space="preserve">
-    <value>الحد الادنى/ الحد الاقصى</value>
-    <comment>note the spaces</comment>
-  </data>
-  <data name="Swarm_AssignedPerson" xml:space="preserve">
-    <value>الشخص المعين</value>
-  </data>
-  <data name="Swarm_Position" xml:space="preserve">
-    <value>الموقف</value>
-  </data>
-  <data name="Error_DatabaseConcurrency" xml:space="preserve">
-    <value>يبدو أن مستخدمًا آخر كان سباقا لهذه العملية ؛ تغيرت قاعدة البيانات اثناء قيامك بالبحث. يرجى فحص الشروط المتغيرة وإعادة المحاولة مع ما كنت تريد القيام به.</value>
-  </data>
-  <data name="Swarm_TypeName" xml:space="preserve">
-    <value>اكتب اسمًا...</value>
-  </data>
-  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
-    <value>شهر واحد</value>
-  </data>
-  <data name="Timespan_Selection_OneYear" xml:space="preserve">
-    <value>سنة واحدة</value>
-  </data>
-  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
-    <value>ستة اشهر</value>
-  </data>
-  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
-    <value>ثلاثة اشهر</value>
-  </data>
-  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
-    <value>شهرين</value>
-  </data>
-  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
-    <value>سنتين</value>
-  </data>
-  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
-    <value>حتى الإنهاء</value>
-    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
-  </data>
-  <data name="Global_WizardFinish" xml:space="preserve">
-    <value>إنهاء</value>
-  </data>
-  <data name="Global_WizardNext" xml:space="preserve">
-    <value>التالي</value>
-  </data>
-  <data name="Global_WizardPrevious" xml:space="preserve">
-    <value>السابق</value>
-  </data>
-  <data name="Financial_YTD" xml:space="preserve">
-    <value>منذ بداية السنة</value>
-    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
-  </data>
-  <data name="Global_Flags" xml:space="preserve">
-    <value>اعلام</value>
-    <comment>As in a table column header</comment>
-  </data>
-  <data name="Global_Total" xml:space="preserve">
-    <value>المجموع</value>
-    <comment>Used as footer in tables, summarizing something</comment>
-  </data>
-  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
-    <value>لا يمكن لهذا الحقل ان يكون فارغا.</value>
-    <comment>Displayed as error when emptying fields like your name</comment>
-  </data>
-  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
-    <value>حدث خطأ غير محدد أثناء محاولة ادخال هذه القيمة.</value>
-  </data>
-  <data name="Global_TwitterId" xml:space="preserve">
-    <value>Twitter ID</value>
+  
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>المصادقة ذات عاملين لـ BitID (توقيع البتكوين)</value>
   </data>
   <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
     <value>المصادقة ذات العاملين لـ BitID (مَخجَر على عملية تسجيل الدخول من 48 ساعة إلى7 أيام)</value>
     <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
   </data>
-  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
-    <value>الحساب</value>
-  </data>
-  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
-    <value>توفير الحماية</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
-    <value>إعادة تعيين كلمة المرور</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
-    <value>أرسل بريدا يتضمن رابط اعادة تعيين كلمة المرور</value>
-  </data>
-  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
-    <value>لا يبدو ان هذا رقم هاتف صحيح, ولكننا نخزنه كما هو مكتوب هنا رغم ذلك.</value>
-    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
-    <value>إعادة تعيين كلمة مرور المستخدم؟</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
-    <value>أنت تعيد تعيين كلمة مرور المستخدم. سيتوصل هذا المستخدم برابط لإعادة التعيين عبر البريد الالكتروني، والذي يمكن للمستخدمين تتبعه لإعادة تعيين كلمة المرور لـ Swarmops الخاص بهم.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt; لا تفعل هذا ابدا قبل ان تطلب المساعدة بشكل خاص من قبل المستخدم. &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; متابعة إجراء إعادة تعيين كلمة المرور؟</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
-    <value>عملية اعادة تعيين كلمة المرور محظورة</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
-    <value>تم تغيير عنوان البريد الخاص بهذا المستعمل مؤخرا (اقل من اسبوع). ومن أجل حماية أكثر، لا يمكن ولن يتم ارسال أي رابط لاعادة تعيين كلمة المرور لعنوان بريد حديث التغيير.</value>
-  </data>
-  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
-    <value>لقد تم ارسال رابط اعادة تعيين كلمة المرور الى هذا المستخدم.</value>
-  </data>
-  <data name="Global_2FA" xml:space="preserve">
-    <value>المصادقة ذات العاملين</value>
-  </data>
-  <data name="Global_2FA_Short" xml:space="preserve">
-    <value>المصادقة ذات العامل الثنائي</value>
-  </data>
-  <data name="Global_2FA_Shorter" xml:space="preserve">
-    <value>المصادقة ذات العاملين</value>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>المصادقة ذات عاملين لـ BitID</value>
   </data>
   <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
     <value>&lt;strong&gt;لا يمكن توفير المصادقة ذات العاملين&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; لا يمكنك تشغيل المصادقة ذات عاملين لشخص أخر. يمكنكم فقط القيام بذلك بأنفسهم، كونهم الوحيدين الذي بحوزتهم المفاتيح السرية.</value>
@@ -804,39 +852,17 @@
   <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
     <value>لم يتم حذف المصادقة ذات عاملين و هي لا تزال قائمة.</value>
   </data>
-  <data name="Timespan_Selection_OneDay" xml:space="preserve">
-    <value>يوم واحد</value>
-  </data>
-  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
-    <value>سبعة ايام</value>
-  </data>
-  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
-    <value>يومين</value>
-  </data>
-  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
-    <value>اسبوعين</value>
-  </data>
-  <data name="Master_BitIdRegistered" xml:space="preserve">
-    <value>&lt;strong&gt;بيتد صفحتان-FACTOR "بنجاح تمكين مصادقة"&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;عند تسجيل الدخول إلى هذا النظام من الآن فصاعدا، تحتاج إلى استخدام تطبيق بيتد (BitId) الذي إستخدمته توا من أجل مسح الرقم التسلسلي.</value>
-  </data>
-  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
-    <value>المصادقة ذات عاملين لـ BitID لم يتم تفعيلها بعد.</value>
-  </data>
-  <data name="Master_BitIdRegister_Header" xml:space="preserve">
-    <value>قم بمسح هذا الكود لتفعيل BitID</value>
-  </data>
-  
-  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
-    <value>المصادقة ذات عاملين لـ BitID (توقيع البتكوين)</value>
-  </data>
-  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
-    <value>المصادقة ذات عاملين لـ BitID</value>
-  </data>
   <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
     <value>اكتب كلمة المرور الحالية لكي يتاح لك التغيير</value>
   </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>الحساب</value>
+  </data>
   <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
     <value>الحماية الخاصة بك</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>توفير الحماية</value>
   </data>
   <data name="Master_EditPersonNewPassword1" xml:space="preserve">
     <value>تعيين كلمة مرور جديدة</value>
@@ -853,159 +879,133 @@
   <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
     <value>&lt;strong&gt;تم تغيير كلمة السر&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;لقد قمت بتغيير كلمة السر بنجاح. وكإجراء أمني بسيط، سنقوم بتعطيل أي سحب في الساعات الـ 48 القادمة.</value>
   </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>إعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>إعادة تعيين كلمة مرور المستخدم؟</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>أنت تعيد تعيين كلمة مرور المستخدم. سيتوصل هذا المستخدم برابط لإعادة التعيين عبر البريد الالكتروني، والذي يمكن للمستخدمين تتبعه لإعادة تعيين كلمة المرور لـ Swarmops الخاص بهم.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt; لا تفعل هذا ابدا قبل ان تطلب المساعدة بشكل خاص من قبل المستخدم. &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; متابعة إجراء إعادة تعيين كلمة المرور؟</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>أرسل بريدا يتضمن رابط اعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>عملية اعادة تعيين كلمة المرور محظورة</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>تم تغيير عنوان البريد الخاص بهذا المستعمل مؤخرا (اقل من اسبوع). ومن أجل حماية أكثر، لا يمكن ولن يتم ارسال أي رابط لاعادة تعيين كلمة المرور لعنوان بريد حديث التغيير.</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>لقد تم ارسال رابط اعادة تعيين كلمة المرور الى هذا المستخدم.</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>لا يبدو ان هذا رقم هاتف صحيح, ولكننا نخزنه كما هو مكتوب هنا رغم ذلك.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
   <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
     <value>إذا سمحت، قم بتفعيل المصادقة ذات عاملين لـ BitID.</value>
   </data>
-  <data name="Global_Officer_Female" xml:space="preserve">
-    <value>الضابط</value>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>أنت الآن مسجل دخولك في منظمة &lt;strong&gt;{0}&lt;/strong&gt;. هل تريد التبديل إلى منظمة أخرى؟</value>
   </data>
-  <data name="Global_Officer_Male" xml:space="preserve">
-    <value>الضابط</value>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>إجراءات</value>
+    <comment>List of shortcuts to likely actions</comment>
   </data>
-  <data name="Global_Officer_Neutral" xml:space="preserve">
-    <value>الضابط</value>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>لا إجراءات مقترحة في هذه المرحلة.</value>
+    <comment>No shortcuts from this page right now.</comment>
   </data>
-  <data name="Global_Officer_Plural" xml:space="preserve">
-    <value>الضباط</value>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>المساعده</value>
   </data>
-  <data name="Global_Volunteer_Female" xml:space="preserve">
-    <value>متطوع</value>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>معلومات</value>
+    <comment>Information about current page</comment>
   </data>
-  <data name="Global_Volunteer_Male" xml:space="preserve">
-    <value>متطوع</value>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>الخيارات</value>
+    <comment>For various page-specific checkboxes etc</comment>
   </data>
-  <data name="Global_Volunteer_Neutral" xml:space="preserve">
-    <value>متطوع</value>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>ذات الصلة</value>
+    <comment>List of shortcuts to related actions to current one</comment>
   </data>
-  <data name="Global_Volunteer_Plural" xml:space="preserve">
-    <value>متطوعين</value>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>مهام</value>
+    <comment>List of todo items</comment>
   </data>
-  <data name="Global_Go" xml:space="preserve">
-    <value>إبدأ</value>
-    <comment>As in "execute", "run requested procedure"</comment>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>&lt;strong&gt;واضح:&lt;/strong&gt;ليس هنالك أي إجراء عاجل. يا للروعة!</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
   </data>
-  <data name="Global_Ok" xml:space="preserve">
-    <value>موافق</value>
-    <comment>Shown on confirmation dialogs</comment>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>سيتم وضع الإجراءات هنا.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
   </data>
-  <data name="Global_Proceed" xml:space="preserve">
-    <value>متابعة</value>
-    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>الشخص المعين</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>الموقف</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>اكتب اسمًا...</value>
   </data>
   <data name="Swarm_TypePartialName" xml:space="preserve">
     <value>أكتب اسما جزئيا...</value>
   </data>
-  <data name="Financial_ProfitToDate" xml:space="preserve">
-    <value>الربح/الخسارة السنوية لتاريخ ({0})</value>
-    <comment>{0} is the currency code</comment>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>خمس سنوات</value>
   </data>
-  <data name="Financial_Client" xml:space="preserve">
-    <value>الزبون / العميل</value>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>مدى الحياة</value>
+    <comment>Like "a lifetime membership"</comment>
   </data>
-  <data name="Global_Progress" xml:space="preserve">
-    <value>التقدم</value>
-    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>شهر واحد</value>
   </data>
-  <data name="Financial_TransactionIdShort" xml:space="preserve">
-    <value>Tx#</value>
-    <comment>Used in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>سنة واحدة</value>
   </data>
-  <data name="Global_DownloadThis" xml:space="preserve">
-    <value>حمل هذا</value>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>يوم واحد</value>
   </data>
-  <data name="Global_Dox" xml:space="preserve">
-    <value>مستندات</value>
-    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>شهر واحد</value>
   </data>
-  <data name="Global_SendThisInMail" xml:space="preserve">
-    <value>قم بارساله لي عبر البريد الاكتروني</value>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>سنة واحدة</value>
   </data>
-  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
-    <value>نقدا</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>سبعة ايام</value>
   </data>
-  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
-    <value>النواة</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>ستة اشهر</value>
   </data>
-  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
-    <value>الذهب</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>ثلاثة اشهر</value>
   </data>
-  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
-    <value>إرث</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>يومين</value>
   </data>
-  <data name="Financial_BitcoinChain" xml:space="preserve">
-    <value>سلسلة</value>
-    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>شهرين</value>
   </data>
-  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
-    <value>الفاتورة الصادرة #{0:N0} لـ {1}</value>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>اسبوعين</value>
   </data>
-  <data name="Global_Nuked" xml:space="preserve">
-    <value>(ملغاة ، باطلة، منعدمة)</value>
-    <comment>Used when something is determined invalid</comment>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>سنتين</value>
   </data>
-  <data name="Global_Upload" xml:space="preserve">
-    <value>رفع</value>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>حتى الإنهاء</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
   </data>
-  <data name="Global_FileUploadResults" xml:space="preserve">
-    <value>رفع ملف النتائج</value>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>سنتان</value>
+    <comment>Like "a two-year membership"</comment>
   </data>
-  <data name="Financial_AmountVat" xml:space="preserve">
-    <value>ضريبة القيمة المضافة</value>
-    <comment>The short form of Value Added Tax.</comment>
-  </data>
-  <data name="Financial_AmountVatFull" xml:space="preserve">
-    <value>الضريبة على القيمة المضافة</value>
-  </data>
-  <data name="Global_Date" xml:space="preserve">
-    <value>التاريخ</value>
-    <comment>As in calendar date, for example January 21</comment>
-  </data>
-  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
-    <value>yyyy, MMM d</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
-  </data>
-  <data name="Global_Submit" xml:space="preserve">
-    <value>إرسال</value>
-    <comment>As in "Submit this data for processing"</comment>
-  </data>
-  <data name="Financial_GeneralLedger" xml:space="preserve">
-    <value>السجل العام</value>
-  </data>
-  <data name="Global_EnteringSandbox" xml:space="preserve">
-    <value>لقد قمت بالتو بالدخول لـ&lt;strong&gt;منظمة الـ sandbox.&lt;br/&gt;&lt;br/&gt; هذا محيط أمن من خلاله يمكنك تجربة جميع خواص الـ Swarmops من دون إلحاق أي ضرر لبيانات الإنتاج. قم بالإستمتاع كما شئت، وقم بالرجوع إلى محيط الإنتاج الخاص بك عندما تنتهي من التجارب.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 </root>

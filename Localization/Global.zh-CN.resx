@@ -141,6 +141,23 @@
     <value>面板</value>
     <comment>Title of default page</comment>
   </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>和Swarmops服务器通讯时出现一个未指定的一般性错误。网络正常，且服务器可用吗？</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Swarmops无法理解你的货币金额。(一千元零分的格式应该"{0:N2}"。) 重试？</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>貌似另一个用户在这个操作上获胜；在你观望的时候数据库已被更改。请检查已更改的条件并重试你要进行的操作。</value>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>试图设置此值时出现未知错误。</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>账户</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
   <data name="Financial_Actuals" xml:space="preserve">
     <value>实际的</value>
   </data>
@@ -149,6 +166,41 @@
   </data>
   <data name="Financial_ActualsToDate" xml:space="preserve">
     <value>实际的 YTD</value>
+  </data>
+  
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>金额</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>增值税</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>增值税</value>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>资产</value>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>链</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>现金</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>核心</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>金</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>旧版</value>
+    <comment>Keep short - seven chars max</comment>
   </data>
   <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
     <value>簿记账户</value>
@@ -162,20 +214,100 @@
   <data name="Financial_CashAdvance" xml:space="preserve">
     <value>高级</value>
   </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>{1}的预付现金 #{0:N0}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>预付现金 {0:N0}回报</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>预付现金 {0} 回报</value>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>预付现金</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>{1} 的预付现金 {0}</value>
+  </data>
   <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
     <value>预付现金 #{0}</value>
   </data>
   <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
     <value>预付现金 {0}</value>
   </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>客户</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>支出</value>
+  </data>
+  
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>负债</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>截止日期</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  
+  
+  
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>支出</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>支出申报 #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>支出</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>报销支出</value>
   </data>
   <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
     <value>支出 #{0:N0}</value>
   </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>支出 #{0:N0} (减去 预算 #{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>支出 #{0:N0} (减 预算)</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>{1}提出的支出报销 #{0:N0}</value>
+  </data>
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>支出 {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>支出 {0} (减 预算 #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>支出 {0} (减 预算)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>{1} 提出的支出申报 {0}</value>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>总账</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>发票</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>入站发票</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>入站发票 #{0:N0}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>来自{1}的入站发票 #{0:N0}</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>收入</value>
   </data>
   <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>发票</value>
@@ -183,15 +315,61 @@
   <data name="Financial_InvoiceOutbound" xml:space="preserve">
     <value>发票</value>
   </data>
+  
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>发票</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>出站发票</value>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>出站发票 #{0:N0} to {1}</value>
+  </data>
+  
+  
   <data name="Financial_Parley" xml:space="preserve">
     <value>会议</value>
+  </data>
+  
+  
+  
+  
+  
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>截止到 ({0}) 的年度损益</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>小票照片 {0} ／ {1}</value>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>{1:yyyy-MMM}期间的薪水 {0}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>{0:yyyy-MMM}期间的收入税</value>
   </data>
   <data name="Financial_Salary" xml:space="preserve">
     <value>薪水</value>
   </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>{1:yyyy-MMM}期间的薪水 #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>{1:yyyy-MMM} 期间 {2}的薪水 #{0:N0}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>薪水 #{0:N0}</value>
+  </data>
   <data name="Financial_SalarySpecification" xml:space="preserve">
     <value>{0:yyyy-MMM}的工资</value>
     <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>{1:yyyy-MMM}期间的收入税 #{0:N0}</value>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>供应商</value>
   </data>
   <data name="Financial_TaxesSpecification" xml:space="preserve">
     <value>收入税 {0}</value>
@@ -203,126 +381,9 @@
     <value>税务人员</value>
     <comment>Used as recipient for taxes.</comment>
   </data>
-  <data name="Financial_YearlyResult" xml:space="preserve">
-    <value>年度结果</value>
-  </data>
-  <data name="Global_ASAP" xml:space="preserve">
-    <value>尽快</value>
-    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
-  </data>
-  <data name="Global_Cancel" xml:space="preserve">
-    <value>取消</value>
-    <comment>Displayed as cancellation link on changing something</comment>
-  </data>
-  <data name="Global_Change" xml:space="preserve">
-    <value>更改？</value>
-    <comment>Link after describing what the user is looking at, allowing a change.</comment>
-  </data>
-  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
-    <value>单击图像以放大。</value>
-    <comment>Displayed where thumbnails can be enlarged modally.</comment>
-  </data>
-  <data name="Global_Confirm" xml:space="preserve">
-    <value>确认</value>
-    <comment>Displayed as confirmation link on changing something</comment>
-  </data>
-  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
-    <value>-- 选择预算／账户 --</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
-    <value>-- 选择组织 --</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_GoThere" xml:space="preserve">
-    <value>去那里...</value>
-    <comment>Link after describing something.</comment>
-  </data>
-  <data name="Global_NoOwner" xml:space="preserve">
-    <value>没有人</value>
-    <comment>Displayed when an account/position etc is vacant</comment>
-  </data>
-  <data name="Global_Owner" xml:space="preserve">
-    <value>所有者</value>
-  </data>
-  <data name="Global_ProcessingFile" xml:space="preserve">
-    <value>处理文件...</value>
-    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
-  </data>
-  <data name="Global_UploadFile" xml:space="preserve">
-    <value>上传文件</value>
-    <comment>Displayed on "Submit" button next to file upload controls.</comment>
-  </data>
-  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
-    <value>上传文件到Swarmops</value>
-    <comment>Used as header above upload sections.</comment>
-  </data>
-  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
-    <value>请选择一个文件来上传。</value>
-    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
-  </data>
-  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
-    <value>你当前登录到&lt;strong&gt;{0}&lt;/strong&gt;。你想要切换到其他的组织吗？</value>
-  </data>
-  <data name="Sidebar_Actions" xml:space="preserve">
-    <value>操作</value>
-    <comment>List of shortcuts to likely actions</comment>
-  </data>
-  <data name="Sidebar_Actions_None" xml:space="preserve">
-    <value>当前没有建议的操作。</value>
-    <comment>No shortcuts from this page right now.</comment>
-  </data>
-  <data name="Sidebar_Information" xml:space="preserve">
-    <value>信息</value>
-    <comment>Information about current page</comment>
-  </data>
-  <data name="Sidebar_Todo" xml:space="preserve">
-    <value>待办</value>
-    <comment>List of todo items</comment>
-  </data>
-  <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>&lt;strong&gt;已全部做完:&lt;/strong&gt; 没有需要采取紧急行动的项目。耶！</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
-  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
-    <value>操作项目需要到这里。</value>
-    <comment>Placeholder for future action items. Temporary.</comment>
-  </data>
-  <data name="Financial_CashAdvances" xml:space="preserve">
-    <value>高级</value>
-  </data>
-  <data name="Financial_CashAdvancesLong" xml:space="preserve">
-    <value>预付现金</value>
-  </data>
-  <data name="Financial_ExpenseClaims" xml:space="preserve">
-    <value>支出</value>
-  </data>
-  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
-    <value>报销支出</value>
-  </data>
-  <data name="Financial_InboundInvoices" xml:space="preserve">
-    <value>发票</value>
-  </data>
-  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
-    <value>入站发票</value>
-  </data>
-  <data name="Financial_OutboundInvoices" xml:space="preserve">
-    <value>发票</value>
-  </data>
-  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
-    <value>出站发票</value>
-  </data>
-  <data name="Global_NA" xml:space="preserve">
-    <value>不适用</value>
-  </data>
-  <data name="Global_NALong" xml:space="preserve">
-    <value>不适用</value>
-  </data>
-  <data name="Global_AsOfNow" xml:space="preserve">
-    <value>截止到目前</value>
-  </data>
-  <data name="Global_Today" xml:space="preserve">
-    <value>今天</value>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
   </data>
   <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
     <value>成本类型</value>
@@ -332,84 +393,262 @@
     <value>项目</value>
     <comment>Tagging costs/income to projects</comment>
   </data>
-  <data name="Sidebar_Related" xml:space="preserve">
-    <value>相关的</value>
-    <comment>List of shortcuts to related actions to current one</comment>
+  
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>年度结果</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>支出 #{0:N0} (减去 预算 #{1:N0})</value>
+  
+  
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>YTD</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>支出 #{0:N0} (减 预算)</value>
+  
+  <data name="Global_2FA" xml:space="preserve">
+    <value>双重身份验证</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
-    <value>支出 {0} (减 预算 #{1})</value>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>双重身份验证</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
-    <value>支出 {0} (减 预算)</value>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>双重身份验证</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>{1}提出的支出报销 #{0:N0}</value>
+  <data name="Global_Action" xml:space="preserve">
+    <value>操作</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
   </data>
-  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
-    <value>来自{1}的入站发票 #{0:N0}</value>
+  <data name="Global_Add" xml:space="preserve">
+    <value>添加</value>
+    <comment>as in "add element", "add row", etc</comment>
   </data>
-  <data name="Financial_ReceiptSpecification" xml:space="preserve">
-    <value>小票照片 {0} ／ {1}</value>
+  <data name="Global_Address" xml:space="preserve">
+    <value>地址</value>
+    <comment>As in physical location</comment>
   </data>
-  <data name="Global_ImageSpecification" xml:space="preserve">
-    <value>图像 {0} ／ {1}</value>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>所有</value>
   </data>
-  <data name="Financial_DueDate" xml:space="preserve">
-    <value>截止日期</value>
-    <comment>For invoices and similar</comment>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>尽快</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
   </data>
-  <data name="Financial_Supplier" xml:space="preserve">
-    <value>供应商</value>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>截止到目前</value>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>取消</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>更改？</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>城市</value>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>单击图像以放大。</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>确认</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>国家</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>创建</value>
+    <comment>Like "Create Organization"</comment>
   </data>
   <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
     <value>英语 (美国)</value>
     <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
   </data>
-  <data name="Global_No" xml:space="preserve">
-    <value>否</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>定制</value>
+    <comment>As in "show me the advanced options"</comment>
   </data>
-  <data name="Global_Yes" xml:space="preserve">
-    <value>是</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Date" xml:space="preserve">
+    <value>日期</value>
+    <comment>As in calendar date, for example January 21</comment>
   </data>
-  <data name="Financial_Asset" xml:space="preserve">
-    <value>资产</value>
+  
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>MMMM d, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
-  <data name="Financial_Cost" xml:space="preserve">
-    <value>支出</value>
+  
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>MM/DD/YYYY</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Financial_Debt" xml:space="preserve">
-    <value>负债</value>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>MMM d, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
-  <data name="Financial_Income" xml:space="preserve">
-    <value>收入</value>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>生日</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
   </data>
-  <data name="Global_SelectOne" xml:space="preserve">
-    <value>-- 选择一个 --</value>
-    <comment>Shown in dropdowns when selection required</comment>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>定义以启用</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>描述</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>下载此项</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>文档</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>-- 选择预算／账户 --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>-- 选择组织 --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>您正进入&lt;strong&gt;沙盒&lt;/strong&gt;组织。&lt;br/&gt;&lt;br/&gt;这是一个您可以在不会危及生产数据的情况下使用 Swarmops 的安全环境。想怎么用就怎么用，然后在您完成实验后返回您的生产环境。</value>
+  </data>
+  
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>无法连接到WebSocket。实时更新将不可用。</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>女</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>此字段不能为空。</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>文件上传结果</value>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>标志</value>
+    <comment>As in a table column header</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>地理位置</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>跳到</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>去那里...</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>图像 {0} ／ {1}</value>
+  </data>
+  
+  
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>邮件</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>男</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>最小 / 最大</value>
+    <comment>note the spaces</comment>
   </data>
   <data name="Global_Missing" xml:space="preserve">
     <value>- 丢失 -</value>
     <comment>When a record or similar is missing. Used in grids.</comment>
   </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>月</value>
+  </data>
+  
   <data name="Global_Multiple" xml:space="preserve">
     <value>- 多个 -</value>
     <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>不适用</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>不适用</value>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>名称</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>否</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>没有需要进行紧急操作的项目。耶！</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(不匹配)</value>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>没有人</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>未指定任何原因。</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>备注</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(取消、作废、归零)</value>
+    <comment>Used when something is determined invalid</comment>
   </data>
   <data name="Global_Off" xml:space="preserve">
     <value>关</value>
     <comment>Off (as opposed to On)</comment>
   </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>工作人员</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>工作人员</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>工作人员</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>工作人员</value>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>好</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
   <data name="Global_On" xml:space="preserve">
     <value>开</value>
     <comment>On (as opposed to Off)</comment>
+  </data>
+  
+  <data name="Global_Organization" xml:space="preserve">
+    <value>组织</value>
   </data>
   <data name="Global_Organization_Commercial" xml:space="preserve">
     <value>商用的</value>
@@ -423,44 +662,27 @@
     <value>非盈利</value>
     <comment>Non-profit (activist, political parties)</comment>
   </data>
-  <data name="Global_Geography" xml:space="preserve">
-    <value>地理位置</value>
-    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
-  </data>
-  <data name="Global_Action" xml:space="preserve">
-    <value>操作</value>
-    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
-  </data>
-  <data name="Global_Mail" xml:space="preserve">
-    <value>邮件</value>
-    <comment>Somebody's email address.</comment>
-  </data>
-  <data name="Global_Name" xml:space="preserve">
-    <value>名称</value>
-    <comment>A plain person's first and last name</comment>
-  </data>
-  <data name="Global_Notes" xml:space="preserve">
-    <value>备注</value>
-    <comment>Small notes in a grid, maybe in icon form</comment>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>所有者</value>
   </data>
   <data name="Global_Phone" xml:space="preserve">
     <value>电话</value>
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>
-  <data name="Global_Custom" xml:space="preserve">
-    <value>定制</value>
-    <comment>As in "show me the advanced options"</comment>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>邮编</value>
   </data>
-  <data name="Global_Create" xml:space="preserve">
-    <value>创建</value>
-    <comment>Like "Create Organization"</comment>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>继续</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
   </data>
-  <data name="Global_AllYear" xml:space="preserve">
-    <value>所有</value>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>处理文件...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
-  <data name="Global_Description" xml:space="preserve">
-    <value>描述</value>
-    <comment>As a general header of any description field</comment>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>进展</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
   <data name="Global_Q1" xml:space="preserve">
     <value>第一季度</value>
@@ -478,89 +700,91 @@
     <value>第四季度</value>
     <comment>Fourth quarter of the year</comment>
   </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>-- 选择一个 --</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>将这个邮寄给我</value>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(几个)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- 几个选项 --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  
+  
+  
+  <data name="Global_Submit" xml:space="preserve">
+    <value>提交</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>系统</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
   <data name="Global_Timestamp" xml:space="preserve">
     <value>时间戳</value>
   </data>
-  <data name="Ledgers_Balance" xml:space="preserve">
-    <value>余额</value>
-    <comment>As in 'account balance', not as in staying upright</comment>
+  <data name="Global_Today" xml:space="preserve">
+    <value>今天</value>
   </data>
-  <data name="Ledgers_Credit" xml:space="preserve">
-    <value>信用</value>
+  <data name="Global_Total" xml:space="preserve">
+    <value>总共</value>
+    <comment>Used as footer in tables, summarizing something</comment>
   </data>
-  <data name="Ledgers_Debit" xml:space="preserve">
-    <value>借记</value>
-  </data>
-  <data name="Global_Organization" xml:space="preserve">
-    <value>组织</value>
-  </data>
-  <data name="Sidebar_Help" xml:space="preserve">
-    <value>帮助</value>
-  </data>
-  <data name="Global_Female" xml:space="preserve">
-    <value>女</value>
-    <comment>Legal gender</comment>
-  </data>
-  <data name="Global_Male" xml:space="preserve">
-    <value>男</value>
-    <comment>Legal gender</comment>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter ID</value>
   </data>
   <data name="Global_UnknownUndisclosed" xml:space="preserve">
     <value>未知的或未公开的</value>
     <comment>Used for gender et al</comment>
   </data>
-  <data name="Global_DateFormatShortReadable" xml:space="preserve">
-    <value>MM/DD/YYYY</value>
-    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>上传</value>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>MMMM d, yyyy</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>上传文件</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  <data name="Timespan_FiveYears" xml:space="preserve">
-    <value>五年</value>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>上传文件到Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
   </data>
-  <data name="Timespan_Forever" xml:space="preserve">
-    <value>终生</value>
-    <comment>Like "a lifetime membership"</comment>
-  </data>
-  <data name="Timespan_OneMonth" xml:space="preserve">
-    <value>一个月</value>
-  </data>
-  <data name="Timespan_OneYear" xml:space="preserve">
-    <value>一年</value>
-  </data>
-  <data name="Timespan_TwoYears" xml:space="preserve">
-    <value>两年</value>
-    <comment>Like "a two-year membership"</comment>
-  </data>
-  <data name="Global_Address" xml:space="preserve">
-    <value>地址</value>
-    <comment>As in physical location</comment>
-  </data>
-  <data name="Global_City" xml:space="preserve">
-    <value>城市</value>
-  </data>
-  <data name="Global_Country" xml:space="preserve">
-    <value>国家</value>
-    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
-  </data>
-  <data name="Global_DateOfBirth" xml:space="preserve">
-    <value>生日</value>
-    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
-  </data>
-  <data name="Global_PostalCode" xml:space="preserve">
-    <value>邮编</value>
-  </data>
-  <data name="Error_AjaxCallException" xml:space="preserve">
-    <value>和Swarmops服务器通讯时出现一个未指定的一般性错误。网络正常，且服务器可用吗？</value>
-  </data>
-  <data name="Global_Month" xml:space="preserve">
-    <value>月</value>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>请选择一个文件来上传。</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
   <data name="Global_View" xml:space="preserve">
     <value>查看</value>
     <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>志愿者</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>志愿者</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>志愿者</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>志愿者</value>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>结束</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>上一步</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>工作中...</value>
   </data>
   <data name="Global_Year" xml:space="preserve">
     <value>年</value>
@@ -572,216 +796,40 @@
     <value>年 {0}</value>
     <comment>As in "the year X".</comment>
   </data>
-  <data name="Global_DefineToEnable" xml:space="preserve">
-    <value>定义以启用</value>
-    <comment>shown as watermark on some edit boxes</comment>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>是</value>
+    <comment>For yes/no options</comment>
   </data>
-  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
-    <value>{1}的预付现金 #{0:N0}</value>
+  
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>余额</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
   </data>
-  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
-    <value>预付现金 {0:N0}回报</value>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>信用</value>
   </data>
-  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
-    <value>预付现金 {0} 回报</value>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>借记</value>
   </data>
-  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
-    <value>{1} 的预付现金 {0}</value>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;BITID双重身份验证成功启用&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;从现在开始在登录系统时，你需要使用你刚刚用来扫描条码的BitId应用程序。</value>
   </data>
-  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
-    <value>支出申报 #{0:N0}</value>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>BitID双重身份验证未被启用。</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
-    <value>{1} 提出的支出申报 {0}</value>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>扫描这个条码来启用BitID</value>
   </data>
-  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
-    <value>入站发票 #{0:N0}</value>
-  </data>
-  <data name="Global_System" xml:space="preserve">
-    <value>系统</value>
-    <comment>as in "Created by: System" for roles, transactions etc.</comment>
-  </data>
-  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
-    <value>{1:yyyy-MMM}期间的薪水 {0}</value>
-  </data>
-  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
-    <value>{0:yyyy-MMM}期间的收入税</value>
-  </data>
-  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
-    <value>{1:yyyy-MMM}期间的薪水 #{0:N0}</value>
-  </data>
-  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
-    <value>{1:yyyy-MMM} 期间 {2}的薪水 #{0:N0}</value>
-    <comment>0 is identity, 1 is month, 2 is name</comment>
-  </data>
-  <data name="Financial_SalaryIdentity" xml:space="preserve">
-    <value>薪水 #{0:N0}</value>
-  </data>
-  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
-    <value>{1:yyyy-MMM}期间的收入税 #{0:N0}</value>
-  </data>
-  <data name="Financial_Account" xml:space="preserve">
-    <value>账户</value>
-    <comment>as in bookkeeping or ledger account</comment>
-  </data>
-  <data name="Financial_Amount" xml:space="preserve">
-    <value>金额</value>
-    <comment>as in amount of money</comment>
-  </data>
-  <data name="Global_Add" xml:space="preserve">
-    <value>添加</value>
-    <comment>as in "add element", "add row", etc</comment>
-  </data>
-  <data name="Global_Several_Display" xml:space="preserve">
-    <value>(几个)</value>
-    <comment>Displayed when multiple items</comment>
-  </data>
-  <data name="Global_Several_SelectOne" xml:space="preserve">
-    <value>-- 几个选项 --</value>
-    <comment>Displayed when multiple choice</comment>
-  </data>
-  <data name="Sidebar_Options" xml:space="preserve">
-    <value>选项</value>
-    <comment>For various page-specific checkboxes etc</comment>
-  </data>
-  <data name="Global_LoadingPlaceholder" xml:space="preserve">
-    <value>[...loading...]</value>
-  </data>
-  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
-    <value>[...]</value>
-  </data>
-  <data name="Global_NoMatch" xml:space="preserve">
-    <value>(不匹配)</value>
-  </data>
-  <data name="Global_Working" xml:space="preserve">
-    <value>工作中...</value>
-  </data>
-  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
-    <value>无法连接到WebSocket。实时更新将不可用。</value>
-  </data>
-  <data name="Error_CurrencyParsing" xml:space="preserve">
-    <value>Swarmops无法理解你的货币金额。(一千元零分的格式应该"{0:N2}"。) 重试？</value>
-    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
-  </data>
-  <data name="Global_NoReasonGiven" xml:space="preserve">
-    <value>未指定任何原因。</value>
-    <comment>As inter-activist communication when denying resources, et cetera</comment>
-  </data>
-  <data name="Global_NoActionItems" xml:space="preserve">
-    <value>没有需要进行紧急操作的项目。耶！</value>
-  </data>
-  <data name="Global_MinMax" xml:space="preserve">
-    <value>最小 / 最大</value>
-    <comment>note the spaces</comment>
-  </data>
-  <data name="Swarm_AssignedPerson" xml:space="preserve">
-    <value>指定的人</value>
-  </data>
-  <data name="Swarm_Position" xml:space="preserve">
-    <value>职位</value>
-  </data>
-  <data name="Error_DatabaseConcurrency" xml:space="preserve">
-    <value>貌似另一个用户在这个操作上获胜；在你观望的时候数据库已被更改。请检查已更改的条件并重试你要进行的操作。</value>
-  </data>
-  <data name="Swarm_TypeName" xml:space="preserve">
-    <value>输入一个名字...</value>
-  </data>
-  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
-    <value>一个月</value>
-  </data>
-  <data name="Timespan_Selection_OneYear" xml:space="preserve">
-    <value>一年</value>
-  </data>
-  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
-    <value>六个月</value>
-  </data>
-  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
-    <value>三个月</value>
-  </data>
-  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
-    <value>两个月</value>
-  </data>
-  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
-    <value>两年</value>
-  </data>
-  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
-    <value>直到终止</value>
-    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
-  </data>
-  <data name="Global_WizardFinish" xml:space="preserve">
-    <value>结束</value>
-  </data>
-  <data name="Global_WizardNext" xml:space="preserve">
-    <value>下一步</value>
-  </data>
-  <data name="Global_WizardPrevious" xml:space="preserve">
-    <value>上一步</value>
-  </data>
-  <data name="Financial_YTD" xml:space="preserve">
-    <value>YTD</value>
-    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
-  </data>
-  <data name="Global_Flags" xml:space="preserve">
-    <value>标志</value>
-    <comment>As in a table column header</comment>
-  </data>
-  <data name="Global_Total" xml:space="preserve">
-    <value>总共</value>
-    <comment>Used as footer in tables, summarizing something</comment>
-  </data>
-  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
-    <value>此字段不能为空。</value>
-    <comment>Displayed as error when emptying fields like your name</comment>
-  </data>
-  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
-    <value>试图设置此值时出现未知错误。</value>
-  </data>
-  <data name="Global_TwitterId" xml:space="preserve">
-    <value>Twitter ID</value>
+  
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>BitID（比特币签名）双重身份验证</value>
   </data>
   <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
     <value>BitID双重身份验证 (禁用隔离登录)</value>
     <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
   </data>
-  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
-    <value>账户</value>
-  </data>
-  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
-    <value>安全初始设置</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
-    <value>重置密码</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
-    <value>通过邮件发送密码重置链接</value>
-  </data>
-  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
-    <value>这看起来不像是个有效的电话号码，尽管如此，我们还是把它保存在这里。</value>
-    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
-    <value>重置用户密码？</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
-    <value>你正在重置用户密码。该用户将会收到一封包含重置链接的邮件，这样他们就可以重置Swarmops的密码。&lt;br/&gt;&lt;br/&gt;&lt;strong&gt; 除非用户要求，否则不要进行这个操作。&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; 继续密码重置操作？</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
-    <value>密码重置操作已被禁用</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
-    <value>该用户的电子邮件地址最近被更改过（在一周内）。处于安全原因，密码重置链接不能也不会被发送到最新更改过的邮件地址。</value>
-  </data>
-  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
-    <value>密码重置链接已经被发送给该用户。</value>
-  </data>
-  <data name="Global_2FA" xml:space="preserve">
-    <value>双重身份验证</value>
-  </data>
-  <data name="Global_2FA_Short" xml:space="preserve">
-    <value>双重身份验证</value>
-  </data>
-  <data name="Global_2FA_Shorter" xml:space="preserve">
-    <value>双重身份验证</value>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>BitID双重身份验证</value>
   </data>
   <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
     <value>&lt;strong&gt;无法初始化双重身份验证&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;你不能为他人开启双重身份验证。它们必须自己进行操作，从而独自拥有密钥。</value>
@@ -804,39 +852,17 @@
   <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
     <value>双重身份验证未被删除并仍然激活。</value>
   </data>
-  <data name="Timespan_Selection_OneDay" xml:space="preserve">
-    <value>一天</value>
-  </data>
-  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
-    <value>七天</value>
-  </data>
-  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
-    <value>两天</value>
-  </data>
-  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
-    <value>两周</value>
-  </data>
-  <data name="Master_BitIdRegistered" xml:space="preserve">
-    <value>&lt;strong&gt;BITID双重身份验证成功启用&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;从现在开始在登录系统时，你需要使用你刚刚用来扫描条码的BitId应用程序。</value>
-  </data>
-  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
-    <value>BitID双重身份验证未被启用。</value>
-  </data>
-  <data name="Master_BitIdRegister_Header" xml:space="preserve">
-    <value>扫描这个条码来启用BitID</value>
-  </data>
-  
-  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
-    <value>BitID（比特币签名）双重身份验证</value>
-  </data>
-  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
-    <value>BitID双重身份验证</value>
-  </data>
   <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
     <value>输入当前密码来启用更改</value>
   </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>账户</value>
+  </data>
   <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
     <value>你的安全</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>安全初始设置</value>
   </data>
   <data name="Master_EditPersonNewPassword1" xml:space="preserve">
     <value>设置新密码</value>
@@ -853,159 +879,133 @@
   <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
     <value>&lt;strong&gt;密码已更改&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;你已成功更改密码。作为一项安全措施，在接下来的48小时内所有提款都将被隔离。</value>
   </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>重置密码</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>重置用户密码？</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>你正在重置用户密码。该用户将会收到一封包含重置链接的邮件，这样他们就可以重置Swarmops的密码。&lt;br/&gt;&lt;br/&gt;&lt;strong&gt; 除非用户要求，否则不要进行这个操作。&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; 继续密码重置操作？</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>通过邮件发送密码重置链接</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>密码重置操作已被禁用</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>该用户的电子邮件地址最近被更改过（在一周内）。处于安全原因，密码重置链接不能也不会被发送到最新更改过的邮件地址。</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>密码重置链接已经被发送给该用户。</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>这看起来不像是个有效的电话号码，尽管如此，我们还是把它保存在这里。</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
   <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
     <value>如果可以，请启用BitID双重身份验证。</value>
   </data>
-  <data name="Global_Officer_Female" xml:space="preserve">
-    <value>工作人员</value>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>你当前登录到&lt;strong&gt;{0}&lt;/strong&gt;。你想要切换到其他的组织吗？</value>
   </data>
-  <data name="Global_Officer_Male" xml:space="preserve">
-    <value>工作人员</value>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>操作</value>
+    <comment>List of shortcuts to likely actions</comment>
   </data>
-  <data name="Global_Officer_Neutral" xml:space="preserve">
-    <value>工作人员</value>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>当前没有建议的操作。</value>
+    <comment>No shortcuts from this page right now.</comment>
   </data>
-  <data name="Global_Officer_Plural" xml:space="preserve">
-    <value>工作人员</value>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>帮助</value>
   </data>
-  <data name="Global_Volunteer_Female" xml:space="preserve">
-    <value>志愿者</value>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>信息</value>
+    <comment>Information about current page</comment>
   </data>
-  <data name="Global_Volunteer_Male" xml:space="preserve">
-    <value>志愿者</value>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>选项</value>
+    <comment>For various page-specific checkboxes etc</comment>
   </data>
-  <data name="Global_Volunteer_Neutral" xml:space="preserve">
-    <value>志愿者</value>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>相关的</value>
+    <comment>List of shortcuts to related actions to current one</comment>
   </data>
-  <data name="Global_Volunteer_Plural" xml:space="preserve">
-    <value>志愿者</value>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>待办</value>
+    <comment>List of todo items</comment>
   </data>
-  <data name="Global_Go" xml:space="preserve">
-    <value>跳到</value>
-    <comment>As in "execute", "run requested procedure"</comment>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>&lt;strong&gt;已全部做完:&lt;/strong&gt; 没有需要采取紧急行动的项目。耶！</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
   </data>
-  <data name="Global_Ok" xml:space="preserve">
-    <value>好</value>
-    <comment>Shown on confirmation dialogs</comment>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>操作项目需要到这里。</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
   </data>
-  <data name="Global_Proceed" xml:space="preserve">
-    <value>继续</value>
-    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>指定的人</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>职位</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>输入一个名字...</value>
   </data>
   <data name="Swarm_TypePartialName" xml:space="preserve">
     <value>输入部分名称...</value>
   </data>
-  <data name="Financial_ProfitToDate" xml:space="preserve">
-    <value>截止到 ({0}) 的年度损益</value>
-    <comment>{0} is the currency code</comment>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>五年</value>
   </data>
-  <data name="Financial_Client" xml:space="preserve">
-    <value>客户</value>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>终生</value>
+    <comment>Like "a lifetime membership"</comment>
   </data>
-  <data name="Global_Progress" xml:space="preserve">
-    <value>进展</value>
-    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>一个月</value>
   </data>
-  <data name="Financial_TransactionIdShort" xml:space="preserve">
-    <value>Tx#</value>
-    <comment>Used in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>一年</value>
   </data>
-  <data name="Global_DownloadThis" xml:space="preserve">
-    <value>下载此项</value>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>一天</value>
   </data>
-  <data name="Global_Dox" xml:space="preserve">
-    <value>文档</value>
-    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>一个月</value>
   </data>
-  <data name="Global_SendThisInMail" xml:space="preserve">
-    <value>将这个邮寄给我</value>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>一年</value>
   </data>
-  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
-    <value>现金</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>七天</value>
   </data>
-  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
-    <value>核心</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>六个月</value>
   </data>
-  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
-    <value>金</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>三个月</value>
   </data>
-  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
-    <value>旧版</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>两天</value>
   </data>
-  <data name="Financial_BitcoinChain" xml:space="preserve">
-    <value>链</value>
-    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>两个月</value>
   </data>
-  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
-    <value>出站发票 #{0:N0} to {1}</value>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>两周</value>
   </data>
-  <data name="Global_Nuked" xml:space="preserve">
-    <value>(取消、作废、归零)</value>
-    <comment>Used when something is determined invalid</comment>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>两年</value>
   </data>
-  <data name="Global_Upload" xml:space="preserve">
-    <value>上传</value>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>直到终止</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
   </data>
-  <data name="Global_FileUploadResults" xml:space="preserve">
-    <value>文件上传结果</value>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>两年</value>
+    <comment>Like "a two-year membership"</comment>
   </data>
-  <data name="Financial_AmountVat" xml:space="preserve">
-    <value>增值税</value>
-    <comment>The short form of Value Added Tax.</comment>
-  </data>
-  <data name="Financial_AmountVatFull" xml:space="preserve">
-    <value>增值税</value>
-  </data>
-  <data name="Global_Date" xml:space="preserve">
-    <value>日期</value>
-    <comment>As in calendar date, for example January 21</comment>
-  </data>
-  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
-    <value>MMM d, yyyy</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
-  </data>
-  <data name="Global_Submit" xml:space="preserve">
-    <value>提交</value>
-    <comment>As in "Submit this data for processing"</comment>
-  </data>
-  <data name="Financial_GeneralLedger" xml:space="preserve">
-    <value>总账</value>
-  </data>
-  <data name="Global_EnteringSandbox" xml:space="preserve">
-    <value>您正进入&lt;strong&gt;沙盒&lt;/strong&gt;组织。&lt;br/&gt;&lt;br/&gt;这是一个您可以在不会危及生产数据的情况下使用 Swarmops 的安全环境。想怎么用就怎么用，然后在您完成实验后返回您的生产环境。</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 </root>

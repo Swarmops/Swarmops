@@ -127,12 +127,22 @@
     <value>إنشاء منظمة جديدة</value>
   </data>
   
+  
+  
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>الشجرة الجغرافية</value>
   </data>
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>تجمعات المنظمة</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
   
   <data name="Menu5_Communications" xml:space="preserve">
     <value>الاتصالات</value>
@@ -226,32 +236,22 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="Menu5_People" xml:space="preserve">
     <value>Jäsenet</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

@@ -147,6 +147,10 @@
     <value>crwdns6563434:0{0:N0}crwdnd6563434:0{1}crwdnd6563434:0{2}crwdnd6563434:0{3:N2}crwdne6563434:0</value>
     <comment>{2} is the currency.</comment>
   </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>crwdns6563474:0{0:N0}crwdnd6563474:0{1}crwdne6563474:0</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>crwdns6555277:0crwdne6555277:0</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -205,6 +209,10 @@
   <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
     <value>crwdns6556094:0crwdne6556094:0</value>
     <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>crwdns6556767:0crwdne6556767:0</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
   <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
     <value>crwdns6556095:0{0}crwdne6556095:0</value>
@@ -282,6 +290,13 @@
     <value>crwdns6556593:0{0}crwdne6556593:0</value>
     <comment>{0} is the organization's main currency.</comment>
   </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>crwdns6556594:0{0}crwdne6556594:0</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>crwdns6556479:0crwdne6556479:0</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>crwdns6555294:0crwdne6555294:0</value>
     <comment>Free-text description of invoice</comment>
@@ -295,6 +310,10 @@
   </data>
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>crwdns6555297:0crwdne6555297:0</value>
+  </data>
+  <data name="CreateInboundInvoice_InvoiceDate" xml:space="preserve">
+    <value>crwdns6563649:0crwdne6563649:0</value>
+    <comment>This refers to the date as written on the invoice. (It defaults to the date when the invoice is entered, which is usually later.)</comment>
   </data>
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>crwdns6555298:0crwdne6555298:0</value>
@@ -324,6 +343,34 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>crwdns6555305:0crwdne6555305:0</value>
   </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>crwdns6556480:0{0}crwdne6556480:0</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>crwdns6556481:0crwdne6556481:0</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>crwdns6556482:0crwdne6556482:0</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>crwdns6556483:0crwdne6556483:0</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>crwdns6556484:0crwdne6556484:0</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>crwdns6556600:0crwdne6556600:0</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>crwdns6556671:0crwdne6556671:0</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>crwdns6556602:0crwdne6556602:0</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>crwdns6556603:0{0:N0}crwdne6556603:0</value>
+  </data>
   <data name="Donate_Explain" xml:space="preserve">
     <value>crwdns6556697:0{0}crwdnd6556697:0{1}crwdne6556697:0</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -331,6 +378,10 @@
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>crwdns6556407:0{0}crwdnd6556407:0{1:N2}crwdnd6556407:0{2:N0}crwdne6556407:0</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>crwdns6556698:0{0}crwdne6556698:0</value>
+    <comment>The {0} will be replaced with currency name.</comment>
   </data>
   <data name="Donate_FundsReceivedNative" xml:space="preserve">
     <value>crwdns6556408:0{0}crwdne6556408:0</value>
@@ -372,12 +423,76 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>crwdns6555310:0crwdne6555310:0</value>
   </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>crwdns6556485:0crwdne6556485:0</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>crwdns6555311:0crwdne6555311:0</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  <data name="FileExpenseClaim_DateIncurred" xml:space="preserve">
+    <value>crwdns6563651:0crwdne6563651:0</value>
+  </data>
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>crwdns6555312:0crwdne6555312:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>crwdns6556737:0crwdne6556737:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>crwdns6556756:0crwdne6556756:0</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>crwdns6556766:0crwdne6556766:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>crwdns6556757:0crwdne6556757:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>crwdns6556738:0crwdne6556738:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>crwdns6556739:0{0}crwdne6556739:0</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>crwdns6556740:0crwdne6556740:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>crwdns6556782:0crwdne6556782:0</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>crwdns6556783:0crwdne6556783:0</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>crwdns6556741:0crwdne6556741:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>crwdns6556784:0crwdne6556784:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>crwdns6556785:0{0}crwdne6556785:0</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>crwdns6556786:0crwdne6556786:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>crwdns6556787:0{0}crwdne6556787:0</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>crwdns6556758:0crwdne6556758:0</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>crwdns6556759:0crwdne6556759:0</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>crwdns6556760:0crwdne6556760:0</value>
   </data>
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>crwdns6555313:0crwdne6555313:0</value>
@@ -401,6 +516,9 @@
   <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
     <value>crwdns6555319:0crwdne6555319:0</value>
   </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>crwdns6556742:0crwdne6556742:0</value>
+  </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>crwdns6555320:0crwdne6555320:0</value>
   </data>
@@ -417,23 +535,103 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>crwdns6555324:0crwdne6555324:0</value>
   </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>crwdns6556595:0{0}crwdne6556595:0</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>crwdns6556596:0crwdne6556596:0</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>crwdns6556597:0crwdne6556597:0</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>crwdns6556598:0crwdne6556598:0</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>crwdns6556599:0crwdne6556599:0</value>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>crwdns6556708:0crwdne6556708:0</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>crwdns6556709:0crwdne6556709:0</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>crwdns6556710:0crwdne6556710:0</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>crwdns6556711:0crwdne6556711:0</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>crwdns6556712:0crwdne6556712:0</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>crwdns6556713:0crwdne6556713:0</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>crwdns6556714:0crwdne6556714:0</value>
+  </data>
+  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
+    <value>crwdns6563584:0crwdne6563584:0</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
+    <value>crwdns6563586:0crwdne6563586:0</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>crwdns6555325:0crwdne6555325:0</value>
     <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_CurrencyMethod" xml:space="preserve">
+    <value>crwdns6563568:0crwdne6563568:0</value>
+    <comment>"Method" refers to the method of payout -- wire transfer, direct deposit, giro service, etc.</comment>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>crwdns6555329:0crwdne6555329:0</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
+    <value>crwdns6563570:0crwdne6563570:0</value>
+    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
+  </data>
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>crwdns6555330:0crwdne6555330:0</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>crwdns6555331:0crwdne6555331:0</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>crwdns6555332:0crwdne6555332:0</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>crwdns6555333:0crwdne6555333:0</value>
+  </data>
+  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
+    <value>crwdns6563572:0crwdne6563572:0</value>
+    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
+  </data>
+  <data name="PayOutMoney_Modal_CurrencyAmount" xml:space="preserve">
+    <value>crwdns6563574:0crwdne6563574:0</value>
+    <comment>Will be a label for something like "USD 10,000.00"</comment>
+  </data>
+  <data name="PayOutMoney_Modal_Header" xml:space="preserve">
+    <value>crwdns6563576:0crwdne6563576:0</value>
+    <comment>Displayed as header over the details of a payment to be made manually (as opposed to with bitcoin/crypto)</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr1" xml:space="preserve">
+    <value>crwdns6563578:0crwdne6563578:0</value>
+    <comment>In longer form, the question would be "Are you using a mobile phone or other device to capture this payment data automatically?". Some banking apps can scan QR codes or specially formatted number sequences.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr2" xml:space="preserve">
+    <value>crwdns6563580:0crwdne6563580:0</value>
+    <comment>Don't make this string much longer than it is.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
+    <value>crwdns6563582:0crwdne6563582:0</value>
+    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
   </data>
   <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
     <value>crwdns6556443:0crwdne6556443:0</value>
@@ -444,6 +642,10 @@
   </data>
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>crwdns6555334:0crwdne6555334:0</value>
+  </data>
+  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
+    <value>crwdns6563588:0crwdne6563588:0</value>
+    <comment>"Late" in this context means "after its due date".</comment>
   </data>
   <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
     <value>crwdns6555335:0#{0}crwdne6555335:0</value>
@@ -497,6 +699,9 @@
   </data>
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>crwdns6555342:0crwdne6555342:0</value>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>crwdns6556486:0crwdne6556486:0</value>
   </data>
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>crwdns6555343:0crwdne6555343:0</value>
@@ -554,203 +759,5 @@
   </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>crwdns6555360:0{0:N0}crwdnd6555360:0{1}crwdnd6555360:0{2:N2}crwdne6555360:0</value>
-  </data>
-  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>crwdns6556479:0crwdne6556479:0</value>
-    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
-    <value>crwdns6556480:0{0}crwdne6556480:0</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
-    <value>crwdns6556481:0crwdne6556481:0</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
-    <value>crwdns6556482:0crwdne6556482:0</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
-    <value>crwdns6556483:0crwdne6556483:0</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
-    <value>crwdns6556484:0crwdne6556484:0</value>
-  </data>
-  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
-    <value>crwdns6556485:0crwdne6556485:0</value>
-    <comment>Could also be "file" (as verb) or equivalent</comment>
-  </data>
-  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
-    <value>crwdns6556486:0crwdne6556486:0</value>
-  </data>
-  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
-    <value>crwdns6556594:0{0}crwdne6556594:0</value>
-  </data>
-  <data name="FileExpenseClaim_Vat" xml:space="preserve">
-    <value>crwdns6556595:0{0}crwdne6556595:0</value>
-  </data>
-  <data name="ListInboundInvoices_Header" xml:space="preserve">
-    <value>crwdns6556596:0crwdne6556596:0</value>
-  </data>
-  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
-    <value>crwdns6556597:0crwdne6556597:0</value>
-  </data>
-  <data name="ListInboundInvoices_Info" xml:space="preserve">
-    <value>crwdns6556598:0crwdne6556598:0</value>
-  </data>
-  <data name="ListInboundInvoices_Title" xml:space="preserve">
-    <value>crwdns6556599:0crwdne6556599:0</value>
-  </data>
-  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
-    <value>crwdns6556600:0crwdne6556600:0</value>
-  </data>
-  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>crwdns6556671:0crwdne6556671:0</value>
-    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
-  </data>
-  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
-    <value>crwdns6556602:0crwdne6556602:0</value>
-  </data>
-  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
-    <value>crwdns6556603:0{0:N0}crwdne6556603:0</value>
-  </data>
-  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
-    <value>crwdns6556698:0{0}crwdne6556698:0</value>
-    <comment>The {0} will be replaced with currency name.</comment>
-  </data>
-  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
-    <value>crwdns6556708:0crwdne6556708:0</value>
-  </data>
-  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
-    <value>crwdns6556709:0crwdne6556709:0</value>
-  </data>
-  <data name="ListOutboundInvoices_Header" xml:space="preserve">
-    <value>crwdns6556710:0crwdne6556710:0</value>
-  </data>
-  <data name="ListOutboundInvoices_Info" xml:space="preserve">
-    <value>crwdns6556711:0crwdne6556711:0</value>
-  </data>
-  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
-    <value>crwdns6556712:0crwdne6556712:0</value>
-  </data>
-  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
-    <value>crwdns6556713:0crwdne6556713:0</value>
-  </data>
-  <data name="ListOutboundInvoices_Title" xml:space="preserve">
-    <value>crwdns6556714:0crwdne6556714:0</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
-    <value>crwdns6556737:0crwdne6556737:0</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
-    <value>crwdns6556738:0crwdne6556738:0</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
-    <value>crwdns6556739:0{0}crwdne6556739:0</value>
-    <comment>{0} is the organization name.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
-    <value>crwdns6556740:0crwdne6556740:0</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
-    <value>crwdns6556741:0crwdne6556741:0</value>
-  </data>
-  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
-    <value>crwdns6556742:0crwdne6556742:0</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
-    <value>crwdns6556756:0crwdne6556756:0</value>
-    <comment>Do not translate the Expensify column field names.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
-    <value>crwdns6556757:0crwdne6556757:0</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
-    <value>crwdns6556758:0crwdne6556758:0</value>
-    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
-    <value>crwdns6556759:0crwdne6556759:0</value>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
-    <value>crwdns6556760:0crwdne6556760:0</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
-    <value>crwdns6556766:0crwdne6556766:0</value>
-  </data>
-  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
-    <value>crwdns6556767:0crwdne6556767:0</value>
-    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
-    <value>crwdns6556782:0crwdne6556782:0</value>
-    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
-    <value>crwdns6556783:0crwdne6556783:0</value>
-    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
-    <value>crwdns6556784:0crwdne6556784:0</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
-    <value>crwdns6556785:0{0}crwdne6556785:0</value>
-    <comment>The {0} is replaced by a number, 2 or higher</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
-    <value>crwdns6556786:0crwdne6556786:0</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
-    <value>crwdns6556787:0{0}crwdne6556787:0</value>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>crwdns6563474:0{0:N0}crwdnd6563474:0{1}crwdne6563474:0</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_CurrencyMethod" xml:space="preserve">
-    <value>crwdns6563568:0crwdne6563568:0</value>
-    <comment>"Method" refers to the method of payout -- wire transfer, direct deposit, giro service, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
-    <value>crwdns6563570:0crwdne6563570:0</value>
-    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
-  </data>
-  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
-    <value>crwdns6563572:0crwdne6563572:0</value>
-    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
-  </data>
-  <data name="PayOutMoney_Modal_CurrencyAmount" xml:space="preserve">
-    <value>crwdns6563574:0crwdne6563574:0</value>
-    <comment>Will be a label for something like "USD 10,000.00"</comment>
-  </data>
-  <data name="PayOutMoney_Modal_Header" xml:space="preserve">
-    <value>crwdns6563576:0crwdne6563576:0</value>
-    <comment>Displayed as header over the details of a payment to be made manually (as opposed to with bitcoin/crypto)</comment>
-  </data>
-  <data name="PayOutMoney_Modal_LabelOcr1" xml:space="preserve">
-    <value>crwdns6563578:0crwdne6563578:0</value>
-    <comment>In longer form, the question would be "Are you using a mobile phone or other device to capture this payment data automatically?". Some banking apps can scan QR codes or specially formatted number sequences.</comment>
-  </data>
-  <data name="PayOutMoney_Modal_LabelOcr2" xml:space="preserve">
-    <value>crwdns6563580:0crwdne6563580:0</value>
-    <comment>Don't make this string much longer than it is.</comment>
-  </data>
-  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
-    <value>crwdns6563582:0crwdne6563582:0</value>
-    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
-  </data>
-  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
-    <value>crwdns6563584:0crwdne6563584:0</value>
-    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
-  </data>
-  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
-    <value>crwdns6563586:0crwdne6563586:0</value>
-    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>crwdns6555331:0crwdne6555331:0</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
-    <value>crwdns6563588:0crwdne6563588:0</value>
-    <comment>"Late" in this context means "after its due date".</comment>
   </data>
 </root>

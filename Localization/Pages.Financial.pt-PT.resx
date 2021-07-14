@@ -126,6 +126,7 @@
   
   
   
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Ação</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -187,6 +188,9 @@
   
   
   
+  
+  
+  
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>Descrição</value>
     <comment>Free-text description of invoice</comment>
@@ -201,6 +205,7 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Aqui é onde arquiva as faturas recebidas pela sua organização ("Contas a Pagar"). Insira o nome do fornecedor, a quantia, a data de vencimento, a referência da fatura e faça o upload de uma imagem da fatura recebida. Além disso, seleccione um orçamento. O responsável pelo orçamento precisa de atestá-las, como é habitual. (Expansões futuras planeadas a este mecanismo incluem órdens de compra e listas de fornecedores.)</value>
   </data>
+  
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Receção de Fatura</value>
   </data>
@@ -219,10 +224,20 @@
   </data>
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>Recebidos {0} {1:N2} ({2:N0} microcoins ou "bits"). Obrigado!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
   </data>
+  
   <data name="Donate_FundsReceivedNative" xml:space="preserve">
     <value>Recebidas {0} microcoins ("bits"). Obrigado!</value>
     <comment>Used if BTC is the org native currency.</comment>
@@ -261,13 +276,32 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>Orçamento</value>
   </data>
+  
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>Tipo de Despesa</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Descrição</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>Os Seus Dados Bancários</value>
   </data>
@@ -280,6 +314,7 @@
   <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
     <value>Pedido de Restituição de Despesa</value>
   </data>
+  
   
   
   
@@ -297,17 +332,37 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Por favor descreva o que foi esta compra.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Quantia</value>
     <comment>Amount to be paid out</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Pago</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>Destinatário</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referência</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Custos Prontos Para Pagamento</value>
@@ -316,6 +371,12 @@
     <value>Estes são os diversos custos para a organização que passaram todos os obstáculos para pagamento. Estão prontos a serem pagos ao destinatário. Aqui é onde pode verificá-los manualmente à medida que são pagos (provavelmente enquanto tem a página do banco aberta numa outra janela).</value>
   </data>
   
+  
+  
+  
+  
+  
+  
   <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
     <value>Mostrar pagamentos em aberto ({0:N0})</value>
     <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>
@@ -323,6 +384,7 @@
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Pagamento de Dinheiro</value>
   </data>
+  
   
   <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
     <value>Pagamento #{0:N0} para {1} criado.</value>
@@ -362,6 +424,7 @@
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>Orçamento</value>
   </data>
+  
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Os Seus Dados Bancários</value>
   </data>
@@ -404,65 +467,4 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram validados.</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referência</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  
 </root>

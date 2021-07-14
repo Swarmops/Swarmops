@@ -141,6 +141,23 @@
     <value>crwdns6498509:0crwdne6498509:0</value>
     <comment>Title of default page</comment>
   </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>crwdns6555583:0crwdne6555583:0</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>crwdns6556110:0{0:N2}crwdne6556110:0</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>crwdns6556163:0crwdne6556163:0</value>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>crwdns6556471:0crwdne6556471:0</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>crwdns6555789:0crwdne6555789:0</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
   <data name="Financial_Actuals" xml:space="preserve">
     <value>crwdns6498510:0crwdne6498510:0</value>
   </data>
@@ -149,6 +166,44 @@
   </data>
   <data name="Financial_ActualsToDate" xml:space="preserve">
     <value>crwdns6498512:0crwdne6498512:0</value>
+  </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>crwdns6563482:0crwdne6563482:0</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>crwdns6555790:0crwdne6555790:0</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>crwdns6556762:0crwdne6556762:0</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>crwdns6556763:0crwdne6556763:0</value>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>crwdns6553790:0crwdne6553790:0</value>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>crwdns6556688:0crwdne6556688:0</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>crwdns6556684:0crwdne6556684:0</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>crwdns6556685:0crwdne6556685:0</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>crwdns6556686:0crwdne6556686:0</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>crwdns6556687:0crwdne6556687:0</value>
+    <comment>Keep short - seven chars max</comment>
   </data>
   <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
     <value>crwdns6498513:0crwdne6498513:0</value>
@@ -162,20 +217,110 @@
   <data name="Financial_CashAdvance" xml:space="preserve">
     <value>crwdns6552480:0crwdne6552480:0</value>
   </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>crwdns6555775:0{0:N0}crwdnd6555775:0{1}crwdne6555775:0</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>crwdns6555820:0{0:N0}crwdne6555820:0</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>crwdns6555777:0{0}crwdne6555777:0</value>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>crwdns6553608:0crwdne6553608:0</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>crwdns6553609:0crwdne6553609:0</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>crwdns6555778:0{0}crwdnd6555778:0{1}crwdne6555778:0</value>
+  </data>
   <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
     <value>crwdns6552481:0#{0}crwdne6552481:0</value>
   </data>
   <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
     <value>crwdns6552482:0{0}crwdne6552482:0</value>
   </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>crwdns6556563:0crwdne6556563:0</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>crwdns6553791:0crwdne6553791:0</value>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>crwdns6563484:0crwdne6563484:0</value>
+  </data>
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>crwdns6553792:0crwdne6553792:0</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>crwdns6553785:0crwdne6553785:0</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_DueDateShort" xml:space="preserve">
+    <value>crwdns6563592:0crwdne6563592:0</value>
+    <comment>As "due date", as in when a payment is expected, but just the word "due" to be combined with an actual date in the UI. Example: *Due* Jan 21.</comment>
+  </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>crwdns6563372:0crwdne6563372:0</value>
+  </data>
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>crwdns6563374:0crwdne6563374:0</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>crwdns6552483:0crwdne6552483:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>crwdns6555779:0{0:N0}crwdne6555779:0</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>crwdns6553610:0crwdne6553610:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>crwdns6553611:0crwdne6553611:0</value>
   </data>
   <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
     <value>crwdns6555769:0{0:N0}crwdne6555769:0</value>
   </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>crwdns6555770:0{0:N0}crwdnd6555770:0{1:N0}crwdne6555770:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>crwdns6555771:0{0:N0}crwdne6555771:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>crwdns6555772:0{0:N0}crwdnd6555772:0{1}crwdne6555772:0</value>
+  </data>
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>crwdns6552485:0{0}crwdne6552485:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>crwdns6553679:0{0}crwdnd6553679:0#{1}crwdne6553679:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>crwdns6553680:0{0}crwdne6553680:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>crwdns6555780:0{0}crwdnd6555780:0{1}crwdne6555780:0</value>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>crwdns6556792:0crwdne6556792:0</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>crwdns6553633:0crwdne6553633:0</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>crwdns6553613:0crwdne6553613:0</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>crwdns6555781:0{0:N0}crwdne6555781:0</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>crwdns6555773:0{0:N0}crwdnd6555773:0{1}crwdne6555773:0</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>crwdns6553793:0crwdne6553793:0</value>
   </data>
   <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>crwdns6552486:0crwdne6552486:0</value>
@@ -183,15 +328,83 @@
   <data name="Financial_InvoiceOutbound" xml:space="preserve">
     <value>crwdns6552487:0crwdne6552487:0</value>
   </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>crwdns6563486:0crwdne6563486:0</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>crwdns6553614:0crwdne6553614:0</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>crwdns6553615:0crwdne6553615:0</value>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>crwdns6556704:0{0:N0}crwdnd6556704:0{1}crwdne6556704:0</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>crwdns6563488:0crwdne6563488:0</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>crwdns6563490:0crwdne6563490:0</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
   <data name="Financial_Parley" xml:space="preserve">
     <value>crwdns6552488:0crwdne6552488:0</value>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>crwdns6563492:0crwdne6563492:0</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>crwdns6563494:0{0:N0}crwdne6563494:0</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>crwdns6563496:0{0:N0}crwdne6563496:0</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>crwdns6563498:0crwdne6563498:0</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>crwdns6563500:0crwdne6563500:0</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>crwdns6556562:0{0}crwdne6556562:0</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>crwdns6553683:0{0}crwdnd6553683:0{1}crwdne6553683:0</value>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>crwdns6555783:0{0}crwdnd6555783:0{1:yyyy-MMM}crwdne6555783:0</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>crwdns6555784:0{0:yyyy-MMM}crwdne6555784:0</value>
   </data>
   <data name="Financial_Salary" xml:space="preserve">
     <value>crwdns6552489:0crwdne6552489:0</value>
   </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>crwdns6555785:0{0:N0}crwdnd6555785:0{1:yyyy-MMM}crwdne6555785:0</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>crwdns6555786:0{0:N0}crwdnd6555786:0{1:yyyy-MMM}crwdnd6555786:0{2}crwdne6555786:0</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>crwdns6555787:0{0:N0}crwdne6555787:0</value>
+  </data>
   <data name="Financial_SalarySpecification" xml:space="preserve">
     <value>crwdns6552490:0{0:yyyy-MMM}crwdne6552490:0</value>
     <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>crwdns6555788:0{0:N0}crwdnd6555788:0{1:yyyy-MMM}crwdne6555788:0</value>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>crwdns6553786:0crwdne6553786:0</value>
   </data>
   <data name="Financial_TaxesSpecification" xml:space="preserve">
     <value>crwdns6552491:0{0}crwdne6552491:0</value>
@@ -203,126 +416,9 @@
     <value>crwdns6552493:0crwdne6552493:0</value>
     <comment>Used as recipient for taxes.</comment>
   </data>
-  <data name="Financial_YearlyResult" xml:space="preserve">
-    <value>crwdns6498516:0crwdne6498516:0</value>
-  </data>
-  <data name="Global_ASAP" xml:space="preserve">
-    <value>crwdns6552494:0crwdne6552494:0</value>
-    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
-  </data>
-  <data name="Global_Cancel" xml:space="preserve">
-    <value>crwdns6498517:0crwdne6498517:0</value>
-    <comment>Displayed as cancellation link on changing something</comment>
-  </data>
-  <data name="Global_Change" xml:space="preserve">
-    <value>crwdns6498518:0crwdne6498518:0</value>
-    <comment>Link after describing what the user is looking at, allowing a change.</comment>
-  </data>
-  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
-    <value>crwdns6498519:0crwdne6498519:0</value>
-    <comment>Displayed where thumbnails can be enlarged modally.</comment>
-  </data>
-  <data name="Global_Confirm" xml:space="preserve">
-    <value>crwdns6498520:0crwdne6498520:0</value>
-    <comment>Displayed as confirmation link on changing something</comment>
-  </data>
-  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
-    <value>crwdns6498521:0crwdne6498521:0</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
-    <value>crwdns6498522:0crwdne6498522:0</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_GoThere" xml:space="preserve">
-    <value>crwdns6498523:0crwdne6498523:0</value>
-    <comment>Link after describing something.</comment>
-  </data>
-  <data name="Global_NoOwner" xml:space="preserve">
-    <value>crwdns6498524:0crwdne6498524:0</value>
-    <comment>Displayed when an account/position etc is vacant</comment>
-  </data>
-  <data name="Global_Owner" xml:space="preserve">
-    <value>crwdns6498525:0crwdne6498525:0</value>
-  </data>
-  <data name="Global_ProcessingFile" xml:space="preserve">
-    <value>crwdns6498526:0crwdne6498526:0</value>
-    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
-  </data>
-  <data name="Global_UploadFile" xml:space="preserve">
-    <value>crwdns6498527:0crwdne6498527:0</value>
-    <comment>Displayed on "Submit" button next to file upload controls.</comment>
-  </data>
-  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
-    <value>crwdns6553673:0crwdne6553673:0</value>
-    <comment>Used as header above upload sections.</comment>
-  </data>
-  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
-    <value>crwdns6498529:0crwdne6498529:0</value>
-    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
-  </data>
-  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
-    <value>crwdns6498819:0{0}crwdne6498819:0</value>
-  </data>
-  <data name="Sidebar_Actions" xml:space="preserve">
-    <value>crwdns6498530:0crwdne6498530:0</value>
-    <comment>List of shortcuts to likely actions</comment>
-  </data>
-  <data name="Sidebar_Actions_None" xml:space="preserve">
-    <value>crwdns6498531:0crwdne6498531:0</value>
-    <comment>No shortcuts from this page right now.</comment>
-  </data>
-  <data name="Sidebar_Information" xml:space="preserve">
-    <value>crwdns6498532:0crwdne6498532:0</value>
-    <comment>Information about current page</comment>
-  </data>
-  <data name="Sidebar_Todo" xml:space="preserve">
-    <value>crwdns6498533:0crwdne6498533:0</value>
-    <comment>List of todo items</comment>
-  </data>
-  <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>crwdns6556557:0crwdne6556557:0</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
-  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
-    <value>crwdns6498535:0crwdne6498535:0</value>
-    <comment>Placeholder for future action items. Temporary.</comment>
-  </data>
-  <data name="Financial_CashAdvances" xml:space="preserve">
-    <value>crwdns6553608:0crwdne6553608:0</value>
-  </data>
-  <data name="Financial_CashAdvancesLong" xml:space="preserve">
-    <value>crwdns6553609:0crwdne6553609:0</value>
-  </data>
-  <data name="Financial_ExpenseClaims" xml:space="preserve">
-    <value>crwdns6553610:0crwdne6553610:0</value>
-  </data>
-  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
-    <value>crwdns6553611:0crwdne6553611:0</value>
-  </data>
-  <data name="Financial_InboundInvoices" xml:space="preserve">
-    <value>crwdns6553633:0crwdne6553633:0</value>
-  </data>
-  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
-    <value>crwdns6553613:0crwdne6553613:0</value>
-  </data>
-  <data name="Financial_OutboundInvoices" xml:space="preserve">
-    <value>crwdns6553614:0crwdne6553614:0</value>
-  </data>
-  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
-    <value>crwdns6553615:0crwdne6553615:0</value>
-  </data>
-  <data name="Global_NA" xml:space="preserve">
-    <value>crwdns6553616:0crwdne6553616:0</value>
-  </data>
-  <data name="Global_NALong" xml:space="preserve">
-    <value>crwdns6553617:0crwdne6553617:0</value>
-  </data>
-  <data name="Global_AsOfNow" xml:space="preserve">
-    <value>crwdns6553618:0crwdne6553618:0</value>
-  </data>
-  <data name="Global_Today" xml:space="preserve">
-    <value>crwdns6553619:0crwdne6553619:0</value>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>crwdns6556666:0crwdne6556666:0</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
   </data>
   <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
     <value>crwdns6553674:0crwdne6553674:0</value>
@@ -332,84 +428,301 @@
     <value>crwdns6553675:0crwdne6553675:0</value>
     <comment>Tagging costs/income to projects</comment>
   </data>
-  <data name="Sidebar_Related" xml:space="preserve">
-    <value>crwdns6553676:0crwdne6553676:0</value>
-    <comment>List of shortcuts to related actions to current one</comment>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>crwdns6563502:0crwdne6563502:0</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>crwdns6555770:0{0:N0}crwdnd6555770:0{1:N0}crwdne6555770:0</value>
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>crwdns6498516:0crwdne6498516:0</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>crwdns6555771:0{0:N0}crwdne6555771:0</value>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>crwdns6563504:0{0}crwdne6563504:0</value>
+    <comment>The {0} is the organization name</comment>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
-    <value>crwdns6553679:0{0}crwdnd6553679:0#{1}crwdne6553679:0</value>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>crwdns6563506:0crwdne6563506:0</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
-    <value>crwdns6553680:0{0}crwdne6553680:0</value>
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>crwdns6556419:0crwdne6556419:0</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>crwdns6555772:0{0:N0}crwdnd6555772:0{1}crwdne6555772:0</value>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>crwdns6563508:0crwdne6563508:0</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
   </data>
-  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
-    <value>crwdns6555773:0{0:N0}crwdnd6555773:0{1}crwdne6555773:0</value>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>crwdns6556498:0crwdne6556498:0</value>
   </data>
-  <data name="Financial_ReceiptSpecification" xml:space="preserve">
-    <value>crwdns6553683:0{0}crwdnd6553683:0{1}crwdne6553683:0</value>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>crwdns6556499:0crwdne6556499:0</value>
   </data>
-  <data name="Global_ImageSpecification" xml:space="preserve">
-    <value>crwdns6553684:0{0}crwdnd6553684:0{1}crwdne6553684:0</value>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>crwdns6556500:0crwdne6556500:0</value>
   </data>
-  <data name="Financial_DueDate" xml:space="preserve">
-    <value>crwdns6553785:0crwdne6553785:0</value>
-    <comment>For invoices and similar</comment>
+  <data name="Global_Action" xml:space="preserve">
+    <value>crwdns6553834:0crwdne6553834:0</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
   </data>
-  <data name="Financial_Supplier" xml:space="preserve">
-    <value>crwdns6553786:0crwdne6553786:0</value>
+  <data name="Global_Add" xml:space="preserve">
+    <value>crwdns6555791:0crwdne6555791:0</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
+  <data name="Global_Address" xml:space="preserve">
+    <value>crwdns6555400:0crwdne6555400:0</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>crwdns6554003:0crwdne6554003:0</value>
+  </data>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>crwdns6552494:0crwdne6552494:0</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>crwdns6553618:0crwdne6553618:0</value>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>crwdns6498517:0crwdne6498517:0</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>crwdns6498518:0crwdne6498518:0</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>crwdns6555401:0crwdne6555401:0</value>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>crwdns6498519:0crwdne6498519:0</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>crwdns6563510:0crwdne6563510:0</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>crwdns6498520:0crwdne6498520:0</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>crwdns6555402:0crwdne6555402:0</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>crwdns6553979:0crwdne6553979:0</value>
+    <comment>Like "Create Organization"</comment>
   </data>
   <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
     <value>crwdns6553787:0crwdne6553787:0</value>
     <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
   </data>
-  <data name="Global_No" xml:space="preserve">
-    <value>crwdns6553788:0crwdne6553788:0</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>crwdns6553923:0crwdne6553923:0</value>
+    <comment>As in "show me the advanced options"</comment>
   </data>
-  <data name="Global_Yes" xml:space="preserve">
-    <value>crwdns6553789:0crwdne6553789:0</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Date" xml:space="preserve">
+    <value>crwdns6556764:0crwdne6556764:0</value>
+    <comment>As in calendar date, for example January 21</comment>
   </data>
-  <data name="Financial_Asset" xml:space="preserve">
-    <value>crwdns6553790:0crwdne6553790:0</value>
+  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
+    <value>crwdns6563594:0crwdne6563594:0</value>
+    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
   </data>
-  <data name="Financial_Cost" xml:space="preserve">
-    <value>crwdns6553791:0crwdne6553791:0</value>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>crwdns6556761:0crwdne6556761:0</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
-  <data name="Financial_Debt" xml:space="preserve">
-    <value>crwdns6553792:0crwdne6553792:0</value>
+  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
+    <value>crwdns6563596:0crwdne6563596:0</value>
+    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
   </data>
-  <data name="Financial_Income" xml:space="preserve">
-    <value>crwdns6553793:0crwdne6553793:0</value>
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>crwdns6555393:0crwdne6555393:0</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Global_SelectOne" xml:space="preserve">
-    <value>crwdns6553832:0crwdne6553832:0</value>
-    <comment>Shown in dropdowns when selection required</comment>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>crwdns6556765:0crwdne6556765:0</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>crwdns6555403:0crwdne6555403:0</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>crwdns6555774:0crwdne6555774:0</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>crwdns6554004:0crwdne6554004:0</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>crwdns6556565:0crwdne6556565:0</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>crwdns6556667:0crwdne6556667:0</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>crwdns6498521:0crwdne6498521:0</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>crwdns6498522:0crwdne6498522:0</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>crwdns6563512:0crwdne6563512:0</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>crwdns6556804:0crwdne6556804:0</value>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>crwdns6563514:0crwdne6563514:0</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>crwdns6556056:0crwdne6556056:0</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>crwdns6555390:0crwdne6555390:0</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>crwdns6556470:0crwdne6556470:0</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>crwdns6556755:0crwdne6556755:0</value>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>crwdns6556420:0crwdne6556420:0</value>
+    <comment>As in a table column header</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>crwdns6553833:0crwdne6553833:0</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>crwdns6556558:0crwdne6556558:0</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>crwdns6498523:0crwdne6498523:0</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>crwdns6553684:0{0}crwdnd6553684:0{1}crwdne6553684:0</value>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>crwdns6563516:0crwdne6563516:0</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>crwdns6563518:0crwdne6563518:0</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>crwdns6556046:0[...loading...]crwdne6556046:0</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>crwdns6556047:0[...]crwdne6556047:0</value>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>crwdns6553835:0crwdne6553835:0</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>crwdns6555391:0crwdne6555391:0</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>crwdns6556124:0crwdne6556124:0</value>
+    <comment>note the spaces</comment>
   </data>
   <data name="Global_Missing" xml:space="preserve">
     <value>crwdns6553795:0crwdne6553795:0</value>
     <comment>When a record or similar is missing. Used in grids.</comment>
   </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>crwdns6555625:0crwdne6555625:0</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>crwdns6563330:0{0}crwdnd6563330:0{1}crwdne6563330:0</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
   <data name="Global_Multiple" xml:space="preserve">
     <value>crwdns6553796:0crwdne6553796:0</value>
     <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>crwdns6553616:0crwdne6553616:0</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>crwdns6553617:0crwdne6553617:0</value>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>crwdns6553836:0crwdne6553836:0</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>crwdns6553788:0crwdne6553788:0</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>crwdns6556122:0crwdne6556122:0</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>crwdns6556048:0crwdne6556048:0</value>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>crwdns6498524:0crwdne6498524:0</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>crwdns6556111:0crwdne6556111:0</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>crwdns6553837:0crwdne6553837:0</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>crwdns6556730:0crwdne6556730:0</value>
+    <comment>Used when something is determined invalid</comment>
   </data>
   <data name="Global_Off" xml:space="preserve">
     <value>crwdns6553797:0crwdne6553797:0</value>
     <comment>Off (as opposed to On)</comment>
   </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>crwdns6556525:0crwdne6556525:0</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>crwdns6556526:0crwdne6556526:0</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>crwdns6556527:0crwdne6556527:0</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>crwdns6556528:0crwdne6556528:0</value>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>crwdns6556559:0crwdne6556559:0</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
   <data name="Global_On" xml:space="preserve">
     <value>crwdns6553798:0crwdne6553798:0</value>
     <comment>On (as opposed to Off)</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>crwdns6563520:0crwdne6563520:0</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
+  <data name="Global_Organization" xml:space="preserve">
+    <value>crwdns6554034:0crwdne6554034:0</value>
   </data>
   <data name="Global_Organization_Commercial" xml:space="preserve">
     <value>crwdns6553811:0crwdne6553811:0</value>
@@ -423,44 +736,27 @@
     <value>crwdns6553813:0crwdne6553813:0</value>
     <comment>Non-profit (activist, political parties)</comment>
   </data>
-  <data name="Global_Geography" xml:space="preserve">
-    <value>crwdns6553833:0crwdne6553833:0</value>
-    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
-  </data>
-  <data name="Global_Action" xml:space="preserve">
-    <value>crwdns6553834:0crwdne6553834:0</value>
-    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
-  </data>
-  <data name="Global_Mail" xml:space="preserve">
-    <value>crwdns6553835:0crwdne6553835:0</value>
-    <comment>Somebody's email address.</comment>
-  </data>
-  <data name="Global_Name" xml:space="preserve">
-    <value>crwdns6553836:0crwdne6553836:0</value>
-    <comment>A plain person's first and last name</comment>
-  </data>
-  <data name="Global_Notes" xml:space="preserve">
-    <value>crwdns6553837:0crwdne6553837:0</value>
-    <comment>Small notes in a grid, maybe in icon form</comment>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>crwdns6498525:0crwdne6498525:0</value>
   </data>
   <data name="Global_Phone" xml:space="preserve">
     <value>crwdns6553838:0crwdne6553838:0</value>
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>
-  <data name="Global_Custom" xml:space="preserve">
-    <value>crwdns6553923:0crwdne6553923:0</value>
-    <comment>As in "show me the advanced options"</comment>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>crwdns6555404:0crwdne6555404:0</value>
   </data>
-  <data name="Global_Create" xml:space="preserve">
-    <value>crwdns6553979:0crwdne6553979:0</value>
-    <comment>Like "Create Organization"</comment>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>crwdns6556560:0crwdne6556560:0</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
   </data>
-  <data name="Global_AllYear" xml:space="preserve">
-    <value>crwdns6554003:0crwdne6554003:0</value>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>crwdns6498526:0crwdne6498526:0</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
-  <data name="Global_Description" xml:space="preserve">
-    <value>crwdns6554004:0crwdne6554004:0</value>
-    <comment>As a general header of any description field</comment>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>crwdns6556564:0crwdne6556564:0</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
   <data name="Global_Q1" xml:space="preserve">
     <value>crwdns6554005:0crwdne6554005:0</value>
@@ -478,89 +774,100 @@
     <value>crwdns6554008:0crwdne6554008:0</value>
     <comment>Fourth quarter of the year</comment>
   </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>crwdns6553832:0crwdne6553832:0</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>crwdns6556566:0crwdne6556566:0</value>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>crwdns6555822:0crwdne6555822:0</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>crwdns6555823:0crwdne6555823:0</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>crwdns6563366:0crwdne6563366:0</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>crwdns6563368:0crwdne6563368:0</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>crwdns6563370:0crwdne6563370:0</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>crwdns6556781:0crwdne6556781:0</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>crwdns6555782:0crwdne6555782:0</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
   <data name="Global_Timestamp" xml:space="preserve">
     <value>crwdns6554009:0crwdne6554009:0</value>
   </data>
-  <data name="Ledgers_Balance" xml:space="preserve">
-    <value>crwdns6554010:0crwdne6554010:0</value>
-    <comment>As in 'account balance', not as in staying upright</comment>
+  <data name="Global_Today" xml:space="preserve">
+    <value>crwdns6553619:0crwdne6553619:0</value>
   </data>
-  <data name="Ledgers_Credit" xml:space="preserve">
-    <value>crwdns6554011:0crwdne6554011:0</value>
+  <data name="Global_Total" xml:space="preserve">
+    <value>crwdns6556438:0crwdne6556438:0</value>
+    <comment>Used as footer in tables, summarizing something</comment>
   </data>
-  <data name="Ledgers_Debit" xml:space="preserve">
-    <value>crwdns6554012:0crwdne6554012:0</value>
-  </data>
-  <data name="Global_Organization" xml:space="preserve">
-    <value>crwdns6554034:0crwdne6554034:0</value>
-  </data>
-  <data name="Sidebar_Help" xml:space="preserve">
-    <value>crwdns6554035:0crwdne6554035:0</value>
-  </data>
-  <data name="Global_Female" xml:space="preserve">
-    <value>crwdns6555390:0crwdne6555390:0</value>
-    <comment>Legal gender</comment>
-  </data>
-  <data name="Global_Male" xml:space="preserve">
-    <value>crwdns6555391:0crwdne6555391:0</value>
-    <comment>Legal gender</comment>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>crwdns6556472:0crwdne6556472:0</value>
   </data>
   <data name="Global_UnknownUndisclosed" xml:space="preserve">
     <value>crwdns6555392:0crwdne6555392:0</value>
     <comment>Used for gender et al</comment>
   </data>
-  <data name="Global_DateFormatShortReadable" xml:space="preserve">
-    <value>crwdns6555393:0crwdne6555393:0</value>
-    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>crwdns6556736:0crwdne6556736:0</value>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>crwdns6556761:0crwdne6556761:0</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>crwdns6498527:0crwdne6498527:0</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  <data name="Timespan_FiveYears" xml:space="preserve">
-    <value>crwdns6555395:0crwdne6555395:0</value>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>crwdns6553673:0crwdne6553673:0</value>
+    <comment>Used as header above upload sections.</comment>
   </data>
-  <data name="Timespan_Forever" xml:space="preserve">
-    <value>crwdns6555396:0crwdne6555396:0</value>
-    <comment>Like "a lifetime membership"</comment>
-  </data>
-  <data name="Timespan_OneMonth" xml:space="preserve">
-    <value>crwdns6555397:0crwdne6555397:0</value>
-  </data>
-  <data name="Timespan_OneYear" xml:space="preserve">
-    <value>crwdns6555398:0crwdne6555398:0</value>
-  </data>
-  <data name="Timespan_TwoYears" xml:space="preserve">
-    <value>crwdns6555399:0crwdne6555399:0</value>
-    <comment>Like "a two-year membership"</comment>
-  </data>
-  <data name="Global_Address" xml:space="preserve">
-    <value>crwdns6555400:0crwdne6555400:0</value>
-    <comment>As in physical location</comment>
-  </data>
-  <data name="Global_City" xml:space="preserve">
-    <value>crwdns6555401:0crwdne6555401:0</value>
-  </data>
-  <data name="Global_Country" xml:space="preserve">
-    <value>crwdns6555402:0crwdne6555402:0</value>
-    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
-  </data>
-  <data name="Global_DateOfBirth" xml:space="preserve">
-    <value>crwdns6555403:0crwdne6555403:0</value>
-    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
-  </data>
-  <data name="Global_PostalCode" xml:space="preserve">
-    <value>crwdns6555404:0crwdne6555404:0</value>
-  </data>
-  <data name="Error_AjaxCallException" xml:space="preserve">
-    <value>crwdns6555583:0crwdne6555583:0</value>
-  </data>
-  <data name="Global_Month" xml:space="preserve">
-    <value>crwdns6555625:0crwdne6555625:0</value>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>crwdns6498529:0crwdne6498529:0</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
   <data name="Global_View" xml:space="preserve">
     <value>crwdns6555626:0crwdne6555626:0</value>
     <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>crwdns6556529:0crwdne6556529:0</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>crwdns6556530:0crwdne6556530:0</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>crwdns6556531:0crwdne6556531:0</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>crwdns6556532:0crwdne6556532:0</value>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>crwdns6556333:0crwdne6556333:0</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>crwdns6556334:0crwdne6556334:0</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>crwdns6556335:0crwdne6556335:0</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>crwdns6556049:0crwdne6556049:0</value>
   </data>
   <data name="Global_Year" xml:space="preserve">
     <value>crwdns6555627:0crwdne6555627:0</value>
@@ -572,216 +879,46 @@
     <value>crwdns6555629:0{0}crwdne6555629:0</value>
     <comment>As in "the year X".</comment>
   </data>
-  <data name="Global_DefineToEnable" xml:space="preserve">
-    <value>crwdns6555774:0crwdne6555774:0</value>
-    <comment>shown as watermark on some edit boxes</comment>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>crwdns6553789:0crwdne6553789:0</value>
+    <comment>For yes/no options</comment>
   </data>
-  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
-    <value>crwdns6555775:0{0:N0}crwdnd6555775:0{1}crwdne6555775:0</value>
+  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
+    <value>crwdns6563590:0crwdne6563590:0</value>
+    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
   </data>
-  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
-    <value>crwdns6555820:0{0:N0}crwdne6555820:0</value>
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>crwdns6554010:0crwdne6554010:0</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
   </data>
-  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
-    <value>crwdns6555777:0{0}crwdne6555777:0</value>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>crwdns6554011:0crwdne6554011:0</value>
   </data>
-  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
-    <value>crwdns6555778:0{0}crwdnd6555778:0{1}crwdne6555778:0</value>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>crwdns6554012:0crwdne6554012:0</value>
   </data>
-  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
-    <value>crwdns6555779:0{0:N0}crwdne6555779:0</value>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>crwdns6556511:0crwdne6556511:0</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
-    <value>crwdns6555780:0{0}crwdnd6555780:0{1}crwdne6555780:0</value>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>crwdns6556512:0crwdne6556512:0</value>
   </data>
-  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
-    <value>crwdns6555781:0{0:N0}crwdne6555781:0</value>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>crwdns6556513:0crwdne6556513:0</value>
   </data>
-  <data name="Global_System" xml:space="preserve">
-    <value>crwdns6555782:0crwdne6555782:0</value>
-    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>crwdns6563328:0{0}crwdnd6563328:0{1}crwdne6563328:0</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
   </data>
-  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
-    <value>crwdns6555783:0{0}crwdnd6555783:0{1:yyyy-MMM}crwdne6555783:0</value>
-  </data>
-  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
-    <value>crwdns6555784:0{0:yyyy-MMM}crwdne6555784:0</value>
-  </data>
-  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
-    <value>crwdns6555785:0{0:N0}crwdnd6555785:0{1:yyyy-MMM}crwdne6555785:0</value>
-  </data>
-  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
-    <value>crwdns6555786:0{0:N0}crwdnd6555786:0{1:yyyy-MMM}crwdnd6555786:0{2}crwdne6555786:0</value>
-    <comment>0 is identity, 1 is month, 2 is name</comment>
-  </data>
-  <data name="Financial_SalaryIdentity" xml:space="preserve">
-    <value>crwdns6555787:0{0:N0}crwdne6555787:0</value>
-  </data>
-  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
-    <value>crwdns6555788:0{0:N0}crwdnd6555788:0{1:yyyy-MMM}crwdne6555788:0</value>
-  </data>
-  <data name="Financial_Account" xml:space="preserve">
-    <value>crwdns6555789:0crwdne6555789:0</value>
-    <comment>as in bookkeeping or ledger account</comment>
-  </data>
-  <data name="Financial_Amount" xml:space="preserve">
-    <value>crwdns6555790:0crwdne6555790:0</value>
-    <comment>as in amount of money</comment>
-  </data>
-  <data name="Global_Add" xml:space="preserve">
-    <value>crwdns6555791:0crwdne6555791:0</value>
-    <comment>as in "add element", "add row", etc</comment>
-  </data>
-  <data name="Global_Several_Display" xml:space="preserve">
-    <value>crwdns6555822:0crwdne6555822:0</value>
-    <comment>Displayed when multiple items</comment>
-  </data>
-  <data name="Global_Several_SelectOne" xml:space="preserve">
-    <value>crwdns6555823:0crwdne6555823:0</value>
-    <comment>Displayed when multiple choice</comment>
-  </data>
-  <data name="Sidebar_Options" xml:space="preserve">
-    <value>crwdns6555891:0crwdne6555891:0</value>
-    <comment>For various page-specific checkboxes etc</comment>
-  </data>
-  <data name="Global_LoadingPlaceholder" xml:space="preserve">
-    <value>crwdns6556046:0[...loading...]crwdne6556046:0</value>
-  </data>
-  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
-    <value>crwdns6556047:0[...]crwdne6556047:0</value>
-  </data>
-  <data name="Global_NoMatch" xml:space="preserve">
-    <value>crwdns6556048:0crwdne6556048:0</value>
-  </data>
-  <data name="Global_Working" xml:space="preserve">
-    <value>crwdns6556049:0crwdne6556049:0</value>
-  </data>
-  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
-    <value>crwdns6556056:0crwdne6556056:0</value>
-  </data>
-  <data name="Error_CurrencyParsing" xml:space="preserve">
-    <value>crwdns6556110:0{0:N2}crwdne6556110:0</value>
-    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
-  </data>
-  <data name="Global_NoReasonGiven" xml:space="preserve">
-    <value>crwdns6556111:0crwdne6556111:0</value>
-    <comment>As inter-activist communication when denying resources, et cetera</comment>
-  </data>
-  <data name="Global_NoActionItems" xml:space="preserve">
-    <value>crwdns6556122:0crwdne6556122:0</value>
-  </data>
-  <data name="Global_MinMax" xml:space="preserve">
-    <value>crwdns6556124:0crwdne6556124:0</value>
-    <comment>note the spaces</comment>
-  </data>
-  <data name="Swarm_AssignedPerson" xml:space="preserve">
-    <value>crwdns6556125:0crwdne6556125:0</value>
-  </data>
-  <data name="Swarm_Position" xml:space="preserve">
-    <value>crwdns6556126:0crwdne6556126:0</value>
-  </data>
-  <data name="Error_DatabaseConcurrency" xml:space="preserve">
-    <value>crwdns6556163:0crwdne6556163:0</value>
-  </data>
-  <data name="Swarm_TypeName" xml:space="preserve">
-    <value>crwdns6556127:0crwdne6556127:0</value>
-  </data>
-  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
-    <value>crwdns6556128:0crwdne6556128:0</value>
-  </data>
-  <data name="Timespan_Selection_OneYear" xml:space="preserve">
-    <value>crwdns6556129:0crwdne6556129:0</value>
-  </data>
-  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
-    <value>crwdns6556130:0crwdne6556130:0</value>
-  </data>
-  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
-    <value>crwdns6556131:0crwdne6556131:0</value>
-  </data>
-  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
-    <value>crwdns6556132:0crwdne6556132:0</value>
-  </data>
-  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
-    <value>crwdns6556133:0crwdne6556133:0</value>
-  </data>
-  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
-    <value>crwdns6556134:0crwdne6556134:0</value>
-    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
-  </data>
-  <data name="Global_WizardFinish" xml:space="preserve">
-    <value>crwdns6556333:0crwdne6556333:0</value>
-  </data>
-  <data name="Global_WizardNext" xml:space="preserve">
-    <value>crwdns6556334:0crwdne6556334:0</value>
-  </data>
-  <data name="Global_WizardPrevious" xml:space="preserve">
-    <value>crwdns6556335:0crwdne6556335:0</value>
-  </data>
-  <data name="Financial_YTD" xml:space="preserve">
-    <value>crwdns6556419:0crwdne6556419:0</value>
-    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
-  </data>
-  <data name="Global_Flags" xml:space="preserve">
-    <value>crwdns6556420:0crwdne6556420:0</value>
-    <comment>As in a table column header</comment>
-  </data>
-  <data name="Global_Total" xml:space="preserve">
-    <value>crwdns6556438:0crwdne6556438:0</value>
-    <comment>Used as footer in tables, summarizing something</comment>
-  </data>
-  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
-    <value>crwdns6556470:0crwdne6556470:0</value>
-    <comment>Displayed as error when emptying fields like your name</comment>
-  </data>
-  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
-    <value>crwdns6556471:0crwdne6556471:0</value>
-  </data>
-  <data name="Global_TwitterId" xml:space="preserve">
-    <value>crwdns6556472:0crwdne6556472:0</value>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>crwdns6556515:0crwdne6556515:0</value>
   </data>
   <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
     <value>crwdns6556491:0crwdne6556491:0</value>
     <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
   </data>
-  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
-    <value>crwdns6556474:0crwdne6556474:0</value>
-  </data>
-  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
-    <value>crwdns6556475:0crwdne6556475:0</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
-    <value>crwdns6556476:0crwdne6556476:0</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
-    <value>crwdns6556477:0crwdne6556477:0</value>
-  </data>
-  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
-    <value>crwdns6556492:0crwdne6556492:0</value>
-    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
-    <value>crwdns6556493:0crwdne6556493:0</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
-    <value>crwdns6556494:0crwdne6556494:0</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
-    <value>crwdns6556495:0crwdne6556495:0</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
-    <value>crwdns6556496:0crwdne6556496:0</value>
-  </data>
-  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
-    <value>crwdns6556497:0crwdne6556497:0</value>
-  </data>
-  <data name="Global_2FA" xml:space="preserve">
-    <value>crwdns6556498:0crwdne6556498:0</value>
-  </data>
-  <data name="Global_2FA_Short" xml:space="preserve">
-    <value>crwdns6556499:0crwdne6556499:0</value>
-  </data>
-  <data name="Global_2FA_Shorter" xml:space="preserve">
-    <value>crwdns6556500:0crwdne6556500:0</value>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>crwdns6556516:0crwdne6556516:0</value>
   </data>
   <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
     <value>crwdns6556501:0crwdne6556501:0</value>
@@ -804,42 +941,17 @@
   <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
     <value>crwdns6556506:0crwdne6556506:0</value>
   </data>
-  <data name="Timespan_Selection_OneDay" xml:space="preserve">
-    <value>crwdns6556507:0crwdne6556507:0</value>
-  </data>
-  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
-    <value>crwdns6556508:0crwdne6556508:0</value>
-  </data>
-  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
-    <value>crwdns6556509:0crwdne6556509:0</value>
-  </data>
-  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
-    <value>crwdns6556510:0crwdne6556510:0</value>
-  </data>
-  <data name="Master_BitIdRegistered" xml:space="preserve">
-    <value>crwdns6556511:0crwdne6556511:0</value>
-  </data>
-  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
-    <value>crwdns6556512:0crwdne6556512:0</value>
-  </data>
-  <data name="Master_BitIdRegister_Header" xml:space="preserve">
-    <value>crwdns6556513:0crwdne6556513:0</value>
-  </data>
-  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
-    <value>crwdns6563328:0{0}crwdnd6563328:0{1}crwdne6563328:0</value>
-    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
-  </data>
-  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
-    <value>crwdns6556515:0crwdne6556515:0</value>
-  </data>
-  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
-    <value>crwdns6556516:0crwdne6556516:0</value>
-  </data>
   <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
     <value>crwdns6556517:0crwdne6556517:0</value>
   </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>crwdns6556474:0crwdne6556474:0</value>
+  </data>
   <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
     <value>crwdns6556518:0crwdne6556518:0</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>crwdns6556475:0crwdne6556475:0</value>
   </data>
   <data name="Master_EditPersonNewPassword1" xml:space="preserve">
     <value>crwdns6556519:0crwdne6556519:0</value>
@@ -856,245 +968,133 @@
   <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
     <value>crwdns6556523:0crwdne6556523:0</value>
   </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>crwdns6556476:0crwdne6556476:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>crwdns6556493:0crwdne6556493:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>crwdns6556494:0crwdne6556494:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>crwdns6556477:0crwdne6556477:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>crwdns6556495:0crwdne6556495:0</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>crwdns6556496:0crwdne6556496:0</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>crwdns6556497:0crwdne6556497:0</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>crwdns6556492:0crwdne6556492:0</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
   <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
     <value>crwdns6556524:0crwdne6556524:0</value>
   </data>
-  <data name="Global_Officer_Female" xml:space="preserve">
-    <value>crwdns6556525:0crwdne6556525:0</value>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>crwdns6498819:0{0}crwdne6498819:0</value>
   </data>
-  <data name="Global_Officer_Male" xml:space="preserve">
-    <value>crwdns6556526:0crwdne6556526:0</value>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>crwdns6498530:0crwdne6498530:0</value>
+    <comment>List of shortcuts to likely actions</comment>
   </data>
-  <data name="Global_Officer_Neutral" xml:space="preserve">
-    <value>crwdns6556527:0crwdne6556527:0</value>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>crwdns6498531:0crwdne6498531:0</value>
+    <comment>No shortcuts from this page right now.</comment>
   </data>
-  <data name="Global_Officer_Plural" xml:space="preserve">
-    <value>crwdns6556528:0crwdne6556528:0</value>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>crwdns6554035:0crwdne6554035:0</value>
   </data>
-  <data name="Global_Volunteer_Female" xml:space="preserve">
-    <value>crwdns6556529:0crwdne6556529:0</value>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>crwdns6498532:0crwdne6498532:0</value>
+    <comment>Information about current page</comment>
   </data>
-  <data name="Global_Volunteer_Male" xml:space="preserve">
-    <value>crwdns6556530:0crwdne6556530:0</value>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>crwdns6555891:0crwdne6555891:0</value>
+    <comment>For various page-specific checkboxes etc</comment>
   </data>
-  <data name="Global_Volunteer_Neutral" xml:space="preserve">
-    <value>crwdns6556531:0crwdne6556531:0</value>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>crwdns6553676:0crwdne6553676:0</value>
+    <comment>List of shortcuts to related actions to current one</comment>
   </data>
-  <data name="Global_Volunteer_Plural" xml:space="preserve">
-    <value>crwdns6556532:0crwdne6556532:0</value>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>crwdns6498533:0crwdne6498533:0</value>
+    <comment>List of todo items</comment>
   </data>
-  <data name="Global_Go" xml:space="preserve">
-    <value>crwdns6556558:0crwdne6556558:0</value>
-    <comment>As in "execute", "run requested procedure"</comment>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>crwdns6556557:0crwdne6556557:0</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
   </data>
-  <data name="Global_Ok" xml:space="preserve">
-    <value>crwdns6556559:0crwdne6556559:0</value>
-    <comment>Shown on confirmation dialogs</comment>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>crwdns6498535:0crwdne6498535:0</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
   </data>
-  <data name="Global_Proceed" xml:space="preserve">
-    <value>crwdns6556560:0crwdne6556560:0</value>
-    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>crwdns6556125:0crwdne6556125:0</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>crwdns6556126:0crwdne6556126:0</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>crwdns6556127:0crwdne6556127:0</value>
   </data>
   <data name="Swarm_TypePartialName" xml:space="preserve">
     <value>crwdns6556561:0crwdne6556561:0</value>
   </data>
-  <data name="Financial_ProfitToDate" xml:space="preserve">
-    <value>crwdns6556562:0{0}crwdne6556562:0</value>
-    <comment>{0} is the currency code</comment>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>crwdns6555395:0crwdne6555395:0</value>
   </data>
-  <data name="Financial_Client" xml:space="preserve">
-    <value>crwdns6556563:0crwdne6556563:0</value>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>crwdns6555396:0crwdne6555396:0</value>
+    <comment>Like "a lifetime membership"</comment>
   </data>
-  <data name="Global_Progress" xml:space="preserve">
-    <value>crwdns6556564:0crwdne6556564:0</value>
-    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>crwdns6555397:0crwdne6555397:0</value>
   </data>
-  <data name="Financial_TransactionIdShort" xml:space="preserve">
-    <value>crwdns6556666:0crwdne6556666:0</value>
-    <comment>Used in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>crwdns6555398:0crwdne6555398:0</value>
   </data>
-  <data name="Global_DownloadThis" xml:space="preserve">
-    <value>crwdns6556565:0crwdne6556565:0</value>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>crwdns6556507:0crwdne6556507:0</value>
   </data>
-  <data name="Global_Dox" xml:space="preserve">
-    <value>crwdns6556667:0crwdne6556667:0</value>
-    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>crwdns6556128:0crwdne6556128:0</value>
   </data>
-  <data name="Global_SendThisInMail" xml:space="preserve">
-    <value>crwdns6556566:0crwdne6556566:0</value>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>crwdns6556129:0crwdne6556129:0</value>
   </data>
-  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
-    <value>crwdns6556684:0crwdne6556684:0</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>crwdns6556508:0crwdne6556508:0</value>
   </data>
-  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
-    <value>crwdns6556685:0crwdne6556685:0</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>crwdns6556130:0crwdne6556130:0</value>
   </data>
-  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
-    <value>crwdns6556686:0crwdne6556686:0</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>crwdns6556131:0crwdne6556131:0</value>
   </data>
-  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
-    <value>crwdns6556687:0crwdne6556687:0</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>crwdns6556509:0crwdne6556509:0</value>
   </data>
-  <data name="Financial_BitcoinChain" xml:space="preserve">
-    <value>crwdns6556688:0crwdne6556688:0</value>
-    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>crwdns6556132:0crwdne6556132:0</value>
   </data>
-  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
-    <value>crwdns6556704:0{0:N0}crwdnd6556704:0{1}crwdne6556704:0</value>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>crwdns6556510:0crwdne6556510:0</value>
   </data>
-  <data name="Global_Nuked" xml:space="preserve">
-    <value>crwdns6556730:0crwdne6556730:0</value>
-    <comment>Used when something is determined invalid</comment>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>crwdns6556133:0crwdne6556133:0</value>
   </data>
-  <data name="Global_Upload" xml:space="preserve">
-    <value>crwdns6556736:0crwdne6556736:0</value>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>crwdns6556134:0crwdne6556134:0</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
   </data>
-  <data name="Global_FileUploadResults" xml:space="preserve">
-    <value>crwdns6556755:0crwdne6556755:0</value>
-  </data>
-  <data name="Financial_AmountVat" xml:space="preserve">
-    <value>crwdns6556762:0crwdne6556762:0</value>
-    <comment>The short form of Value Added Tax.</comment>
-  </data>
-  <data name="Financial_AmountVatFull" xml:space="preserve">
-    <value>crwdns6556763:0crwdne6556763:0</value>
-  </data>
-  <data name="Global_Date" xml:space="preserve">
-    <value>crwdns6556764:0crwdne6556764:0</value>
-    <comment>As in calendar date, for example January 21</comment>
-  </data>
-  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
-    <value>crwdns6556765:0crwdne6556765:0</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
-  </data>
-  <data name="Global_Submit" xml:space="preserve">
-    <value>crwdns6556781:0crwdne6556781:0</value>
-    <comment>As in "Submit this data for processing"</comment>
-  </data>
-  <data name="Financial_GeneralLedger" xml:space="preserve">
-    <value>crwdns6556792:0crwdne6556792:0</value>
-  </data>
-  <data name="Global_EnteringSandbox" xml:space="preserve">
-    <value>crwdns6556804:0crwdne6556804:0</value>
-  </data>
-  <data name="Global_MonthXtoY" xml:space="preserve">
-    <value>crwdns6563330:0{0}crwdnd6563330:0{1}crwdne6563330:0</value>
-    <comment>For example, "January to March". The initial "from" is implied.</comment>
-  </data>
-  <data name="Global_SkipNo" xml:space="preserve">
-    <value>crwdns6563366:0crwdne6563366:0</value>
-    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
-  </data>
-  <data name="Global_SkipThis" xml:space="preserve">
-    <value>crwdns6563368:0crwdne6563368:0</value>
-    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
-  </data>
-  <data name="Global_SkipYes" xml:space="preserve">
-    <value>crwdns6563370:0crwdne6563370:0</value>
-    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
-  </data>
-  <data name="Financial_Ebitda_Long" xml:space="preserve">
-    <value>crwdns6563372:0crwdne6563372:0</value>
-  </data>
-  <data name="Financial_Ebitda_Short" xml:space="preserve">
-    <value>crwdns6563374:0crwdne6563374:0</value>
-    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
-  </data>
-  <data name="Financial_AllBalancesSettled" xml:space="preserve">
-    <value>crwdns6563482:0crwdne6563482:0</value>
-    <comment>Nobody owes anybody anything</comment>
-  </data>
-  <data name="Financial_CurrentBalance" xml:space="preserve">
-    <value>crwdns6563484:0crwdne6563484:0</value>
-  </data>
-  <data name="Financial_NoPaymentHistory" xml:space="preserve">
-    <value>crwdns6563486:0crwdne6563486:0</value>
-  </data>
-  <data name="Financial_Owed" xml:space="preserve">
-    <value>crwdns6563488:0crwdne6563488:0</value>
-    <comment>As in, "Amount Owed"</comment>
-  </data>
-  <data name="Financial_Paid" xml:space="preserve">
-    <value>crwdns6563490:0crwdne6563490:0</value>
-    <comment>As in, "Amount Paid To Person"</comment>
-  </data>
-  <data name="Financial_PaymentHistory" xml:space="preserve">
-    <value>crwdns6563492:0crwdne6563492:0</value>
-  </data>
-  <data name="Financial_PaymentSpecification" xml:space="preserve">
-    <value>crwdns6563494:0{0:N0}crwdne6563494:0</value>
-    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
-  </data>
-  <data name="Financial_PayoutSpecification" xml:space="preserve">
-    <value>crwdns6563496:0{0:N0}crwdne6563496:0</value>
-    <comment>A Pay-OUT is always money leaving the organization</comment>
-  </data>
-  <data name="Financial_PersonIsOwed" xml:space="preserve">
-    <value>crwdns6563498:0crwdne6563498:0</value>
-    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
-  </data>
-  <data name="Financial_PersonOwes" xml:space="preserve">
-    <value>crwdns6563500:0crwdne6563500:0</value>
-    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
-  </data>
-  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
-    <value>crwdns6563502:0crwdne6563502:0</value>
-    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
-  </data>
-  <data name="Financial_YouAreOwed" xml:space="preserve">
-    <value>crwdns6563504:0{0}crwdne6563504:0</value>
-    <comment>The {0} is the organization name</comment>
-  </data>
-  <data name="Financial_YouOwe" xml:space="preserve">
-    <value>crwdns6563506:0crwdne6563506:0</value>
-    <comment>Like Person Owes, but directed at the user at the screen</comment>
-  </data>
-  <data name="Financial_Zero" xml:space="preserve">
-    <value>crwdns6563508:0crwdne6563508:0</value>
-    <comment>This is used when a debt is zero; there is no debt to settle</comment>
-  </data>
-  <data name="Global_Closed" xml:space="preserve">
-    <value>crwdns6563510:0crwdne6563510:0</value>
-    <comment>As in "record or transaction closed"</comment>
-  </data>
-  <data name="Global_EmptySet" xml:space="preserve">
-    <value>crwdns6563512:0crwdne6563512:0</value>
-    <comment>There are no records of the requested type</comment>
-  </data>
-  <data name="Global_Error_Concurrency" xml:space="preserve">
-    <value>crwdns6563514:0crwdne6563514:0</value>
-    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
-  </data>
-  <data name="Global_Item" xml:space="preserve">
-    <value>crwdns6563516:0crwdne6563516:0</value>
-    <comment>As in "record", "list item", something listed</comment>
-  </data>
-  <data name="Global_Items" xml:space="preserve">
-    <value>crwdns6563518:0crwdne6563518:0</value>
-    <comment>As in "records", "list items", something listed</comment>
-  </data>
-  <data name="Global_Opened" xml:space="preserve">
-    <value>crwdns6563520:0crwdne6563520:0</value>
-    <comment>As in "record or transaction opened"</comment>
-  </data>
-  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
-    <value>crwdns6563590:0crwdne6563590:0</value>
-    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
-  </data>
-  <data name="Financial_DueDateShort" xml:space="preserve">
-    <value>crwdns6563592:0crwdne6563592:0</value>
-    <comment>As "due date", as in when a payment is expected, but just the word "due" to be combined with an actual date in the UI. Example: *Due* Jan 21.</comment>
-  </data>
-  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
-    <value>crwdns6563594:0crwdne6563594:0</value>
-    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
-  </data>
-  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
-    <value>crwdns6563596:0crwdne6563596:0</value>
-    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>crwdns6555399:0crwdne6555399:0</value>
+    <comment>Like "a two-year membership"</comment>
   </data>
 </root>

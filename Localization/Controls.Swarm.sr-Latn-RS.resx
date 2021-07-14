@@ -121,6 +121,9 @@
     <value>Dodeli drugu osobu...</value>
     <comment>To an existing position that accepts multiple people (like "assistants")</comment>
   </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(dodeljen(a) Mojoj Organizaciji)</value>
+  </data>
   <data name="Positions_AssignFifthPerson" xml:space="preserve">
     <value>Dodeli petu osobu...</value>
   </data>
@@ -154,6 +157,16 @@
     <value>Dodeli</value>
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;NAPUŠTATE POZICIJU?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ovo je &lt;strong&gt;Vaš&lt;/strong&gt; zadatak. Napuštanje zadatka je ekvivalent rečenici "DAJEM OTKAZ". Ako to uradite, posledice stupaju na snagu odmah. Da li ste sigurni da želite da učinite to?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;PREKIDATE ZADATAK?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Da li ste sigurni da želite da prekinete zadatak zaposlenom: &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Ova odluka je ekvivalentna otpuštanju nekoga i mora se obaviti u skladu sa internim pravilima i lokalnim zakonima.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Kreiraj novu poziciju...</value>
+  </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
     <value>Resporedi osobu na poziciju &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt; &lt;span id='{0}_modalGeographyName'&gt; &lt;/span&gt;</value>
     <comment>Header for new assignment dialog</comment>
@@ -164,16 +177,8 @@
   <data name="Positions_PleaseSelectPerson" xml:space="preserve">
     <value>Molimo Vas da selektujete osobu koju ćete dodeliti.</value>
   </data>
-  <data name="Positions_Vacant" xml:space="preserve">
-    <value>(pozicija je slobodna)</value>
-    <comment>For unassigned positions</comment>
-  </data>
-  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;NAPUŠTATE POZICIJU?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ovo je &lt;strong&gt;Vaš&lt;/strong&gt; zadatak. Napuštanje zadatka je ekvivalent rečenici "DAJEM OTKAZ". Ako to uradite, posledice stupaju na snagu odmah. Da li ste sigurni da želite da učinite to?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
-  <data name="Positions_ConfirmTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;PREKIDATE ZADATAK?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Da li ste sigurni da želite da prekinete zadatak zaposlenom: &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Ova odluka je ekvivalentna otpuštanju nekoga i mora se obaviti u skladu sa internim pravilima i lokalnim zakonima.&lt;br/&gt;&lt;br/&gt;</value>
-    <comment>{0} is the person name, {1} is the position title.</comment>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Lideri pod-divizija</value>
   </data>
   <data name="Positions_TerminateNo" xml:space="preserve">
     <value>Ne prekidaj</value>
@@ -187,13 +192,8 @@
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>Prekini zadatak</value>
   </data>
-  <data name="Positions_AssignElsewhere" xml:space="preserve">
-    <value>(dodeljen(a) Mojoj Organizaciji)</value>
-  </data>
-  <data name="Positions_CreatePosition" xml:space="preserve">
-    <value>Kreiraj novu poziciju...</value>
-  </data>
-  <data name="Positions_Subleaders" xml:space="preserve">
-    <value>Lideri pod-divizija</value>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(pozicija je slobodna)</value>
+    <comment>For unassigned positions</comment>
   </data>
 </root>

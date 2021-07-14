@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;NAKOLEKTANG DUST&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ang halaga na napadala ay mas maliit sa inaasahang bayarin para sa pagbalik nito sa iyo, na {0:N2} na microcoins. Ang salaping ito ay tinatawag ngayon na "dust" sa network ng bitcoin, at hindi na muling magagalaw.&lt;br/&gt;&lt;br/&gt;Magpadala ng mas mataas na halaga upang makapagsagawa ng isang pagsusuring echo.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>Ito ay isang kodigong QR para sa pagsusuri ng bitcoin echo para sa kabuuang instalasyon ng Swarmops, hindi lang para sa {0}. Basahin ito mula sa bitcoin wallet ng iyong telepono upang makasagawa ng pagsusuring echo, o direktang magpadala mula sa iyong kompyuter papunta sa {1} (iyan ay isang Bitcoin Cash address). Ang halaga (maliit na bayad sa mga minero na {2:N2} microcoins) ay ipapadala pabalik sa iyo sa susunod na mga segundo.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,62 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Pagsusuri sa Swarmops Bitcoin Echo</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Aktibong Impersonasyon</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Ikaw ay mayroong aktibong sesyon ng impersonasyon bilang {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Tapusin ang impersonasyon.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;KATAWANIN ANG TAO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ito ay hindi dapat kunin ng basta-basta, at kung hindi mo ito gagawin para sa mga teknikal na dahilan, ito ay maaaring maging ilegal depende sa mga batas na lokal.&lt;br/&gt;&lt;br/&gt;Ang layunin ng kagamitan na ito ay ang ayusin ang mga sira na teknikal. Ang lahat ay naka-log.&lt;br/&gt;&lt;br/&gt;Magpatuloy?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;PINAHINTO ANG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Pinahinto ang pagkukunwari sa {0:HH:mm} UTC. Ikaw ay kumikilos muli bilang ikaw.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;TINANGGIHAN ANG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ikaw ay maaaring hindi magkunwaring isang tao na direkta mong tagapangasiwa.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;TINANGGIHAN ANG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ikaw ay maaaring hindi magkunwaring ibang tao na mayroong akses na sa antas ng sistema.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Kailangan mong pumili ng isang tao na ipagkukunwari.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Kung kailangan mong ipagkunwari ang iyong sarili, minumungkahi namin na i-log off ang Swarmops at humanap ng ibang klase ng tulong.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;TINANGGIHAN ANG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ikaw ay tila hindi nagkakaroon ng sapat na mga pribilehiyo upang makapagkunwari ng ibang tao.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Magkunwari na ibang gumagamit</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Magkunwari</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Taong pagkukunwarian</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;AKTIBONG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ang pagkukunwari ay nagsimula ng {0:HH:mm} UTC. Ito ay ang Dashboard na nakikita ng taong pinagkukunwarian. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Ang kagamitan na ito sa pag-debug ay nagpapahintulot sa iyo na makapagkunwari sa ibang gumagamit na makakita at makaranas ng Swarmops tulad ng ginagawa nila kapag naka-log in.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BABALA:&lt;/strong&gt;Ito ay isang kagamitan na lubos na mapanghimasok na dapat lamang na gamitin para sa teknikal na pag-unlad at para sa suportang hiniling. Ang paggamit nito ay hindi dapat basta-basta.&lt;/p&gt;
+&lt;p&gt;Ang pagkukunwari ay palagiang natatala, lahat at anumang mga aksyon na isinagawa habang nagkukunwari ay tulad nito ay natatandaan, at ang gumagamit na pinagkunwarian ay sasabihan sa nangyaring panghihimasok.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Ang mga aktibista ay tatawagin</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(hindi magagamit)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Hindi-pa-mga-miyembro ay tinatatawag na</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Root-level na organisasyon</value>
@@ -188,6 +245,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Komersyal</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Pamahalaan</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Hindi pangkalakal</value>
@@ -269,6 +329,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Mga Notipikasyong Admin Mula sa Pangalan</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>I-override ang Backend Hostname</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>Ang SMTP Port ay dapat naka-numeriko. Hindi nakapag-parse sa host:port.</value>
   </data>
@@ -302,73 +365,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Ikaw talaga, talaga, TALAGA ay dapat gumamit ng HTTPS para sa isang website na tulad nito. Pero alam mo na iyon, hindi ba?</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>I-override ang Backend Hostname</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>WebSocket Port (Frontend)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>WebSocket Port (Backend)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>Aktibong Impersonasyon</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>Ikaw ay mayroong aktibong sesyon ng impersonasyon bilang {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Tapusin ang impersonasyon.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;KATAWANIN ANG TAO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ito ay hindi dapat kunin ng basta-basta, at kung hindi mo ito gagawin para sa mga teknikal na dahilan, ito ay maaaring maging ilegal depende sa mga batas na lokal.&lt;br/&gt;&lt;br/&gt;Ang layunin ng kagamitan na ito ay ang ayusin ang mga sira na teknikal. Ang lahat ay naka-log.&lt;br/&gt;&lt;br/&gt;Magpatuloy?</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;PINAHINTO ANG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Pinahinto ang pagkukunwari sa {0:HH:mm} UTC. Ikaw ay kumikilos muli bilang ikaw.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt;TINANGGIHAN ANG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ikaw ay maaaring hindi magkunwaring isang tao na direkta mong tagapangasiwa.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;TINANGGIHAN ANG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ikaw ay maaaring hindi magkunwaring ibang tao na mayroong akses na sa antas ng sistema.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>Kailangan mong pumili ng isang tao na ipagkukunwari.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Kung kailangan mong ipagkunwari ang iyong sarili, minumungkahi namin na i-log off ang Swarmops at humanap ng ibang klase ng tulong.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;TINANGGIHAN ANG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ikaw ay tila hindi nagkakaroon ng sapat na mga pribilehiyo upang makapagkunwari ng ibang tao.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>Magkunwari na ibang gumagamit</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>Magkunwari</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>Taong pagkukunwarian</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;AKTIBONG PAGKUKUNWARI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ang pagkukunwari ay nagsimula ng {0:HH:mm} UTC. Ito ay ang Dashboard na nakikita ng taong pinagkukunwarian. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>&lt;p&gt;Ang kagamitan na ito sa pag-debug ay nagpapahintulot sa iyo na makapagkunwari sa ibang gumagamit na makakita at makaranas ng Swarmops tulad ng ginagawa nila kapag naka-log in.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;BABALA:&lt;/strong&gt;Ito ay isang kagamitan na lubos na mapanghimasok na dapat lamang na gamitin para sa teknikal na pag-unlad at para sa suportang hiniling. Ang paggamit nito ay hindi dapat basta-basta.&lt;/p&gt;
-&lt;p&gt;Ang pagkukunwari ay palagiang natatala, lahat at anumang mga aksyon na isinagawa habang nagkukunwari ay tulad nito ay natatandaan, at ang gumagamit na pinagkunwarian ay sasabihan sa nangyaring panghihimasok.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Hindi-pa-mga-miyembro ay tinatatawag na</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(hindi magagamit)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Pamahalaan</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;NAKOLEKTANG DUST&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ang halaga na napadala ay mas maliit sa inaasahang bayarin para sa pagbalik nito sa iyo, na {0:N2} na microcoins. Ang salaping ito ay tinatawag ngayon na "dust" sa network ng bitcoin, at hindi na muling magagalaw.&lt;br/&gt;&lt;br/&gt;Magpadala ng mas mataas na halaga upang makapagsagawa ng isang pagsusuring echo.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>WebSocket Port (Frontend)</value>
   </data>
 </root>

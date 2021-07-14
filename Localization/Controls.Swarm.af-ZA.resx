@@ -121,6 +121,9 @@
     <value>crwdns6556146:0crwdne6556146:0</value>
     <comment>To an existing position that accepts multiple people (like "assistants")</comment>
   </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>crwdns6556237:0crwdne6556237:0</value>
+  </data>
   <data name="Positions_AssignFifthPerson" xml:space="preserve">
     <value>crwdns6556147:0crwdne6556147:0</value>
   </data>
@@ -154,6 +157,16 @@
     <value>crwdns6556153:0crwdne6556153:0</value>
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>crwdns6556157:0crwdne6556157:0</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>crwdns6556158:0[PERSONNAME]crwdnd6556158:0[POSITIONNAME]crwdne6556158:0</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>crwdns6556238:0crwdne6556238:0</value>
+  </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
     <value>crwdns6556236:0{0}crwdnd6556236:0{0}crwdne6556236:0</value>
     <comment>Header for new assignment dialog</comment>
@@ -164,16 +177,8 @@
   <data name="Positions_PleaseSelectPerson" xml:space="preserve">
     <value>crwdns6556155:0crwdne6556155:0</value>
   </data>
-  <data name="Positions_Vacant" xml:space="preserve">
-    <value>crwdns6556156:0crwdne6556156:0</value>
-    <comment>For unassigned positions</comment>
-  </data>
-  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
-    <value>crwdns6556157:0crwdne6556157:0</value>
-  </data>
-  <data name="Positions_ConfirmTerminate" xml:space="preserve">
-    <value>crwdns6556158:0[PERSONNAME]crwdnd6556158:0[POSITIONNAME]crwdne6556158:0</value>
-    <comment>{0} is the person name, {1} is the position title.</comment>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>crwdns6556556:0crwdne6556556:0</value>
   </data>
   <data name="Positions_TerminateNo" xml:space="preserve">
     <value>crwdns6556159:0crwdne6556159:0</value>
@@ -187,13 +192,8 @@
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>crwdns6556162:0crwdne6556162:0</value>
   </data>
-  <data name="Positions_AssignElsewhere" xml:space="preserve">
-    <value>crwdns6556237:0crwdne6556237:0</value>
-  </data>
-  <data name="Positions_CreatePosition" xml:space="preserve">
-    <value>crwdns6556238:0crwdne6556238:0</value>
-  </data>
-  <data name="Positions_Subleaders" xml:space="preserve">
-    <value>crwdns6556556:0crwdne6556556:0</value>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>crwdns6556156:0crwdne6556156:0</value>
+    <comment>For unassigned positions</comment>
   </data>
 </root>

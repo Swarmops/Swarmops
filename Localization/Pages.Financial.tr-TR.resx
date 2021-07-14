@@ -147,6 +147,10 @@
     <value>{2} {3:N2} için {1}'den den Gider Talebi #{0:N0} onaylandı.</value>
     <comment>{2} is the currency.</comment>
   </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Gider Talebi Onayı {1}'den #{0:N0} GERİ ÇEKİLDİ. Tekrar onaylanmadıkça ödeme yapılmayacaktır.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Eylem</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -205,6 +209,10 @@
   <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
     <value>Hoverkraftım yılan balığı dolu</value>
     <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Tutar, belirtilen KDV'yi hariç tutmalıdır!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
   <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
     <value>(in {0}) yerine hangi miktarı onaylıyorsunuz?</value>
@@ -282,6 +290,13 @@
     <value>Toplam fatura tutarı ({0})</value>
     <comment>{0} is the organization's main currency.</comment>
   </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>Toplam KDV kısmı ({0})</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Oluştur</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>Açıklama</value>
     <comment>Free-text description of invoice</comment>
@@ -296,6 +311,7 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Burası, organizasyonunuzda alınan faturaları dosyaladığınız yer ("Borç Hesapları"). Tedarikçi ismi, miktar, son tarih, fatura referansını giriniz ve alınan faturanın bir fotoğrafını yükleyiniz. Ayrıca, bir bütçe seçiniz. Bütçe sahibinin her zamanki gibi onay vermesi gerekmektedir. (Bu mekanizma için gelecek için planlanmış açılımlar, satın alma teklifleri ve tedarikçi listelerini kapsamaktadır.)</value>
   </data>
+  
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Gelen Fatura Alındı</value>
   </data>
@@ -324,6 +340,34 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>Lütfen tedarikçinin banka hesabını veya bir eşdeğerini giriniz.</value>
   </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Lütfen faturanın talep ettiği para miktarını ({0} içerisinde) girin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Lütfen borçlandırmak için bir bütçe belirtin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Lütfen orijinal faturanın bir veya daha fazla belgesini yükleyin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Lütfen bir seçenek seçin.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Lütfen bu satın almanın ne olduğunu açıklayın.</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Giden Fatura Oluşturuluyor</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Oluştur</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Giden Fatura Oluşturuluyor</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Giden Fatura #{0:N0} dosyalandı.</value>
+  </data>
   <data name="Donate_Explain" xml:space="preserve">
     <value>{0} için bağış QR kodu. Bir bağış yapmak için bu kodu telefonunuzdaki bitcoin cüzdanından okutun veya bilgiyasarınızdan bu adrese [{1}] (that's a Bitcoin Cash address) doğrudan bir bağış yapın.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -331,6 +375,10 @@
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>{0}{1:N2} alındı ({2:N0} microcoin veya "bit".) Teşekkürler!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Alınan Fonlar ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
   </data>
   <data name="Donate_FundsReceivedNative" xml:space="preserve">
     <value>{0} microcoins ("bits") alındı. Teşekkürler!</value>
@@ -372,12 +420,74 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>Bütçe</value>
   </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>İstek</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>Maliyet Türü</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Açıklama</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Expensify CSV'yi yükle</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;HATA: Expensify CSV'yi ayrıştıramadı.&lt;/strong&gt; Bu Expensify'dan bir CSV dosyasıysa, Swarmops'un "Zaman Damgası", "Tutar", "Satıcı", "Yorum", "Kategori", "MCC", "Orijinal Para Birimi" ve "Orijinal Tutar" dosyada bulunması gereken sütunlara ihtiyaç duyar. Organizasyon KDV bildirirse, "KDV" adlı bir sütun daha gerekir.&lt;/p&gt;&lt;p&gt;Bu dosyaya devam edilemiyor.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;HATA: Expensify CSV dosyasında gerekli veri alanları eksik.&lt;/strong&gt;Dosya, Expensify'ın varsayılan CSV profilinin zorunlu alanlarından en az birinde eksik görünüyor. Teknik belgelere bakın ve yüklemeye çalıştığınız dosya ile karşılaştırın. (Elbette, tamamen yanlış bir dosyayı &amp;ndash; yüklemeye çalışmanız, muhtemelen bir Expensify CSV &amp;ndash; yerine bir fotoğraf yüklemeye çalışmanız ve beklenmeyen eksik veriler daha olası bir hata nedenidir.)&lt;/p&gt;&lt;p&gt;Bu dosya işlenemiyor.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;HATA: Expensify CSV dosyasının KDV alanı yok.&lt;/strong&gt;Bu kuruluş yetkililere Katma Değer Vergisi'ni (KDV) bildirdiğinden, bu harcamalara göre belirlenmelidir. Lütfen Expensify'da KDV'yi etkinleştirin ve bunu "KDV" sütun başlığı altında veren yeni bir CSV dışa aktarma profili oluşturun. Ekibiniz zaten böyle bir CSV profili oluşturduysa, CSV'ye dışa aktarırken onu seçmeniz gerekebilir.&lt;/p&gt;&lt;p&gt;Bu dosya işlenemiyor.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Çok fazla harcama raporunuz varsa, onları Expensify ile toplayabilir ve bir Expensify CSV raporunu buraya yükleyebilirsiniz (Expensify Raporları altında CSV olarak elde ettikleriniz, Dışa Aktarma) Swarmops, tüm bireysel makbuzları almak için Expensify'ı kullanacak ve bunları uygun muhasebe için ayrı gider talepleri olarak kaydedecektir.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Bunun çalışması için {0} vergi makamlarına KDV rapor ettiğinden, varsayılanın yayınlamadığı KDV’yi içerecek şekilde varsayılan Expensify CSV profilini değiştirmeniz gerekir. Expensify'ın yardım sayfalarında bunun nasıl yapılacağı hakkında daha fazla bilgi var ve eğer Expensify'ı takım bazında kullanıyorsanız, Expensify politikanızın zaten KDV etkin bir CSV dışa aktarma profili olmalıdır.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Organizasyon'un ayarlarına bağlı olarak, Expensify'daki "Varsayılan CSV" dışa aktarma profili Swarmops için yeterli olmalıdır.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Tüm gider talepleri göndermeden önce bir bütçeye ihtiyaç duyar.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>Gönderilecek Expensify kaydı yok</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Expensify Raporları'nın para birimi</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Bir talep göndermeye hazır</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>{0} talep göndermeye hazır</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Talep başarıyla dosyalandı.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>{0} talep başarıyla dosyalandı.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Başka Bir Expensify CSV Dosyası Yükle?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>kendim</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Bu kimden bir gider talebi?</value>
   </data>
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>Banka Detayınız</value>
@@ -401,6 +511,9 @@
   <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
     <value>Bu sizin kendi bütçeniz olduğu için, onaylama zaten tamamlanmıştır. Sadece doğrulama gereklidir.</value>
   </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Geri Ödeme İçin Expensify Raporu Yükle</value>
+  </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Makbuz Resimlerini Yükle</value>
   </data>
@@ -417,17 +530,61 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Lütfen bu satın alımın ne olduğunu açıklayın.</value>
   </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>Toplam KDV ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Gelen Faturalar Listeleniyor</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Fatura Göndereni</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Bu, son 100 faturayı, vade tarihlerine göre önce en yeni olan sıralanmış şekilde listeler.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Gelen Faturalar</value>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Gönderildi</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Müşteri</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Giden Faturalar Listeleniyor</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Bu en son 100 giden faturayı listeler, ilk önce en yeniler olmak üzere ne zaman oluşturduklarına göre sıralanırlar.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Toplam Tutar</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Son Tarih</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Giden Faturaları Listele</value>
+  </data>
+  
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Tutar</value>
     <comment>Amount to be paid out</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Ücretli</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>Alıcı</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referans</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Ödeme için hazır maliyetler</value>
@@ -435,6 +592,12 @@
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Bunlar ödeme için tüm engelleri aşan kuruluşa giden çeşitli maliyet biçimleridir. Alıcıya ödenmeye hazırlar. İşte size ödenmiş olarak onları kontrol edeceğiniz yer (muhtemelen bankanızı başka bir pencerede açarken).</value>
   </data>
+  
+  
+  
+  
+  
+  
   <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
     <value>Mobil uygulamalar için OCR göster</value>
   </data>
@@ -445,6 +608,7 @@
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Para Öde</value>
   </data>
+  
   <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
     <value>#{0} ödemesi geri alınamıyor: Zaten ödenmiş veya kapanmış.</value>
   </data>
@@ -497,6 +661,9 @@
   </data>
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>Bütçe</value>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>İstek</value>
   </data>
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Banka Bilgileriniz</value>
@@ -555,169 +722,4 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>{1} {2:N2} için Gider Talebi #{0:N0} makbuzları doğrulandı.</value>
   </data>
-  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Oluştur</value>
-    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
-    <value>Lütfen faturanın talep ettiği para miktarını ({0} içerisinde) girin.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
-    <value>Lütfen borçlandırmak için bir bütçe belirtin.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
-    <value>Lütfen orijinal faturanın bir veya daha fazla belgesini yükleyin.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
-    <value>Lütfen bir seçenek seçin.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
-    <value>Lütfen bu satın almanın ne olduğunu açıklayın.</value>
-  </data>
-  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
-    <value>İstek</value>
-    <comment>Could also be "file" (as verb) or equivalent</comment>
-  </data>
-  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
-    <value>İstek</value>
-  </data>
-  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
-    <value>Toplam KDV kısmı ({0})</value>
-  </data>
-  <data name="FileExpenseClaim_Vat" xml:space="preserve">
-    <value>Toplam KDV ({0})</value>
-  </data>
-  <data name="ListInboundInvoices_Header" xml:space="preserve">
-    <value>Gelen Faturalar Listeleniyor</value>
-  </data>
-  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
-    <value>Fatura Göndereni</value>
-  </data>
-  <data name="ListInboundInvoices_Info" xml:space="preserve">
-    <value>Bu, son 100 faturayı, vade tarihlerine göre önce en yeni olan sıralanmış şekilde listeler.</value>
-  </data>
-  <data name="ListInboundInvoices_Title" xml:space="preserve">
-    <value>Gelen Faturalar</value>
-  </data>
-  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
-    <value>Giden Fatura Oluşturuluyor</value>
-  </data>
-  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Oluştur</value>
-    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
-  </data>
-  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
-    <value>Giden Fatura Oluşturuluyor</value>
-  </data>
-  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
-    <value>Giden Fatura #{0:N0} dosyalandı.</value>
-  </data>
-  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
-    <value>Alınan Fonlar ({0})</value>
-    <comment>The {0} will be replaced with currency name.</comment>
-  </data>
-  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
-    <value>Gönderildi</value>
-  </data>
-  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
-    <value>Müşteri</value>
-  </data>
-  <data name="ListOutboundInvoices_Header" xml:space="preserve">
-    <value>Giden Faturalar Listeleniyor</value>
-  </data>
-  <data name="ListOutboundInvoices_Info" xml:space="preserve">
-    <value>Bu en son 100 giden faturayı listeler, ilk önce en yeniler olmak üzere ne zaman oluşturduklarına göre sıralanırlar.</value>
-  </data>
-  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
-    <value>Toplam Tutar</value>
-  </data>
-  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
-    <value>Son Tarih</value>
-  </data>
-  <data name="ListOutboundInvoices_Title" xml:space="preserve">
-    <value>Giden Faturaları Listele</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
-    <value>Expensify CSV'yi yükle</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
-    <value>Çok fazla harcama raporunuz varsa, onları Expensify ile toplayabilir ve bir Expensify CSV raporunu buraya yükleyebilirsiniz (Expensify Raporları altında CSV olarak elde ettikleriniz, Dışa Aktarma) Swarmops, tüm bireysel makbuzları almak için Expensify'ı kullanacak ve bunları uygun muhasebe için ayrı gider talepleri olarak kaydedecektir.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
-    <value>Bunun çalışması için {0} vergi makamlarına KDV rapor ettiğinden, varsayılanın yayınlamadığı KDV’yi içerecek şekilde varsayılan Expensify CSV profilini değiştirmeniz gerekir. Expensify'ın yardım sayfalarında bunun nasıl yapılacağı hakkında daha fazla bilgi var ve eğer Expensify'ı takım bazında kullanıyorsanız, Expensify politikanızın zaten KDV etkin bir CSV dışa aktarma profili olmalıdır.</value>
-    <comment>{0} is the organization name.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
-    <value>Organizasyon'un ayarlarına bağlı olarak, Expensify'daki "Varsayılan CSV" dışa aktarma profili Swarmops için yeterli olmalıdır.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
-    <value>Expensify Raporları'nın para birimi</value>
-  </data>
-  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
-    <value>Geri Ödeme İçin Expensify Raporu Yükle</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;HATA: Expensify CSV'yi ayrıştıramadı.&lt;/strong&gt; Bu Expensify'dan bir CSV dosyasıysa, Swarmops'un "Zaman Damgası", "Tutar", "Satıcı", "Yorum", "Kategori", "MCC", "Orijinal Para Birimi" ve "Orijinal Tutar" dosyada bulunması gereken sütunlara ihtiyaç duyar. Organizasyon KDV bildirirse, "KDV" adlı bir sütun daha gerekir.&lt;/p&gt;&lt;p&gt;Bu dosyaya devam edilemiyor.&lt;/p&gt;</value>
-    <comment>Do not translate the Expensify column field names.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;HATA: Expensify CSV dosyasının KDV alanı yok.&lt;/strong&gt;Bu kuruluş yetkililere Katma Değer Vergisi'ni (KDV) bildirdiğinden, bu harcamalara göre belirlenmelidir. Lütfen Expensify'da KDV'yi etkinleştirin ve bunu "KDV" sütun başlığı altında veren yeni bir CSV dışa aktarma profili oluşturun. Ekibiniz zaten böyle bir CSV profili oluşturduysa, CSV'ye dışa aktarırken onu seçmeniz gerekebilir.&lt;/p&gt;&lt;p&gt;Bu dosya işlenemiyor.&lt;/p&gt;</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
-    <value>Başka Bir Expensify CSV Dosyası Yükle?</value>
-    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
-    <value>kendim</value>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
-    <value>Bu kimden bir gider talebi?</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;HATA: Expensify CSV dosyasında gerekli veri alanları eksik.&lt;/strong&gt;Dosya, Expensify'ın varsayılan CSV profilinin zorunlu alanlarından en az birinde eksik görünüyor. Teknik belgelere bakın ve yüklemeye çalıştığınız dosya ile karşılaştırın. (Elbette, tamamen yanlış bir dosyayı &amp;ndash; yüklemeye çalışmanız, muhtemelen bir Expensify CSV &amp;ndash; yerine bir fotoğraf yüklemeye çalışmanız ve beklenmeyen eksik veriler daha olası bir hata nedenidir.)&lt;/p&gt;&lt;p&gt;Bu dosya işlenemiyor.&lt;/p&gt;</value>
-  </data>
-  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
-    <value>(Tutar, belirtilen KDV'yi hariç tutmalıdır!)</value>
-    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
-    <value>Tüm gider talepleri göndermeden önce bir bütçeye ihtiyaç duyar.</value>
-    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
-    <value>Gönderilecek Expensify kaydı yok</value>
-    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
-    <value>Bir talep göndermeye hazır</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
-    <value>{0} talep göndermeye hazır</value>
-    <comment>The {0} is replaced by a number, 2 or higher</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
-    <value>Talep başarıyla dosyalandı.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
-    <value>{0} talep başarıyla dosyalandı.</value>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Gider Talebi Onayı {1}'den #{0:N0} GERİ ÇEKİLDİ. Tekrar onaylanmadıkça ödeme yapılmayacaktır.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referans</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  
 </root>

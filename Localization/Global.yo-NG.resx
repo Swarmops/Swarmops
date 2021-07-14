@@ -135,6 +135,23 @@
     <value>Dasibodu</value>
     <comment>Title of default page</comment>
   </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>Aṣiṣe ti gbogboogbo kan, ti ko ni alaye waye ni kikansi isakoso Swarmops. Se nẹtiwọki naa si tun sisẹ ati pe se isakoso naa wa?</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Swarmops ko ni oye iye owo owo rẹ. (Owo ẹgbẹrun kan ati cent odo ma n je kiko bi "{0:N2}".) Gbiyanju lẹẹkansi?</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>O dabi pe olumulo miiran yara ju ọ lori isẹ yii; ibi ipamo data naa yipada nigba ti o nwa. Jọwọ ṣe ayẹwo awọn ipo ti o yipada ati ki o tun gbiyanju ohun ti o n gbiyanju lati ṣe.</value>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>Aṣiṣe kan ti ko ni alaye waye nigbìyànjú ati ṣeto iye yii.</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Akoole</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
   <data name="Financial_Actuals" xml:space="preserve">
     <value>Iye Gangan</value>
   </data>
@@ -143,6 +160,41 @@
   </data>
   <data name="Financial_ActualsToDate" xml:space="preserve">
     <value>Iye YTD Gangan</value>
+  </data>
+  
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Iye</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>VAT</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Owo ori Afikun Iwulo</value>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>Awon Ohun ini</value>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>Asopọ̀</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>Owo</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>Aarin gbungbun</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>Wura</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>Ogún</value>
+    <comment>Keep short - seven chars max</comment>
   </data>
   <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
     <value>Akọọlẹ Iwe iṣowo</value>
@@ -156,20 +208,100 @@
   <data name="Financial_CashAdvance" xml:space="preserve">
     <value>Agbaalẹ</value>
   </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Owo agbaalẹ #{0:N0} fun {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>Adapada Owo agbaalẹ #{0:N0}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>Adapada Awon owo agbaalẹ {0}</value>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Agbaalẹ</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Awon owo agbaalẹ</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Awon owo agbaalẹ {0} fun {1}</value>
+  </data>
   <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
     <value>Owo agbaalẹ #{0}</value>
   </data>
   <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
     <value>Awon owo agbaalẹ {0}</value>
   </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>Onibara / Onibara</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>Awon Inawo</value>
+  </data>
+  
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>Awon gbese</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Ojo titọ</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  
+  
+  
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Inawo</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>Ibéèrè owo agbapada #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>Awon Inawo</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>Awon ibéèrè owo agbapada</value>
   </data>
   <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
     <value>Inawo #{0:N0}</value>
   </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>Inawo #{0:N0} (ayọkuro agbaalẹ #{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>Inawo #{0:N0} (ayọkuro awon agbaalẹ)</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>Ibéèrè owo agbapada #{0:N0} nipasẹ {1}</value>
+  </data>
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>Awon Inawo {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>Awon inawo {0} (ayọkuro agbaalẹ #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>Awon inawo {0} (ayọkuro awon agbaalẹ)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>Awon ibéèrè owo agbapada {0} nipasẹ {1}</value>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Leje gbogboogbo</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>Awon iwe iye-owo oja</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Awọn iwe iye-owo oja ti nwọle</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>Iwe iye-owo oja ti nwọle #{0:N0}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>Iwe iye-owo oja ti nwọle #{0:N0} lati {1}</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>Ohun to wole</value>
   </data>
   <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>Iwe iye-owo oja</value>
@@ -177,15 +309,61 @@
   <data name="Financial_InvoiceOutbound" xml:space="preserve">
     <value>Iwe iye-owo oja</value>
   </data>
+  
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Awon iwe iye-owo oja</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Awọn iwe iye-owo oja ti o njade</value>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>Iwe iye-owo oja ti njade #{0:N0} si {1}</value>
+  </data>
+  
+  
   <data name="Financial_Parley" xml:space="preserve">
     <value>Apero</value>
+  </data>
+  
+  
+  
+  
+  
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>Ere Odọọdun/Ipadanu titi di akoko yi ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>Aworan Iwe oja {0} ti {1}</value>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>Awon owo ise {0} fun {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>Awon owo ori owo ise fun {0:yyyy-MMM}</value>
   </data>
   <data name="Financial_Salary" xml:space="preserve">
     <value>Owo ise</value>
   </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>Owo ise #{0:N0} fun {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>Owo ise #{0:N0} fun {1:yyyy-MMM} fun {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Owo ise #{0:N0}</value>
+  </data>
   <data name="Financial_SalarySpecification" xml:space="preserve">
     <value>Owo ise fun {0:yyyy-MMM}</value>
     <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>Awon owo ori fun Owo ise #{0:N0} fun {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Olupinfunni</value>
   </data>
   <data name="Financial_TaxesSpecification" xml:space="preserve">
     <value>Owo ori fun awon owo ise {0}</value>
@@ -197,126 +375,9 @@
     <value>Olugba owo ori</value>
     <comment>Used as recipient for taxes.</comment>
   </data>
-  <data name="Financial_YearlyResult" xml:space="preserve">
-    <value>Esi odoodun</value>
-  </data>
-  <data name="Global_ASAP" xml:space="preserve">
-    <value>Ni kete bi o ti ṣee</value>
-    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
-  </data>
-  <data name="Global_Cancel" xml:space="preserve">
-    <value>Fagilee</value>
-    <comment>Displayed as cancellation link on changing something</comment>
-  </data>
-  <data name="Global_Change" xml:space="preserve">
-    <value>Se ayipada?</value>
-    <comment>Link after describing what the user is looking at, allowing a change.</comment>
-  </data>
-  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
-    <value>Tẹ aworan lati mu tobi.</value>
-    <comment>Displayed where thumbnails can be enlarged modally.</comment>
-  </data>
-  <data name="Global_Confirm" xml:space="preserve">
-    <value>Jẹrisi</value>
-    <comment>Displayed as confirmation link on changing something</comment>
-  </data>
-  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
-    <value>-- Mu Isuna/Akoole --</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
-    <value>-- Mu Ajo --</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_GoThere" xml:space="preserve">
-    <value>Lo sibe...</value>
-    <comment>Link after describing something.</comment>
-  </data>
-  <data name="Global_NoOwner" xml:space="preserve">
-    <value>Kò sẹnikan</value>
-    <comment>Displayed when an account/position etc is vacant</comment>
-  </data>
-  <data name="Global_Owner" xml:space="preserve">
-    <value>Oníǹkan</value>
-  </data>
-  <data name="Global_ProcessingFile" xml:space="preserve">
-    <value>Nṣaayan Faili...</value>
-    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
-  </data>
-  <data name="Global_UploadFile" xml:space="preserve">
-    <value>Gbe Faili ga</value>
-    <comment>Displayed on "Submit" button next to file upload controls.</comment>
-  </data>
-  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
-    <value>Gbe faili ga si Swarmops</value>
-    <comment>Used as header above upload sections.</comment>
-  </data>
-  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
-    <value>Jowo mu faili kan lati gbega.</value>
-    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
-  </data>
-  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
-    <value>O ti wọle si &lt;strong&gt;{0}&lt;/strong&gt; lọwọlọwọ. Ṣe o ma nifẹ lati yipada si ajo miiran?</value>
-  </data>
-  <data name="Sidebar_Actions" xml:space="preserve">
-    <value>Awon igbese</value>
-    <comment>List of shortcuts to likely actions</comment>
-  </data>
-  <data name="Sidebar_Actions_None" xml:space="preserve">
-    <value>Ko si aba awọn igbese ni aaye yii.</value>
-    <comment>No shortcuts from this page right now.</comment>
-  </data>
-  <data name="Sidebar_Information" xml:space="preserve">
-    <value>Alaye</value>
-    <comment>Information about current page</comment>
-  </data>
-  <data name="Sidebar_Todo" xml:space="preserve">
-    <value>Lati se</value>
-    <comment>List of todo items</comment>
-  </data>
-  <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>&lt;strong&gt;Gbogbo e sofo:&lt;/strong&gt; Ko si awọn nkan igbese toni kiakia. Yay!</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
-  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
-    <value>Awọn ohun elo igbese yoo lọ sibi.</value>
-    <comment>Placeholder for future action items. Temporary.</comment>
-  </data>
-  <data name="Financial_CashAdvances" xml:space="preserve">
-    <value>Agbaalẹ</value>
-  </data>
-  <data name="Financial_CashAdvancesLong" xml:space="preserve">
-    <value>Awon owo agbaalẹ</value>
-  </data>
-  <data name="Financial_ExpenseClaims" xml:space="preserve">
-    <value>Awon Inawo</value>
-  </data>
-  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
-    <value>Awon ibéèrè owo agbapada</value>
-  </data>
-  <data name="Financial_InboundInvoices" xml:space="preserve">
-    <value>Awon iwe iye-owo oja</value>
-  </data>
-  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
-    <value>Awọn iwe iye-owo oja ti nwọle</value>
-  </data>
-  <data name="Financial_OutboundInvoices" xml:space="preserve">
-    <value>Awon iwe iye-owo oja</value>
-  </data>
-  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
-    <value>Awọn iwe iye-owo oja ti o njade</value>
-  </data>
-  <data name="Global_NA" xml:space="preserve">
-    <value>N/A</value>
-  </data>
-  <data name="Global_NALong" xml:space="preserve">
-    <value>Kose lo</value>
-  </data>
-  <data name="Global_AsOfNow" xml:space="preserve">
-    <value>Lowo bayii</value>
-  </data>
-  <data name="Global_Today" xml:space="preserve">
-    <value>Loni</value>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
   </data>
   <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
     <value>Iru iye</value>
@@ -326,84 +387,262 @@
     <value>Iṣẹ akanṣe</value>
     <comment>Tagging costs/income to projects</comment>
   </data>
-  <data name="Sidebar_Related" xml:space="preserve">
-    <value>Ni ibatan</value>
-    <comment>List of shortcuts to related actions to current one</comment>
+  
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>Esi odoodun</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>Inawo #{0:N0} (ayọkuro agbaalẹ #{1:N0})</value>
+  
+  
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>YTD</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>Inawo #{0:N0} (ayọkuro awon agbaalẹ)</value>
+  
+  <data name="Global_2FA" xml:space="preserve">
+    <value>Ifọwọsi ifosiwewe-meji</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
-    <value>Awon inawo {0} (ayọkuro agbaalẹ #{1})</value>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>Ifọwọsi ifosiwewe-meji</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
-    <value>Awon inawo {0} (ayọkuro awon agbaalẹ)</value>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>2FA</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>Ibéèrè owo agbapada #{0:N0} nipasẹ {1}</value>
+  <data name="Global_Action" xml:space="preserve">
+    <value>Igbese</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
   </data>
-  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
-    <value>Iwe iye-owo oja ti nwọle #{0:N0} lati {1}</value>
+  <data name="Global_Add" xml:space="preserve">
+    <value>Ropo</value>
+    <comment>as in "add element", "add row", etc</comment>
   </data>
-  <data name="Financial_ReceiptSpecification" xml:space="preserve">
-    <value>Aworan Iwe oja {0} ti {1}</value>
+  <data name="Global_Address" xml:space="preserve">
+    <value>Adireesi</value>
+    <comment>As in physical location</comment>
   </data>
-  <data name="Global_ImageSpecification" xml:space="preserve">
-    <value>Aworan {0} ti {1}</value>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>Gbogbo</value>
   </data>
-  <data name="Financial_DueDate" xml:space="preserve">
-    <value>Ojo titọ</value>
-    <comment>For invoices and similar</comment>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>Ni kete bi o ti ṣee</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
   </data>
-  <data name="Financial_Supplier" xml:space="preserve">
-    <value>Olupinfunni</value>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>Lowo bayii</value>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>Fagilee</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>Se ayipada?</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>Ilu</value>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Tẹ aworan lati mu tobi.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>Jẹrisi</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Orile ede</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>Ṣẹda</value>
+    <comment>Like "Create Organization"</comment>
   </data>
   <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
     <value>Gẹẹsi (US)</value>
     <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
   </data>
-  <data name="Global_No" xml:space="preserve">
-    <value>Rara</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>Aṣa</value>
+    <comment>As in "show me the advanced options"</comment>
   </data>
-  <data name="Global_Yes" xml:space="preserve">
-    <value>Bẹẹni</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Ojo</value>
+    <comment>As in calendar date, for example January 21</comment>
   </data>
-  <data name="Financial_Asset" xml:space="preserve">
-    <value>Awon Ohun ini</value>
+  
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>MMMM d, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
-  <data name="Financial_Cost" xml:space="preserve">
-    <value>Awon Inawo</value>
+  
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>MM/DD/YYYY</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Financial_Debt" xml:space="preserve">
-    <value>Awon gbese</value>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>MMM d, yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
   </data>
-  <data name="Financial_Income" xml:space="preserve">
-    <value>Ohun to wole</value>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Ojo Ibi</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
   </data>
-  <data name="Global_SelectOne" xml:space="preserve">
-    <value>-- Mu okan --</value>
-    <comment>Shown in dropdowns when selection required</comment>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>setumo lati mu ṣiṣẹ</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>Apejuwe</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>Dawunlodi Eyi</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>Awon iwe</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>-- Mu Isuna/Akoole --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>-- Mu Ajo --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>O n wọle si &lt;strong&gt;Sandbox&lt;/strong&gt; ajọ.&lt;br/&gt;&lt;br/&gt;Eyi jẹ ayika ti kolewu nibiti o le ti ṣẹre kaakiri pẹlu Swarmops laisi eyikeyi ewu bibajẹ si data igbejade. Je igbadun bi o se fẹ, ki o si pada si ayika igbejade rẹ nigbati o ba ti ṣetan pelu didanwo.</value>
+  </data>
+  
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>Koni anfani lati so WebSocket pọ. Awọn imudojuiwọn bi o se nlo ko ni wa.</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Abo</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>Aaye yii ko le ṣofo.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Faili Gbe Esi ga</value>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>Awọn asia</value>
+    <comment>As in a table column header</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>Agbegbe</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>Lo</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>Lo sibe...</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>Aworan {0} ti {1}</value>
+  </data>
+  
+  
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>Meeli</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Ako</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>Kereju / Pọju</value>
+    <comment>note the spaces</comment>
   </data>
   <data name="Global_Missing" xml:space="preserve">
     <value>- sonu -</value>
     <comment>When a record or similar is missing. Used in grids.</comment>
   </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>Osu</value>
+  </data>
+  
   <data name="Global_Multiple" xml:space="preserve">
     <value>- ọpọ -</value>
     <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>Kose lo</value>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>Oruko</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>Rara</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>Ko si awọn nkan igbese toni kiakia. Yay!</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(kosi ibamu)</value>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>Kò sẹnikan</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>Ko si alaye idi kankan.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>Awọn akọsilẹ</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(ti fagile, so d'ofo, di odo)</value>
+    <comment>Used when something is determined invalid</comment>
   </data>
   <data name="Global_Off" xml:space="preserve">
     <value>Pa</value>
     <comment>Off (as opposed to On)</comment>
   </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>Ofisa</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>Ofisa</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>Ofisa</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>Awon ọfisa</value>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>Oda ra</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
   <data name="Global_On" xml:space="preserve">
     <value>Tan</value>
     <comment>On (as opposed to Off)</comment>
+  </data>
+  
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Ajo</value>
   </data>
   <data name="Global_Organization_Commercial" xml:space="preserve">
     <value>Ti iṣowo</value>
@@ -417,44 +656,27 @@
     <value>Alailere</value>
     <comment>Non-profit (activist, political parties)</comment>
   </data>
-  <data name="Global_Geography" xml:space="preserve">
-    <value>Agbegbe</value>
-    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
-  </data>
-  <data name="Global_Action" xml:space="preserve">
-    <value>Igbese</value>
-    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
-  </data>
-  <data name="Global_Mail" xml:space="preserve">
-    <value>Meeli</value>
-    <comment>Somebody's email address.</comment>
-  </data>
-  <data name="Global_Name" xml:space="preserve">
-    <value>Oruko</value>
-    <comment>A plain person's first and last name</comment>
-  </data>
-  <data name="Global_Notes" xml:space="preserve">
-    <value>Awọn akọsilẹ</value>
-    <comment>Small notes in a grid, maybe in icon form</comment>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>Oníǹkan</value>
   </data>
   <data name="Global_Phone" xml:space="preserve">
     <value>Foonu</value>
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>
-  <data name="Global_Custom" xml:space="preserve">
-    <value>Aṣa</value>
-    <comment>As in "show me the advanced options"</comment>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Koodu Ifiweranṣẹ</value>
   </data>
-  <data name="Global_Create" xml:space="preserve">
-    <value>Ṣẹda</value>
-    <comment>Like "Create Organization"</comment>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>Tesiwaju</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
   </data>
-  <data name="Global_AllYear" xml:space="preserve">
-    <value>Gbogbo</value>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Nṣaayan Faili...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
-  <data name="Global_Description" xml:space="preserve">
-    <value>Apejuwe</value>
-    <comment>As a general header of any description field</comment>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>Itesiwaju</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
   <data name="Global_Q1" xml:space="preserve">
     <value>Q1</value>
@@ -472,89 +694,91 @@
     <value>Q4</value>
     <comment>Fourth quarter of the year</comment>
   </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>-- Mu okan --</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>Fi eyi ranṣẹ si mi ni meeli</value>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(ọpọlọpọ)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- ọpọlọpọ - mu --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  
+  
+  
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Fi silẹ</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>Ilana</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
   <data name="Global_Timestamp" xml:space="preserve">
     <value>Ontẹ Akoko</value>
   </data>
-  <data name="Ledgers_Balance" xml:space="preserve">
-    <value>Isiro</value>
-    <comment>As in 'account balance', not as in staying upright</comment>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Loni</value>
   </data>
-  <data name="Ledgers_Credit" xml:space="preserve">
-    <value>Fikun</value>
+  <data name="Global_Total" xml:space="preserve">
+    <value>Apapo</value>
+    <comment>Used as footer in tables, summarizing something</comment>
   </data>
-  <data name="Ledgers_Debit" xml:space="preserve">
-    <value>Yokuro</value>
-  </data>
-  <data name="Global_Organization" xml:space="preserve">
-    <value>Ajo</value>
-  </data>
-  <data name="Sidebar_Help" xml:space="preserve">
-    <value>Iranwo</value>
-  </data>
-  <data name="Global_Female" xml:space="preserve">
-    <value>Abo</value>
-    <comment>Legal gender</comment>
-  </data>
-  <data name="Global_Male" xml:space="preserve">
-    <value>Ako</value>
-    <comment>Legal gender</comment>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>ID Twitter</value>
   </data>
   <data name="Global_UnknownUndisclosed" xml:space="preserve">
     <value>Aimọ tabi Aifihan</value>
     <comment>Used for gender et al</comment>
   </data>
-  <data name="Global_DateFormatShortReadable" xml:space="preserve">
-    <value>MM/DD/YYYY</value>
-    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Gbe ga</value>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>MMMM d, yyyy</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Gbe Faili ga</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  <data name="Timespan_FiveYears" xml:space="preserve">
-    <value>odun-marun</value>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Gbe faili ga si Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
   </data>
-  <data name="Timespan_Forever" xml:space="preserve">
-    <value>igbesi aye</value>
-    <comment>Like "a lifetime membership"</comment>
-  </data>
-  <data name="Timespan_OneMonth" xml:space="preserve">
-    <value>osu-kan</value>
-  </data>
-  <data name="Timespan_OneYear" xml:space="preserve">
-    <value>odun-kan</value>
-  </data>
-  <data name="Timespan_TwoYears" xml:space="preserve">
-    <value>odun-meji</value>
-    <comment>Like "a two-year membership"</comment>
-  </data>
-  <data name="Global_Address" xml:space="preserve">
-    <value>Adireesi</value>
-    <comment>As in physical location</comment>
-  </data>
-  <data name="Global_City" xml:space="preserve">
-    <value>Ilu</value>
-  </data>
-  <data name="Global_Country" xml:space="preserve">
-    <value>Orile ede</value>
-    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
-  </data>
-  <data name="Global_DateOfBirth" xml:space="preserve">
-    <value>Ojo Ibi</value>
-    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
-  </data>
-  <data name="Global_PostalCode" xml:space="preserve">
-    <value>Koodu Ifiweranṣẹ</value>
-  </data>
-  <data name="Error_AjaxCallException" xml:space="preserve">
-    <value>Aṣiṣe ti gbogboogbo kan, ti ko ni alaye waye ni kikansi isakoso Swarmops. Se nẹtiwọki naa si tun sisẹ ati pe se isakoso naa wa?</value>
-  </data>
-  <data name="Global_Month" xml:space="preserve">
-    <value>Osu</value>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Jowo mu faili kan lati gbega.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
   <data name="Global_View" xml:space="preserve">
     <value>Wo</value>
     <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>Olujọwọ ara ẹni</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>Olujọwọ ara ẹni</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>Olujọwọ ara ẹni</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>Awon olujọwọ ara ẹni</value>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Pari</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>T'okan</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Isaaju</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>Nṣiṣẹ...</value>
   </data>
   <data name="Global_Year" xml:space="preserve">
     <value>Odun</value>
@@ -566,216 +790,40 @@
     <value>Odun {0}</value>
     <comment>As in "the year X".</comment>
   </data>
-  <data name="Global_DefineToEnable" xml:space="preserve">
-    <value>setumo lati mu ṣiṣẹ</value>
-    <comment>shown as watermark on some edit boxes</comment>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Bẹẹni</value>
+    <comment>For yes/no options</comment>
   </data>
-  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
-    <value>Owo agbaalẹ #{0:N0} fun {1}</value>
+  
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>Isiro</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
   </data>
-  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
-    <value>Adapada Owo agbaalẹ #{0:N0}</value>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>Fikun</value>
   </data>
-  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
-    <value>Adapada Awon owo agbaalẹ {0}</value>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>Yokuro</value>
   </data>
-  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
-    <value>Awon owo agbaalẹ {0} fun {1}</value>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;IFOWOSI IFOSIWEWE-MEJI BITID TI JE MIMUSISE PELU ASEYORI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Nigbati o ba ti n wọle si eto yii lati igba yi lo, o nilo lati lo ohun elo BitId ti o ṣẹṣẹ lo lati ṣayẹwo koodu naa.</value>
   </data>
-  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
-    <value>Ibéèrè owo agbapada #{0:N0}</value>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>BitID ifọwọsi ifosiwẹwẹ-meji koti jẹ mimu ṣiṣẹ.</value>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
-    <value>Awon ibéèrè owo agbapada {0} nipasẹ {1}</value>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>Ṣayẹwo koodu yii lati mu BitID ṣiṣẹ</value>
   </data>
-  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
-    <value>Iwe iye-owo oja ti nwọle #{0:N0}</value>
-  </data>
-  <data name="Global_System" xml:space="preserve">
-    <value>Ilana</value>
-    <comment>as in "Created by: System" for roles, transactions etc.</comment>
-  </data>
-  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
-    <value>Awon owo ise {0} fun {1:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
-    <value>Awon owo ori owo ise fun {0:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
-    <value>Owo ise #{0:N0} fun {1:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
-    <value>Owo ise #{0:N0} fun {1:yyyy-MMM} fun {2}</value>
-    <comment>0 is identity, 1 is month, 2 is name</comment>
-  </data>
-  <data name="Financial_SalaryIdentity" xml:space="preserve">
-    <value>Owo ise #{0:N0}</value>
-  </data>
-  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
-    <value>Awon owo ori fun Owo ise #{0:N0} fun {1:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_Account" xml:space="preserve">
-    <value>Akoole</value>
-    <comment>as in bookkeeping or ledger account</comment>
-  </data>
-  <data name="Financial_Amount" xml:space="preserve">
-    <value>Iye</value>
-    <comment>as in amount of money</comment>
-  </data>
-  <data name="Global_Add" xml:space="preserve">
-    <value>Ropo</value>
-    <comment>as in "add element", "add row", etc</comment>
-  </data>
-  <data name="Global_Several_Display" xml:space="preserve">
-    <value>(ọpọlọpọ)</value>
-    <comment>Displayed when multiple items</comment>
-  </data>
-  <data name="Global_Several_SelectOne" xml:space="preserve">
-    <value>-- ọpọlọpọ - mu --</value>
-    <comment>Displayed when multiple choice</comment>
-  </data>
-  <data name="Sidebar_Options" xml:space="preserve">
-    <value>Awon aṣayan</value>
-    <comment>For various page-specific checkboxes etc</comment>
-  </data>
-  <data name="Global_LoadingPlaceholder" xml:space="preserve">
-    <value>[...loading...]</value>
-  </data>
-  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
-    <value>[...]</value>
-  </data>
-  <data name="Global_NoMatch" xml:space="preserve">
-    <value>(kosi ibamu)</value>
-  </data>
-  <data name="Global_Working" xml:space="preserve">
-    <value>Nṣiṣẹ...</value>
-  </data>
-  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
-    <value>Koni anfani lati so WebSocket pọ. Awọn imudojuiwọn bi o se nlo ko ni wa.</value>
-  </data>
-  <data name="Error_CurrencyParsing" xml:space="preserve">
-    <value>Swarmops ko ni oye iye owo owo rẹ. (Owo ẹgbẹrun kan ati cent odo ma n je kiko bi "{0:N2}".) Gbiyanju lẹẹkansi?</value>
-    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
-  </data>
-  <data name="Global_NoReasonGiven" xml:space="preserve">
-    <value>Ko si alaye idi kankan.</value>
-    <comment>As inter-activist communication when denying resources, et cetera</comment>
-  </data>
-  <data name="Global_NoActionItems" xml:space="preserve">
-    <value>Ko si awọn nkan igbese toni kiakia. Yay!</value>
-  </data>
-  <data name="Global_MinMax" xml:space="preserve">
-    <value>Kereju / Pọju</value>
-    <comment>note the spaces</comment>
-  </data>
-  <data name="Swarm_AssignedPerson" xml:space="preserve">
-    <value>Eniyan ti a Yan</value>
-  </data>
-  <data name="Swarm_Position" xml:space="preserve">
-    <value>Ipo</value>
-  </data>
-  <data name="Error_DatabaseConcurrency" xml:space="preserve">
-    <value>O dabi pe olumulo miiran yara ju ọ lori isẹ yii; ibi ipamo data naa yipada nigba ti o nwa. Jọwọ ṣe ayẹwo awọn ipo ti o yipada ati ki o tun gbiyanju ohun ti o n gbiyanju lati ṣe.</value>
-  </data>
-  <data name="Swarm_TypeName" xml:space="preserve">
-    <value>Te oruko kan...</value>
-  </data>
-  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
-    <value>Osu kan</value>
-  </data>
-  <data name="Timespan_Selection_OneYear" xml:space="preserve">
-    <value>Odun kan</value>
-  </data>
-  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
-    <value>Osu mefa</value>
-  </data>
-  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
-    <value>Osu meta</value>
-  </data>
-  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
-    <value>Osu meji</value>
-  </data>
-  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
-    <value>Odun meji</value>
-  </data>
-  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
-    <value>Titi di opin</value>
-    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
-  </data>
-  <data name="Global_WizardFinish" xml:space="preserve">
-    <value>Pari</value>
-  </data>
-  <data name="Global_WizardNext" xml:space="preserve">
-    <value>T'okan</value>
-  </data>
-  <data name="Global_WizardPrevious" xml:space="preserve">
-    <value>Isaaju</value>
-  </data>
-  <data name="Financial_YTD" xml:space="preserve">
-    <value>YTD</value>
-    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
-  </data>
-  <data name="Global_Flags" xml:space="preserve">
-    <value>Awọn asia</value>
-    <comment>As in a table column header</comment>
-  </data>
-  <data name="Global_Total" xml:space="preserve">
-    <value>Apapo</value>
-    <comment>Used as footer in tables, summarizing something</comment>
-  </data>
-  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
-    <value>Aaye yii ko le ṣofo.</value>
-    <comment>Displayed as error when emptying fields like your name</comment>
-  </data>
-  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
-    <value>Aṣiṣe kan ti ko ni alaye waye nigbìyànjú ati ṣeto iye yii.</value>
-  </data>
-  <data name="Global_TwitterId" xml:space="preserve">
-    <value>ID Twitter</value>
+  
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>Ifọwọsi ifosiwewe-meji BitID (ibuwọlu bitcoin)</value>
   </data>
   <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
     <value>Ifọwọsi ifosiwewe-meji BitID (nse aimusise wiwole awon atipa)</value>
     <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
   </data>
-  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
-    <value>Akoole</value>
-  </data>
-  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
-    <value>Pipese Aabo</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
-    <value>Ṣàtúntò ọ̀rọ̀ ìgbaniwọ́lé</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
-    <value>Meeli itọkasi àtúntò ọ̀rọ̀ ìgbaniwọ́le</value>
-  </data>
-  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
-    <value>Eyi ko jọ nọmba foonu to fẹsẹmulẹ, ṣugbọn a ma tọju rẹ bi o se jẹ kikọ nibi.</value>
-    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
-    <value>Satunto Ọrọ igbaniwọle Olumulo?</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
-    <value>O n ṣatunto ọrọ igbaniwọle olumulo kan. Olumulo yii yoo gba itọkasi atunto kan nipasẹ meeli, eyi ti wọn le tẹle lati ṣatunto ọrọ igbaniwọle Swarmops wọn.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Ma ṣe eyi ayafi ti ibeere gangan fun iranlọwọ pẹlu eyi ba waye nipasẹ olumulo.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Tẹsiwaju pẹlu ilana atunto ọrọ igbaniwọle?</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
-    <value>Atunto Ọrọ igbaniwọle je Didena</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
-    <value>Adirẹẹsi meeli ti olumulo yi jẹ yiyi pada laipẹ (o din ni ọsẹ kan sẹyin). Fun awon idi aabo, itọkasi àtúntò ọ̀rọ̀ ìgbaniwọ́le ko le jẹ ati pe ko ni jẹ fifiranṣẹ si iru adirẹẹsi imeeli tuntun bẹ.</value>
-  </data>
-  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
-    <value>Itọkasi atunse ọrọ igbaniwọle ti je fifiranse si olumulo yi.</value>
-  </data>
-  <data name="Global_2FA" xml:space="preserve">
-    <value>Ifọwọsi ifosiwewe-meji</value>
-  </data>
-  <data name="Global_2FA_Short" xml:space="preserve">
-    <value>Ifọwọsi ifosiwewe-meji</value>
-  </data>
-  <data name="Global_2FA_Shorter" xml:space="preserve">
-    <value>2FA</value>
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value>Ifọwọsi ifosiwewe-meji BitID</value>
   </data>
   <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
     <value>&lt;strong&gt;KOLE PESE 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;O ko le tan ifọwọsi ifosiwewe-meji fun ẹlomiran. Wọn gbọdọ ṣe funra ara wọn, nitorina wọn da nikan ni awọn kọkọrọ ikọkọ wọn.</value>
@@ -798,39 +846,17 @@
   <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
     <value>Ifọwọsi ifosiwewe-meji ko je yiyọ kuro o si tun nṣiṣe lọwọ.</value>
   </data>
-  <data name="Timespan_Selection_OneDay" xml:space="preserve">
-    <value>Ojo kan</value>
-  </data>
-  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
-    <value>Ojo meje</value>
-  </data>
-  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
-    <value>Ojo meji</value>
-  </data>
-  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
-    <value>Ose meji</value>
-  </data>
-  <data name="Master_BitIdRegistered" xml:space="preserve">
-    <value>&lt;strong&gt;IFOWOSI IFOSIWEWE-MEJI BITID TI JE MIMUSISE PELU ASEYORI&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Nigbati o ba ti n wọle si eto yii lati igba yi lo, o nilo lati lo ohun elo BitId ti o ṣẹṣẹ lo lati ṣayẹwo koodu naa.</value>
-  </data>
-  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
-    <value>BitID ifọwọsi ifosiwẹwẹ-meji koti jẹ mimu ṣiṣẹ.</value>
-  </data>
-  <data name="Master_BitIdRegister_Header" xml:space="preserve">
-    <value>Ṣayẹwo koodu yii lati mu BitID ṣiṣẹ</value>
-  </data>
-  
-  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
-    <value>Ifọwọsi ifosiwewe-meji BitID (ibuwọlu bitcoin)</value>
-  </data>
-  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
-    <value>Ifọwọsi ifosiwewe-meji BitID</value>
-  </data>
   <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
     <value>Tẹ ọrọ igbaniwọle ti o n lo lọwọlọwọ lati mu awọn ayipada sise</value>
   </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>Akoole</value>
+  </data>
   <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
     <value>Aabo re</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>Pipese Aabo</value>
   </data>
   <data name="Master_EditPersonNewPassword1" xml:space="preserve">
     <value>Seto oro igbaniwole tuntun</value>
@@ -847,159 +873,133 @@
   <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
     <value>&lt;strong&gt;ORO IGBANIWOLE DI AYIPADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;O ti se ayipada ọrọ igbaniwọle rẹ pelu aseyori. Gẹgẹbi odiwọn aabo, gbogbo awọn agbajade ti wa ni atipa ni bayi fun awọn wakati 48 to tẹle.</value>
   </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>Ṣàtúntò ọ̀rọ̀ ìgbaniwọ́lé</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>Satunto Ọrọ igbaniwọle Olumulo?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>O n ṣatunto ọrọ igbaniwọle olumulo kan. Olumulo yii yoo gba itọkasi atunto kan nipasẹ meeli, eyi ti wọn le tẹle lati ṣatunto ọrọ igbaniwọle Swarmops wọn.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Ma ṣe eyi ayafi ti ibeere gangan fun iranlọwọ pẹlu eyi ba waye nipasẹ olumulo.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Tẹsiwaju pẹlu ilana atunto ọrọ igbaniwọle?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>Meeli itọkasi àtúntò ọ̀rọ̀ ìgbaniwọ́le</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>Atunto Ọrọ igbaniwọle je Didena</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>Adirẹẹsi meeli ti olumulo yi jẹ yiyi pada laipẹ (o din ni ọsẹ kan sẹyin). Fun awon idi aabo, itọkasi àtúntò ọ̀rọ̀ ìgbaniwọ́le ko le jẹ ati pe ko ni jẹ fifiranṣẹ si iru adirẹẹsi imeeli tuntun bẹ.</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>Itọkasi atunse ọrọ igbaniwọle ti je fifiranse si olumulo yi.</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>Eyi ko jọ nọmba foonu to fẹsẹmulẹ, ṣugbọn a ma tọju rẹ bi o se jẹ kikọ nibi.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
   <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
     <value>Ti o ba le se, jọwọ ṣe imusise ifọwọsi ifosiwewe-meji ti BitID.</value>
   </data>
-  <data name="Global_Officer_Female" xml:space="preserve">
-    <value>Ofisa</value>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>O ti wọle si &lt;strong&gt;{0}&lt;/strong&gt; lọwọlọwọ. Ṣe o ma nifẹ lati yipada si ajo miiran?</value>
   </data>
-  <data name="Global_Officer_Male" xml:space="preserve">
-    <value>Ofisa</value>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>Awon igbese</value>
+    <comment>List of shortcuts to likely actions</comment>
   </data>
-  <data name="Global_Officer_Neutral" xml:space="preserve">
-    <value>Ofisa</value>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>Ko si aba awọn igbese ni aaye yii.</value>
+    <comment>No shortcuts from this page right now.</comment>
   </data>
-  <data name="Global_Officer_Plural" xml:space="preserve">
-    <value>Awon ọfisa</value>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Iranwo</value>
   </data>
-  <data name="Global_Volunteer_Female" xml:space="preserve">
-    <value>Olujọwọ ara ẹni</value>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>Alaye</value>
+    <comment>Information about current page</comment>
   </data>
-  <data name="Global_Volunteer_Male" xml:space="preserve">
-    <value>Olujọwọ ara ẹni</value>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Awon aṣayan</value>
+    <comment>For various page-specific checkboxes etc</comment>
   </data>
-  <data name="Global_Volunteer_Neutral" xml:space="preserve">
-    <value>Olujọwọ ara ẹni</value>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Ni ibatan</value>
+    <comment>List of shortcuts to related actions to current one</comment>
   </data>
-  <data name="Global_Volunteer_Plural" xml:space="preserve">
-    <value>Awon olujọwọ ara ẹni</value>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>Lati se</value>
+    <comment>List of todo items</comment>
   </data>
-  <data name="Global_Go" xml:space="preserve">
-    <value>Lo</value>
-    <comment>As in "execute", "run requested procedure"</comment>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>&lt;strong&gt;Gbogbo e sofo:&lt;/strong&gt; Ko si awọn nkan igbese toni kiakia. Yay!</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
   </data>
-  <data name="Global_Ok" xml:space="preserve">
-    <value>Oda ra</value>
-    <comment>Shown on confirmation dialogs</comment>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>Awọn ohun elo igbese yoo lọ sibi.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
   </data>
-  <data name="Global_Proceed" xml:space="preserve">
-    <value>Tesiwaju</value>
-    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>Eniyan ti a Yan</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>Ipo</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>Te oruko kan...</value>
   </data>
   <data name="Swarm_TypePartialName" xml:space="preserve">
     <value>Tẹ orukọ apakan...</value>
   </data>
-  <data name="Financial_ProfitToDate" xml:space="preserve">
-    <value>Ere Odọọdun/Ipadanu titi di akoko yi ({0})</value>
-    <comment>{0} is the currency code</comment>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>odun-marun</value>
   </data>
-  <data name="Financial_Client" xml:space="preserve">
-    <value>Onibara / Onibara</value>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>igbesi aye</value>
+    <comment>Like "a lifetime membership"</comment>
   </data>
-  <data name="Global_Progress" xml:space="preserve">
-    <value>Itesiwaju</value>
-    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>osu-kan</value>
   </data>
-  <data name="Financial_TransactionIdShort" xml:space="preserve">
-    <value>Tx#</value>
-    <comment>Used in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>odun-kan</value>
   </data>
-  <data name="Global_DownloadThis" xml:space="preserve">
-    <value>Dawunlodi Eyi</value>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>Ojo kan</value>
   </data>
-  <data name="Global_Dox" xml:space="preserve">
-    <value>Awon iwe</value>
-    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>Osu kan</value>
   </data>
-  <data name="Global_SendThisInMail" xml:space="preserve">
-    <value>Fi eyi ranṣẹ si mi ni meeli</value>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>Odun kan</value>
   </data>
-  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
-    <value>Owo</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>Ojo meje</value>
   </data>
-  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
-    <value>Aarin gbungbun</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>Osu mefa</value>
   </data>
-  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
-    <value>Wura</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>Osu meta</value>
   </data>
-  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
-    <value>Ogún</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>Ojo meji</value>
   </data>
-  <data name="Financial_BitcoinChain" xml:space="preserve">
-    <value>Asopọ̀</value>
-    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>Osu meji</value>
   </data>
-  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
-    <value>Iwe iye-owo oja ti njade #{0:N0} si {1}</value>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>Ose meji</value>
   </data>
-  <data name="Global_Nuked" xml:space="preserve">
-    <value>(ti fagile, so d'ofo, di odo)</value>
-    <comment>Used when something is determined invalid</comment>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>Odun meji</value>
   </data>
-  <data name="Global_Upload" xml:space="preserve">
-    <value>Gbe ga</value>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>Titi di opin</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
   </data>
-  <data name="Global_FileUploadResults" xml:space="preserve">
-    <value>Faili Gbe Esi ga</value>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>odun-meji</value>
+    <comment>Like "a two-year membership"</comment>
   </data>
-  <data name="Financial_AmountVat" xml:space="preserve">
-    <value>VAT</value>
-    <comment>The short form of Value Added Tax.</comment>
-  </data>
-  <data name="Financial_AmountVatFull" xml:space="preserve">
-    <value>Owo ori Afikun Iwulo</value>
-  </data>
-  <data name="Global_Date" xml:space="preserve">
-    <value>Ojo</value>
-    <comment>As in calendar date, for example January 21</comment>
-  </data>
-  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
-    <value>MMM d, yyyy</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
-  </data>
-  <data name="Global_Submit" xml:space="preserve">
-    <value>Fi silẹ</value>
-    <comment>As in "Submit this data for processing"</comment>
-  </data>
-  <data name="Financial_GeneralLedger" xml:space="preserve">
-    <value>Leje gbogboogbo</value>
-  </data>
-  <data name="Global_EnteringSandbox" xml:space="preserve">
-    <value>O n wọle si &lt;strong&gt;Sandbox&lt;/strong&gt; ajọ.&lt;br/&gt;&lt;br/&gt;Eyi jẹ ayika ti kolewu nibiti o le ti ṣẹre kaakiri pẹlu Swarmops laisi eyikeyi ewu bibajẹ si data igbejade. Je igbadun bi o se fẹ, ki o si pada si ayika igbejade rẹ nigbati o ba ti ṣetan pelu didanwo.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 </root>

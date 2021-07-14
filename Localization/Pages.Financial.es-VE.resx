@@ -132,6 +132,7 @@
     <value>Seleccione un presupuesto para reorientar el cargo por.</value>
   </data>
   
+  
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Acción</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -175,6 +176,10 @@
   <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
     <value>Estoy denegando su pedido de fondos porque...</value>
     <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(¡La cantidad no debe incluir el IVA!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
   <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
     <value>¿Qué cantidad estás certificando ( en {0})?</value>
@@ -224,6 +229,13 @@
     <value>Cantidad de la factura total ( en{0})</value>
     <comment>{0} is the organization's main currency.</comment>
   </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>IVA parte del total ({0})</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Crear</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>Descripción</value>
     <comment>Free-text description of invoice</comment>
@@ -238,6 +250,7 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Aquí es donde archiva facturas recibidas en su organización ("Cuentas por pagar"). Ingrese el nombre del proveedor, el monto, la fecha de vencimiento, la referencia de la factura y cargue una imagen de la factura recibida. Además, selecciona un presupuesto. El propietario del presupuesto debe atestiguar, como de costumbre. (Las expansiones futuras de este mecanismo incluyen las órdenes de compra y las listas de proveedores)</value>
   </data>
+  
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Recibió la factura entrante</value>
   </data>
@@ -266,6 +279,34 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>Ingrese la cuenta bancaria del proveedor o equivalente.</value>
   </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Ingrese la cantidad de dinero (en {0}) que solicita la factura.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Por favor, especifique un presupuesto para cargar.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Cargue uno o más documentos de la factura original.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Por favor seleccione una opción.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Por favor describa lo que fue esta compra.</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Crear factura saliente</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Crear</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Crear factura saliente</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Factura saliente #{0:N0} archivado.</value>
+  </data>
   <data name="Donate_Explain" xml:space="preserve">
     <value>Este es un código QR para donaciones a {0}. Léelo desde la billetera bitcoin de tu teléfono para hacer una donación o dona desde tu computadora directamente a [{1}] (esa es una dirección de Bitcoin Cash).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -273,6 +314,10 @@
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>Recibido {0}{1:N2} ({2:N0} microcoins o "bits"). ¡Gracias!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Fondos recibidos ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
   </data>
   <data name="Donate_FundsReceivedNative" xml:space="preserve">
     <value>Recibido {0} microcoins ("bits"). ¡Gracias!</value>
@@ -314,12 +359,74 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>Presupuesto</value>
   </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Solicitud</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>Tipo de costo</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Descripción</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Subir Expensify CSV</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ERROR: No se puede analizar el CSV Expensify.&lt;/strong&gt; Si este es un archivo CSV de Expensify entonces Swarmops necesita que las columnas "Timestamp", "Amount", "Merchant", "Comment", "Category", "MCC", "Original Currency" y "Original Amount" se encuentren en el archivo. Si la organización reporta IVA, sse necesita una columna más llamada "VAT".&lt;/p&gt;&lt;p&gt; No es posible proceder con este archivo.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ERROR: Al archivo CSV de Expensify le faltan campos de datos requeridos.&lt;/strong&gt; Parece que al archivo le falta al menos uno de las campos requeridos del perfil CSV prestablecido de Expensify. Revise la documentación técnica y comparela con el archivo que intentó subir. (Lo más probable, sin embargo, es que haya tratado de subir un archivo equivocado &amp;ndash; quizás una fotografía en lugar del CSV de Expensify &amp;ndash; y eso es lo que está causando la ausencia de los datos esperados.)&lt;/p&gt;&lt;p&gt; No es posible procesar este archivo.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;ERROR: El archivo CSV de Expensify no tiene un campo IVA.&lt;/strong&gt; Debido a que la organización reporta Impuesto al Valor Agregado (IVA) a las autoridades, este debe ser especificado en base a cada gasto. Por favor, configure el IVA en Expensify y cree un nuevo perfil de exportación CSV que lo exporte bajo el encabezado de columna "VAT". Si su equipo ya ha creado dicho perfil CSV, puede que solo necesite seleccionarlo cuando esté exportando a CSV.&lt;/p&gt;&lt;p&gt; No es posible procesar este archivo.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Si tiene muchos reportes de gastos, puede juntarlos con Expensify y subir un reporte Expensify CSV aquí (el cual se encuentra en Expensify bajo Reportes, Exportar, como CSV). Swarmops usará Expensify para extraer todos los recibos individuales y anotarlos como reclamos de gastos separados para una contabilidad óptima.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Para que esto funcione, ya que {0} reporta el IVA a las autoridades fiscales, necesitará modificar el perfil Expensify CSV prestablecido para que incluya IVA, el cual no viene por defecto. La páginas de ayuda de Expensify contienen más información sobre cómo hacer esto y si está utilizando Expensify en base a un equipo, su política de Expensify ya debería tener un perfil de exportación CSV habilitado para IVA.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Basado en los ajustes de la organización, el perfil de exportación "Defaul CSV" en Expensify debería ser suficiente para Swarmops.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Todos los reclamos de gastos necesitan un presupuesto antes de ser enviados.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>No hay registros de Expensify a enviar</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>La moneda del reporte de Expensify es</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Listo para enviar un reclamo</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>Listo para enviar {0} reclamos</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Reclamo presentado satisfactoriamente.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>{0} reclamos presentados exitosamente.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>¿Desea Subir Algún Otro Archivo CSV De Expensify?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>yo</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>¿De quién es este reclamo de gasto?</value>
   </data>
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>Sus detalles bancarios</value>
@@ -343,6 +450,9 @@
   <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
     <value>Como este es su propio presupuesto, la certificación ya está completa. Solo la validación es necesaria.</value>
   </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Subir Reporte Expensify Para Reembolso</value>
+  </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Cargar imágenes de recibo</value>
   </data>
@@ -359,17 +469,61 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Por favor describa lo que fue esta compra.</value>
   </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>IVA parte del total ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Listado de facturas entrantes</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Remitente de la factura</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Aquí se enumeran las últimas 100 facturas, ordenadas por fecha de vencimiento y las más recientes primero.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Facturas entrantes</value>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Enviado</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Listado de facturas salientes</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Enumera las 100 facturas de salida más recientes, ordenadas por cuando se crearon, primero las más recientes.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Cantidad total</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Fecha de vencimiento</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Lista de facturas salientes</value>
+  </data>
+  
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Cantidad</value>
     <comment>Amount to be paid out</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Pagado</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>Destinatario</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referencia</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Costos listos para el pago</value>
@@ -377,6 +531,12 @@
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Estas son las diversas formas de costos para la organización que han superado todos los obstáculos para el pago. Están listos para ser pagados al destinatario. Aquí es donde los marca para que se paguen (probablemente mientras abre su banco en otra ventana).</value>
   </data>
+  
+  
+  
+  
+  
+  
   <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
     <value>Mostrar OCR para aplicaciones móviles</value>
   </data>
@@ -387,6 +547,7 @@
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Pagar dinero</value>
   </data>
+  
   <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
     <value>No se puede deshacer el pago #{0}: ya se ha liquidado o cerrado.</value>
   </data>
@@ -439,6 +600,9 @@
   </data>
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>Presupuesto</value>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Solicitud</value>
   </data>
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Sus detalles bancarios</value>
@@ -495,166 +659,4 @@
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Los recibos de la Reclamación de gastos #{0:N0} para {1}{2:N2} han sido validados.</value>
   </data>
-  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Crear</value>
-    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
-    <value>Ingrese la cantidad de dinero (en {0}) que solicita la factura.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
-    <value>Por favor, especifique un presupuesto para cargar.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
-    <value>Cargue uno o más documentos de la factura original.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
-    <value>Por favor seleccione una opción.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
-    <value>Por favor describa lo que fue esta compra.</value>
-  </data>
-  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
-    <value>Solicitud</value>
-    <comment>Could also be "file" (as verb) or equivalent</comment>
-  </data>
-  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
-    <value>Solicitud</value>
-  </data>
-  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
-    <value>IVA parte del total ({0})</value>
-  </data>
-  <data name="FileExpenseClaim_Vat" xml:space="preserve">
-    <value>IVA parte del total ({0})</value>
-  </data>
-  <data name="ListInboundInvoices_Header" xml:space="preserve">
-    <value>Listado de facturas entrantes</value>
-  </data>
-  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
-    <value>Remitente de la factura</value>
-  </data>
-  <data name="ListInboundInvoices_Info" xml:space="preserve">
-    <value>Aquí se enumeran las últimas 100 facturas, ordenadas por fecha de vencimiento y las más recientes primero.</value>
-  </data>
-  <data name="ListInboundInvoices_Title" xml:space="preserve">
-    <value>Facturas entrantes</value>
-  </data>
-  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
-    <value>Crear factura saliente</value>
-  </data>
-  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Crear</value>
-    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
-  </data>
-  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
-    <value>Crear factura saliente</value>
-  </data>
-  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
-    <value>Factura saliente #{0:N0} archivado.</value>
-  </data>
-  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
-    <value>Fondos recibidos ({0})</value>
-    <comment>The {0} will be replaced with currency name.</comment>
-  </data>
-  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
-    <value>Enviado</value>
-  </data>
-  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
-    <value>Cliente</value>
-  </data>
-  <data name="ListOutboundInvoices_Header" xml:space="preserve">
-    <value>Listado de facturas salientes</value>
-  </data>
-  <data name="ListOutboundInvoices_Info" xml:space="preserve">
-    <value>Enumera las 100 facturas de salida más recientes, ordenadas por cuando se crearon, primero las más recientes.</value>
-  </data>
-  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
-    <value>Cantidad total</value>
-  </data>
-  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
-    <value>Fecha de vencimiento</value>
-  </data>
-  <data name="ListOutboundInvoices_Title" xml:space="preserve">
-    <value>Lista de facturas salientes</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
-    <value>Subir Expensify CSV</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
-    <value>Si tiene muchos reportes de gastos, puede juntarlos con Expensify y subir un reporte Expensify CSV aquí (el cual se encuentra en Expensify bajo Reportes, Exportar, como CSV). Swarmops usará Expensify para extraer todos los recibos individuales y anotarlos como reclamos de gastos separados para una contabilidad óptima.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
-    <value>Para que esto funcione, ya que {0} reporta el IVA a las autoridades fiscales, necesitará modificar el perfil Expensify CSV prestablecido para que incluya IVA, el cual no viene por defecto. La páginas de ayuda de Expensify contienen más información sobre cómo hacer esto y si está utilizando Expensify en base a un equipo, su política de Expensify ya debería tener un perfil de exportación CSV habilitado para IVA.</value>
-    <comment>{0} is the organization name.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
-    <value>Basado en los ajustes de la organización, el perfil de exportación "Defaul CSV" en Expensify debería ser suficiente para Swarmops.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
-    <value>La moneda del reporte de Expensify es</value>
-  </data>
-  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
-    <value>Subir Reporte Expensify Para Reembolso</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;ERROR: No se puede analizar el CSV Expensify.&lt;/strong&gt; Si este es un archivo CSV de Expensify entonces Swarmops necesita que las columnas "Timestamp", "Amount", "Merchant", "Comment", "Category", "MCC", "Original Currency" y "Original Amount" se encuentren en el archivo. Si la organización reporta IVA, sse necesita una columna más llamada "VAT".&lt;/p&gt;&lt;p&gt; No es posible proceder con este archivo.&lt;/p&gt;</value>
-    <comment>Do not translate the Expensify column field names.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;ERROR: El archivo CSV de Expensify no tiene un campo IVA.&lt;/strong&gt; Debido a que la organización reporta Impuesto al Valor Agregado (IVA) a las autoridades, este debe ser especificado en base a cada gasto. Por favor, configure el IVA en Expensify y cree un nuevo perfil de exportación CSV que lo exporte bajo el encabezado de columna "VAT". Si su equipo ya ha creado dicho perfil CSV, puede que solo necesite seleccionarlo cuando esté exportando a CSV.&lt;/p&gt;&lt;p&gt; No es posible procesar este archivo.&lt;/p&gt;</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
-    <value>¿Desea Subir Algún Otro Archivo CSV De Expensify?</value>
-    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
-    <value>yo</value>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
-    <value>¿De quién es este reclamo de gasto?</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;ERROR: Al archivo CSV de Expensify le faltan campos de datos requeridos.&lt;/strong&gt; Parece que al archivo le falta al menos uno de las campos requeridos del perfil CSV prestablecido de Expensify. Revise la documentación técnica y comparela con el archivo que intentó subir. (Lo más probable, sin embargo, es que haya tratado de subir un archivo equivocado &amp;ndash; quizás una fotografía en lugar del CSV de Expensify &amp;ndash; y eso es lo que está causando la ausencia de los datos esperados.)&lt;/p&gt;&lt;p&gt; No es posible procesar este archivo.&lt;/p&gt;</value>
-  </data>
-  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
-    <value>(¡La cantidad no debe incluir el IVA!)</value>
-    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
-    <value>Todos los reclamos de gastos necesitan un presupuesto antes de ser enviados.</value>
-    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
-    <value>No hay registros de Expensify a enviar</value>
-    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
-    <value>Listo para enviar un reclamo</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
-    <value>Listo para enviar {0} reclamos</value>
-    <comment>The {0} is replaced by a number, 2 or higher</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
-    <value>Reclamo presentado satisfactoriamente.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
-    <value>{0} reclamos presentados exitosamente.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referencia</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  
 </root>

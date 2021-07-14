@@ -136,6 +136,7 @@
   
   
   
+  
   <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
     <value>Документация</value>
     <comment>Button to see underlying documentation. Keep short!</comment>
@@ -154,6 +155,7 @@
     <value>Мое судно на воздушной подушке полно угрей</value>
     <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
   </data>
+  
   
   
   <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
@@ -188,9 +190,12 @@
   
   
   
+  
+  
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Здесь вы передаете счета, полученные в Вашей организации ("Расчеты с поставщиками"). Введите название поставщика, сумму, дату оплаты, ссылку на накладную и загрузите изображение полученной накладной. Кроме того, выберите бюджет. Бюджетный собственник должен засвидетельствовать, как обычно. (Будущие расширения этого механизма включают заказы на закупку и списки поставщиков.)</value>
   </data>
+  
   
   
   
@@ -203,9 +208,44 @@
   </data>
   
   
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Пожалуйста, загрузите один или несколько документов оригинального счета-фактуры.</value>
+  </data>
+  
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Пожалуйста, опишите, что это была за покупка.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
   
   <data name="Donate_Info" xml:space="preserve">
     <value>Если вы хотите пожертвовать организации, вы можете сделать это здесь.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Если у вас есть много отчетов о расходах, вы можете собрать их с expensify и отправка отчета здесь банк автоматически в формате CSV (который можно получить с в банк автоматически под отчеты, экспорт в CSV). Swarmops будет использовать Expensify для извлечения всех отдельных поступлений и регистрировать их как отдельные претензии расходов для надлежащего учета.</value>
   </data>
   
   
@@ -232,6 +272,7 @@
   <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
     <value>Поскольку это ваш собственный бюджет, аттестация уже завершена. Необходима только проверка.</value>
   </data>
+  
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Загрузить Изображения Квитанций</value>
   </data>
@@ -249,10 +290,36 @@
   
   
   
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>В этом списке перечислены последние 100 счетов-фактур, отсортированных по дате их оплаты с новейшим первым.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Это различные формы затрат для организации, которые прошли все препятствия для выплаты. Они готовы к выплате получателю. Вот где вы проверяете их как выплаченные (вероятно, при открытии вашего банка в другом окне).</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -278,6 +345,7 @@
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>Бюджет</value>
   </data>
+  
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Ваши банковские реквизиты</value>
   </data>
@@ -313,72 +381,6 @@
   <data name="ValidateReceipts_Info" xml:space="preserve">
     <value>Здесь вы проверяете и подтверждаете действительность квитанций, которые сопровождают претензии по расходам. Убедитесь, что сумма верна и что квитанция, как представляется, для того, что он утверждается для.</value>
   </data>
-  
-  
-  
-  
-  
-  
-  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
-    <value>Пожалуйста, загрузите один или несколько документов оригинального счета-фактуры.</value>
-  </data>
-  
-  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
-    <value>Пожалуйста, опишите, что это была за покупка.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  <data name="ListInboundInvoices_Info" xml:space="preserve">
-    <value>В этом списке перечислены последние 100 счетов-фактур, отсортированных по дате их оплаты с новейшим первым.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
-    <value>Если у вас есть много отчетов о расходах, вы можете собрать их с expensify и отправка отчета здесь банк автоматически в формате CSV (который можно получить с в банк автоматически под отчеты, экспорт в CSV). Swarmops будет использовать Expensify для извлечения всех отдельных поступлений и регистрировать их как отдельные претензии расходов для надлежащего учета.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

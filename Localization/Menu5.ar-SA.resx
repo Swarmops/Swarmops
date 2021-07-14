@@ -126,8 +126,14 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>إنشاء منظمة جديدة</value>
   </data>
-  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
-    <value>إعدادات المنظمة</value>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>تصحيح الأخطاء</value>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>اختبار صدى المحفظة الساخنة للبتكوين</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>تجسيد</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>شجرة المناطق الجغرافية</value>
@@ -135,8 +141,27 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>مجموعات المنظمة</value>
   </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>إعدادات المنظمة</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>موظفي المنظمة</value>
+  </data>
   <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>إعدادات النظام</value>
+  </data>
+  
+  
+  
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>تم الإنشاء في {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} أسطر من الكودات</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>قم بالتبليغ عن خطأ برمجي (على Github)</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>الاتصالات</value>
@@ -187,6 +212,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>إنشاء طلب شراء</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>التبرع بالمال</value>
+  </data>
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>مساعد الـ Gigs</value>
   </data>
@@ -226,6 +254,8 @@
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>طلب سلفة نقدية</value>
   </data>
+  
+  
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>إرسال فاتورة جديدة</value>
   </data>
@@ -272,6 +302,15 @@
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>الميزانية العمومية</value>
   </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>عمليات الموازنة والتطابق</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>المحفظة الساخنة للبيتكوين</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>الميزانية مقابل الوضع الحالي</value>
+  </data>
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>لا يمكن إغلاق دفاتر الأستاذ لـ {0}</value>
   </data>
@@ -284,6 +323,8 @@
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>تصحيح دفتر الأستاذ والحسابات</value>
   </data>
+  
+  
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>استيراد بيانات البنك</value>
   </data>
@@ -296,13 +337,25 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>كشف الرواتب</value>
   </data>
+  
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>بيان الأرباح والخسائر</value>
   </data>
   
   
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>نماذج الضرائب</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>نماذج ضريبة الرواتب</value>
+  </data>
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>رفع ملفات البنك</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>تقرير الضريبة على القيمة المضافة</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
   </data>
   <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
     <value>قائمة الحسابات للتسوية</value>
@@ -361,6 +414,7 @@
   <data name="Menu5_People_AddPerson" xml:space="preserve">
     <value>إضافة عضو</value>
   </data>
+  
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>سرد/بحث عن الأشخاص</value>
   </data>
@@ -376,6 +430,9 @@
   <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>إدارة المتطوعين</value>
   </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>منظمتي المحلية</value>
+  </data>
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>مؤتمر جديد</value>
   </data>
@@ -385,63 +442,6 @@
   <data name="Menu5_People_SelfSignup" xml:space="preserve">
     <value>صفحة التسجيل الذاتي</value>
   </data>
-  
-  
-  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
-    <value>نماذج الضرائب</value>
-  </data>
-  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
-    <value>نماذج ضريبة الرواتب</value>
-  </data>
-  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
-    <value>عمليات الموازنة والتطابق</value>
-  </data>
-  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
-    <value>موظفي المنظمة</value>
-  </data>
-  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
-    <value>منظمتي المحلية</value>
-  </data>
-  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
-    <value>التبرع بالمال</value>
-  </data>
-  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
-    <value>الميزانية مقابل الوضع الحالي</value>
-  </data>
-  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
-    <value>المحفظة الساخنة للبيتكوين</value>
-  </data>
-  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
-    <value>تم الإنشاء في {0:MMM d, yyyy}</value>
-    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
-  </data>
-  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
-    <value>{0:N0} أسطر من الكودات</value>
-  </data>
-  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
-    <value>قم بالتبليغ عن خطأ برمجي (على Github)</value>
-  </data>
-  <data name="Menu5_Administration_Debug" xml:space="preserve">
-    <value>تصحيح الأخطاء</value>
-  </data>
-  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
-    <value>تجسيد</value>
-  </data>
-  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
-    <value>تقرير الضريبة على القيمة المضافة</value>
-    <comment>This is a European thing (Value Added Tax).</comment>
-  </data>
-  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
-    <value>اختبار صدى المحفظة الساخنة للبتكوين</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

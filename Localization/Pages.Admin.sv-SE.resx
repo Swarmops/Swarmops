@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;DAMM MOTTAGET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Det belopp som skickats är mindre än den beräknade avgiften för att skicka tillbaka det till dig, vilket är {0:N2} mikrocoin. Det belopp som skickades har blivit så kallat ”damm” i bitcoin-nätverket, och kommer inte att flyttas igen. &lt;br/&gt;&lt;br/&gt; Skicka ett högre belopp att utföra ett ekotest.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>Detta är en QR-kod för ett bitcoin-ekotest för hela Swarmops-installationen, inte bara för {0}. Scanna den från din telefons bitcoinplånbok för att göra ett ekotest, eller skicka från din dator direkt till [{1}] (det är en Bitcoin Cash-adress). Beloppet, minus transaktionsavgift på {2:N2} mikrocoin, kommer att skickas tillbaka inom ett par sekunder.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,28 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Swarmops Bitcoin Ekotest</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Aktivister kommer att kallas</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(inte tillämplig)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Inte-ännu-medlemmar kallas</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Toppnivåorganisation</value>
@@ -188,6 +211,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Kommersiella</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Förvaltning</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Ideella</value>
@@ -269,6 +295,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Adminnotiser från namn</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Servernamn för backend (override)</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>SMTP-porten måste vara ett nummer. Det gick inte att förstå hostnamn:port.</value>
   </data>
@@ -302,39 +331,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Du borde verkligen, VERKLIGEN använda HTTPS för en sådan här webbsite. Men det visste du väl redan?</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>Servernamn för backend (override)</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>WebSocket-port (Frontend)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>WebSocket-port (Backend)</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Inte-ännu-medlemmar kallas</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(inte tillämplig)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Förvaltning</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;DAMM MOTTAGET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Det belopp som skickats är mindre än den beräknade avgiften för att skicka tillbaka det till dig, vilket är {0:N2} mikrocoin. Det belopp som skickades har blivit så kallat ”damm” i bitcoin-nätverket, och kommer inte att flyttas igen. &lt;br/&gt;&lt;br/&gt; Skicka ett högre belopp att utföra ett ekotest.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>WebSocket-port (Frontend)</value>
   </data>
 </root>

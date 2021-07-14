@@ -372,4 +372,13 @@
     <value>crwdns6563290:0crwdne6563290:0</value>
     <comment>This is donations toward maintenance of the Swarmops / Backoffice.Cash codebase and data.</comment>
   </data>
+  <data name="Asset_PrivateWithdrawals" xml:space="preserve">
+    <value>crwdns6563653:0crwdne6563653:0</value>
+  </data>
+  <data name="Debt_PrivateDeposits" xml:space="preserve">
+    <value>crwdns6563655:0crwdne6563655:0</value>
+  </data>
+  <data name="Asset_PrivateWithdrawals_HealthInsurance" xml:space="preserve">
+    <value>crwdns6563657:0crwdne6563657:0</value>
+  </data>
 </root>

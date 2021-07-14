@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddMotionAmendment_AmendmentSubmittedAs" xml:space="preserve">
     <value>#{0}-{1} olarak kaydedildi.</value>
@@ -321,6 +321,14 @@
   <data name="VoteAmendments_Recommend_Yes" xml:space="preserve">
     <value>EVET</value>
   </data>
+  <data name="VoteAmendments_SaveVote" xml:space="preserve">
+    <value>Tamamım, Oyumu gönder</value>
+    <comment>Button at end of page</comment>
+  </data>
+  <data name="VoteAmendments_SaveVote_Temp" xml:space="preserve">
+    <value>Test toplantılarında oy kullanılmıyor</value>
+    <comment>For Tests Only</comment>
+  </data>
   <data name="VoteAmendments_SelectRecommendation" xml:space="preserve">
     <value>Önerileri seçin...</value>
     <comment>Default in dropdown box</comment>
@@ -385,13 +393,5 @@
   <data name="Vote_VoteOnMotions" xml:space="preserve">
     <value>{0:N0} teklifi oyla:</value>
     <comment>The {0} is the motion count.</comment>
-  </data>
-  <data name="VoteAmendments_SaveVote" xml:space="preserve">
-    <value>Tamamım, Oyumu gönder</value>
-    <comment>Button at end of page</comment>
-  </data>
-  <data name="VoteAmendments_SaveVote_Temp" xml:space="preserve">
-    <value>Test toplantılarında oy kullanılmıyor</value>
-    <comment>For Tests Only</comment>
   </data>
 </root>

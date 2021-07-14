@@ -117,17 +117,116 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>hesap ekle</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
   <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
     <value>Yeni hesap oluşturun</value>
+  </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>Bu bir yükümlülük hesabı. Bu tür hesaplar normalde negatif bir dengeye sahiptirler, çünkü bunlar organizasyondaki negatif varlıkları temsil etmektedir. Girilen başlangıç bakiyesi negatif olarak değiştirildi.</value>
+  </data>
+  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
+    <value>Hesap adı</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
+    <value>Bu hesap işlmeler için açık mı?</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
+  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
+    <value>Bu FAVÖK hattı sonrası bir hesap mı?</value>
+    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
+  </data>
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Yönetici</value>
+  </data>
+  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
+    <value>Bütçe (bakiye &lt;span id="SpanTextCurrency"&gt;foo&lt;/span&gt;&lt;span id="SpanEditBalance"&gt;bar&lt;/span&gt; kadar)</value>
+    <comment>foo, bar replaced on load with actual values</comment>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
+    <value>İnsanlar bu hesabı gider raporları için kullanabilir mi?</value>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
+    <value>Gidere eklenebilir</value>
+  </data>
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>Otomasyon Profili</value>
+  </data>
+  <data name="AccountPlan_Edit_Header" xml:space="preserve">
+    <value>Hesabı Düzenle</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
+    <value>Otomasyon</value>
+    <comment>Automatic connections to bank, blockchain etc.</comment>
+  </data>
+  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
+    <value>Yapılandırma</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
+    <value>Günlük Operasyonlar</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>Başlangıç Bakiyesi({0}'a gelen), {1}</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
+  </data>
+  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
+    <value>Ana hesap ya da grup</value>
+  </data>
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>Bu bir gider hesabı. Bu hesapların normalde organizasyondan varlık tahliye ettikleri için eksi bir bütçesi vardır. Önerilen bütçeniz eksi olarak değiştirildi.</value>
+    <comment>Displayed as a message box</comment>
+  </data>
+  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
+    <value>Hesap</value>
+  </data>
+  <data name="AccountPlan_Header_Balance" xml:space="preserve">
+    <value>Bakiye</value>
+  </data>
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>Bütçe</value>
+  </data>
+  <data name="AccountPlan_Header_Edit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="AccountPlan_Header_Flags" xml:space="preserve">
+    <value>Bayraklar</value>
   </data>
   <data name="AccountPlan_Info" xml:space="preserve">
     <value>Muhasebe defterinizdeki finansal hesapların özeti budur. Günlük işlemlerin çoğu bütçe sahiplarine devredilse bile burada biraz bakım yapabilirsiniz.</value>
   </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>Yeni Hesap</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
+    <value>Etkin olmayan Hesapları Göster (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
+    <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
   <data name="AccountPlan_PageTitle" xml:space="preserve">
     <value>Hesap Tablosu</value>
   </data>
+  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
+    <value>Öngörülen Kayıp {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
+    <value>Öngörülen Kâr {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Hesap</value>
+  </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>Varlıklar XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
+    <value>(değiştir)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
   </data>
   <data name="BalanceSheet_ContentHeader" xml:space="preserve">
     <value>{0} için bilanço tablosu</value>
@@ -147,8 +246,27 @@
   <data name="BalanceSheet_Info" xml:space="preserve">
     <value>Bilanço, o anki borç ve kazançlara genel bir bakıştır ve sonuçların organizasyonun finansal sağlığını nasıl etkilediğini görmek için kullanılır. Ayrıca, gelir ve giderlerin özeti olan &lt;a href="ProfitLossStatement"&gt; kar ve zarar durumuna&lt;/a&gt; göz atmak isteyebilirsiniz.</value>
   </data>
+  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
+    <value>Bilanço, zamanın anlık bir kesitinde borç ve kazançlara genel bir bakıştır ve sonuçların organizasyonun genel finansal sağlığını nasıl etkilediğini görmek için kullanılır. Ayrıca, daha fazla bilgi için &lt;a href="BalanceSheet"&gt;gelişmiş bilanço&lt;/a&gt;'ya göz atmak isteyebilirsiniz. yada gelir ve giderlerin özeti olan &lt;a href="ProfitLossStatement"&gt; kar-zarar beyanı&lt;/a&gt;na göz atmak isteyebilirsiniz.</value>
+  </data>
+  <data name="BalanceSheet_Liabilities" xml:space="preserve">
+    <value>Yükümlülükler XXXX</value>
+    <comment>For the simplified view - XXXX is replaced with year</comment>
+  </data>
+  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
+    <value>(değiştir)</value>
+    <comment>Change from previous year's close, which is same as from start of this year</comment>
+  </data>
+  <data name="BalanceSheet_LossToDate" xml:space="preserve">
+    <value>Bugüne kadarki zarar ({0})</value>
+    <comment>The {0} is the year of the report</comment>
+  </data>
   <data name="BalanceSheet_PageTitle" xml:space="preserve">
     <value>Bilanço</value>
+  </data>
+  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
+    <value>Bugüne kadarki kâr ({0})</value>
+    <comment>The {0} is the year of the report</comment>
   </data>
   <data name="BalanceSheet_Q1" xml:space="preserve">
     <value>Q1'i değiştir</value>
@@ -165,6 +283,438 @@
   <data name="BalanceSheet_StartYear" xml:space="preserve">
     <value>Başlat-XXXX</value>
     <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
+    <value>İşlem açıklaması boş olamaz.</value>
+  </data>
+  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
+    <value>İşlemin satın alma onayına ihtiyacı var.</value>
+  </data>
+  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
+    <value>KDV miktarı doğru girilmiş gibi gözükmüyor.</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>Bu Tutar İçin Tam Eşleşme</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>Beklenmeyen Tarih/Zamanda eşleşen miktar</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>%5 Oynama Payı ile Birlikte Miktar</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>Hesap</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>Tutar</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>Tx</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
+    <value>Sarkan Ödemeler (Dengeleme, Eşleme, veya Düzeltme Gerekiyor)</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
+  </data>
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>Bazı otomatik ithal edilen finansal işlemler, devam eden muhasebe için otomatik olarak eşleştirilemez. Bu tür işlemleri manuel olarak "dengeleme" için eşleştirdiğiniz yerdir (bir işlemin yalnızca bir kısmı tamamlanmışsa, paranın ne için olduğuna dair hiçbir kayıt olmadan organizasyona gönderilen bir para gibi, işlemin "dengesiz" olduğu ve defter tutma muadili eksik olduğu "sarkan bir ödeme" olduğu söylenir).</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>Bakiye</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
+    <value>Faturayı eşleştir</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>Eşleşme</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
+    <value>Eşleşme</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
+    <value>Doğrudan satın alma olarak işaretle</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
+    <value>K.D.V. raporunu bitir</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
+    <value>Bu hesaba karşı farklı dengeleme:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
+    <value>İşlemi şu gelen faturaya eşle:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>İşlem bu ödeme ile eşleşir:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
+    <value>Bu yabancı ödeme biçimi ile işlemi eşleştir:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
+    <value>Otomatik ödeme satın alma miktarı ({0})</value>
+    <comment>{0} is the currency</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
+    <value>Satın almayı bu bütçeden karşıla</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
+    <value>Makbuz ya da diğer belgeleri yükle</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
+    <value>İşlem açıklaması güncelle</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
+    <value>Miktarın KDV kısmı</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
+    <value>Bu işlem, bu K.D.V. raporu için ödeme/geri dönüştür:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
+    <value>İşlem &lt;span id="spanTransactionUnbalancedBy"&gt; tarafından dengelenemedi. +FOO,BAR.QX &lt;/span&gt;. İster misiniz...</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
+    <value>Bu hesaba karşı işlemi elle dengelemek ister misiniz?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
+    <value>Bu, açık bir giden faturaya eşlensin mi?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
+    <value>Bu, açık bir giden faturaya standart olmayan bir para birimiyle eşlensin mi (%5 forex toleransı)?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
+    <value>İşlem farkını açık, eşleşmemiş bir ödeme ile eşleştirmek istiyor musunuz?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>İşlemi bir yabancı para birimi ödemesiyle eşleştirin ({0}% tutar toleransı)?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
+    <value>Bunu, doğrudan hesaptan satın alma olarak işaretle?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
+    <value>Bu işlem ile bir KDV raporu kapatılsın mı?</value>
+  </data>
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>Dengeleme/Eşleştirme İşlemi &lt;span id="spanModalTransactionId"&gt; 67890 &lt;/span&gt; Üzerinden &lt;span id="spanModalTransactionDate"&gt; yyyy-mmm-dd &lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
+  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
+    <value>En muhtemel eşleşme</value>
+    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
+  </data>
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>(Açık ödeme yok)</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>(Eşleşme için uygun ödeme yok)</value>
+  </data>
+  
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>%1 Oynama Payı ile Miktar</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
+    <value>{1} için Giden Fatura #{0:N0}, kesim tarihi {2:yyyy-MMM-dd}: {3}</value>
+    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
+  </data>
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>Denge ve Eşleştirme İşlemleri</value>
+  </data>
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>Ödeme #{0:N0}, {5} (beklenen {1:yyyy-MMM-dd}) için {2}: {3} {4:N2}</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>-- Bir Ödeme Biçimi Seçin --</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>%10 Oynama Payı ile Miktar</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
+    <value>{1:yyyy-MMM} için fazlalık K.D.V. Raporu</value>
+  </data>
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>Bitcoin Adresi</value>
+  </data>
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>Microcoin Bakiyesi</value>
+  </data>
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>Türetme Yolu</value>
+  </data>
+  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
+    <value>Hotwallet'da hiç para bulunmuyor.</value>
+  </data>
+  <data name="BitcoinHotwallet_Header" xml:space="preserve">
+    <value>Hotwallet'ı yakından incele</value>
+    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
+  </data>
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>Bu, organizasyonun bitcoin hotwallet adresleri ve bakiyesinin detaylı incelemesini gösterir. (Boş veya önceden kullanılmış adresler gösterilmez.)</value>
+  </data>
+  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
+    <value>Bitoin Hotwallet'ı</value>
+  </data>
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>İşlem Hash'i</value>
+  </data>
+  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
+    <value>Harcanmamış İşlem Çıkışı</value>
+    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
+  </data>
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>Değer {0}</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>Bütçe ve Gerçek Değer</value>
+  </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>Beklenen Yıl İçinde</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>Bu sayfa, bütçede göze alınan zararın şimdiye kadarki gerçek sonuç ile karşılaştırmasını göstermektedir.</value>
+  </data>
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>Bütçe ve Gerçek Değer</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>Yıllık Zarar</value>
+  </data>
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>Yıllık Kar</value>
+  </data>
+  
+  
+  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
+    <value>{0} Yılı için Finansal Defteri Kebiri Kapat</value>
+    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
+  </data>
+  
+  
+  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
+    <value>Oluştur {0}</value>
+    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
+  </data>
+  
+  
+  
+  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
+    <value>{0} için Otomatik Alım İşlem Verileri</value>
+    <comment>Parameter zero is the account name as given by the user</comment>
+  </data>
+  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
+    <value>Yıllık Raporlar</value>
+    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  
+  
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Bordro ve Vergiler</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  
+  <data name="EndOfMonth_Info" xml:space="preserve">
+    <value>Bu önceki ayı kapatmak ve muhasebe konusunda yenisine başlamak için yapılacakların bir kontrol listesidir.</value>
+  </data>
+  
+  <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
+    <value>Tüm sarkan ödemeleri çözümle</value>
+    <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
+  </data>
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Maaş Bordrosu: Tanımlanan maaş bordrosu yok</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
+  </data>
+  
+  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
+    <value>&lt;strong&gt;HESAP DURUMUNU GEÇ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Dahili kayıtların denetim doğrulaması için genellikle banka beyanları gerekir. Bir ay'ın ifadesini atlamanın tek geçerli nedeni hesabın henüz açılmadığı, bu durumda hesap açılmadan önceki ayları atladığınız ve dolayısıyla hiçbir açıklamada bulunmadığınızdır.&lt;br/&gt;&lt;br/&gt;Şimdi atlarsanız, bu belirli ifadeyi yüklemeniz bir daha istenmez.</value>
+  </data>
+  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
+    <value>&lt;strong&gt;DOKÜMAN YÜKLEMESİNİ ATLA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bu belge genellikle işlem kayıtları için gereklidir. Bir dokümanı atlamanın tek geçerli nedeni bir senenin Haziran ayında başlayan bir operasyonun o yılın Ocak ayına ait belgelerine sahip olmadığı gibi, operasyonların henüz çalışmadığı için var olmamasıdır.&lt;br/&gt;&lt;br/&gt;Şimdi atlarsanız, bu belgeyi tekrar yüklemeniz istenmez.</value>
+  </data>
+  <data name="EndOfMonth_Title" xml:space="preserve">
+    <value>Ay Sonu Rutini: {0:MMMM yyyy}</value>
+    <comment>Parameter zero is the month that's just ended</comment>
+  </data>
+  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
+    <value>{2} için {0} için Hesap Durumunu ({1}) yükle</value>
+    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
+  </data>
+  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
+    <value>{0} için işlem verilerini ({1}) yükle</value>
+    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
+  </data>
+  
+  
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>Hesap adı</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>Bakiye doğru:</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
+    <value>İşlem Oluştur</value>
+    <comment>Text on button for executing create</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
+    <value>İşlem tarihi ve saati (UTC)</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
+    <value>İşlem Açıklaması</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
+    <value>Yeni İşlem Oluşturuluyor</value>
+    <comment>Header of dialog</comment>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
+    <value>İlk işlem satırının hesabı</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
+    <value>İlk işlem satırının tutarı</value>
+  </data>
+  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
+    <value>Yeni işlem ekle</value>
+    <comment>Option in sidebar</comment>
+  </data>
+  <data name="InspectLedgers_Detail" xml:space="preserve">
+    <value>Açıklama / Hesap</value>
+    <comment>As in, description of a transaction OR the full name of an account</comment>
+  </data>
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>İşlemi Görüntüleme/Düzenleme #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>(İşlem verisi yok)</value>
+  </data>
+  
+  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
+    <value>Şunun için genel muhasebe defteri</value>
+    <comment>This phrase is followed by dropdowns for year and month</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>İşleme satırlar ekle</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>Otomatik işlem izleme detayları</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>için</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>Kontrol et</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>Gelen Bakiye</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>Önceki Bakiye Yok</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>Bu, kuruluş'un finansmanı için temel alınan Venedik muhasebecilik defteri kebiridir. Bunları denetim amacıyla burada detaylı olarak inceleyebilirsiniz. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;Şu anda bir P&amp;L hesabını izlemektesiniz, bu nedenle işaretler tersine çevrilir - Venedik'in çifte defter tutma işleminin nasıl yürüdüğüne bağlı olarak gelirler negatif ve masraflar pozitiftir.&lt;/strong&gt;&lt;/span&gt;</value>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>İşlemi İnceleme #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>Baş Harfler</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>Girildi</value>
+  </data>
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>Seçilen periyot için bu hesapta işlem yok.</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>Giden Bakiye</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>Kapanış Bakiyesi</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>Kapanış Bakiyesi (bugüne kadar)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>Defterleri kontrol et</value>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>(Lütfen bir hesap seçin)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>{1:yyyy-MMM-dd}'de {0} tarafından onaylandı</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>ile birleştirildi</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>(detaylı açıklama yok)</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>Bu işleme bir satır eklemek için lütfen bir hesap seçin.</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
+    <value>{1}'den &lt;strong&gt;Gelen Fatura #{0:N0}&lt;/strong&gt;:</value>
+    <comment>the {1} is the supplier name</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>{0} tarafından çalıştırıldı.</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>Temel maaş{0}{1:N2}, brüt ayarlamalar {2:+N2;-N2;none}, brüt maaş {3:N2}, vergi indirimi {4:N2}, net ayarlamalar {5:+N2;-N2;none}, ödeme {6:N2}.</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>Bu &lt;strong&gt;Ödeme #{0:N0}.&lt;/strong&gt;Bu, şu kişi için bir ödemedir</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>{0} tarafından {1:yyyy-MMM-dd} tarihinde belge doğrulaması yapıldı</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
+    <value>Bu işlem {0} için KDV raporunu kapattı.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
+    <value>Bu işlem {0} için KDV raporunu açtı.</value>
+    <comment>{0} will be a time period, like "Jan 2017".</comment>
+  </data>
+  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
+    <value>Bu işlem Giden Fatura #{0:N0} için ödeme alır.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
+    <value>Bu işlem {0} öder.</value>
+  </data>
+  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
+    <value>Bu işlem {1}'den Gelen Faturayı #{0:N0}'a öder.</value>
+  </data>
+  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
+    <value>İşlem &lt;span class="spanAnnoyingBlink"&gt;DENGESİZ:&lt;/span&gt; eksik miktar</value>
   </data>
   <data name="ProfitLossStatement_AccountName" xml:space="preserve">
     <value>Hesap</value>
@@ -219,6 +769,37 @@
     <value>Yeni Bütçeler Oluşturmak</value>
     <comment>Text on submit button</comment>
   </data>
+  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
+    <value>İlave Vergi</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
+    <value>Vergi İndirimi</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
+    <value>Brüt Maaş</value>
+  </data>
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>Organizasyon bordrosu için, gerçek vergi formlarınıza eklemeniz hatta muhtemelen olduğu gibi çıkarmanız kolay olan karalama notlarını (tamamlanan vergi formları) göster. Performans ve gerçek formlar ülkeye göre değişmektedir ve üçüncü parti kodlara ve eklentilere bağlıdır.</value>
+  </data>
+  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
+    <value>Bordro Vergi Formları</value>
+  </data>
+  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
+    <value>Şu Ay İçin Aylık Vergi Formları</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
+    <value>Toplam Maliyet</value>
+  </data>
+  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
+    <value>Toplam Vergi</value>
+  </data>
+  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
+    <value>Otomasyon Profili</value>
+    <comment>This is where the bank name, country, and currency appears.</comment>
+  </data>
   <data name="UploadBankFiles_AccountStatement" xml:space="preserve">
     <value>Hesap Tablosu</value>
   </data>
@@ -247,6 +828,9 @@
   </data>
   <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
     <value>&lt;h3&gt; Banka dosyası yüklenemedi. &lt;/h3&gt;&lt;p&gt; Bunun üç nedeni vardır: indirme talimatlarının bazı ayrıntılarını gözden kaçırmış olabilirsiniz, banka biçimini değiştirmiş olabilir yada kazayla tamamen yanlış bir dosya yüklemiş olabilirsiniz (banka işlemlerinin listesi yerine son partinizden bir fotoğraf gibi). Hiçbir işlem alınmadı. &lt;strong&gt; Lütfen tekrar deneyin. &lt;/strong&gt;</value>
+  </data>
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>Otomasyon için ayarlanmış herhangi bir varlık hesabı bulunmadığından, hesaplar şu anda veri yüklemeyi desteklememektedir. Gösterge Paneline Dönüş.</value>
   </data>
   <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
     <value>Beklenen Dosya</value>
@@ -324,6 +908,22 @@
     <value>&lt;p&gt;Dosya&lt;strong&gt;başarıyla içe aktarıldı.&lt;/strong&gt;{0:N0} içe aktarılan yeni işlem; {1:N0}, zaten Swamops'ta olanların kopyası olduğundan atıldı. Swamrops'taki hesap bakiyesi bankadakiyle eşleşiyor.&lt;/p&gt;&lt;p&gt;Dosya {2:yyyy-MMM-dd} ile {3:yyyy-MMM-dd} tarih arasındaki işlemleri içeriyor.&lt;/p&gt;</value>
     <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
   </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>Bu otomatik hesaba yapılan ilk yükleme olduğu için, {2} yılına giren &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; ilk bakiyesi tespit edildi ve ayarlandı</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
+    <value>(defteri kebir işletme para biriminde &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; olarak hesaplanmıştır)</value>
+    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Ödemeler dosyası&lt;strong&gt;başarıyla aktarıldı&lt;/strong&gt;{0:N0} gruptaki toplamı {3}{2:N2} olan {1:N0} ödeme aktarıldı.&lt;/p&gt;</value>
+    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Ödemeler dosyası&lt;strong&gt;başarıyla aktarıldı&lt;/strong&gt;{0:N0} gruptaki toplamı {3}{2:N2} olan {1:N0} ödeme aktarıldı.&lt;/p&gt;&lt;p&gt;( Ayrıca, {4:N0} grupta {5:N0} adet tekrarlayan ödeme bulunuyordu.)&lt;/p&gt;</value>
+    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
+  </data>
   <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
     <value>&lt;p&gt;Dosya aktarıldı fakat &lt;strong&gt;elde edilen hesap bakiyesi eşleşmiyor.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{0:N0} işlem aktarıldıktan (ve {1:N0} tekrarlayan işlem yok sayıldıktan) sonra bütün dosya işlendi. Ancak, Swarmops'da elde edilen hesap bakiyesi banka beyanındaki ile aynı değil, arada {3}{2:N2} kadarlık bir fark bulunuyor.&lt;/p&gt;&lt;p&gt;Lütfen, yeni bir hesap beyanı eklemeyi deneyiniz. Eğer bu da bir eşitsizlik sonucu vermeye devam ederse, banka hesabını bir geniş kapsamlı hesap beyanı dosyası ile &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;yeniden senkronize&lt;/a&gt; etmeyi denemediniz gerekebilir&lt;/p&gt;</value>
     <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded. 2 is the diff, 3 is the currency.</comment>
@@ -391,469 +991,9 @@
   <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
     <value>Belirsiz Hesapları Listele</value>
   </data>
-  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
-    <value>Hesap adı</value>
-  </data>
-  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
-    <value>Bu hesap işlmeler için açık mı?</value>
-  </data>
-  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
-    <value>Aktif</value>
-  </data>
-  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
-    <value>Bu FAVÖK hattı sonrası bir hesap mı?</value>
-    <comment>Earnings before interest, tax, depreciation and amortization (EBITDA) is a measure of a company's operating performance.</comment>
-  </data>
-  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
-    <value>Yönetici</value>
-  </data>
-  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
-    <value>Bütçe (bakiye &lt;span id="SpanTextCurrency"&gt;foo&lt;/span&gt;&lt;span id="SpanEditBalance"&gt;bar&lt;/span&gt; kadar)</value>
-    <comment>foo, bar replaced on load with actual values</comment>
-  </data>
-  <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
-    <value>İnsanlar bu hesabı gider raporları için kullanabilir mi?</value>
-  </data>
-  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
-    <value>Gidere eklenebilir</value>
-  </data>
-  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
-    <value>Otomasyon Profili</value>
-  </data>
-  <data name="AccountPlan_Edit_Header" xml:space="preserve">
-    <value>Hesabı Düzenle</value>
-  </data>
-  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
-    <value>Otomasyon</value>
-    <comment>Automatic connections to bank, blockchain etc.</comment>
-  </data>
-  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
-    <value>Yapılandırma</value>
-  </data>
-  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
-    <value>Günlük Operasyonlar</value>
-  </data>
-  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
-    <value>Ana hesap ya da grup</value>
-  </data>
-  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
-    <value>Bu bir gider hesabı. Bu hesapların normalde organizasyondan varlık tahliye ettikleri için eksi bir bütçesi vardır. Önerilen bütçeniz eksi olarak değiştirildi.</value>
-    <comment>Displayed as a message box</comment>
-  </data>
-  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
-    <value>Hesap</value>
-  </data>
-  <data name="AccountPlan_Header_Balance" xml:space="preserve">
-    <value>Bakiye</value>
-  </data>
-  <data name="AccountPlan_Header_Budget" xml:space="preserve">
-    <value>Bütçe</value>
-  </data>
-  <data name="AccountPlan_Header_Edit" xml:space="preserve">
-    <value>Düzenle</value>
-  </data>
-  <data name="AccountPlan_Header_Flags" xml:space="preserve">
-    <value>Bayraklar</value>
-  </data>
-  <data name="InspectLedgers_Header_For" xml:space="preserve">
-    <value>için</value>
-    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
-  </data>
-  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
-    <value>Kontrol et</value>
-    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
-  </data>
-  <data name="InspectLedgers_PageTitle" xml:space="preserve">
-    <value>Defterleri kontrol et</value>
-  </data>
-  
-  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
-    <value>Gelen Bakiye</value>
-  </data>
-  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
-    <value>Önceki Bakiye Yok</value>
-  </data>
-  <data name="InspectLedgers_Info" xml:space="preserve">
-    <value>Bu, kuruluş'un finansmanı için temel alınan Venedik muhasebecilik defteri kebiridir. Bunları denetim amacıyla burada detaylı olarak inceleyebilirsiniz. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;Şu anda bir P&amp;L hesabını izlemektesiniz, bu nedenle işaretler tersine çevrilir - Venedik'in çifte defter tutma işleminin nasıl yürüdüğüne bağlı olarak gelirler negatif ve masraflar pozitiftir.&lt;/strong&gt;&lt;/span&gt;</value>
-  </data>
-  
-  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
-    <value>Seçilen periyot için bu hesapta işlem yok.</value>
-  </data>
-  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
-    <value>Giden Bakiye</value>
-  </data>
-  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
-    <value>Kapanış Bakiyesi</value>
-  </data>
-  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
-    <value>Kapanış Bakiyesi (bugüne kadar)</value>
-    <comment>Displayed if the end-balance date isn't reached yet</comment>
-  </data>
-  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
-    <value>(Lütfen bir hesap seçin)</value>
-    <comment>Displayed initially and when no valid account selected</comment>
-  </data>
-  <data name="InspectLedgers_TransactionId" xml:space="preserve">
-    <value>Tx#</value>
-    <comment>Keep VERY short.</comment>
-  </data>
-  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
-    <value>&lt;br/&gt;&lt;p&gt;Ödemeler dosyası&lt;strong&gt;başarıyla aktarıldı&lt;/strong&gt;{0:N0} gruptaki toplamı {3}{2:N2} olan {1:N0} ödeme aktarıldı.&lt;/p&gt;</value>
-    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
-  </data>
-  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
-    <value>&lt;br/&gt;&lt;p&gt;Ödemeler dosyası&lt;strong&gt;başarıyla aktarıldı&lt;/strong&gt;{0:N0} gruptaki toplamı {3}{2:N2} olan {1:N0} ödeme aktarıldı.&lt;/p&gt;&lt;p&gt;( Ayrıca, {4:N0} grupta {5:N0} adet tekrarlayan ödeme bulunuyordu.)&lt;/p&gt;</value>
-    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
-  </data>
-  <data name="AccountPlan_AddAccount" xml:space="preserve">
-    <value>hesap ekle</value>
-    <comment>Displayed as link in parens after account group name</comment>
-  </data>
-  <data name="AccountPlan_NewAccount" xml:space="preserve">
-    <value>Yeni Hesap</value>
-    <comment>the name of newly-created accounts, before rename</comment>
-  </data>
-  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
-    <value>Bu bir yükümlülük hesabı. Bu tür hesaplar normalde negatif bir dengeye sahiptirler, çünkü bunlar organizasyondaki negatif varlıkları temsil etmektedir. Girilen başlangıç bakiyesi negatif olarak değiştirildi.</value>
-  </data>
-  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
-    <value>Başlangıç Bakiyesi({0}'a gelen), {1}</value>
-    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
-  </data>
-  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
-    <value>Etkin olmayan Hesapları Göster (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
-    <comment>The {0} is the number of inactive accounts.</comment>
-  </data>
-  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
-    <value>Öngörülen Kayıp {0}</value>
-    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
-  </data>
-  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
-    <value>Öngörülen Kâr {0}</value>
-    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
-  </data>
-  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
-    <value>İlave Vergi</value>
-    <comment>If applicable, translate to local legal tax term</comment>
-  </data>
-  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
-    <value>Vergi İndirimi</value>
-    <comment>If applicable, translate to local legal tax term</comment>
-  </data>
-  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
-    <value>Brüt Maaş</value>
-  </data>
-  <data name="TaxForms_Payroll_Info" xml:space="preserve">
-    <value>Organizasyon bordrosu için, gerçek vergi formlarınıza eklemeniz hatta muhtemelen olduğu gibi çıkarmanız kolay olan karalama notlarını (tamamlanan vergi formları) göster. Performans ve gerçek formlar ülkeye göre değişmektedir ve üçüncü parti kodlara ve eklentilere bağlıdır.</value>
-  </data>
-  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
-    <value>Bordro Vergi Formları</value>
-  </data>
-  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
-    <value>Şu Ay İçin Aylık Vergi Formları</value>
-    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
-  </data>
-  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
-    <value>Toplam Maliyet</value>
-  </data>
-  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
-    <value>Toplam Vergi</value>
-  </data>
-  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
-    <value>İşlemi Görüntüleme/Düzenleme #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
-    <comment>The transaction id is replaced client-side on display</comment>
-  </data>
-  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
-    <value>İşlemi İnceleme #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
-    <comment>The transaction id is replaced client-side on display</comment>
-  </data>
-  <data name="InspectLedgers_AccountName" xml:space="preserve">
-    <value>Hesap adı</value>
-  </data>
-  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
-    <value>Bakiye doğru:</value>
-  </data>
-  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
-    <value>(İşlem verisi yok)</value>
-  </data>
-  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
-    <value>Baş Harfler</value>
-  </data>
-  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
-    <value>Girildi</value>
-  </data>
-  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
-    <value>İşlem &lt;span class="spanAnnoyingBlink"&gt;DENGESİZ:&lt;/span&gt; eksik miktar</value>
-  </data>
-  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
-    <value>İşleme satırlar ekle</value>
-    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
-  </data>
-  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
-    <value>Otomatik işlem izleme detayları</value>
-    <comment>(this means the transaction is locked from editing)</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
-    <value>{1:yyyy-MMM-dd}'de {0} tarafından onaylandı</value>
-  </data>
-  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
-    <value>ile birleştirildi</value>
-    <comment>Inserted between transaction causes.</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
-    <value>{1}'den &lt;strong&gt;Gelen Fatura #{0:N0}&lt;/strong&gt;:</value>
-    <comment>the {1} is the supplier name</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
-    <value>Bu &lt;strong&gt;Ödeme #{0:N0}.&lt;/strong&gt;Bu, şu kişi için bir ödemedir</value>
-  </data>
-  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
-    <value>{0} tarafından {1:yyyy-MMM-dd} tarihinde belge doğrulaması yapıldı</value>
-    <comment>"Document" refers to receipts, invoices, etc.</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
-    <value>{0} tarafından çalıştırıldı.</value>
-    <comment>As in "payout executed by": who actually paid the money?</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
-    <value>Temel maaş{0}{1:N2}, brüt ayarlamalar {2:+N2;-N2;none}, brüt maaş {3:N2}, vergi indirimi {4:N2}, net ayarlamalar {5:+N2;-N2;none}, ödeme {6:N2}.</value>
-    <comment>The "none"s in the format strings need to be translated.</comment>
-  </data>
-  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
-    <value>Bu işleme bir satır eklemek için lütfen bir hesap seçin.</value>
-  </data>
-  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
-    <value>Yıllık Zarar</value>
-  </data>
-  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
-    <value>Yıllık Kar</value>
-  </data>
-  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
-    <value>(detaylı açıklama yok)</value>
-  </data>
-  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Sarkan Ödemeler (Dengeleme, Eşleme, veya Düzeltme Gerekiyor)</value>
-    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
-  </data>
-  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
-    <value>Hesap</value>
-    <comment>Usually the account name. Can also be "several".</comment>
-  </data>
-  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
-    <value>Tutar</value>
-  </data>
-  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
-    <value>Açıklama</value>
-  </data>
-  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
-    <value>Tx</value>
-    <comment>Keep VERY short.</comment>
-  </data>
-  <data name="BalanceTransactions_Info" xml:space="preserve">
-    <value>Bazı otomatik ithal edilen finansal işlemler, devam eden muhasebe için otomatik olarak eşleştirilemez. Bu tür işlemleri manuel olarak "dengeleme" için eşleştirdiğiniz yerdir (bir işlemin yalnızca bir kısmı tamamlanmışsa, paranın ne için olduğuna dair hiçbir kayıt olmadan organizasyona gönderilen bir para gibi, işlemin "dengesiz" olduğu ve defter tutma muadili eksik olduğu "sarkan bir ödeme" olduğu söylenir).</value>
-  </data>
-  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
-    <value>Dengeleme/Eşleştirme İşlemi &lt;span id="spanModalTransactionId"&gt; 67890 &lt;/span&gt; Üzerinden &lt;span id="spanModalTransactionDate"&gt; yyyy-mmm-dd &lt;/span&gt;</value>
-    <comment>The span text is replaced runtime.</comment>
-  </data>
-  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
-    <value>Denge ve Eşleştirme İşlemleri</value>
-  </data>
-  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
-    <value>Bu Tutar İçin Tam Eşleşme</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
-    <value>Beklenmeyen Tarih/Zamanda eşleşen miktar</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
-    <value>%5 Oynama Payı ile Birlikte Miktar</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
-    <value>Bakiye</value>
-    <comment>This is a verb in the imperative form - it's on a button.</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
-    <value>Eşleşme</value>
-    <comment>This is a verb in the imperative form - it's on a button.</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
-    <value>Bu hesaba karşı farklı dengeleme:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
-    <value>İşlem bu ödeme ile eşleşir:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
-    <value>İşlem &lt;span id="spanTransactionUnbalancedBy"&gt; tarafından dengelenemedi. +FOO,BAR.QX &lt;/span&gt;. İster misiniz...</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
-    <value>Bu hesaba karşı işlemi elle dengelemek ister misiniz?</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
-    <value>İşlem farkını açık, eşleşmemiş bir ödeme ile eşleştirmek istiyor musunuz?</value>
-  </data>
-  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
-    <value>(Açık ödeme yok)</value>
-  </data>
-  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
-    <value>(Eşleşme için uygun ödeme yok)</value>
-  </data>
-  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
-    <value>%1 Oynama Payı ile Miktar</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
-    <value>-- Bir Ödeme Biçimi Seçin --</value>
-  </data>
-  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
-    <value>%10 Oynama Payı ile Miktar</value>
-    <comment>Header in selection list. Capitalize as customary for culture.</comment>
-  </data>
-  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
-    <value>Ödeme #{0:N0}, {5} (beklenen {1:yyyy-MMM-dd}) için {2}: {3} {4:N2}</value>
-    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
-    <value>Bu yabancı ödeme biçimi ile işlemi eşleştir:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
-    <value>İşlemi bir yabancı para birimi ödemesiyle eşleştirin ({0}% tutar toleransı)?</value>
-  </data>
-  <data name="BudgetActual_ContentHeader" xml:space="preserve">
-    <value>Bütçe ve Gerçek Değer</value>
-  </data>
-  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
-    <value>Beklenen Yıl İçinde</value>
-    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
-  </data>
-  <data name="BudgetActual_Info" xml:space="preserve">
-    <value>Bu sayfa, bütçede göze alınan zararın şimdiye kadarki gerçek sonuç ile karşılaştırmasını göstermektedir.</value>
-  </data>
-  <data name="BudgetActual_PageTitle" xml:space="preserve">
-    <value>Bütçe ve Gerçek Değer</value>
-    <comment>Financial budget vs. Actual financial outcome</comment>
-  </data>
-  <data name="BitcoinHotwallet_Address" xml:space="preserve">
-    <value>Bitcoin Adresi</value>
-  </data>
-  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
-    <value>Microcoin Bakiyesi</value>
-  </data>
-  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
-    <value>Türetme Yolu</value>
-  </data>
-  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
-    <value>Değer {0}</value>
-    <comment>The {0} is the organization currency.</comment>
-  </data>
-  <data name="BitcoinHotwallet_Header" xml:space="preserve">
-    <value>Hotwallet'ı yakından incele</value>
-    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
-  </data>
-  <data name="BitcoinHotwallet_Info" xml:space="preserve">
-    <value>Bu, organizasyonun bitcoin hotwallet adresleri ve bakiyesinin detaylı incelemesini gösterir. (Boş veya önceden kullanılmış adresler gösterilmez.)</value>
-  </data>
-  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
-    <value>Bitoin Hotwallet'ı</value>
-  </data>
-  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
-    <value>Hotwallet'da hiç para bulunmuyor.</value>
-  </data>
-  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
-    <value>İşlem Hash'i</value>
-  </data>
-  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
-    <value>Harcanmamış İşlem Çıkışı</value>
-    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
-  </data>
-  <data name="BalanceSheet_Assets" xml:space="preserve">
-    <value>Varlıklar XXXX</value>
-    <comment>For the simplified view - XXXX is replaced with year</comment>
-  </data>
-  <data name="BalanceSheet_AssetsDelta" xml:space="preserve">
-    <value>(değiştir)</value>
-    <comment>Change from previous year's close, which is same as from start of this year</comment>
-  </data>
-  <data name="BalanceSheet_Info_Simplified" xml:space="preserve">
-    <value>Bilanço, zamanın anlık bir kesitinde borç ve kazançlara genel bir bakıştır ve sonuçların organizasyonun genel finansal sağlığını nasıl etkilediğini görmek için kullanılır. Ayrıca, daha fazla bilgi için &lt;a href="BalanceSheet"&gt;gelişmiş bilanço&lt;/a&gt;'ya göz atmak isteyebilirsiniz. yada gelir ve giderlerin özeti olan &lt;a href="ProfitLossStatement"&gt; kar-zarar beyanı&lt;/a&gt;na göz atmak isteyebilirsiniz.</value>
-  </data>
-  <data name="BalanceSheet_Liabilities" xml:space="preserve">
-    <value>Yükümlülükler XXXX</value>
-    <comment>For the simplified view - XXXX is replaced with year</comment>
-  </data>
-  <data name="BalanceSheet_LiabilitiesDelta" xml:space="preserve">
-    <value>(değiştir)</value>
-    <comment>Change from previous year's close, which is same as from start of this year</comment>
-  </data>
-  <data name="BalanceSheet_LossToDate" xml:space="preserve">
-    <value>Bugüne kadarki zarar ({0})</value>
-    <comment>The {0} is the year of the report</comment>
-  </data>
-  <data name="BalanceSheet_ProfitToDate" xml:space="preserve">
-    <value>Bugüne kadarki kâr ({0})</value>
-    <comment>The {0} is the year of the report</comment>
-  </data>
-  <data name="InspectLedgers_CreateTransactionButton" xml:space="preserve">
-    <value>İşlem Oluştur</value>
-    <comment>Text on button for executing create</comment>
-  </data>
-  <data name="InspectLedgers_CreateTransactionDateTime" xml:space="preserve">
-    <value>İşlem tarihi ve saati (UTC)</value>
-  </data>
-  <data name="InspectLedgers_CreateTransactionDescription" xml:space="preserve">
-    <value>İşlem Açıklaması</value>
-  </data>
-  <data name="InspectLedgers_CreateTransactionDialogHeader" xml:space="preserve">
-    <value>Yeni İşlem Oluşturuluyor</value>
-    <comment>Header of dialog</comment>
-  </data>
-  <data name="InspectLedgers_CreateTransactionFirstAccount" xml:space="preserve">
-    <value>İlk işlem satırının hesabı</value>
-  </data>
-  <data name="InspectLedgers_CreateTransactionFirstAmount" xml:space="preserve">
-    <value>İlk işlem satırının tutarı</value>
-  </data>
-  <data name="InspectLedgers_CreateTransactionSidebar" xml:space="preserve">
-    <value>Yeni işlem ekle</value>
-    <comment>Option in sidebar</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonOutboundInvoice" xml:space="preserve">
-    <value>Faturayı eşleştir</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribeOutboundInvoice" xml:space="preserve">
-    <value>İşlemi şu gelen faturaya eşle:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoice" xml:space="preserve">
-    <value>Bu, açık bir giden faturaya eşlensin mi?</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioOutboundInvoiceForeign" xml:space="preserve">
-    <value>Bu, açık bir giden faturaya standart olmayan bir para birimiyle eşlensin mi (%5 forex toleransı)?</value>
-  </data>
-  <data name="BalanceTransactions_MostProbableMatch" xml:space="preserve">
-    <value>En muhtemel eşleşme</value>
-    <comment>This is the header of a match where the transaction description somehow matches the invoice reference.</comment>
-  </data>
-  <data name="BalanceTransactions_OutboundInvoiceMatch" xml:space="preserve">
-    <value>{1} için Giden Fatura #{0:N0}, kesim tarihi {2:yyyy-MMM-dd}: {3}</value>
-    <comment>Argument {0} is the invoice identity, {1} the customer name, {2} the due date and {3} the invoice-currencied amount (which can be different from the org's presentation currency)</comment>
-  </data>
-  <data name="BalanceTransactions_VatReportMatch" xml:space="preserve">
-    <value>{1:yyyy-MMM} için fazlalık K.D.V. Raporu</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonPayoutForeign" xml:space="preserve">
-    <value>Eşleşme</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonVatReport" xml:space="preserve">
-    <value>K.D.V. raporunu bitir</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribeVatReport" xml:space="preserve">
-    <value>Bu işlem, bu K.D.V. raporu için ödeme/geri dönüştür:</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioVatReport" xml:space="preserve">
-    <value>Bu işlem ile bir KDV raporu kapatılsın mı?</value>
+  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
+    <value>-- raporlanacak bir şey yok --</value>
+    <comment>This is displayed when there are no items at all in a VAT report.</comment>
   </data>
   <data name="ViewVatReports_Footer_Total" xml:space="preserve">
     <value>Rapor Toplamları</value>
@@ -873,6 +1013,9 @@
   <data name="ViewVatReports_Header_Inbound" xml:space="preserve">
     <value>Gelen KDV</value>
   </data>
+  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
+    <value>Bu organizasyon için KDV raporu yok</value>
+  </data>
   <data name="ViewVatReports_Header_Outbound" xml:space="preserve">
     <value>Giden KDV</value>
   </data>
@@ -882,163 +1025,19 @@
   <data name="ViewVatReports_Info" xml:space="preserve">
     <value>Dosyalanmış bir KDV raporunu görüntülüyorsunuz. Gelen ve giden KDV, hem de toplam ciro, rapor dönemi için kaydedilmiştir. Bu rapor vergi yetkililerine iletilmeye hazırdır.</value>
   </data>
-  <data name="ViewVatReports_PageTitle" xml:space="preserve">
-    <value>KDV Raporları</value>
-    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
-  </data>
-  <data name="ViewVatReports_Title_View" xml:space="preserve">
-    <value>Görüntüle</value>
-    <comment>This is the word or words before the name of the displayed VAT report.</comment>
-  </data>
-  <data name="ViewVatReports_Header_NoReports" xml:space="preserve">
-    <value>Bu organizasyon için KDV raporu yok</value>
-  </data>
   <data name="ViewVatReports_NoReports" xml:space="preserve">
     <value>Görüntülenecek KDV raporu bulunmuyor. Bu, muhtemelen tam bir KDV raporlama periyodu henüz tamamlanmamış olduğu gerçeğinden kaynaklanıyor, bu yüzden bir rapor oluşturmak henüz mümkün olmamıştı.</value>
   </data>
-  <data name="ViewVatReports_EmptyReport" xml:space="preserve">
-    <value>-- raporlanacak bir şey yok --</value>
-    <comment>This is displayed when there are no items at all in a VAT report.</comment>
+  <data name="ViewVatReports_PageTitle" xml:space="preserve">
+    <value>KDV Raporları</value>
+    <comment>VAT is short for Value Added Tax; it has completely different names in different EU countries (moms, Umsatzsteuer, etc.)</comment>
   </data>
   <data name="ViewVatReports_ReportTotals" xml:space="preserve">
     <value>Bu rapor için toplamlar</value>
     <comment>Displayed as description of footer</comment>
   </data>
-  <data name="BalanceTransactions_Error_NeedDescription" xml:space="preserve">
-    <value>İşlem açıklaması boş olamaz.</value>
+  <data name="ViewVatReports_Title_View" xml:space="preserve">
+    <value>Görüntüle</value>
+    <comment>This is the word or words before the name of the displayed VAT report.</comment>
   </data>
-  <data name="BalanceTransactions_Error_NeedDocumentation" xml:space="preserve">
-    <value>İşlemin satın alma onayına ihtiyacı var.</value>
-  </data>
-  <data name="BalanceTransactions_Error_VatAmountParseError" xml:space="preserve">
-    <value>KDV miktarı doğru girilmiş gibi gözükmüyor.</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_ButtonPurchase" xml:space="preserve">
-    <value>Doğrudan satın alma olarak işaretle</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseAmount" xml:space="preserve">
-    <value>Otomatik ödeme satın alma miktarı ({0})</value>
-    <comment>{0} is the currency</comment>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseBudget" xml:space="preserve">
-    <value>Satın almayı bu bütçeden karşıla</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseDocUpload" xml:space="preserve">
-    <value>Makbuz ya da diğer belgeleri yükle</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseTransaction" xml:space="preserve">
-    <value>İşlem açıklaması güncelle</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_DescribePurchaseVat" xml:space="preserve">
-    <value>Miktarın KDV kısmı</value>
-  </data>
-  <data name="BalanceTransactions_ModalDialog_RadioPurchase" xml:space="preserve">
-    <value>Bunu, doğrudan hesaptan satın alma olarak işaretle?</value>
-  </data>
-  <data name="InspectLedgers_Detail" xml:space="preserve">
-    <value>Açıklama / Hesap</value>
-    <comment>As in, description of a transaction OR the full name of an account</comment>
-  </data>
-  <data name="InspectLedgers_GeneralLedger" xml:space="preserve">
-    <value>Şunun için genel muhasebe defteri</value>
-    <comment>This phrase is followed by dropdowns for year and month</comment>
-  </data>
-  <data name="InspectLedgers_TxInfo_CloseVatReport" xml:space="preserve">
-    <value>Bu işlem {0} için KDV raporunu kapattı.</value>
-    <comment>{0} will be a time period, like "Jan 2017".</comment>
-  </data>
-  <data name="InspectLedgers_TxInfo_OpenVatReport" xml:space="preserve">
-    <value>Bu işlem {0} için KDV raporunu açtı.</value>
-    <comment>{0} will be a time period, like "Jan 2017".</comment>
-  </data>
-  <data name="InspectLedgers_TxInfo_PaymentInvoice" xml:space="preserve">
-    <value>Bu işlem Giden Fatura #{0:N0} için ödeme alır.</value>
-  </data>
-  <data name="InspectLedgers_TxInfo_PayoutGeneric" xml:space="preserve">
-    <value>Bu işlem {0} öder.</value>
-  </data>
-  <data name="InspectLedgers_TxInfo_PayoutInvoice" xml:space="preserve">
-    <value>Bu işlem {1}'den Gelen Faturayı #{0:N0}'a öder.</value>
-  </data>
-  <data name="UploadBankFiles_AccountAutomationProfile" xml:space="preserve">
-    <value>Otomasyon Profili</value>
-    <comment>This is where the bank name, country, and currency appears.</comment>
-  </data>
-  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
-    <value>Otomasyon için ayarlanmış herhangi bir varlık hesabı bulunmadığından, hesaplar şu anda veri yüklemeyi desteklememektedir. Gösterge Paneline Dönüş.</value>
-  </data>
-  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
-    <value>Bu otomatik hesaba yapılan ilk yükleme olduğu için, {2} yılına giren &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; ilk bakiyesi tespit edildi ve ayarlandı</value>
-    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
-  </data>
-  <data name="UploadBankFiles_ResultsInitialBalanceSetForeignCurrency" xml:space="preserve">
-    <value>(defteri kebir işletme para biriminde &lt;strong&gt;{0} {1:N2}&lt;/strong&gt; olarak hesaplanmıştır)</value>
-    <comment>{0} {1:N2} is a currency and amount, which is how an initial bank balance in a foreign currency was entered into the ledgers after converting to the organization's accounting currency</comment>
-  </data>
-  <data name="EndOfMonth_CloseLedgersFor" xml:space="preserve">
-    <value>{0} Yılı için Finansal Defteri Kebiri Kapat</value>
-    <comment>Parameter zero is the year as four digits. This EOM option is only presented once per year.</comment>
-  </data>
-  <data name="EndOfMonth_CreateVatReport" xml:space="preserve">
-    <value>Oluştur {0}</value>
-    <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
-  </data>
-  <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
-    <value>{0} için Otomatik Alım İşlem Verileri</value>
-    <comment>Parameter zero is the account name as given by the user</comment>
-  </data>
-  <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
-    <value>Yıllık Raporlar</value>
-    <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
-  </data>
-  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
-    <value>Dış Hesap Verileri ve Hesap Eşleşmeleri</value>
-    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
-  </data>
-  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
-    <value>Bordro ve Vergiler</value>
-    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
-  </data>
-  <data name="EndOfMonth_Header_SendReports" xml:space="preserve">
-    <value>Muhasebecilere, Hissedarlara, vb. Raporlar gönderin.</value>
-    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
-  </data>
-  <data name="EndOfMonth_Info" xml:space="preserve">
-    <value>Bu önceki ayı kapatmak ve muhasebe konusunda yenisine başlamak için yapılacakların bir kontrol listesidir.</value>
-  </data>
-  <data name="EndOfMonth_MatchAccounts" xml:space="preserve">
-    <value>Tüm sarkan ödemeleri çözümle</value>
-    <comment>This means to match bank transactions with incoming/outgoing expected payments (invoices, expense reports, etc) where it couldn't be done automatically</comment>
-  </data>
-  <data name="EndOfMonth_Title" xml:space="preserve">
-    <value>Ay Sonu Rutini: {0:MMMM yyyy}</value>
-    <comment>Parameter zero is the month that's just ended</comment>
-  </data>
-  <data name="EndOfMonth_UploadBankStatementFor" xml:space="preserve">
-    <value>{2} için {0} için Hesap Durumunu ({1}) yükle</value>
-    <comment>Parameter zero is the account name, parameter one the format (e.g. PDF), parameter two is the month (e.g. October 2018)</comment>
-  </data>
-  <data name="EndOfMonth_UploadTransactionDataFor" xml:space="preserve">
-    <value>{0} için işlem verilerini ({1}) yükle</value>
-    <comment>Parameter zero is the account name, parameter one is the format (e.g. XML or CSV)</comment>
-  </data>
-  <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
-    <value>&lt;strong&gt;HESAP DURUMUNU GEÇ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Dahili kayıtların denetim doğrulaması için genellikle banka beyanları gerekir. Bir ay'ın ifadesini atlamanın tek geçerli nedeni hesabın henüz açılmadığı, bu durumda hesap açılmadan önceki ayları atladığınız ve dolayısıyla hiçbir açıklamada bulunmadığınızdır.&lt;br/&gt;&lt;br/&gt;Şimdi atlarsanız, bu belirli ifadeyi yüklemeniz bir daha istenmez.</value>
-  </data>
-  <data name="EndOfMonth_SkipDocumentDialogGeneric" xml:space="preserve">
-    <value>&lt;strong&gt;DOKÜMAN YÜKLEMESİNİ ATLA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bu belge genellikle işlem kayıtları için gereklidir. Bir dokümanı atlamanın tek geçerli nedeni bir senenin Haziran ayında başlayan bir operasyonun o yılın Ocak ayına ait belgelerine sahip olmadığı gibi, operasyonların henüz çalışmadığı için var olmamasıdır.&lt;br/&gt;&lt;br/&gt;Şimdi atlarsanız, bu belgeyi tekrar yüklemeniz istenmez.</value>
-  </data>
-  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
-    <value>Maaş Bordrosu: Tanımlanan maaş bordrosu yok</value>
-    <comment>This is shown as a disabled action item when there's no active payroll</comment>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
 </root>

@@ -126,8 +126,14 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Skapa ny organisation</value>
   </data>
-  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
-    <value>Organisationsinställningar</value>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Felsök</value>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Bitcoin handkassa ekotest</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Uppträd som</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geografiträd</value>
@@ -135,8 +141,35 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Organisationskluster</value>
   </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Organisationsinställningar</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>Organisationens bemanning</value>
+  </data>
   <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>Systeminställningar</value>
+  </data>
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>Ställ in anslutna konton</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>Upprätta kontoplan</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>Upprätta lönelista</value>
+  </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Byggd {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} rader kod</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Rapportera en Swarmops-bugg (på engelska, på Github)</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>Kommunikation</value>
@@ -190,6 +223,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Skapa inköpsorder</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Donera pengar</value>
+  </data>
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Gigassistent</value>
   </data>
@@ -228,6 +264,14 @@
   </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Begär kontantförskott</value>
+  </data>
+  <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
+    <value>Begär ersättning för utlägg</value>
+    <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
+  </data>
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Min lön</value>
+    <comment>This lists salary payments for the logged on individual</comment>
   </data>
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>Skicka ny faktura</value>
@@ -277,6 +321,15 @@
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Balansräkning</value>
   </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>Balansera &amp; matcha transaktioner</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Bitcoin handkassa</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Budget / Utfall</value>
+  </data>
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>Kan inte stänga böcker för {0}</value>
   </data>
@@ -288,6 +341,12 @@
   </data>
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>Felsök Bokföring, Konton</value>
+  </data>
+  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
+    <value>Tillgångars av- &amp; nedskrivningar</value>
+  </data>
+  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
+    <value>Av- och nedskrivningar</value>
   </data>
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importera Bankdata</value>
@@ -301,6 +360,10 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Lönelista</value>
   </data>
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>Lönejusteringar</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Resultaträkning</value>
   </data>
@@ -311,8 +374,22 @@
     <value>Upprätta budgetar</value>
     <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
   </data>
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Skatteblanketter</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Arbetsgivardeklarationer</value>
+  </data>
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>Spårade transaktioner</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Ladda upp bankfiler</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>Momsrapporter</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
   </data>
   <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
     <value>Lista öppen reskontra</value>
@@ -371,6 +448,10 @@
   <data name="Menu5_People_AddPerson" xml:space="preserve">
     <value>Lägg till [Regular]</value>
   </data>
+  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
+    <value>Distribuerade tillgångar</value>
+    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
+  </data>
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>Sök/Lista folk</value>
   </data>
@@ -386,6 +467,9 @@
   <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>Hantera Volontärer</value>
   </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>Min lokala organisation</value>
+  </data>
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Ny Konferens</value>
   </data>
@@ -396,93 +480,9 @@
     <value>Självregistreringssida</value>
   </data>
   
-  
-  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
-    <value>Skatteblanketter</value>
-  </data>
-  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
-    <value>Arbetsgivardeklarationer</value>
-  </data>
-  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
-    <value>Balansera &amp; matcha transaktioner</value>
-  </data>
-  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
-    <value>Organisationens bemanning</value>
-  </data>
-  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
-    <value>Min lokala organisation</value>
-  </data>
-  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
-    <value>Donera pengar</value>
-  </data>
-  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
-    <value>Budget / Utfall</value>
-  </data>
-  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
-    <value>Bitcoin handkassa</value>
-  </data>
-  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
-    <value>Byggd {0:MMM d, yyyy}</value>
-    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
-  </data>
-  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
-    <value>{0:N0} rader kod</value>
-  </data>
-  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
-    <value>Rapportera en Swarmops-bugg (på engelska, på Github)</value>
-  </data>
-  <data name="Menu5_Administration_Debug" xml:space="preserve">
-    <value>Felsök</value>
-  </data>
-  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
-    <value>Uppträd som</value>
-  </data>
-  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
-    <value>Momsrapporter</value>
-    <comment>This is a European thing (Value Added Tax).</comment>
-  </data>
-  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
-    <value>Bitcoin handkassa ekotest</value>
-  </data>
-  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
-    <value>Ställ in anslutna konton</value>
-    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
-  </data>
-  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
-    <value>Upprätta kontoplan</value>
-    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
-  </data>
-  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
-    <value>Upprätta lönelista</value>
-  </data>
-  <data name="Menu5_Financial_Salary" xml:space="preserve">
-    <value>Min lön</value>
-    <comment>This lists salary payments for the logged on individual</comment>
-  </data>
-  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
-    <value>Tillgångars av- &amp; nedskrivningar</value>
-  </data>
-  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
-    <value>Av- och nedskrivningar</value>
-  </data>
-  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
-    <value>Lönejusteringar</value>
-    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
-  </data>
-  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
-    <value>Spårade transaktioner</value>
-    <comment>Tracking of special transactions</comment>
-  </data>
-  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
-    <value>Distribuerade tillgångar</value>
-    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
-  </data>
   <data name="Menu5_Reports" xml:space="preserve">
     <value>Rapporter</value>
     <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
   </data>
-  <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
-    <value>Begär ersättning för utlägg</value>
-    <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
-  </data>
+  
 </root>

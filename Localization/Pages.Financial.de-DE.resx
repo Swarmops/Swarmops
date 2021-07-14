@@ -147,6 +147,10 @@
     <value>Ausgabenforderung Nr. {0:N0} von {1} für {2} {3:N2} wurde bestätigt.</value>
     <comment>{2} is the currency.</comment>
   </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Genehmigung für Ausgabenforderung Nr. {0:N0} von {1} wurde ZURÜCKGEZOGEN. Sie wird nicht bezahlt, es sei denn, sie wurde erneut genehmigt.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
     <value>Aktion</value>
     <comment>Yes / No buttons. Keep short!</comment>
@@ -205,6 +209,10 @@
   <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
     <value>Ich lehne Ihre Anfrage nach Geldmitteln ab, weil ...</value>
     <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
+    <value>(Der Betrag muss die angegebene Mehrwertsteuer ausschließen!)</value>
+    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
   </data>
   <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
     <value>Welchen Betrag bestätigen Sie stattdessen (in {0})?</value>
@@ -282,6 +290,13 @@
     <value>Rechnungsbetrag Gesamt (in {0})</value>
     <comment>{0} is the organization's main currency.</comment>
   </data>
+  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
+    <value>VAT teil vom Gesamten ({0})</value>
+  </data>
+  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Erstellen</value>
+    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
+  </data>
   <data name="CreateInboundInvoice_Description" xml:space="preserve">
     <value>Beschreibung</value>
     <comment>Free-text description of invoice</comment>
@@ -296,6 +311,7 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Hier erstellen Sie Rechnungen, die Sie bei Ihrer Organisation erhalten haben ("Accounts Payable"). Geben Sie den Lieferantennamen, den Betrag, das Fälligkeitsdatum, die Rechnungsreferenz ein und laden Sie ein Bild der empfangenen Rechnung hoch. Wählen Sie auch ein Budget aus. Der Budget-Eigentümer muss wie üblich bestätigen. (Zu den Roadmap-Erweiterungen dieses Mechanismus gehören Einkaufsaufträge und Lieferantenlisten.)</value>
   </data>
+  
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Eingangsrechnung erhalten</value>
   </data>
@@ -324,6 +340,34 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>Bitte geben Sie das Bankkonto oder eine Entsprechung des Lieferanten ein.</value>
   </data>
+  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
+    <value>Bitte geben Sie den Betrag vom Geld (in {0}) der Rechnungsanforderungen.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
+    <value>Bitte bestimmen Sie ein Budget um zu berechnen.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
+    <value>Bitte laden Sie ein oder mehrere Dokumente von der originalen Rechnung hoch.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
+    <value>Bitte wählen Sie eine Option aus.</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
+    <value>Bitte beschreiben Sie was dieser Einkauf war.</value>
+  </data>
+  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
+    <value>Ausgangsrechnung erstellen</value>
+  </data>
+  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
+    <value>Erstellen</value>
+    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
+  </data>
+  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
+    <value>Ausgangsrechnung erstellen</value>
+  </data>
+  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Ausgangsrechnung Nr. {0:N0} eingereicht.</value>
+  </data>
   <data name="Donate_Explain" xml:space="preserve">
     <value>Dies ist ein QR-Code für Spenden an {0}. Lesen Sie es von der Bitcoin-Wallet Ihres Telefons aus, um eine Spende zu tätigen, oder spenden Sie direkt von Ihrem Computer an [{1}] (das ist eine Bitcoin Cash Adresse).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -331,6 +375,10 @@
   <data name="Donate_FundsReceived" xml:space="preserve">
     <value>{0} {1:N2} ({2:N0} Mikrocoins oder "Bits") erhalten. Danke!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
+    <value>Erhaltene Finanzmitteln ({0})</value>
+    <comment>The {0} will be replaced with currency name.</comment>
   </data>
   <data name="Donate_FundsReceivedNative" xml:space="preserve">
     <value>{0} Mikrocoins ("Bits") erhalten. Danke!</value>
@@ -372,12 +420,74 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>Budget</value>
   </data>
+  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
+    <value>Anfordern</value>
+    <comment>Could also be "file" (as verb) or equivalent</comment>
+  </data>
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>Kostenart</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
+  
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Beschreibung</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
+    <value>Expensify-CSV hochladen</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;FEHLER: Das Expensify-CSV kann nicht analysiert werden.&lt;/strong&gt; Wenn dies eine CSV-Datei von Expensify ist, dann benötigt Swarmops die Spalten "Zeitstempel", "Betrag", "Händler", "Kommentar", "Kategorie", "MCC", "Original-Währung" und "Original-Betrag" in der Datei. Wenn die Organisation die Mehrwertsteuer meldet, ist eine weitere Spalte mit dem Namen "Mehrwertsteuer" erforderlich.&lt;/p&gt;&lt;p&gt;Fortfahren mit dieser Datei nicht möglich.&lt;/p&gt;</value>
+    <comment>Do not translate the Expensify column field names.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;FEHLER: Für die Expensify-CSV-Datei fehlen erforderliche Datenfelder.&lt;/strong&gt; Der Datei scheint mindestens eines der Pflichtfelder des Expensify-Standard-CSV-Profils zu fehlen. Lesen Sie die technische Dokumentation und vergleichen Sie mit der Datei, die Sie versucht haben, hochzuladen. (Natürlich ist dies eine wahrscheinlichere Fehlerursache dass Sie versucht haben, die völlig falsche Datei &amp;ndash; hochzuladen, vielleicht ein Foto statt eines Expensify-CSV &amp;ndash;, und dass dies der Grund für die fehlenden erwarteten Daten ist.)&lt;/p&gt;&lt;p&gt;Diese Datei konnte nicht verarbeitet werden.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;FEHLER: Die Expensify-CSV-Datei hat kein MwSt-Feld.&lt;/strong&gt; Da diese Organisation die Mehrwertsteuer (MwSt.) an Behörden meldet, muss diese auf Nach-Ausgabe-Basis angegeben werden. Bitte aktivieren Sie die Mehrwertsteuer in Expensify und erstellen Sie ein neues CSV-Exportprofil, das dieses unter der Spaltenüberschrift "Mehrwertsteuer" exportiert. Wenn Ihr Team bereits ein solches CSV-Profil erstellt hat, müssen Sie es möglicherweise nur beim Export in CSV auswählen.&lt;/p&gt;&lt;p&gt;Diese Datei konnte nicht verarbeitet werden.&lt;/p&gt;</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
+    <value>Wenn Sie viele Ausgabenberichte haben, können Sie sie mit Expensify sammeln und hier einen Expensify-CSV-Bericht hochladen (den Sie bei Expensify unter Berichte, Exportieren, als CSV erhalten). Swarmops verwendet Expensify, um alle einzelnen Belege abzurufen und sie als separate Ausgabenforderungen für eine ordnungsgemäße Rechnungslegung zu protokollieren.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
+    <value>Damit dies funktioniert, müssen Sie, da {0} den Steuerbehörden die Mehrwertsteuer meldet, das Standard-Expensify-CSV-Profil ändern, um die Mehrwertsteuer einzubeziehen, was die Standardeinstellung nicht tut. Die Hilfeseiten von Expensify haben mehr darüber, wie dies zu tun ist, und wenn Sie Expensify auf Teambasis verwenden, sollte Ihr Expensify-Programm bereits über ein MwSt.-aktiviertes CSV-Exportprofil verfügen.</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
+    <value>Basierend auf den Einstellungen der Organisation sollte das Exportprofil "Standard-CSV" in Expensify für Swarmops ausreichen.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
+    <value>Alle Ausgabenforderungen benötigen vor der Einreichung ein Budget.</value>
+    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
+    <value>Keine Expensify-Aufzeichnungen zum Absenden</value>
+    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
+    <value>Die Währung des Berichts von Expensify ist</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
+    <value>Bereit, eine Forderung einzureichen</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
+    <value>Bereit, {0} Forderungen einzureichen</value>
+    <comment>The {0} is replaced by a number, 2 or higher</comment>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
+    <value>Forderung erfolgreich eingereicht.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
+    <value>{0} Forderungen erfolgreich eingereicht.</value>
+  </data>
+  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
+    <value>Eine weitere Expensify-CSV-Datei hochladen?</value>
+    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
+    <value>mir selbst</value>
+  </data>
+  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
+    <value>Das ist eine Ausgabenforderung von wem?</value>
   </data>
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>Ihre Bankdaten</value>
@@ -386,7 +496,7 @@
     <value>Bilder des Belegs</value>
   </data>
   <data name="FileExpenseClaim_Info" xml:space="preserve">
-    <value>Wenn Sie einen Kauf im Namen der Organisation mit Ihren privaten Mitteln gemacht haben, werden Sie wahrscheinlich eine Erstattung dafür wünschen, indem Sie eine &lt;em&gt;Ausgabenanforderung&lt;/em&gt;einreichen. Sie tun das hier, indem Sie die Belege hochladen und das Budget auswählen, das damit belastet werden sollte. Wenn Sie bereits einen Bargeldvorschuss für diesen Kauf erhalten haben, löschen Sie hier das Darlehen der Organisation an Sie, indem Sie Belege einreichen.</value>
+    <value>Wenn Sie einen Kauf im Namen der Organisation mit Ihren privaten Mitteln gemacht haben, werden Sie wahrscheinlich eine Erstattung dafür wünschen, indem Sie eine &lt;em&gt;Ausgabenanforderung&lt;/em&gt; einreichen. Sie tun das hier, indem Sie die Belege hochladen und das Budget auswählen, das damit belastet werden sollte. Wenn Sie bereits einen Bargeldvorschuss für diesen Kauf erhalten haben, löschen Sie hier das Darlehen der Organisation an Sie, indem Sie Belege einreichen.</value>
   </data>
   <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
     <value>Geld für Ausgaben zurückfordern</value>
@@ -400,6 +510,9 @@
   </data>
   <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
     <value>Da dies Ihr eigenes Budget ist, ist die Bestätigung bereits abgeschlossen. Nur Validierung ist notwendig.</value>
+  </data>
+  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
+    <value>Expensify-Bericht für Rückerstattung hochladen</value>
   </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Belegbilder hochladen</value>
@@ -417,23 +530,103 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Bitte beschreiben Sie, was dieser Kauf war.</value>
   </data>
+  <data name="FileExpenseClaim_Vat" xml:space="preserve">
+    <value>MwSt. vom Gesamten ({0})</value>
+  </data>
+  <data name="ListInboundInvoices_Header" xml:space="preserve">
+    <value>Eingangsrechnungen auflisten</value>
+  </data>
+  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
+    <value>Rechnungsender</value>
+  </data>
+  <data name="ListInboundInvoices_Info" xml:space="preserve">
+    <value>Hier finden Sie die neuesten 100 Rechnungen, sortiert nach ihrem Fälligkeitsdatum, mit den neuesten zuerst.</value>
+  </data>
+  <data name="ListInboundInvoices_Title" xml:space="preserve">
+    <value>Eingangsrechnungen</value>
+  </data>
+  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
+    <value>Gesendet</value>
+  </data>
+  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
+    <value>Kunde</value>
+  </data>
+  <data name="ListOutboundInvoices_Header" xml:space="preserve">
+    <value>Ausgangsrechnungen auflisten</value>
+  </data>
+  <data name="ListOutboundInvoices_Info" xml:space="preserve">
+    <value>Hier werden die 100 neuesten Ausgangsrechnungen aufgelistet, sortiert nach dem Zeitpunkt ihrer Erstellung, die neuesten zuerst.</value>
+  </data>
+  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
+    <value>Gesamter Betrag</value>
+  </data>
+  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
+    <value>Fälligkeitsdatum</value>
+  </data>
+  <data name="ListOutboundInvoices_Title" xml:space="preserve">
+    <value>Ausgangsrechnungen auflisten</value>
+  </data>
+  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
+    <value>... und dies</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
+  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
+    <value>Dies scannen</value>
+    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
+  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Betrag</value>
     <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_CurrencyMethod" xml:space="preserve">
+    <value>Währung, Methode</value>
+    <comment>"Method" refers to the method of payout -- wire transfer, direct deposit, giro service, etc.</comment>
   </data>
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Bezahlt</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
+    <value>Zahlen</value>
+    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
+  </data>
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>Empfänger</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referenz</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Kosten bereit für Auszahlung</value>
   </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Dies sind die verschiedenen Formen von Kosten für die Organisation, die alle Hürden für die Auszahlung überwunden haben. Sie sind bereit, an den Empfänger ausgezahlt zu werden. Hier werden sie als ausgezahlt abgehakt (wahrscheinlich während Sie Ihre Bank in einem anderen Fenster geöffnet haben).</value>
+  </data>
+  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
+    <value>Dies ist bezahlt</value>
+    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
+  </data>
+  <data name="PayOutMoney_Modal_CurrencyAmount" xml:space="preserve">
+    <value>Währung und Betrag</value>
+    <comment>Will be a label for something like "USD 10,000.00"</comment>
+  </data>
+  <data name="PayOutMoney_Modal_Header" xml:space="preserve">
+    <value>Diese Zahlung jetzt manuell ausführen</value>
+    <comment>Displayed as header over the details of a payment to be made manually (as opposed to with bitcoin/crypto)</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr1" xml:space="preserve">
+    <value>Scannen Sie diese Zahlung?</value>
+    <comment>In longer form, the question would be "Are you using a mobile phone or other device to capture this payment data automatically?". Some banking apps can scan QR codes or specially formatted number sequences.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_LabelOcr2" xml:space="preserve">
+    <value>Im maschinenlesbaren Format anzeigen</value>
+    <comment>Don't make this string much longer than it is.</comment>
+  </data>
+  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
+    <value>Überweisungsmethode</value>
+    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
   </data>
   <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
     <value>OCR für Mobile Apps anzeigen</value>
@@ -444,6 +637,10 @@
   </data>
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Geld auszahlen</value>
+  </data>
+  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
+    <value>Zahlung ist verspätet</value>
+    <comment>"Late" in this context means "after its due date".</comment>
   </data>
   <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
     <value>Die Auszahlung #{0} kann nicht rückgängig gemacht werden: es ist bereits erledigt oder geschlossen.</value>
@@ -497,6 +694,9 @@
   </data>
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>Budget</value>
+  </data>
+  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
+    <value>Anforderung</value>
   </data>
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Ihre Bankdetails</value>
@@ -554,203 +754,5 @@
   </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
     <value>Die Belege für Ausgabenforderung #{0:N0} für {1} {2:N2} wurden validiert.</value>
-  </data>
-  <data name="CreateInboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Erstellen</value>
-    <comment>Could also be "file" (as verb, about the invoice) or equivalent</comment>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Amount" xml:space="preserve">
-    <value>Bitte geben Sie den Betrag vom Geld (in {0}) der Rechnungsanforderungen.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Budget" xml:space="preserve">
-    <value>Bitte bestimmen Sie ein Budget um zu berechnen.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Documents" xml:space="preserve">
-    <value>Bitte laden Sie ein oder mehrere Dokumente von der originalen Rechnung hoch.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_MissingTag" xml:space="preserve">
-    <value>Bitte wählen Sie eine Option aus.</value>
-  </data>
-  <data name="CreateInboundInvoice_ValidationError_Purpose" xml:space="preserve">
-    <value>Bitte beschreiben Sie was dieser Einkauf war.</value>
-  </data>
-  <data name="FileExpenseClaim_ButtonRequest" xml:space="preserve">
-    <value>Anforderung</value>
-    <comment>Could also be "file" (as verb) or equivalent</comment>
-  </data>
-  <data name="RequestCashAdvance_ButtonRequest" xml:space="preserve">
-    <value>Anforderung</value>
-  </data>
-  <data name="CreateInboundInvoice_AmountVat" xml:space="preserve">
-    <value>VAT teil vom Gesamten ({0})</value>
-  </data>
-  <data name="FileExpenseClaim_Vat" xml:space="preserve">
-    <value>VAT vom Gesamten ({0})</value>
-  </data>
-  <data name="ListInboundInvoices_Header" xml:space="preserve">
-    <value>Eingangsrechnungen auflisten</value>
-  </data>
-  <data name="ListInboundInvoices_Header_Sender" xml:space="preserve">
-    <value>Rechnungsender</value>
-  </data>
-  <data name="ListInboundInvoices_Info" xml:space="preserve">
-    <value>Hier finden Sie die neuesten 100 Rechnungen, sortiert nach ihrem Fälligkeitsdatum, mit den neuesten zuerst.</value>
-  </data>
-  <data name="ListInboundInvoices_Title" xml:space="preserve">
-    <value>Eingangsrechnungen</value>
-  </data>
-  <data name="CreateOutboundInvoice_BoxTitle" xml:space="preserve">
-    <value>Ausgangsrechnung erstellen</value>
-  </data>
-  <data name="CreateOutboundInvoice_ButtonCreate" xml:space="preserve">
-    <value>Erstellen</value>
-    <comment>This goes on a button, so needs to be short (8-9 letters max)</comment>
-  </data>
-  <data name="CreateOutboundInvoice_PageTitle" xml:space="preserve">
-    <value>Ausgangsrechnung erstellen</value>
-  </data>
-  <data name="CreateOutboundInvoice_SuccessMessage" xml:space="preserve">
-    <value>Ausgangsrechnung Nr. {0:N0} eingereicht.</value>
-  </data>
-  <data name="Donate_FundsReceivedLabel" xml:space="preserve">
-    <value>Erhaltene Finanzmitteln ({0})</value>
-    <comment>The {0} will be replaced with currency name.</comment>
-  </data>
-  <data name="ListOutboundInvoices_CreatedDateTime" xml:space="preserve">
-    <value>Gesendet</value>
-  </data>
-  <data name="ListOutboundInvoices_CustomerReceivingInvoice" xml:space="preserve">
-    <value>Kunde</value>
-  </data>
-  <data name="ListOutboundInvoices_Header" xml:space="preserve">
-    <value>Ausgangsrechnungen auflisten</value>
-  </data>
-  <data name="ListOutboundInvoices_Info" xml:space="preserve">
-    <value>Hier werden die 100 neuesten Ausgangsrechnungen aufgelistet, sortiert nach dem Zeitpunkt ihrer Erstellung, die neuesten zuerst.</value>
-  </data>
-  <data name="ListOutboundInvoices_InvoiceAmountTotalIncludingTaxes" xml:space="preserve">
-    <value>Gesamter Betrag</value>
-  </data>
-  <data name="ListOutboundInvoices_PaymentExpectedByDate" xml:space="preserve">
-    <value>Fälligkeitsdatum</value>
-  </data>
-  <data name="ListOutboundInvoices_Title" xml:space="preserve">
-    <value>Ausgangsrechnungen auflisten</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_CsvUploadDescription" xml:space="preserve">
-    <value>Expensify-CSV hochladen</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsBasic" xml:space="preserve">
-    <value>Wenn Sie viele Ausgabenberichte haben, können Sie sie mit Expensify sammeln und hier einen Expensify-CSV-Bericht hochladen (den Sie bei Expensify unter Berichte, Exportieren, als CSV erhalten). Swarmops verwendet Expensify, um alle einzelnen Belege abzurufen und sie als separate Ausgabenforderungen für eine ordnungsgemäße Rechnungslegung zu protokollieren.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNeedVat" xml:space="preserve">
-    <value>Damit dies funktioniert, müssen Sie, da {0} den Steuerbehörden die Mehrwertsteuer meldet, das Standard-Expensify-CSV-Profil ändern, um die Mehrwertsteuer einzubeziehen, was die Standardeinstellung nicht tut. Die Hilfeseiten von Expensify haben mehr darüber, wie dies zu tun ist, und wenn Sie Expensify auf Teambasis verwenden, sollte Ihr Expensify-Programm bereits über ein MwSt.-aktiviertes CSV-Exportprofil verfügen.</value>
-    <comment>{0} is the organization name.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_InstructionsNothingAdvanced" xml:space="preserve">
-    <value>Basierend auf den Einstellungen der Organisation sollte das Exportprofil "Standard-CSV" in Expensify für Swarmops ausreichen.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_ReportCurrency" xml:space="preserve">
-    <value>Die Währung des Berichts von Expensify ist</value>
-  </data>
-  <data name="FileExpenseClaim_Title_Expensify" xml:space="preserve">
-    <value>Expensify-Bericht für Rückerstattung hochladen</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_BadFile" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;FEHLER: Das Expensify-CSV kann nicht analysiert werden.&lt;/strong&gt; Wenn dies eine CSV-Datei von Expensify ist, dann benötigt Swarmops die Spalten "Zeitstempel", "Betrag", "Händler", "Kommentar", "Kategorie", "MCC", "Original-Währung" und "Original-Betrag" in der Datei. Wenn die Organisation die Mehrwertsteuer meldet, ist eine weitere Spalte mit dem Namen "Mehrwertsteuer" erforderlich.&lt;/p&gt;&lt;p&gt;Fortfahren mit dieser Datei nicht möglich.&lt;/p&gt;</value>
-    <comment>Do not translate the Expensify column field names.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_NeedsVat" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;FEHLER: Die Expensify-CSV-Datei hat kein MwSt-Feld.&lt;/strong&gt; Da diese Organisation die Mehrwertsteuer (MwSt.) an Behörden meldet, muss diese auf Nach-Ausgabe-Basis angegeben werden. Bitte aktivieren Sie die Mehrwertsteuer in Expensify und erstellen Sie ein neues CSV-Exportprofil, das dieses unter der Spaltenüberschrift "Mehrwertsteuer" exportiert. Wenn Ihr Team bereits ein solches CSV-Profil erstellt hat, müssen Sie es möglicherweise nur beim Export in CSV auswählen.&lt;/p&gt;&lt;p&gt;Diese Datei konnte nicht verarbeitet werden.&lt;/p&gt;</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_UploadAnother" xml:space="preserve">
-    <value>Eine weitere Expensify-CSV-Datei hochladen?</value>
-    <comment>Displayed after upload of the first file, so "another" means "a second (third, fourth...) file", as opposed to "a different file". French "encore un fichier", German "eine weitere Datei", Scandinavian "en fil till", etc.</comment>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_DefaultMyself" xml:space="preserve">
-    <value>mir selbst</value>
-  </data>
-  <data name="FileExpenseClaim_ForWhom_Prompt" xml:space="preserve">
-    <value>Das ist eine Ausgabenforderung von wem?</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_Error_InvalidCsv" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;FEHLER: Für die Expensify-CSV-Datei fehlen erforderliche Datenfelder.&lt;/strong&gt; Der Datei scheint mindestens eines der Pflichtfelder des Expensify-Standard-CSV-Profils zu fehlen. Lesen Sie die technische Dokumentation und vergleichen Sie mit der Datei, die Sie versucht haben, hochzuladen. (Natürlich ist dies eine wahrscheinlichere Fehlerursache dass Sie versucht haben, die völlig falsche Datei &amp;ndash; hochzuladen, vielleicht ein Foto statt eines Expensify-CSV &amp;ndash;, und dass dies der Grund für die fehlenden erwarteten Daten ist.)&lt;/p&gt;&lt;p&gt;Diese Datei konnte nicht verarbeitet werden.&lt;/p&gt;</value>
-  </data>
-  <data name="AttestCosts_Modal_DescribeCorrectNoVat" xml:space="preserve">
-    <value>(Der Betrag muss die angegebene Mehrwertsteuer ausschließen!)</value>
-    <comment>This refers to when a budget owner is asked to correct an amount to charge their budget, based on seeing an invoice or receipt for that charge, and is instructed that they should not enter the TOTAL as shown on the invoice or receipt, but the TOTAL EXCEPT VAT.</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NeedBudgetsForAll" xml:space="preserve">
-    <value>Alle Ausgabenforderungen benötigen vor der Einreichung ein Budget.</value>
-    <comment>This is displayed after the user has uploaded an Expensify report with lots of expense claims, but hasn't yet set a budget for all of them</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_NoRecordsLeft" xml:space="preserve">
-    <value>Keine Expensify-Aufzeichnungen zum Absenden</value>
-    <comment>This appears after an empty file is uploaded, or the last record deleted</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordSingle" xml:space="preserve">
-    <value>Bereit, eine Forderung einzureichen</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SubmitRecordsSeveral" xml:space="preserve">
-    <value>Bereit, {0} Forderungen einzureichen</value>
-    <comment>The {0} is replaced by a number, 2 or higher</comment>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessOne" xml:space="preserve">
-    <value>Forderung erfolgreich eingereicht.</value>
-  </data>
-  <data name="FileExpenseClaim_Expensify_SuccessSeveral" xml:space="preserve">
-    <value>{0} Forderungen erfolgreich eingereicht.</value>
-  </data>
-  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Genehmigung für Ausgabenforderung Nr. {0:N0} von {1} wurde ZURÜCKGEZOGEN. Sie wird nicht bezahlt, es sei denn, sie wurde erneut genehmigt.</value>
-    <comment>When somebody undoes a previous attestation.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_CurrencyMethod" xml:space="preserve">
-    <value>Währung, Methode</value>
-    <comment>"Method" refers to the method of payout -- wire transfer, direct deposit, giro service, etc.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_PayThis" xml:space="preserve">
-    <value>Zahlen</value>
-    <comment>Like the "Actions" column in other grids, but just with one option, "Pay this expenditure"</comment>
-  </data>
-  <data name="PayOutMoney_Modal_ConfirmPaid" xml:space="preserve">
-    <value>Dies ist bezahlt</value>
-    <comment>As in "Confirm The Currently Displayed Payout Has Been Manually Executed" -- try to keep short, "This is Paid" length is ideal</comment>
-  </data>
-  <data name="PayOutMoney_Modal_CurrencyAmount" xml:space="preserve">
-    <value>Währung und Betrag</value>
-    <comment>Will be a label for something like "USD 10,000.00"</comment>
-  </data>
-  <data name="PayOutMoney_Modal_Header" xml:space="preserve">
-    <value>Diese Zahlung jetzt manuell ausführen</value>
-    <comment>Displayed as header over the details of a payment to be made manually (as opposed to with bitcoin/crypto)</comment>
-  </data>
-  <data name="PayOutMoney_Modal_LabelOcr1" xml:space="preserve">
-    <value>Scannen Sie diese Zahlung?</value>
-    <comment>In longer form, the question would be "Are you using a mobile phone or other device to capture this payment data automatically?". Some banking apps can scan QR codes or specially formatted number sequences.</comment>
-  </data>
-  <data name="PayOutMoney_Modal_LabelOcr2" xml:space="preserve">
-    <value>Im maschinenlesbaren Format anzeigen</value>
-    <comment>Don't make this string much longer than it is.</comment>
-  </data>
-  <data name="PayOutMoney_Modal_TransferMethod" xml:space="preserve">
-    <value>Überweisungsmethode</value>
-    <comment>As in "money transfer method"; this can be a domestic bank transfer, mailing a check, et cetera.</comment>
-  </data>
-  <data name="PayOutMoney_AutomationFieldNext" xml:space="preserve">
-    <value>... und dies</value>
-    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
-  </data>
-  <data name="PayOutMoney_AutomationFieldStart" xml:space="preserve">
-    <value>Dies scannen</value>
-    <comment>AutomationStartFirst and AutomationStartNext are shown as labels to machine-readable data fields, that the user can scan with an app in their smartphone.</comment>
-  </data>
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referenz</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
-  <data name="PayOutMoney_PaymentLate" xml:space="preserve">
-    <value>Zahlung ist verspätet</value>
-    <comment>"Late" in this context means "after its due date".</comment>
   </data>
 </root>

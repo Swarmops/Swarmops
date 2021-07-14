@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;PYŁ ZEBRANY&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Kwota wysłana jest mniejsza niż oczekiwana opłata za zwrócenie jej do ciebie, czyli {0:N2} microcoins. Pieniądze, które wysłałeś, są teraz tak zwanym "pyłem" w sieci bitcoin i nie zostaną ponownie przeniesione.&lt;br/&gt;&lt;br/&gt;Wyślij wyższą kwotę, aby wykonać test echa.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>To jest kod QR dla testowania echa bitcoin dla całej tej instalacji Swarmops, nie tylko dla {0}. Odczytaj go z portfela bitcoin w telefonie, aby wykonać test echa, lub wyślij bezpośrednio ze swojego komputera na [{1}] (jest to adres Waluty Bitcoin). Kwota (minus opłaty za microcoiny {2:N2}) zostanie odesłana do ciebie w ciągu kilku następnych sekund.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,62 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Test Echo Bitcoina Swarmops</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Aktywne Podszywanie Się</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Masz aktywną sesję podszywania się jako {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Zakończ podszywanie się.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;PODSZYĆ SIĘ POD OSOBĘ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Nie należy tego lekceważyć, a jeśli nie robisz tego ze względów technicznych, może to być nielegalne w zależności od lokalnych przepisów.&lt;br/&gt;&lt;br/&gt;Celem tego narzędzia jest naprawienie usterki technicznej. Wszystko jest zalogowane.&lt;br/&gt;&lt;br/&gt;Kontynuować?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;ZAKOŃCZENIE PODSZYWANIA SIĘ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Podszywanie się zakończyło się na {0:HH:mm} UTC. Ponownie zachowujesz się jak ty.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;PODSZYWANIE SIĘ ODRZUCONE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Nie możesz podszywać się za kogoś, kto jest twoim bezpośrednim kierownikiem.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;PODSZYWANIE SIĘ ODRZUCONE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Nie możesz podszywać się za kogoś innego z dostępem do poziomu systemu.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Musisz wybrać osobę, pod która chcesz się podszyć.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Jeśli musisz podszywać się pod siebie, sugerujemy wylogowanie się z Swarmops i poszukanie innego rodzaju pomocy.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;PODSZYWANIE SIĘ ODRZUCONE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Wydaje się, że nie masz wystarczających uprawnień do podszywania się pod kogoś innego.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Podszywać się pod innego użytkownika</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Podszyj się pod</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Osoba do podszycia się</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;PODSZYWANIE SIĘ AKTYWNE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Podszywanie się rozpoczęło się o {0:HH:mm} UTC. Jest to pulpit nawigacyjny, ponieważ osoba podszywająca się go widzi. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;To narzędzie do debugowania pozwala podszywać się pod innego użytkownika, aby widzieć i doświadczać Swarmops tak, jak robią to oni po zalogowaniu.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OSTRZEŻENIE:&lt;/strong&gt; Jest to bardzo inwazyjne narzędzie, które powinno być wykorzystywane wyłącznie do rozwoju technicznego i do wymaganego wsparcia. Korzystanie z tego nie powinno być lekceważone.&lt;/p&gt;
+&lt;p&gt;Wszystkie podszycia się są trwale rejestrowane, wszystkie działania podejmowane podczas podszywania się są identyfikowalne jako takie, a podszywany użytkownik zostanie poinformowany o wtargnięciu.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Działacze zostaną wezwani</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(nie dotyczy)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Jeszcze-nie-członkowie nie zostali nazwani</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Podstawowy poziom organizacji</value>
@@ -188,6 +245,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Komercyjna</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Rząd</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Nonprofit</value>
@@ -269,6 +329,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Powiadomienia Administratora Od Nazwy</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Zastąpienie Nazwy Hosta Back-end</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>Port SMTP musi być numeryczny. Nie można przeanalizować hosta: port.</value>
   </data>
@@ -302,73 +365,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Naprawdę, naprawdę, NAPRAWDĘ powinieneś używać HTTPS do strony takiej jak ta. Ale już to wiedziałeś, prawda?</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>Zastąpienie Nazwy Hosta Back-end</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>Port WebSocket (Front-end)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>Port WebSocket (Back-end)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>Aktywne Podszywanie Się</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>Masz aktywną sesję podszywania się jako {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Zakończ podszywanie się.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;PODSZYĆ SIĘ POD OSOBĘ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Nie należy tego lekceważyć, a jeśli nie robisz tego ze względów technicznych, może to być nielegalne w zależności od lokalnych przepisów.&lt;br/&gt;&lt;br/&gt;Celem tego narzędzia jest naprawienie usterki technicznej. Wszystko jest zalogowane.&lt;br/&gt;&lt;br/&gt;Kontynuować?</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;ZAKOŃCZENIE PODSZYWANIA SIĘ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Podszywanie się zakończyło się na {0:HH:mm} UTC. Ponownie zachowujesz się jak ty.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt;PODSZYWANIE SIĘ ODRZUCONE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Nie możesz podszywać się za kogoś, kto jest twoim bezpośrednim kierownikiem.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;PODSZYWANIE SIĘ ODRZUCONE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Nie możesz podszywać się za kogoś innego z dostępem do poziomu systemu.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>Musisz wybrać osobę, pod która chcesz się podszyć.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Jeśli musisz podszywać się pod siebie, sugerujemy wylogowanie się z Swarmops i poszukanie innego rodzaju pomocy.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;PODSZYWANIE SIĘ ODRZUCONE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Wydaje się, że nie masz wystarczających uprawnień do podszywania się pod kogoś innego.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>Podszywać się pod innego użytkownika</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>Podszyj się pod</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>Osoba do podszycia się</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;PODSZYWANIE SIĘ AKTYWNE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Podszywanie się rozpoczęło się o {0:HH:mm} UTC. Jest to pulpit nawigacyjny, ponieważ osoba podszywająca się go widzi. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>&lt;p&gt;To narzędzie do debugowania pozwala podszywać się pod innego użytkownika, aby widzieć i doświadczać Swarmops tak, jak robią to oni po zalogowaniu.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;OSTRZEŻENIE:&lt;/strong&gt; Jest to bardzo inwazyjne narzędzie, które powinno być wykorzystywane wyłącznie do rozwoju technicznego i do wymaganego wsparcia. Korzystanie z tego nie powinno być lekceważone.&lt;/p&gt;
-&lt;p&gt;Wszystkie podszycia się są trwale rejestrowane, wszystkie działania podejmowane podczas podszywania się są identyfikowalne jako takie, a podszywany użytkownik zostanie poinformowany o wtargnięciu.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Jeszcze-nie-członkowie nie zostali nazwani</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(nie dotyczy)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Rząd</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;PYŁ ZEBRANY&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Kwota wysłana jest mniejsza niż oczekiwana opłata za zwrócenie jej do ciebie, czyli {0:N2} microcoins. Pieniądze, które wysłałeś, są teraz tak zwanym "pyłem" w sieci bitcoin i nie zostaną ponownie przeniesione.&lt;br/&gt;&lt;br/&gt;Wyślij wyższą kwotę, aby wykonać test echa.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>Port WebSocket (Front-end)</value>
   </data>
 </root>

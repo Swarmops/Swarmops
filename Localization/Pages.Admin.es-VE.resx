@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;POLVO RECOGIDO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; La cantidad enviada es menor que la tarifa esperada por devolvérselo, que es{0:N2} microcoins. El dinero que envió ahora se denomina "polvo" en la red bitcoin y no se moverá nuevamente.&lt;br/&gt;&lt;br/&gt; Envíe una cantidad mayor para realizar una prueba de eco.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>Este es un código QR para las pruebas de eco bitcoin para toda la instalación de Swarmops, no solo para {0}. Léelo de la billetera bitcoin de tu teléfono para realizar la prueba de eco, o envía desde tu computadora directamente a [{1}] (esa es una dirección de Bitcoin Cash). La cantidad (menos comisiones de mineros de {2:N2} microcoins) le será enviada en los próximos segundos.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,64 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Prueba de Swarmops de eco Bitcoin</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Suplantación activa</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Tienes una sesión de suplantación activa como {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Suplantación final.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;¿SUPLANTACIÓN DE PERSONA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Esto no debe tomarse a la ligera, y si no lo hace por razones técnicas, incluso puede ser ilegal según las leyes locales.&lt;br/&gt;&lt;br/&gt; El propósito de esta herramienta es corregir fallas técnicas. Todo está conectado. &lt;br/&gt;&lt;br/&gt;¿Proceder?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;SUPLANTACIÓN TERMINADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Suplantación terminada en {0:HH:mm} UTC. Estás actuando como tú mismo otra vez.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;SUPLANTACIÓN DENEGADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; No debe suplantar a alguien que sea su gerente directo.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;SUPLANTACIÓN DENEGADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; No debe suplantar a otra persona con acceso a nivel de sistema.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Debe seleccionar a una persona para imitar.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Si necesita suplantarse, le sugerimos que cierre sesión en Swarmops y busque otro tipo de ayuda.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;SUPLANTACIÓN DENEGADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; No parece tener suficientes privilegios para hacerse pasar por otra persona.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Suplantar a otro usuario</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Suplantar</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Persona para Suplantar</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;SUPLANTACIÓN ACTIVA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; La suplantación comenzó en {0:HH:mm} UTC. Este es el Tablero como lo ve la persona suplantada. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Esta herramienta de depuración le permite suplantar a otro usuario para ver y experimentar Swarmops como lo hacen cuando inician sesión.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ADVERTENCIA: &lt;/strong&gt;esta es una herramienta altamente intrusiva que solo debe usarse para el desarrollo técnico y el soporte solicitado. Usar esto no debe tomarse a la ligera.&lt;/p&gt;
+
+&lt;p&gt;Todas las suplantaciones se registran de forma permanente, todas y cualquier acción tomada mientras se suplantan son rastreables como tales, y el usuario suplantado será informado de la intrusión.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Se llamará a los activistas</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(no aplica)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Aún no se llaman miembros</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Organización a nivel de raíz</value>
@@ -188,6 +247,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Comercial</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Gobierno</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Sin fines de lucro</value>
@@ -269,6 +331,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Notificaciones de administrador desde el nombre</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Anular el nombre de host del back-end</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>El puerto SMTP debe ser numérico. No se puede analizar el host: puerto.</value>
   </data>
@@ -302,75 +367,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Realmente, de verdad, REALMENTE debería usar HTTPS para un sitio web como este. Pero ya lo sabías, ¿verdad?</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>Anular el nombre de host del back-end</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>Puerto de WebSocket (interfaz)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>Puerto de WebSocket (Back-end)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>Suplantación activa</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>Tienes una sesión de suplantación activa como {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Suplantación final.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;¿SUPLANTACIÓN DE PERSONA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Esto no debe tomarse a la ligera, y si no lo hace por razones técnicas, incluso puede ser ilegal según las leyes locales.&lt;br/&gt;&lt;br/&gt; El propósito de esta herramienta es corregir fallas técnicas. Todo está conectado. &lt;br/&gt;&lt;br/&gt;¿Proceder?</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;SUPLANTACIÓN TERMINADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Suplantación terminada en {0:HH:mm} UTC. Estás actuando como tú mismo otra vez.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt;SUPLANTACIÓN DENEGADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; No debe suplantar a alguien que sea su gerente directo.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;SUPLANTACIÓN DENEGADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; No debe suplantar a otra persona con acceso a nivel de sistema.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>Debe seleccionar a una persona para imitar.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Si necesita suplantarse, le sugerimos que cierre sesión en Swarmops y busque otro tipo de ayuda.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;SUPLANTACIÓN DENEGADA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; No parece tener suficientes privilegios para hacerse pasar por otra persona.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>Suplantar a otro usuario</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>Suplantar</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>Persona para Suplantar</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;SUPLANTACIÓN ACTIVA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; La suplantación comenzó en {0:HH:mm} UTC. Este es el Tablero como lo ve la persona suplantada. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>&lt;p&gt;Esta herramienta de depuración le permite suplantar a otro usuario para ver y experimentar Swarmops como lo hacen cuando inician sesión.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ADVERTENCIA: &lt;/strong&gt;esta es una herramienta altamente intrusiva que solo debe usarse para el desarrollo técnico y el soporte solicitado. Usar esto no debe tomarse a la ligera.&lt;/p&gt;
-
-&lt;p&gt;Todas las suplantaciones se registran de forma permanente, todas y cualquier acción tomada mientras se suplantan son rastreables como tales, y el usuario suplantado será informado de la intrusión.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Aún no se llaman miembros</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(no aplica)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Gobierno</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;POLVO RECOGIDO&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; La cantidad enviada es menor que la tarifa esperada por devolvérselo, que es{0:N2} microcoins. El dinero que envió ahora se denomina "polvo" en la red bitcoin y no se moverá nuevamente.&lt;br/&gt;&lt;br/&gt; Envíe una cantidad mayor para realizar una prueba de eco.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>Puerto de WebSocket (interfaz)</value>
   </data>
 </root>

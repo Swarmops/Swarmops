@@ -126,17 +126,34 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Stwórz nową organizację</value>
   </data>
-  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
-    <value>Ustawienia organizacji</value>
-  </data>
+  
+  
+  
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Drzewo genealogiczne</value>
   </data>
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Grupy organizacyjne</value>
   </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Ustawienia organizacji</value>
+  </data>
+  
   <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>Ustawienia rozległego systemu</value>
+  </data>
+  
+  
+  
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Zbudowano {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} wierszy kodu</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Zgłoś błąd Swarmops (na Github)</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>Komunikacje</value>
@@ -185,6 +202,7 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Złóż zamówienie zakupu</value>
   </data>
+  
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Asystent koncertów</value>
   </data>
@@ -224,6 +242,8 @@
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Żądaj zaliczki</value>
   </data>
+  
+  
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>Wyślij Nową Fakturę</value>
   </data>
@@ -274,6 +294,11 @@
   
   
   
+  
+  
+  
+  
+  
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importuj Dane Bankowe</value>
   </data>
@@ -308,31 +333,6 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
-    <value>Zbudowano {0:MMM d, yyyy}</value>
-    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
-  </data>
-  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
-    <value>{0:N0} wierszy kodu</value>
-  </data>
-  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
-    <value>Zgłoś błąd Swarmops (na Github)</value>
-  </data>
   
   
   

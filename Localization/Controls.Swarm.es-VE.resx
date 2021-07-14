@@ -121,6 +121,9 @@
     <value>Asignar a otra persona...</value>
     <comment>To an existing position that accepts multiple people (like "assistants")</comment>
   </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(asignar bajo Mi Organización)</value>
+  </data>
   <data name="Positions_AssignFifthPerson" xml:space="preserve">
     <value>Asignar una quinta persona...</value>
   </data>
@@ -154,6 +157,16 @@
     <value>Asignar</value>
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;¿DEJAR SU POSICIÓN?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Esta es&lt;strong&gt; su &lt;/strong&gt;asignación. Terminar su propia tarea equivale a decir "LO DEJO". Hacerlo tendrá efecto inmediatamente. ¿Es esto lo que querías hacer?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;¿TERMINAR LA ASIGNACIÓN?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; ¿Quieres sacar a &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; de se tarea como &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Esto es equivalente a despedir a alguien y generalmente debe estar de acuerdo con los procesos internos y la ley local.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Crear una nueva posición...</value>
+  </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
     <value>Asignar persona como &lt;span id='{0}_modalPositionName'&gt;&lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt;&lt;span id='{0}_modalGeographyName'&gt;&lt;/span&gt;</value>
     <comment>Header for new assignment dialog</comment>
@@ -164,16 +177,8 @@
   <data name="Positions_PleaseSelectPerson" xml:space="preserve">
     <value>Por favor selecciona una persona para asignar.</value>
   </data>
-  <data name="Positions_Vacant" xml:space="preserve">
-    <value>(la posición está vacante)</value>
-    <comment>For unassigned positions</comment>
-  </data>
-  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;¿DEJAR SU POSICIÓN?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Esta es&lt;strong&gt; su &lt;/strong&gt;asignación. Terminar su propia tarea equivale a decir "LO DEJO". Hacerlo tendrá efecto inmediatamente. ¿Es esto lo que querías hacer?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
-  <data name="Positions_ConfirmTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;¿TERMINAR LA ASIGNACIÓN?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; ¿Quieres sacar a &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; de se tarea como &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Esto es equivalente a despedir a alguien y generalmente debe estar de acuerdo con los procesos internos y la ley local.&lt;br/&gt;&lt;br/&gt;</value>
-    <comment>{0} is the person name, {1} is the position title.</comment>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Líderes de subdivisiones</value>
   </data>
   <data name="Positions_TerminateNo" xml:space="preserve">
     <value>No terminar</value>
@@ -187,13 +192,8 @@
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>Terminar tarea</value>
   </data>
-  <data name="Positions_AssignElsewhere" xml:space="preserve">
-    <value>(asignar bajo Mi Organización)</value>
-  </data>
-  <data name="Positions_CreatePosition" xml:space="preserve">
-    <value>Crear una nueva posición...</value>
-  </data>
-  <data name="Positions_Subleaders" xml:space="preserve">
-    <value>Líderes de subdivisiones</value>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(la posición está vacante)</value>
+    <comment>For unassigned positions</comment>
   </data>
 </root>

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;POLVERE RACCOLTA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;L'importo inviato è inferiore al costo previsto per la restituzione, che è di {0:N2} microcoins. Il denaro inviato è ora cosiddetta "polvere" sulla rete bitcoin, e non sarà spostato di nuovo.&lt;br/&gt;&lt;br/&gt;Invia una quantità maggiore per eseguire un echo test.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>Questo è un codice QR per effettuare l'echo test bitcoin per l'intera installazione di Swarmops, non solo per {0}. Leggerlo dal portafoglio Bitcoin del vostro cellulare per eseguire l'echo test o inviare direttamente dal computer a [{1}] ( questo è un indirizzo Bitcoin Cash). L'importo (meno la commissione dei Miner di {2:N2} microcoins) vi verrà restituito nei prossimi secondi.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,62 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Bitcoin Echo Test di Swarmops</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Impersonazione Attiva</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Hai una sessione di impersonazione attiva come {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Termina impersonificazione.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONARE PERSONA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Questo non deve essere preso alla leggera, e se non lo si sta facendo per motivi tecnici, può anche essere illegale, a seconda delle leggi locali.&lt;br/&gt;&lt;br/&gt;Lo scopo di questo strumento è quello di risolvere i malfunzionamenti tecnici. Tutto è registrato.&lt;br/&gt;&lt;br/&gt;Procedere?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONAZIONE TERMINATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonazione terminata alle {0:HH:mm}. UTC. State agendo di nuovo come voi stessi.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non dovresti impersonare qualcuno che è il tuo diretto superiore.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non puoi impersonare qualcun altro che ha accesso a livello di sistema.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>È necessario selezionare una persona da impersonare.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Se hai bisogno di impersonare te stesso, ti suggeriamo di disconnetterti da Swarmops e cercare altro tipo di assistenza.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non sembra che tu abbia i privilegi sufficienti per impersonare qualcun altro.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Impersonare un altro utente</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Impersonare</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Persona da impersonare</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;IMPERSONAZIONE ATTIVA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonazione iniziata alle {0:HH:mm}. UTC. Questa è la Dashboard così come viene visualizzata dalla persona impersonata. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Questo strumento di debug consente di impersonare un altro utente per vedere e sperimentare Swarmops così come lo fanno loro quando sono connessi.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ATTENZIONE&lt;/strong&gt; Questo è uno strumento altamente intrusivo che dovrebbe essere utilizzato solo per lo sviluppo tecnico e per il supporto richiesto. L'uso di questo strumento non deve essere preso alla leggera.&lt;/p&gt;
+&lt;p&gt;Tutte le impersonazioni sono registrate in modo permanente, tutte le azioni intraprese durante l'impersonazione sono tracciabili come tali e l'utente impersonato sarà informato dell'intrusione.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Saranno chiamati gli attivisti</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(non applicabile)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Coloro che ancora non sono membri vengono chiamati</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Organizzazione di primo livello</value>
@@ -188,6 +245,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Commerciale</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Governo</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>No-profit</value>
@@ -269,6 +329,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Notifiche per l'amministratore da nome</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Sovrascrittura del nome del Host di Backend</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>La porta SMTP deve essere un valore numerico. Impossibile analizzare host:porta.</value>
   </data>
@@ -302,73 +365,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Dovresti proprio ma proprio usare HTTPS per un sito come questo. Ma questa è una cosa che già sai, vero?</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>Sovrascrittura del nome del Host di Backend</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>Porta WebSocket (Frontend)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>Porta Websocket (Backend)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>Impersonazione Attiva</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>Hai una sessione di impersonazione attiva come {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Termina impersonificazione.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONARE PERSONA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Questo non deve essere preso alla leggera, e se non lo si sta facendo per motivi tecnici, può anche essere illegale, a seconda delle leggi locali.&lt;br/&gt;&lt;br/&gt;Lo scopo di questo strumento è quello di risolvere i malfunzionamenti tecnici. Tutto è registrato.&lt;br/&gt;&lt;br/&gt;Procedere?</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONAZIONE TERMINATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonazione terminata alle {0:HH:mm}. UTC. State agendo di nuovo come voi stessi.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non dovresti impersonare qualcuno che è il tuo diretto superiore.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non puoi impersonare qualcun altro che ha accesso a livello di sistema.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>È necessario selezionare una persona da impersonare.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Se hai bisogno di impersonare te stesso, ti suggeriamo di disconnetterti da Swarmops e cercare altro tipo di assistenza.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONAZIONE NEGATA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Non sembra che tu abbia i privilegi sufficienti per impersonare qualcun altro.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>Impersonare un altro utente</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>Impersonare</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>Persona da impersonare</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;IMPERSONAZIONE ATTIVA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Impersonazione iniziata alle {0:HH:mm}. UTC. Questa è la Dashboard così come viene visualizzata dalla persona impersonata. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>&lt;p&gt;Questo strumento di debug consente di impersonare un altro utente per vedere e sperimentare Swarmops così come lo fanno loro quando sono connessi.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;ATTENZIONE&lt;/strong&gt; Questo è uno strumento altamente intrusivo che dovrebbe essere utilizzato solo per lo sviluppo tecnico e per il supporto richiesto. L'uso di questo strumento non deve essere preso alla leggera.&lt;/p&gt;
-&lt;p&gt;Tutte le impersonazioni sono registrate in modo permanente, tutte le azioni intraprese durante l'impersonazione sono tracciabili come tali e l'utente impersonato sarà informato dell'intrusione.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Coloro che ancora non sono membri vengono chiamati</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(non applicabile)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Governo</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;POLVERE RACCOLTA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;L'importo inviato è inferiore al costo previsto per la restituzione, che è di {0:N2} microcoins. Il denaro inviato è ora cosiddetta "polvere" sulla rete bitcoin, e non sarà spostato di nuovo.&lt;br/&gt;&lt;br/&gt;Invia una quantità maggiore per eseguire un echo test.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>Porta WebSocket (Frontend)</value>
   </data>
 </root>

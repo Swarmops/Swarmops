@@ -126,9 +126,19 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Создать Новую Организацию</value>
   </data>
+  
+  
+  
+  
+  
   <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
     <value>Параметры Организации</value>
   </data>
+  
+  
+  
+  
+  
   
   
   
@@ -165,6 +175,7 @@
   
   
   
+  
   <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
     <value>Входящие счета-фактуры</value>
   </data>
@@ -186,6 +197,8 @@
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Запрос наличными заранее</value>
   </data>
+  
+  
   
   
   
@@ -225,9 +238,23 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Налоговые Формы</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Налоговые формы заработной платы</value>
+  </data>
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Выгрузка банковских файлов</value>
   </data>
+  
   
   <data name="Menu5_Organization" xml:space="preserve">
     <value>Организация</value>
@@ -265,6 +292,7 @@
   <data name="Menu5_People_AddPerson" xml:space="preserve">
     <value>Добавить [Regular]</value>
   </data>
+  
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>Список/Поиск Людей</value>
   </data>
@@ -280,41 +308,13 @@
   <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>Управление Добровольцами</value>
   </data>
+  
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Новая Конференция</value>
   </data>
   <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
     <value>Роли и Обязанности</value>
   </data>
-  
-  
-  
-  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
-    <value>Налоговые Формы</value>
-  </data>
-  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
-    <value>Налоговые формы заработной платы</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

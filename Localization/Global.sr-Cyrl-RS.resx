@@ -135,6 +135,23 @@
     <value>Контролни панел</value>
     <comment>Title of default page</comment>
   </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>Јавила се уопштена грешка која се односи на повезивање са Swarmops сервером. Да ли мрежа и даље функционише исправно и да ли је сервер доступан?</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Swarmops није прихватио износ валуте који сте унели. (Једна хиљада и нула центи би требало да се упишу као "{0:N2}".) Покушајте поново!</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>Изгледа да Вас је други корисник претекао у овој операцији; док сте Ви гледали, база података се променила. Молимо Вас да испратите нове услове и поново покушате да спроведете своју замисао.</value>
+  </data>
+  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
+    <value>Јавила се уопштена грешка приликом покушаја задавања ове вредности.</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Налог</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
   <data name="Financial_Actuals" xml:space="preserve">
     <value>Добра (Actuals)</value>
   </data>
@@ -143,6 +160,44 @@
   </data>
   <data name="Financial_ActualsToDate" xml:space="preserve">
     <value>Добра, годишњи принос (Actuals)</value>
+  </data>
+  <data name="Financial_AllBalancesSettled" xml:space="preserve">
+    <value>Сви биланси су решени</value>
+    <comment>Nobody owes anybody anything</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Износ</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>ПДВ</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Порез на додату вредност</value>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>Средства (Assets)</value>
+  </data>
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>Chain</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>Cash</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>Core</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>Gold</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>Legacy</value>
+    <comment>Keep short - seven chars max</comment>
   </data>
   <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
     <value>Књиговодствени налог</value>
@@ -156,20 +211,110 @@
   <data name="Financial_CashAdvance" xml:space="preserve">
     <value>Приспеће</value>
   </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Приспеће (Cash Advance) #{0:N0} за {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>Приспеће (Cash Advance) #{0:N0} Повраћај</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>Приспећа (Cash Advances) {0} Повраћај</value>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Приспећа</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Приспећа (Cash Advances)</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Приспећа (Cash Advances) {0} за {1}</value>
+  </data>
   <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
     <value>Приспеће (Cash Advance) #{0}</value>
   </data>
   <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
     <value>Приспећа (Cash Advances) {0}</value>
   </data>
+  <data name="Financial_Client" xml:space="preserve">
+    <value>Клијент / Купац</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>Трошкови</value>
+  </data>
+  <data name="Financial_CurrentBalance" xml:space="preserve">
+    <value>Тренутни биланс</value>
+  </data>
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>Обавезе</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Крајњи рок</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_DueDateShort" xml:space="preserve">
+    <value>Оквирно</value>
+    <comment>As "due date", as in when a payment is expected, but just the word "due" to be combined with an actual date in the UI. Example: *Due* Jan 21.</comment>
+  </data>
+  <data name="Financial_Ebitda_Long" xml:space="preserve">
+    <value>Зарада пре камата, пореза, губитка вредности и амортизације</value>
+  </data>
+  <data name="Financial_Ebitda_Short" xml:space="preserve">
+    <value>EBITDA</value>
+    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
+  </data>
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Трошак</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>Захтев за рефундацију #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>Трошкови</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>Захтеви за рефундацију</value>
   </data>
   <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
     <value>Трошак #{0:N0}</value>
   </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>Трошак #{0:N0} (минус приспеће (advance) #{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>Трошак #{0:N0} (минус приспећа (advances))</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>Рефундација #{0:N0} од {1}</value>
+  </data>
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>Трошкови {0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>Трошкови {0} (минус приспеће (advance) #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>Трошкови {0} (минус приспећа (advances))</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>Захтев за рефундацију {0} од {1}</value>
+  </data>
+  <data name="Financial_GeneralLedger" xml:space="preserve">
+    <value>Главна књига</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>Рачуни (inbound)</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Inbound фактуре</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>Inbound фактура #{0:N0}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>Inbound Invoice #{0:N0} од {1}</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>Приход</value>
   </data>
   <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>Рачун (inbound)</value>
@@ -177,15 +322,83 @@
   <data name="Financial_InvoiceOutbound" xml:space="preserve">
     <value>Рачун (outbound)</value>
   </data>
+  <data name="Financial_NoPaymentHistory" xml:space="preserve">
+    <value>Нема убележених уплата</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Рачуни (outbound)</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Outbound фактуре</value>
+  </data>
+  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
+    <value>Излазна фактура #{0:N0} од {1}</value>
+  </data>
+  <data name="Financial_Owed" xml:space="preserve">
+    <value>Дуг</value>
+    <comment>As in, "Amount Owed"</comment>
+  </data>
+  <data name="Financial_Paid" xml:space="preserve">
+    <value>Плаћено</value>
+    <comment>As in, "Amount Paid To Person"</comment>
+  </data>
   <data name="Financial_Parley" xml:space="preserve">
     <value>Конференција</value>
+  </data>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>Историја уплата</value>
+  </data>
+  <data name="Financial_PaymentSpecification" xml:space="preserve">
+    <value>Уплата #{0:N0}</value>
+    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
+  </data>
+  <data name="Financial_PayoutSpecification" xml:space="preserve">
+    <value>Исплата #{0:N0}</value>
+    <comment>A Pay-OUT is always money leaving the organization</comment>
+  </data>
+  <data name="Financial_PersonIsOwed" xml:space="preserve">
+    <value>Особи се дугује</value>
+    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
+  </data>
+  <data name="Financial_PersonOwes" xml:space="preserve">
+    <value>Особа дугује износ</value>
+    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
+  </data>
+  <data name="Financial_ProfitToDate" xml:space="preserve">
+    <value>Годишњи Профит/Губитак до датума ({0})</value>
+    <comment>{0} is the currency code</comment>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>Слика рачуна {0} од {1}</value>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>Плате {0} за {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>Порези на зараду за {0:yyyy-MMM}</value>
   </data>
   <data name="Financial_Salary" xml:space="preserve">
     <value>Плата</value>
   </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>Плата #{0:N0} за {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>Плата #{0:N0} за {1:yyyy-MMM} за {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Плата #{0:N0}</value>
+  </data>
   <data name="Financial_SalarySpecification" xml:space="preserve">
     <value>Плата за {0:yyyy-MMM}</value>
     <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>Порези на зараду {0:N0} за {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Добављач</value>
   </data>
   <data name="Financial_TaxesSpecification" xml:space="preserve">
     <value>Порез на плате {0}</value>
@@ -197,126 +410,9 @@
     <value>Порезник</value>
     <comment>Used as recipient for taxes.</comment>
   </data>
-  <data name="Financial_YearlyResult" xml:space="preserve">
-    <value>Годишњи резултат</value>
-  </data>
-  <data name="Global_ASAP" xml:space="preserve">
-    <value>ХИТНО</value>
-    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
-  </data>
-  <data name="Global_Cancel" xml:space="preserve">
-    <value>Откажи</value>
-    <comment>Displayed as cancellation link on changing something</comment>
-  </data>
-  <data name="Global_Change" xml:space="preserve">
-    <value>Измена?</value>
-    <comment>Link after describing what the user is looking at, allowing a change.</comment>
-  </data>
-  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
-    <value>Кликните на слику како бисте је увећали.</value>
-    <comment>Displayed where thumbnails can be enlarged modally.</comment>
-  </data>
-  <data name="Global_Confirm" xml:space="preserve">
-    <value>Потврди</value>
-    <comment>Displayed as confirmation link on changing something</comment>
-  </data>
-  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
-    <value>-- Селектуј, Буџет/Налог --</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
-    <value>-- Селектуј, Организација --</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_GoThere" xml:space="preserve">
-    <value>Опширније...</value>
-    <comment>Link after describing something.</comment>
-  </data>
-  <data name="Global_NoOwner" xml:space="preserve">
-    <value>Нико</value>
-    <comment>Displayed when an account/position etc is vacant</comment>
-  </data>
-  <data name="Global_Owner" xml:space="preserve">
-    <value>Власник</value>
-  </data>
-  <data name="Global_ProcessingFile" xml:space="preserve">
-    <value>Обрађивање фајла...</value>
-    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
-  </data>
-  <data name="Global_UploadFile" xml:space="preserve">
-    <value>Отпреми фајл</value>
-    <comment>Displayed on "Submit" button next to file upload controls.</comment>
-  </data>
-  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
-    <value>Отпреми фајл на Swarmops</value>
-    <comment>Used as header above upload sections.</comment>
-  </data>
-  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
-    <value>Молим вас означите фајл за слање.</value>
-    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
-  </data>
-  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
-    <value>Тренутно сте пријављени на &lt;strong&gt;{0}&lt;/strong&gt;. Да ли желите да се пребаците на другу организацију?</value>
-  </data>
-  <data name="Sidebar_Actions" xml:space="preserve">
-    <value>Радње</value>
-    <comment>List of shortcuts to likely actions</comment>
-  </data>
-  <data name="Sidebar_Actions_None" xml:space="preserve">
-    <value>У овом тренутку нема даљих предложених радњи.</value>
-    <comment>No shortcuts from this page right now.</comment>
-  </data>
-  <data name="Sidebar_Information" xml:space="preserve">
-    <value>Инфо</value>
-    <comment>Information about current page</comment>
-  </data>
-  <data name="Sidebar_Todo" xml:space="preserve">
-    <value>За урадити</value>
-    <comment>List of todo items</comment>
-  </data>
-  <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>&lt;strong&gt;Све је у реду:&lt;/strong&gt; Нема хитних ставки које захтевају акцију. Јеее!</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
-  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
-    <value>Нове ставке ће ићи овде.</value>
-    <comment>Placeholder for future action items. Temporary.</comment>
-  </data>
-  <data name="Financial_CashAdvances" xml:space="preserve">
-    <value>Приспећа</value>
-  </data>
-  <data name="Financial_CashAdvancesLong" xml:space="preserve">
-    <value>Приспећа (Cash Advances)</value>
-  </data>
-  <data name="Financial_ExpenseClaims" xml:space="preserve">
-    <value>Трошкови</value>
-  </data>
-  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
-    <value>Захтеви за рефундацију</value>
-  </data>
-  <data name="Financial_InboundInvoices" xml:space="preserve">
-    <value>Рачуни (inbound)</value>
-  </data>
-  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
-    <value>Inbound фактуре</value>
-  </data>
-  <data name="Financial_OutboundInvoices" xml:space="preserve">
-    <value>Рачуни (outbound)</value>
-  </data>
-  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
-    <value>Outbound фактуре</value>
-  </data>
-  <data name="Global_NA" xml:space="preserve">
-    <value>Није доступно</value>
-  </data>
-  <data name="Global_NALong" xml:space="preserve">
-    <value>Није применљиво</value>
-  </data>
-  <data name="Global_AsOfNow" xml:space="preserve">
-    <value>Од сада</value>
-  </data>
-  <data name="Global_Today" xml:space="preserve">
-    <value>Данас</value>
+  <data name="Financial_TransactionIdShort" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Used in narrow columns, so keep extremely short</comment>
   </data>
   <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
     <value>Тип расхода</value>
@@ -326,84 +422,301 @@
     <value>Пројекат</value>
     <comment>Tagging costs/income to projects</comment>
   </data>
-  <data name="Sidebar_Related" xml:space="preserve">
-    <value>Повезано</value>
-    <comment>List of shortcuts to related actions to current one</comment>
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>Непотврђена исплата</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>Трошак #{0:N0} (минус приспеће (advance) #{1:N0})</value>
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>Годишњи резултат</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>Трошак #{0:N0} (минус приспећа (advances))</value>
+  <data name="Financial_YouAreOwed" xml:space="preserve">
+    <value>{0} Вам дугује</value>
+    <comment>The {0} is the organization name</comment>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
-    <value>Трошкови {0} (минус приспеће (advance) #{1})</value>
+  <data name="Financial_YouOwe" xml:space="preserve">
+    <value>Дугујете овај износ</value>
+    <comment>Like Person Owes, but directed at the user at the screen</comment>
   </data>
-  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
-    <value>Трошкови {0} (минус приспећа (advances))</value>
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>Пр.Год.</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>Рефундација #{0:N0} од {1}</value>
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>Нула</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
   </data>
-  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
-    <value>Inbound Invoice #{0:N0} од {1}</value>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>Дво-факторска аутентификација</value>
   </data>
-  <data name="Financial_ReceiptSpecification" xml:space="preserve">
-    <value>Слика рачуна {0} од {1}</value>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>Дво-факторска аутент.</value>
   </data>
-  <data name="Global_ImageSpecification" xml:space="preserve">
-    <value>Слика {0} од {1}</value>
+  <data name="Global_2FA_Shorter" xml:space="preserve">
+    <value>2FA</value>
   </data>
-  <data name="Financial_DueDate" xml:space="preserve">
-    <value>Крајњи рок</value>
-    <comment>For invoices and similar</comment>
+  <data name="Global_Action" xml:space="preserve">
+    <value>Радње</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
   </data>
-  <data name="Financial_Supplier" xml:space="preserve">
-    <value>Добављач</value>
+  <data name="Global_Add" xml:space="preserve">
+    <value>Додај</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
+  <data name="Global_Address" xml:space="preserve">
+    <value>Адреса</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>Све</value>
+  </data>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>ХИТНО</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>Од сада</value>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>Измена?</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>Град</value>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Кликните на слику како бисте је увећали.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  <data name="Global_Closed" xml:space="preserve">
+    <value>Затворено</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>Потврди</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Држава</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>Креирај</value>
+    <comment>Like "Create Organization"</comment>
   </data>
   <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
     <value>Енглески (САД)</value>
     <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
   </data>
-  <data name="Global_No" xml:space="preserve">
-    <value>Не</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>Прилагођено</value>
+    <comment>As in "show me the advanced options"</comment>
   </data>
-  <data name="Global_Yes" xml:space="preserve">
-    <value>Да</value>
-    <comment>For yes/no options</comment>
+  <data name="Global_Date" xml:space="preserve">
+    <value>Датум</value>
+    <comment>As in calendar date, for example January 21</comment>
   </data>
-  <data name="Financial_Asset" xml:space="preserve">
-    <value>Средства (Assets)</value>
+  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
+    <value>ММММ д</value>
+    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
   </data>
-  <data name="Financial_Cost" xml:space="preserve">
-    <value>Трошкови</value>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>ММММ д, гггг</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
   </data>
-  <data name="Financial_Debt" xml:space="preserve">
-    <value>Обавезе</value>
+  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
+    <value>МММ дд</value>
+    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
   </data>
-  <data name="Financial_Income" xml:space="preserve">
-    <value>Приход</value>
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>ММ/ДД/ГГГГ</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  <data name="Global_SelectOne" xml:space="preserve">
-    <value>-- Изаберите једно --</value>
-    <comment>Shown in dropdowns when selection required</comment>
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>МММ д, гггг</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Датум рођења</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>дефиниши како би се омогућило</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>Опис</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>Преузми ово</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>Документи</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>-- Селектуј, Буџет/Налог --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>-- Селектуј, Организација --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>Нема забелешки</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>Ступате у &lt;strong&gt;Sandbox&lt;/strong&gt; организацију.&lt;br/&gt;&lt;br/&gt;Ово је безбедно окружење у коме можете испробавати Swarmops без икаквих ризика који се односе на податке. Лепо се забављајте, а када завршите, вратите се у продукционо окружење.</value>
+  </data>
+  <data name="Global_Error_Concurrency" xml:space="preserve">
+    <value>Ова радња више није могућа.</value>
+    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
+  </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>Није могуће повезати се на WebSocket. Ажурирање у реалном времену неће бити доступно.</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Женски</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
+    <value>Ово поље не може остати празно.</value>
+    <comment>Displayed as error when emptying fields like your name</comment>
+  </data>
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Фајлови који су отпремљени</value>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>Заставице</value>
+    <comment>As in a table column header</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>Регион</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Go" xml:space="preserve">
+    <value>Изврши</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>Опширније...</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>Слика {0} од {1}</value>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>Ставка</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>Ставке</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>Mail</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Мушки</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>Мин / Макс</value>
+    <comment>note the spaces</comment>
   </data>
   <data name="Global_Missing" xml:space="preserve">
     <value>- недостаје -</value>
     <comment>When a record or similar is missing. Used in grids.</comment>
   </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>Месец</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>од {0} до {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
   <data name="Global_Multiple" xml:space="preserve">
     <value>- вишеструко -</value>
     <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>Није доступно</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>Није применљиво</value>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>Име</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>Не</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>Нема хитних ставки. Јупи!</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(нема поклапања)</value>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>Нико</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>Без неког одређеног разлога.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>Напомене</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(отказано, сторнирано, анулирано)</value>
+    <comment>Used when something is determined invalid</comment>
   </data>
   <data name="Global_Off" xml:space="preserve">
     <value>Искључено</value>
     <comment>Off (as opposed to On)</comment>
   </data>
+  <data name="Global_Officer_Female" xml:space="preserve">
+    <value>Официр</value>
+  </data>
+  <data name="Global_Officer_Male" xml:space="preserve">
+    <value>Официр</value>
+  </data>
+  <data name="Global_Officer_Neutral" xml:space="preserve">
+    <value>Официр</value>
+  </data>
+  <data name="Global_Officer_Plural" xml:space="preserve">
+    <value>Официри</value>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
   <data name="Global_On" xml:space="preserve">
     <value>Укључено</value>
     <comment>On (as opposed to Off)</comment>
+  </data>
+  <data name="Global_Opened" xml:space="preserve">
+    <value>Отворен</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Организација</value>
   </data>
   <data name="Global_Organization_Commercial" xml:space="preserve">
     <value>Комерцијална</value>
@@ -417,44 +730,27 @@
     <value>Непрофитна</value>
     <comment>Non-profit (activist, political parties)</comment>
   </data>
-  <data name="Global_Geography" xml:space="preserve">
-    <value>Регион</value>
-    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
-  </data>
-  <data name="Global_Action" xml:space="preserve">
-    <value>Радње</value>
-    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
-  </data>
-  <data name="Global_Mail" xml:space="preserve">
-    <value>Mail</value>
-    <comment>Somebody's email address.</comment>
-  </data>
-  <data name="Global_Name" xml:space="preserve">
-    <value>Име</value>
-    <comment>A plain person's first and last name</comment>
-  </data>
-  <data name="Global_Notes" xml:space="preserve">
-    <value>Напомене</value>
-    <comment>Small notes in a grid, maybe in icon form</comment>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>Власник</value>
   </data>
   <data name="Global_Phone" xml:space="preserve">
     <value>Телефон</value>
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>
-  <data name="Global_Custom" xml:space="preserve">
-    <value>Прилагођено</value>
-    <comment>As in "show me the advanced options"</comment>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Поштански број</value>
   </data>
-  <data name="Global_Create" xml:space="preserve">
-    <value>Креирај</value>
-    <comment>Like "Create Organization"</comment>
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>Настави</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
   </data>
-  <data name="Global_AllYear" xml:space="preserve">
-    <value>Све</value>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Обрађивање фајла...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
-  <data name="Global_Description" xml:space="preserve">
-    <value>Опис</value>
-    <comment>As a general header of any description field</comment>
+  <data name="Global_Progress" xml:space="preserve">
+    <value>Напредује</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
   </data>
   <data name="Global_Q1" xml:space="preserve">
     <value>Q1</value>
@@ -472,89 +768,100 @@
     <value>Q4</value>
     <comment>Fourth quarter of the year</comment>
   </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>-- Изаберите једно --</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>Пошаљи ово на мој mail</value>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(неколико)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- Неколико - изаберите --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>Не прескачи</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>Прескочи</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>Прескочи</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Пошаљи</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>Систем</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
   <data name="Global_Timestamp" xml:space="preserve">
     <value>Timestamp (печат са временом)</value>
   </data>
-  <data name="Ledgers_Balance" xml:space="preserve">
-    <value>Стање</value>
-    <comment>As in 'account balance', not as in staying upright</comment>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Данас</value>
   </data>
-  <data name="Ledgers_Credit" xml:space="preserve">
-    <value>Credit</value>
+  <data name="Global_Total" xml:space="preserve">
+    <value>Укупно</value>
+    <comment>Used as footer in tables, summarizing something</comment>
   </data>
-  <data name="Ledgers_Debit" xml:space="preserve">
-    <value>Debit</value>
-  </data>
-  <data name="Global_Organization" xml:space="preserve">
-    <value>Организација</value>
-  </data>
-  <data name="Sidebar_Help" xml:space="preserve">
-    <value>Помоћ</value>
-  </data>
-  <data name="Global_Female" xml:space="preserve">
-    <value>Женски</value>
-    <comment>Legal gender</comment>
-  </data>
-  <data name="Global_Male" xml:space="preserve">
-    <value>Мушки</value>
-    <comment>Legal gender</comment>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter ID</value>
   </data>
   <data name="Global_UnknownUndisclosed" xml:space="preserve">
     <value>Непознат или не жели да се изјасни</value>
     <comment>Used for gender et al</comment>
   </data>
-  <data name="Global_DateFormatShortReadable" xml:space="preserve">
-    <value>ММ/ДД/ГГГГ</value>
-    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Отпреми</value>
   </data>
-  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
-    <value>ММММ д, гггг</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Отпреми фајл</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  <data name="Timespan_FiveYears" xml:space="preserve">
-    <value>петогодишњи</value>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Отпреми фајл на Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
   </data>
-  <data name="Timespan_Forever" xml:space="preserve">
-    <value>доживотно</value>
-    <comment>Like "a lifetime membership"</comment>
-  </data>
-  <data name="Timespan_OneMonth" xml:space="preserve">
-    <value>један месец</value>
-  </data>
-  <data name="Timespan_OneYear" xml:space="preserve">
-    <value>једна година</value>
-  </data>
-  <data name="Timespan_TwoYears" xml:space="preserve">
-    <value>две године</value>
-    <comment>Like "a two-year membership"</comment>
-  </data>
-  <data name="Global_Address" xml:space="preserve">
-    <value>Адреса</value>
-    <comment>As in physical location</comment>
-  </data>
-  <data name="Global_City" xml:space="preserve">
-    <value>Град</value>
-  </data>
-  <data name="Global_Country" xml:space="preserve">
-    <value>Држава</value>
-    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
-  </data>
-  <data name="Global_DateOfBirth" xml:space="preserve">
-    <value>Датум рођења</value>
-    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
-  </data>
-  <data name="Global_PostalCode" xml:space="preserve">
-    <value>Поштански број</value>
-  </data>
-  <data name="Error_AjaxCallException" xml:space="preserve">
-    <value>Јавила се уопштена грешка која се односи на повезивање са Swarmops сервером. Да ли мрежа и даље функционише исправно и да ли је сервер доступан?</value>
-  </data>
-  <data name="Global_Month" xml:space="preserve">
-    <value>Месец</value>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Молим вас означите фајл за слање.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
   <data name="Global_View" xml:space="preserve">
     <value>Приказ</value>
     <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Volunteer_Female" xml:space="preserve">
+    <value>Волонтерка</value>
+  </data>
+  <data name="Global_Volunteer_Male" xml:space="preserve">
+    <value>Волонтер</value>
+  </data>
+  <data name="Global_Volunteer_Neutral" xml:space="preserve">
+    <value>Волонтер</value>
+  </data>
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>Волонтери</value>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Заврши</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>Следеће</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Претходно</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>Процес је у току...</value>
   </data>
   <data name="Global_Year" xml:space="preserve">
     <value>Година</value>
@@ -566,250 +873,23 @@
     <value>Година {0}</value>
     <comment>As in "the year X".</comment>
   </data>
-  <data name="Global_DefineToEnable" xml:space="preserve">
-    <value>дефиниши како би се омогућило</value>
-    <comment>shown as watermark on some edit boxes</comment>
-  </data>
-  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
-    <value>Приспеће (Cash Advance) #{0:N0} за {1}</value>
-  </data>
-  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
-    <value>Приспеће (Cash Advance) #{0:N0} Повраћај</value>
-  </data>
-  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
-    <value>Приспећа (Cash Advances) {0} Повраћај</value>
-  </data>
-  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
-    <value>Приспећа (Cash Advances) {0} за {1}</value>
-  </data>
-  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
-    <value>Захтев за рефундацију #{0:N0}</value>
-  </data>
-  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
-    <value>Захтев за рефундацију {0} од {1}</value>
-  </data>
-  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
-    <value>Inbound фактура #{0:N0}</value>
-  </data>
-  <data name="Global_System" xml:space="preserve">
-    <value>Систем</value>
-    <comment>as in "Created by: System" for roles, transactions etc.</comment>
-  </data>
-  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
-    <value>Плате {0} за {1:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
-    <value>Порези на зараду за {0:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
-    <value>Плата #{0:N0} за {1:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
-    <value>Плата #{0:N0} за {1:yyyy-MMM} за {2}</value>
-    <comment>0 is identity, 1 is month, 2 is name</comment>
-  </data>
-  <data name="Financial_SalaryIdentity" xml:space="preserve">
-    <value>Плата #{0:N0}</value>
-  </data>
-  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
-    <value>Порези на зараду {0:N0} за {1:yyyy-MMM}</value>
-  </data>
-  <data name="Financial_Account" xml:space="preserve">
-    <value>Налог</value>
-    <comment>as in bookkeeping or ledger account</comment>
-  </data>
-  <data name="Financial_Amount" xml:space="preserve">
-    <value>Износ</value>
-    <comment>as in amount of money</comment>
-  </data>
-  <data name="Global_Add" xml:space="preserve">
-    <value>Додај</value>
-    <comment>as in "add element", "add row", etc</comment>
-  </data>
-  <data name="Global_Several_Display" xml:space="preserve">
-    <value>(неколико)</value>
-    <comment>Displayed when multiple items</comment>
-  </data>
-  <data name="Global_Several_SelectOne" xml:space="preserve">
-    <value>-- Неколико - изаберите --</value>
-    <comment>Displayed when multiple choice</comment>
-  </data>
-  <data name="Sidebar_Options" xml:space="preserve">
-    <value>Опције</value>
-    <comment>For various page-specific checkboxes etc</comment>
-  </data>
-  <data name="Global_LoadingPlaceholder" xml:space="preserve">
-    <value>[...loading...]</value>
-  </data>
-  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
-    <value>[...]</value>
-  </data>
-  <data name="Global_NoMatch" xml:space="preserve">
-    <value>(нема поклапања)</value>
-  </data>
-  <data name="Global_Working" xml:space="preserve">
-    <value>Процес је у току...</value>
-  </data>
-  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
-    <value>Није могуће повезати се на WebSocket. Ажурирање у реалном времену неће бити доступно.</value>
-  </data>
-  <data name="Error_CurrencyParsing" xml:space="preserve">
-    <value>Swarmops није прихватио износ валуте који сте унели. (Једна хиљада и нула центи би требало да се упишу као "{0:N2}".) Покушајте поново!</value>
-    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
-  </data>
-  <data name="Global_NoReasonGiven" xml:space="preserve">
-    <value>Без неког одређеног разлога.</value>
-    <comment>As inter-activist communication when denying resources, et cetera</comment>
-  </data>
-  <data name="Global_NoActionItems" xml:space="preserve">
-    <value>Нема хитних ставки. Јупи!</value>
-  </data>
-  <data name="Global_MinMax" xml:space="preserve">
-    <value>Мин / Макс</value>
-    <comment>note the spaces</comment>
-  </data>
-  <data name="Swarm_AssignedPerson" xml:space="preserve">
-    <value>Задужена особа</value>
-  </data>
-  <data name="Swarm_Position" xml:space="preserve">
-    <value>Позиција</value>
-  </data>
-  <data name="Error_DatabaseConcurrency" xml:space="preserve">
-    <value>Изгледа да Вас је други корисник претекао у овој операцији; док сте Ви гледали, база података се променила. Молимо Вас да испратите нове услове и поново покушате да спроведете своју замисао.</value>
-  </data>
-  <data name="Swarm_TypeName" xml:space="preserve">
-    <value>Упишите име...</value>
-  </data>
-  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
-    <value>Један месец</value>
-  </data>
-  <data name="Timespan_Selection_OneYear" xml:space="preserve">
-    <value>Једна година</value>
-  </data>
-  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
-    <value>Шест месеци</value>
-  </data>
-  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
-    <value>Три месеца</value>
-  </data>
-  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
-    <value>Два месеца</value>
-  </data>
-  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
-    <value>Две године</value>
-  </data>
-  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
-    <value>До прекида</value>
-    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
-  </data>
-  <data name="Global_WizardFinish" xml:space="preserve">
-    <value>Заврши</value>
-  </data>
-  <data name="Global_WizardNext" xml:space="preserve">
-    <value>Следеће</value>
-  </data>
-  <data name="Global_WizardPrevious" xml:space="preserve">
-    <value>Претходно</value>
-  </data>
-  <data name="Financial_YTD" xml:space="preserve">
-    <value>Пр.Год.</value>
-    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
-  </data>
-  <data name="Global_Flags" xml:space="preserve">
-    <value>Заставице</value>
-    <comment>As in a table column header</comment>
-  </data>
-  <data name="Global_Total" xml:space="preserve">
-    <value>Укупно</value>
-    <comment>Used as footer in tables, summarizing something</comment>
-  </data>
-  <data name="Global_FieldCannotBeEmpty" xml:space="preserve">
-    <value>Ово поље не може остати празно.</value>
-    <comment>Displayed as error when emptying fields like your name</comment>
-  </data>
-  <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
-    <value>Јавила се уопштена грешка приликом покушаја задавања ове вредности.</value>
-  </data>
-  <data name="Global_TwitterId" xml:space="preserve">
-    <value>Twitter ID</value>
-  </data>
-  <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
-    <value>BitID Дво-факторска аутентификација (онемогућава пријављивање током карантина)
-</value>
-    <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
-  </data>
-  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
-    <value>Налог</value>
-  </data>
-  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
-    <value>Обезбеђивање сигурности</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
-    <value>Ресетуј лозинку</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
-    <value>Пошаљи линк за ресет лозинке</value>
-  </data>
-  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
-    <value>Ово не изгледа као валидни телефонски број, али ако јесте - извињавамо се.</value>
-    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
-    <value>Ресетуј корисничку лозинку?</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
-    <value>Управо ресетујете корисничку лозинку. Поменути корисник ће примити линк за ресет у mail-у, а који ће га одвести на страну за ресетовање Swarmops лозинке.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Немојте никада радити ово, осим ако то од Вас није тражио корисник.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Да ли желите да наставите са процедуром за ресетовање лозинке?</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
-    <value>Ресет лозинке је забрањен</value>
-  </data>
-  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
-    <value>Email адреса овог корисника је недавно промењена (пре мање од недељу дана). Из сигурносних разлога, линк за ресетовање лозинке не може бити послат и неће бити послат на email адресу која је недавно промењена.</value>
-  </data>
-  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
-    <value>Линк за ресетовање лозинке је послат кориснику.</value>
-  </data>
-  <data name="Global_2FA" xml:space="preserve">
-    <value>Дво-факторска аутентификација</value>
-  </data>
-  <data name="Global_2FA_Short" xml:space="preserve">
-    <value>Дво-факторска аутент.</value>
-  </data>
-  <data name="Global_2FA_Shorter" xml:space="preserve">
-    <value>2FA</value>
-  </data>
-  <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
-    <value>&lt;strong&gt;НЕ МОЖЕТЕ ПРУЖИТИ 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете активирати дво-факторску аутентификацију у туђе име. Свако то мора учинити за себе, како би само он(а) имао(ла) тајне кључеве.</value>
-    <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
-  </data>
-  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
-    <value>Дво-факторска аутентификација је онемогућена. Сада се морате пријавити са регуларном лозинком.</value>
-  </data>
-  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
-    <value>Дво-факторска аутентификација је уклоњена за овог корисника. Сада се мора пријавити са регуларном лозинком.</value>
-  </data>
-  <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
-    <value>&lt;strong&gt;ИСКЉУЧУЈЕТЕ ДВО-ФАКТОРСКУ АУТЕНТИФИКАЦИЈУ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ово се не препоручује. Дво-факторска аутентификација значајно подиже ниво безбедности Вашег налога, а при томе пружа и могућност једноставнијег пријављивања посредством BitID.&lt;br/&gt;&lt;br/&gt;Желите да уклоните 2FA и вратите се на класичну, једну лозинку?</value>
-    <comment>Displayed when removing 2FA for yourself</comment>
-  </data>
-  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
-    <value>&lt;strong&gt;ИСКЉУЧУЈЕТЕ ДВО-ФАКТОРСКУ АУТЕНТИФИКАЦИЈУ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Учините ово само ако су сами корисници захтевали од Вас да им уклоните 2FA &lt;strong&gt;и&lt;/strong&gt; ако сте у потпуности сигурни да је захтев дошао управо од те особе, чије се мере сигурности сада уклањају (што је и у сагласности са правилима организације која се односе на верификацију).&lt;br/&gt;&lt;br/&gt;Желите да наставите са уклањањем сигурносних мера за овог корисника? То ће их вратити на класично уношење лозинке.</value>
-    <comment>Displayed when removing 2FA for someone else</comment>
-  </data>
-  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
-    <value>Дво-факторска аутентификација и даље није уклоњена и још је активна.</value>
-  </data>
-  <data name="Timespan_Selection_OneDay" xml:space="preserve">
-    <value>Један дан</value>
-  </data>
-  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
-    <value>Седам дана</value>
-  </data>
-  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
-    <value>Два дана</value>
-  </data>
-  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
-    <value>Две недеље</value>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Да</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
+    <value>Ова линијска ставка се може скенирати аутоматски, путем апликације.</value>
+    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
+  </data>
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>Стање</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
+  </data>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>Debit</value>
   </data>
   <data name="Master_BitIdRegistered" xml:space="preserve">
     <value>&lt;strong&gt;BITID ДВО-ФАКТОРСКА АУТЕНТИФИКАЦИЈА ЈЕ УСПЕШНО АКТИВИРАНА&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;У будуће, када се пријављујете на овај систем, мораћете да користите BitId апликацију коју сте управо употребили да скенирате код.</value>
@@ -834,14 +914,46 @@
   <data name="Master_EditPerson2FAEnable" xml:space="preserve">
     <value>BitID (bitcoin signature) дво-факторска аутентификација</value>
   </data>
+  <data name="Master_EditPerson2FAEnableProvisioning" xml:space="preserve">
+    <value>BitID Дво-факторска аутентификација (онемогућава пријављивање током карантина)
+</value>
+    <comment>This means that a disabling of two-factor authentication will notify the user and lock them out from logging back on for a while, typically 48 hours or seven days.</comment>
+  </data>
   <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
     <value>BitID дво-факторска аутент.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_CannotProvision" xml:space="preserve">
+    <value>&lt;strong&gt;НЕ МОЖЕТЕ ПРУЖИТИ 2FA&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете активирати дво-факторску аутентификацију у туђе име. Свако то мора учинити за себе, како би само он(а) имао(ла) тајне кључеве.</value>
+    <comment>Displayed when somebody tries to turn on 2FA for someone else.</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedOwn" xml:space="preserve">
+    <value>Дво-факторска аутентификација је онемогућена. Сада се морате пријавити са регуларном лозинком.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmingRemovedProvision" xml:space="preserve">
+    <value>Дво-факторска аутентификација је уклоњена за овог корисника. Сада се мора пријавити са регуларном лозинком.</value>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveOwn" xml:space="preserve">
+    <value>&lt;strong&gt;ИСКЉУЧУЈЕТЕ ДВО-ФАКТОРСКУ АУТЕНТИФИКАЦИЈУ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ово се не препоручује. Дво-факторска аутентификација значајно подиже ниво безбедности Вашег налога, а при томе пружа и могућност једноставнијег пријављивања посредством BitID.&lt;br/&gt;&lt;br/&gt;Желите да уклоните 2FA и вратите се на класичну, једну лозинку?</value>
+    <comment>Displayed when removing 2FA for yourself</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_ConfirmRemoveProvision" xml:space="preserve">
+    <value>&lt;strong&gt;ИСКЉУЧУЈЕТЕ ДВО-ФАКТОРСКУ АУТЕНТИФИКАЦИЈУ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Учините ово само ако су сами корисници захтевали од Вас да им уклоните 2FA &lt;strong&gt;и&lt;/strong&gt; ако сте у потпуности сигурни да је захтев дошао управо од те особе, чије се мере сигурности сада уклањају (што је и у сагласности са правилима организације која се односе на верификацију).&lt;br/&gt;&lt;br/&gt;Желите да наставите са уклањањем сигурносних мера за овог корисника? То ће их вратити на класично уношење лозинке.</value>
+    <comment>Displayed when removing 2FA for someone else</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable_NotRemoved" xml:space="preserve">
+    <value>Дво-факторска аутентификација и даље није уклоњена и још је активна.</value>
   </data>
   <data name="Master_EditPersonCurrentPassword" xml:space="preserve">
     <value>Укуцајте тренутну лозинку како бисте омогућили измене</value>
   </data>
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>Налог</value>
+  </data>
   <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
     <value>Ваша сигурност</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>Обезбеђивање сигурности</value>
   </data>
   <data name="Master_EditPersonNewPassword1" xml:space="preserve">
     <value>Постави нову лозинку</value>
@@ -858,245 +970,133 @@
   <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
     <value>&lt;strong&gt;ЛОЗИНКА ЈЕ ПРОМЕЊЕНА&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Успешно сте променили своју лозинку. Као мера сигурности, на снази је карантин за подизање средстава у трајању од 48 сати.</value>
   </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>Ресетуј лозинку</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>Ресетуј корисничку лозинку?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>Управо ресетујете корисничку лозинку. Поменути корисник ће примити линк за ресет у mail-у, а који ће га одвести на страну за ресетовање Swarmops лозинке.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Немојте никада радити ово, осим ако то од Вас није тражио корисник.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Да ли желите да наставите са процедуром за ресетовање лозинке?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>Пошаљи линк за ресет лозинке</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>Ресет лозинке је забрањен</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>Email адреса овог корисника је недавно промењена (пре мање од недељу дана). Из сигурносних разлога, линк за ресетовање лозинке не може бити послат и неће бити послат на email адресу која је недавно промењена.</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>Линк за ресетовање лозинке је послат кориснику.</value>
+  </data>
+  <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
+    <value>Ово не изгледа као валидни телефонски број, али ако јесте - извињавамо се.</value>
+    <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
+  </data>
   <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
     <value>Ако можете, молимо Вас да омогућите BitID дво-факторску аутентификацију.</value>
   </data>
-  <data name="Global_Officer_Female" xml:space="preserve">
-    <value>Официр</value>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>Тренутно сте пријављени на &lt;strong&gt;{0}&lt;/strong&gt;. Да ли желите да се пребаците на другу организацију?</value>
   </data>
-  <data name="Global_Officer_Male" xml:space="preserve">
-    <value>Официр</value>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>Радње</value>
+    <comment>List of shortcuts to likely actions</comment>
   </data>
-  <data name="Global_Officer_Neutral" xml:space="preserve">
-    <value>Официр</value>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>У овом тренутку нема даљих предложених радњи.</value>
+    <comment>No shortcuts from this page right now.</comment>
   </data>
-  <data name="Global_Officer_Plural" xml:space="preserve">
-    <value>Официри</value>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Помоћ</value>
   </data>
-  <data name="Global_Volunteer_Female" xml:space="preserve">
-    <value>Волонтерка</value>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>Инфо</value>
+    <comment>Information about current page</comment>
   </data>
-  <data name="Global_Volunteer_Male" xml:space="preserve">
-    <value>Волонтер</value>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Опције</value>
+    <comment>For various page-specific checkboxes etc</comment>
   </data>
-  <data name="Global_Volunteer_Neutral" xml:space="preserve">
-    <value>Волонтер</value>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Повезано</value>
+    <comment>List of shortcuts to related actions to current one</comment>
   </data>
-  <data name="Global_Volunteer_Plural" xml:space="preserve">
-    <value>Волонтери</value>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>За урадити</value>
+    <comment>List of todo items</comment>
   </data>
-  <data name="Global_Go" xml:space="preserve">
-    <value>Изврши</value>
-    <comment>As in "execute", "run requested procedure"</comment>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>&lt;strong&gt;Све је у реду:&lt;/strong&gt; Нема хитних ставки које захтевају акцију. Јеее!</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
   </data>
-  <data name="Global_Ok" xml:space="preserve">
-    <value>Ok</value>
-    <comment>Shown on confirmation dialogs</comment>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>Нове ставке ће ићи овде.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
   </data>
-  <data name="Global_Proceed" xml:space="preserve">
-    <value>Настави</value>
-    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>Задужена особа</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>Позиција</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>Упишите име...</value>
   </data>
   <data name="Swarm_TypePartialName" xml:space="preserve">
     <value>Упишите део имена...</value>
   </data>
-  <data name="Financial_ProfitToDate" xml:space="preserve">
-    <value>Годишњи Профит/Губитак до датума ({0})</value>
-    <comment>{0} is the currency code</comment>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>петогодишњи</value>
   </data>
-  <data name="Financial_Client" xml:space="preserve">
-    <value>Клијент / Купац</value>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>доживотно</value>
+    <comment>Like "a lifetime membership"</comment>
   </data>
-  <data name="Global_Progress" xml:space="preserve">
-    <value>Напредује</value>
-    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>један месец</value>
   </data>
-  <data name="Financial_TransactionIdShort" xml:space="preserve">
-    <value>Tx#</value>
-    <comment>Used in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>једна година</value>
   </data>
-  <data name="Global_DownloadThis" xml:space="preserve">
-    <value>Преузми ово</value>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>Један дан</value>
   </data>
-  <data name="Global_Dox" xml:space="preserve">
-    <value>Документи</value>
-    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>Један месец</value>
   </data>
-  <data name="Global_SendThisInMail" xml:space="preserve">
-    <value>Пошаљи ово на мој mail</value>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>Једна година</value>
   </data>
-  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
-    <value>Cash</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>Седам дана</value>
   </data>
-  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
-    <value>Core</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>Шест месеци</value>
   </data>
-  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
-    <value>Gold</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>Три месеца</value>
   </data>
-  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
-    <value>Legacy</value>
-    <comment>Keep short - seven chars max</comment>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>Два дана</value>
   </data>
-  <data name="Financial_BitcoinChain" xml:space="preserve">
-    <value>Chain</value>
-    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>Два месеца</value>
   </data>
-  <data name="Financial_OutboundInvoiceSpecificationWithCustomer" xml:space="preserve">
-    <value>Излазна фактура #{0:N0} од {1}</value>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>Две недеље</value>
   </data>
-  <data name="Global_Nuked" xml:space="preserve">
-    <value>(отказано, сторнирано, анулирано)</value>
-    <comment>Used when something is determined invalid</comment>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>Две године</value>
   </data>
-  <data name="Global_Upload" xml:space="preserve">
-    <value>Отпреми</value>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>До прекида</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
   </data>
-  <data name="Global_FileUploadResults" xml:space="preserve">
-    <value>Фајлови који су отпремљени</value>
-  </data>
-  <data name="Financial_AmountVat" xml:space="preserve">
-    <value>ПДВ</value>
-    <comment>The short form of Value Added Tax.</comment>
-  </data>
-  <data name="Financial_AmountVatFull" xml:space="preserve">
-    <value>Порез на додату вредност</value>
-  </data>
-  <data name="Global_Date" xml:space="preserve">
-    <value>Датум</value>
-    <comment>As in calendar date, for example January 21</comment>
-  </data>
-  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
-    <value>МММ д, гггг</value>
-    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
-  </data>
-  <data name="Global_Submit" xml:space="preserve">
-    <value>Пошаљи</value>
-    <comment>As in "Submit this data for processing"</comment>
-  </data>
-  <data name="Financial_GeneralLedger" xml:space="preserve">
-    <value>Главна књига</value>
-  </data>
-  <data name="Global_EnteringSandbox" xml:space="preserve">
-    <value>Ступате у &lt;strong&gt;Sandbox&lt;/strong&gt; организацију.&lt;br/&gt;&lt;br/&gt;Ово је безбедно окружење у коме можете испробавати Swarmops без икаквих ризика који се односе на податке. Лепо се забављајте, а када завршите, вратите се у продукционо окружење.</value>
-  </data>
-  <data name="Global_MonthXtoY" xml:space="preserve">
-    <value>од {0} до {1}</value>
-    <comment>For example, "January to March". The initial "from" is implied.</comment>
-  </data>
-  <data name="Global_SkipNo" xml:space="preserve">
-    <value>Не прескачи</value>
-    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
-  </data>
-  <data name="Global_SkipThis" xml:space="preserve">
-    <value>Прескочи</value>
-    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
-  </data>
-  <data name="Global_SkipYes" xml:space="preserve">
-    <value>Прескочи</value>
-    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
-  </data>
-  <data name="Financial_Ebitda_Long" xml:space="preserve">
-    <value>Зарада пре камата, пореза, губитка вредности и амортизације</value>
-  </data>
-  <data name="Financial_Ebitda_Short" xml:space="preserve">
-    <value>EBITDA</value>
-    <comment>Earnings before Interest, Taxes, Depreciation, and Amortization - a financial term</comment>
-  </data>
-  <data name="Financial_AllBalancesSettled" xml:space="preserve">
-    <value>Сви биланси су решени</value>
-    <comment>Nobody owes anybody anything</comment>
-  </data>
-  <data name="Financial_CurrentBalance" xml:space="preserve">
-    <value>Тренутни биланс</value>
-  </data>
-  <data name="Financial_NoPaymentHistory" xml:space="preserve">
-    <value>Нема убележених уплата</value>
-  </data>
-  <data name="Financial_Owed" xml:space="preserve">
-    <value>Дуг</value>
-    <comment>As in, "Amount Owed"</comment>
-  </data>
-  <data name="Financial_Paid" xml:space="preserve">
-    <value>Плаћено</value>
-    <comment>As in, "Amount Paid To Person"</comment>
-  </data>
-  <data name="Financial_PaymentHistory" xml:space="preserve">
-    <value>Историја уплата</value>
-  </data>
-  <data name="Financial_PaymentSpecification" xml:space="preserve">
-    <value>Уплата #{0:N0}</value>
-    <comment>A Payment (as opposed to payout) is money entering the organization</comment>
-  </data>
-  <data name="Financial_PayoutSpecification" xml:space="preserve">
-    <value>Исплата #{0:N0}</value>
-    <comment>A Pay-OUT is always money leaving the organization</comment>
-  </data>
-  <data name="Financial_PersonIsOwed" xml:space="preserve">
-    <value>Особи се дугује</value>
-    <comment>This is the amount the organization owes to a person, like after filing expense claims.</comment>
-  </data>
-  <data name="Financial_PersonOwes" xml:space="preserve">
-    <value>Особа дугује износ</value>
-    <comment>This is the amount a person owes to the organization, like after a cash advance.</comment>
-  </data>
-  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
-    <value>Непотврђена исплата</value>
-    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
-  </data>
-  <data name="Financial_YouAreOwed" xml:space="preserve">
-    <value>{0} Вам дугује</value>
-    <comment>The {0} is the organization name</comment>
-  </data>
-  <data name="Financial_YouOwe" xml:space="preserve">
-    <value>Дугујете овај износ</value>
-    <comment>Like Person Owes, but directed at the user at the screen</comment>
-  </data>
-  <data name="Financial_Zero" xml:space="preserve">
-    <value>Нула</value>
-    <comment>This is used when a debt is zero; there is no debt to settle</comment>
-  </data>
-  <data name="Global_Closed" xml:space="preserve">
-    <value>Затворено</value>
-    <comment>As in "record or transaction closed"</comment>
-  </data>
-  <data name="Global_EmptySet" xml:space="preserve">
-    <value>Нема забелешки</value>
-    <comment>There are no records of the requested type</comment>
-  </data>
-  <data name="Global_Error_Concurrency" xml:space="preserve">
-    <value>Ова радња више није могућа.</value>
-    <comment>This message is displayed when another user does something just before this user, so that this user's indended action can't be completed. Example: Somebody else denies an expense claim 2 milliseconds before this user tries to approve the same expense claim. The database updates, but the user interface and user won't have time to react.</comment>
-  </data>
-  <data name="Global_Item" xml:space="preserve">
-    <value>Ставка</value>
-    <comment>As in "record", "list item", something listed</comment>
-  </data>
-  <data name="Global_Items" xml:space="preserve">
-    <value>Ставке</value>
-    <comment>As in "records", "list items", something listed</comment>
-  </data>
-  <data name="Global_Opened" xml:space="preserve">
-    <value>Отворен</value>
-    <comment>As in "record or transaction opened"</comment>
-  </data>
-  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
-    <value>Ова линијска ставка се може скенирати аутоматски, путем апликације.</value>
-    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
-  </data>
-  <data name="Financial_DueDateShort" xml:space="preserve">
-    <value>Оквирно</value>
-    <comment>As "due date", as in when a payment is expected, but just the word "due" to be combined with an actual date in the UI. Example: *Due* Jan 21.</comment>
-  </data>
-  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
-    <value>ММММ д</value>
-    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
-  </data>
-  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
-    <value>МММ дд</value>
-    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>две године</value>
+    <comment>Like "a two-year membership"</comment>
   </data>
 </root>

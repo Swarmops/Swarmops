@@ -125,12 +125,22 @@
   </data>
   
   
+  
+  
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geografische Boom</value>
   </data>
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Organisatieclusters</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
   
   <data name="Menu5_Communications" xml:space="preserve">
     <value>Communicatie</value>
@@ -171,6 +181,7 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Maak een Nieuwe Aankoop</value>
   </data>
+  
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Gigs Assistent</value>
   </data>
@@ -198,6 +209,8 @@
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Vraag om Kasvoorschot</value>
   </data>
+  
+  
   
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>Declaraties valideren</value>
@@ -240,6 +253,9 @@
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Balans</value>
   </data>
+  
+  
+  
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>Kan grootboek niet afsluiten voor {0}</value>
   </data>
@@ -247,6 +263,8 @@
   <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
     <value>Grootboek afsluiten voor {0}</value>
   </data>
+  
+  
   
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importeer Bankgegevens</value>
@@ -256,14 +274,19 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Salarisadministratie</value>
   </data>
+  
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Winst- &amp; verliesrekening</value>
   </data>
   
   
+  
+  
+  
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Upload Bankbestanden</value>
   </data>
+  
   
   <data name="Menu5_Organization" xml:space="preserve">
     <value>Organisatie</value>
@@ -318,6 +341,7 @@
   </data>
   
   
+  
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Ledenlijst</value>
   </data>
@@ -330,34 +354,10 @@
   <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>Beheren van Vrijwilligers</value>
   </data>
+  
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Nieuwe Conferentie</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

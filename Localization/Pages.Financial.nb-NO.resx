@@ -127,6 +127,7 @@
   
   
   
+  
   <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
     <value>Mottaker</value>
     <comment>The receiver of money.</comment>
@@ -215,17 +216,71 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Beløp</value>
     <comment>Amount to be paid out</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
     <value>Betalingen er utført</value>
     <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
     <value>Mottaker</value>
     <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referanse</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Kostnader til utbetaling</value>
@@ -235,9 +290,16 @@
   </data>
   
   
+  
+  
+  
+  
+  
+  
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Utbetal</value>
   </data>
+  
   
   
   
@@ -260,6 +322,7 @@
   <data name="RequestCashAdvance_Budget" xml:space="preserve">
     <value>Budsjett</value>
   </data>
+  
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Dine bankdetaljer</value>
   </data>
@@ -301,66 +364,5 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
-    <value>Referanse</value>
-    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
-  </data>
   
 </root>

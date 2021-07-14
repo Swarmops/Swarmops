@@ -372,4 +372,13 @@
     <value>Wartungsspenden</value>
     <comment>This is donations toward maintenance of the Swarmops / Backoffice.Cash codebase and data.</comment>
   </data>
+  <data name="Asset_PrivateWithdrawals" xml:space="preserve">
+    <value>Private Auszahlungen</value>
+  </data>
+  <data name="Debt_PrivateDeposits" xml:space="preserve">
+    <value>Private Einlagen</value>
+  </data>
+  <data name="Asset_PrivateWithdrawals_HealthInsurance" xml:space="preserve">
+    <value>Krankenversicherung</value>
+  </data>
 </root>

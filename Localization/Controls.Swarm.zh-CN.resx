@@ -121,6 +121,9 @@
     <value>分配另一个人...</value>
     <comment>To an existing position that accepts multiple people (like "assistants")</comment>
   </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(在我的组织下分配)</value>
+  </data>
   <data name="Positions_AssignFifthPerson" xml:space="preserve">
     <value>分配一个第五人...</value>
   </data>
@@ -154,6 +157,16 @@
     <value>分配</value>
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;要离开你的职位？&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;这是指派给&lt;strong&gt;你&lt;/strong&gt;的任务。终止你所被分配的任务等同于说“我离职”。此操作马上生效。这是你想要的做吗？&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;终止任务？&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;你是想结束&lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt;在&lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;岗位的工作吗？这样做等同于开除此人，这通常需要遵循内部章程和当地法律。&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>创建新职位...</value>
+  </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
     <value>将一个人以&lt;span id='{0}_modalPositionName'&gt;的身份分配&lt;/span&gt;...&lt;span id='{0}_modalGeographyName'&gt;&lt;/span&gt;</value>
     <comment>Header for new assignment dialog</comment>
@@ -164,16 +177,8 @@
   <data name="Positions_PleaseSelectPerson" xml:space="preserve">
     <value>请选择要分配的人。</value>
   </data>
-  <data name="Positions_Vacant" xml:space="preserve">
-    <value>(职位是空闲的)</value>
-    <comment>For unassigned positions</comment>
-  </data>
-  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;要离开你的职位？&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;这是指派给&lt;strong&gt;你&lt;/strong&gt;的任务。终止你所被分配的任务等同于说“我离职”。此操作马上生效。这是你想要的做吗？&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
-  <data name="Positions_ConfirmTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;终止任务？&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;你是想结束&lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt;在&lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;岗位的工作吗？这样做等同于开除此人，这通常需要遵循内部章程和当地法律。&lt;br/&gt;&lt;br/&gt;</value>
-    <comment>{0} is the person name, {1} is the position title.</comment>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>子部门的主管</value>
   </data>
   <data name="Positions_TerminateNo" xml:space="preserve">
     <value>不要终止</value>
@@ -187,13 +192,8 @@
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>终止任务</value>
   </data>
-  <data name="Positions_AssignElsewhere" xml:space="preserve">
-    <value>(在我的组织下分配)</value>
-  </data>
-  <data name="Positions_CreatePosition" xml:space="preserve">
-    <value>创建新职位...</value>
-  </data>
-  <data name="Positions_Subleaders" xml:space="preserve">
-    <value>子部门的主管</value>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(职位是空闲的)</value>
+    <comment>For unassigned positions</comment>
   </data>
 </root>

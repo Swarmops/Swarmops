@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم تجميع الغبار&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; المبلغ الذي قمت بإرساله هو في الواقع أقل من الرسوم اللازمة لتغطية مصاريف الإرجاع إليك، والتي تساوي {0:N2} microcoins. المبلغ الذي قمت بإرساله يلقب بـ "الغبار" على شبكة البتكوين، ولن يتم نقله مرة أخرى.&lt;br/&gt;
+&lt;br/&gt;قم بإرسال مبلغ أكبر من أجل إنجاز اختبار الصدى.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>هذا كود رمز الإستجابة السريع للبتكوين لإختبار الصدى بالنسبة لجهاز Swarmops كاملا، و ليس فقط لـ {0}. قم بمسحه من على محفظة البتكوين بهاتفك لإنجاز اختبار الصدى، أو قم بالإرسال من على جهاز الكمبيوتر مباشرة إلى [{1}] (هذا عنوان للبتكوين كاش). المبلغ (ناقص رسوم التعدين وقدرها {2:N2} microcoins) سوف يرسل إليك مجددا في غضون بضع ثواني.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +148,64 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>اختبار صدى بتكوين Swarmops</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>إنتحال الشخصية مفعل</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>لديك حصة تجسيد حالية باسم {0}.&lt;a href="javascript:terminateImpersonation();"&gt;إنهاء التجسيد.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;أتريد تجسيد شخص ما؟&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;هذا ليس بالشيئ الهين، فإن لم تكن تفعل هذا لأسباب تقنية ، فقد يكون هذا مخالفا للقانون نسبة لقوانينك المحلية.&lt;br/&gt;&lt;br/&gt;فالهدف من وراء هذه الأداة هي معالجة بعض الأعطال الفنية.
+لقد تم تسجيل الدخول.&lt;br/&gt;&lt;br/&gt;أتود المتابعة؟</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم انهاء التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;إنتهى التجسيد مع {0:HH:mm} UTC.
+أنت الأن مسجّل للدخول بنفسك من جديد.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;لا يمكنك تجسيد مديرك المباشر.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; لا يمكنك تجسيد شخص أخر لديه الحق في الولوج إلى مستوى النظام.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>يتوجب عليك تحديد شخص لتمثيله.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>إن كانت لديك الرغبة في تجسيد نفسك، فنحن ننصحك بأن تقوم بتسجيل الخروج من Swarmops وأن تقوم بالبحث عن مساعدة من نوع أخر.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; لا يبدو أنك تتمتع بالإمتيازات الكافية من أجل تجسيد شخص أخر.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>تجسيد شخصية مستخدم آخر</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>تجسيد</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>الشخص الذي ستنتحل شخصيته</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;التجسيد الأن قائم&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;التجسيد إنطلق مع حوالي {0:HH:mm} UTC. هذه هي اللوحة الرئيسية كما يراها الشخص الذي تقوم بتجسيده. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>إن أداة التصحيح التالية تمكنك من تجسيد مستخدم أخر لترى و تقوم باختبار Swarmops كما يفعل عندما يقوم بتسجيل الدخول.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;تحذير:&lt;/strong&gt;هته الأداة هي أداة تطفلية ويجب عليك أن تستعملها فقط لأغراض تتعلق بالتطوير التقني أو عند طلب الدعم. إن إستعمال هذه الأداة لا يجب أن يستهان به.&lt;/p&gt;
+&lt;p&gt;جميع عمليات التجسيد هي موثقة، وجميع العمليات المنجزة أثناء التجسيد يمكن تعقبها، والمستخدم الذي قمت بتجسيده سيكون على دراية بتدخلك.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>النشطاء سيتم تسميتهم</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(لا يطبق)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>لا تتم منادتهم بأعضاء إلى حد الأن</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>المنظمة الأساس</value>
@@ -188,6 +248,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>تجاري</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>الحكومة</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>غير مربحة</value>
@@ -269,6 +332,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>الاسم المستخدم لمدير النظام في حقل المرسل</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>تغيير اسم مضيف الخلفية</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>يجب أن يكون منفذ SMTP قيمة رقمية. غير قادر على قراءة القيمة host:port</value>
   </data>
@@ -302,76 +368,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>أعتقد أنه عليك حقاً حقاً حقاً استخدام بروتوكول HTTPS الآمن في موقع مثل هذا الموقع. ولكنك تعرف هذا الأمر مسبقاً. اليس كذلك؟</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>تغيير اسم مضيف الخلفية</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>مدخل WebSocket (الواجهة)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>مدخل WebSocket (الخلفية)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>إنتحال الشخصية مفعل</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>لديك حصة تجسيد حالية باسم {0}.&lt;a href="javascript:terminateImpersonation();"&gt;إنهاء التجسيد.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;أتريد تجسيد شخص ما؟&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;هذا ليس بالشيئ الهين، فإن لم تكن تفعل هذا لأسباب تقنية ، فقد يكون هذا مخالفا للقانون نسبة لقوانينك المحلية.&lt;br/&gt;&lt;br/&gt;فالهدف من وراء هذه الأداة هي معالجة بعض الأعطال الفنية.
-لقد تم تسجيل الدخول.&lt;br/&gt;&lt;br/&gt;أتود المتابعة؟</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;لقد تم انهاء التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;إنتهى التجسيد مع {0:HH:mm} UTC.
-أنت الأن مسجّل للدخول بنفسك من جديد.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;لا يمكنك تجسيد مديرك المباشر.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; لا يمكنك تجسيد شخص أخر لديه الحق في الولوج إلى مستوى النظام.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>يتوجب عليك تحديد شخص لتمثيله.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>إن كانت لديك الرغبة في تجسيد نفسك، فنحن ننصحك بأن تقوم بتسجيل الخروج من Swarmops وأن تقوم بالبحث عن مساعدة من نوع أخر.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;لقد تم رفض التجسيد&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; لا يبدو أنك تتمتع بالإمتيازات الكافية من أجل تجسيد شخص أخر.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>تجسيد شخصية مستخدم آخر</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>تجسيد</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>الشخص الذي ستنتحل شخصيته</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;التجسيد الأن قائم&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;التجسيد إنطلق مع حوالي {0:HH:mm} UTC. هذه هي اللوحة الرئيسية كما يراها الشخص الذي تقوم بتجسيده. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>إن أداة التصحيح التالية تمكنك من تجسيد مستخدم أخر لترى و تقوم باختبار Swarmops كما يفعل عندما يقوم بتسجيل الدخول.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;تحذير:&lt;/strong&gt;هته الأداة هي أداة تطفلية ويجب عليك أن تستعملها فقط لأغراض تتعلق بالتطوير التقني أو عند طلب الدعم. إن إستعمال هذه الأداة لا يجب أن يستهان به.&lt;/p&gt;
-&lt;p&gt;جميع عمليات التجسيد هي موثقة، وجميع العمليات المنجزة أثناء التجسيد يمكن تعقبها، والمستخدم الذي قمت بتجسيده سيكون على دراية بتدخلك.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>لا تتم منادتهم بأعضاء إلى حد الأن</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(لا يطبق)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>الحكومة</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;لقد تم تجميع الغبار&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; المبلغ الذي قمت بإرساله هو في الواقع أقل من الرسوم اللازمة لتغطية مصاريف الإرجاع إليك، والتي تساوي {0:N2} microcoins. المبلغ الذي قمت بإرساله يلقب بـ "الغبار" على شبكة البتكوين، ولن يتم نقله مرة أخرى.&lt;br/&gt;
-&lt;br/&gt;قم بإرسال مبلغ أكبر من أجل إنجاز اختبار الصدى.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>مدخل WebSocket (الواجهة)</value>
   </data>
 </root>

@@ -126,8 +126,14 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Креирај Нову Организацију</value>
   </data>
-  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
-    <value>Подешавања Организације</value>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Bitcoin Hotwallet, Ехо Тест</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Представљање</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Дрвце региона</value>
@@ -135,8 +141,35 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Кластери Организације</value>
   </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Подешавања Организације</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>Запошљавање у Организацији</value>
+  </data>
   <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>Општа системска подешавања</value>
+  </data>
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>Подеси повезане налоге</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>Подеси график налога</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>Подеси платни списак</value>
+  </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>Сачињено {0:MMM d, yyyy}</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} линија кода</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Пријави Swarmops Bug (на Github-у)</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>Комуникације</value>
@@ -190,6 +223,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Направи налог за куповину</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Донирај средства</value>
+  </data>
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Асистент за гаже (gigs)</value>
   </data>
@@ -228,6 +264,14 @@
   </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Затражи приспеће (Cash Advance)</value>
+  </data>
+  <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
+    <value>Захтевај повраћај</value>
+    <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
+  </data>
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Моја плата</value>
+    <comment>This lists salary payments for the logged on individual</comment>
   </data>
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>Пошаљи нову фактуру</value>
@@ -277,6 +321,15 @@
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Табела биланса стања</value>
   </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>Салдо и подударање трансакција</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Bitcoin Hotwallet</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Буџет vs Стварно стање</value>
+  </data>
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>Не може да затвори пословне књиге за {0}</value>
   </data>
@@ -288,6 +341,12 @@
   </data>
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>Отклањање књиговодствених грешака, Налози</value>
+  </data>
+  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
+    <value>Амортизована средства и добра</value>
+  </data>
+  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
+    <value>Губитак вредности и амортизација</value>
   </data>
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Увези банкарске податке</value>
@@ -301,6 +360,10 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Платни списак</value>
   </data>
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>Подешавања платног списка</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Профит и Губици, Изјава</value>
   </data>
@@ -311,8 +374,22 @@
     <value>Подеси буџете</value>
     <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
   </data>
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Порески обрасци</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Обрасци за порез на плату</value>
+  </data>
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>Праћене трансакције</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Пошаљи банкарске фајлове</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>ПДВ, извештаји</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
   </data>
   <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
     <value>Листа незавршених рачуна</value>
@@ -371,6 +448,10 @@
   <data name="Menu5_People_AddPerson" xml:space="preserve">
     <value>Додај [Regular]</value>
   </data>
+  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
+    <value>Дистрибуирана средства</value>
+    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
+  </data>
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>Излистај/Пронађи људе</value>
   </data>
@@ -386,6 +467,9 @@
   <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>Управљање волонтерима</value>
   </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>Моја Локална Организација</value>
+  </data>
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Нова конференција</value>
   </data>
@@ -396,93 +480,9 @@
     <value>Страница за самопријављивање</value>
   </data>
   
-  
-  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
-    <value>Порески обрасци</value>
-  </data>
-  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
-    <value>Обрасци за порез на плату</value>
-  </data>
-  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
-    <value>Салдо и подударање трансакција</value>
-  </data>
-  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
-    <value>Запошљавање у Организацији</value>
-  </data>
-  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
-    <value>Моја Локална Организација</value>
-  </data>
-  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
-    <value>Донирај средства</value>
-  </data>
-  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
-    <value>Буџет vs Стварно стање</value>
-  </data>
-  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
-    <value>Bitcoin Hotwallet</value>
-  </data>
-  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
-    <value>Сачињено {0:MMM d, yyyy}</value>
-    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
-  </data>
-  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
-    <value>{0:N0} линија кода</value>
-  </data>
-  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
-    <value>Пријави Swarmops Bug (на Github-у)</value>
-  </data>
-  <data name="Menu5_Administration_Debug" xml:space="preserve">
-    <value>Debug</value>
-  </data>
-  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
-    <value>Представљање</value>
-  </data>
-  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
-    <value>ПДВ, извештаји</value>
-    <comment>This is a European thing (Value Added Tax).</comment>
-  </data>
-  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
-    <value>Bitcoin Hotwallet, Ехо Тест</value>
-  </data>
-  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
-    <value>Подеси повезане налоге</value>
-    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
-  </data>
-  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
-    <value>Подеси график налога</value>
-    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
-  </data>
-  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
-    <value>Подеси платни списак</value>
-  </data>
-  <data name="Menu5_Financial_Salary" xml:space="preserve">
-    <value>Моја плата</value>
-    <comment>This lists salary payments for the logged on individual</comment>
-  </data>
-  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
-    <value>Амортизована средства и добра</value>
-  </data>
-  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
-    <value>Губитак вредности и амортизација</value>
-  </data>
-  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
-    <value>Подешавања платног списка</value>
-    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
-  </data>
-  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
-    <value>Праћене трансакције</value>
-    <comment>Tracking of special transactions</comment>
-  </data>
-  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
-    <value>Дистрибуирана средства</value>
-    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
-  </data>
   <data name="Menu5_Reports" xml:space="preserve">
     <value>Извештаји</value>
     <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>
   </data>
-  <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
-    <value>Захтевај повраћај</value>
-    <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
-  </data>
+  
 </root>

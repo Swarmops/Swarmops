@@ -121,6 +121,9 @@
     <value>Nomeie outra pessoa...</value>
     <comment>To an existing position that accepts multiple people (like "assistants")</comment>
   </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(nomear sob a Minha Organização)</value>
+  </data>
   <data name="Positions_AssignFifthPerson" xml:space="preserve">
     <value>Nomeie uma quinta pessoa...</value>
   </data>
@@ -154,6 +157,16 @@
     <value>Atribuír</value>
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;DEMITIR-SE DA SUA POSIÇÃO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Esta é a &lt;strong&gt;sua&lt;/strong&gt; missão. Terminar a sua própria missão é o equivalente a dizer "EU DEMITO-ME". Isto terá efeito imediato. É isto o que pretendia fazer?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;FINALIZAR TAREFA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Deseja retirar &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; da tarefa enquanto &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Isto é o equivalente a despedir alguém e geralmente necessita de estar em conformidade com os processos internos e legislação local.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Criar nova posição...</value>
+  </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
     <value>Atribuír pessoa como &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt; &lt;span id='{0}_modalGeographyName'&gt; &lt;/span&gt;</value>
     <comment>Header for new assignment dialog</comment>
@@ -164,16 +177,8 @@
   <data name="Positions_PleaseSelectPerson" xml:space="preserve">
     <value>Por favor selecione uma pessoa para nomear.</value>
   </data>
-  <data name="Positions_Vacant" xml:space="preserve">
-    <value>(posição vaga)</value>
-    <comment>For unassigned positions</comment>
-  </data>
-  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;DEMITIR-SE DA SUA POSIÇÃO?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Esta é a &lt;strong&gt;sua&lt;/strong&gt; missão. Terminar a sua própria missão é o equivalente a dizer "EU DEMITO-ME". Isto terá efeito imediato. É isto o que pretendia fazer?&lt;br/&gt;&lt;br/&gt;</value>
-  </data>
-  <data name="Positions_ConfirmTerminate" xml:space="preserve">
-    <value>&lt;strong&gt;FINALIZAR TAREFA?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Deseja retirar &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; da tarefa enquanto &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Isto é o equivalente a despedir alguém e geralmente necessita de estar em conformidade com os processos internos e legislação local.&lt;br/&gt;&lt;br/&gt;</value>
-    <comment>{0} is the person name, {1} is the position title.</comment>
+  <data name="Positions_Subleaders" xml:space="preserve">
+    <value>Líderes de subdivisões</value>
   </data>
   <data name="Positions_TerminateNo" xml:space="preserve">
     <value>Não Terminar</value>
@@ -187,13 +192,8 @@
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>Terminar Nomeação</value>
   </data>
-  <data name="Positions_AssignElsewhere" xml:space="preserve">
-    <value>(nomear sob a Minha Organização)</value>
-  </data>
-  <data name="Positions_CreatePosition" xml:space="preserve">
-    <value>Criar nova posição...</value>
-  </data>
-  <data name="Positions_Subleaders" xml:space="preserve">
-    <value>Líderes de subdivisões</value>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(posição vaga)</value>
+    <comment>For unassigned positions</comment>
   </data>
 </root>

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;POUSSIERES COLLECTEES&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Le montant envoyé est inférieur au montant prévu pour vous le renvoyer, à savoir {0:N2} microcoins. L'argent que vous avez envoyé est maintenant appelé "poussière" sur le réseau Bitcoin, et ne sera plus déplacé. &lt;br/&gt; &lt;br/&gt; Envoyez un montant plus élevé pour effectuer un test d'écho.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>Ceci est un code QR pour le test d'écho bitcoin pour toute cette installation de Swarmops, pas seulement pour {0}. Lisez-le à partir du portefeuille bitcoin de votre téléphone pour effectuer le test d'écho ou envoyez-le directement de votre ordinateur à [{1}] (c'est une adresse Bitcoin Cash). Le montant (moins les frais miniers de {2:N2} microcoins) vous sera renvoyé dans les prochaines secondes.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,62 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Test d'écho Bitcoin par Swarmops</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Personnification active</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Vous avez une session d'emprunt d'identité active de {0}.&lt;a href="javascript:terminateImpersonation();"&gt; Y mettre fin.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt; USURPER L’IDENTITÉ DE LA PERSONNE?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Ceci n'est pas à prendre à la légère, et si vous ne faites pas cela pour des raisons techniques, cela peut même être illégal selon les lois locales.&lt;br/&gt;&lt;br/&gt; Le but de cet outil est de corriger les défaillances techniques. Tout est consigné.&lt;br/&gt;&lt;br/&gt; Continuer?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;USURPATION D'IDENTITÉ TERMINÉE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Usurpation terminée à {0:HH:mm} UTC. Vous êtes connecté en tant que vous même de nouveau.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt; PERSONNIFICATION REFUSÉE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Vous ne pouvez personnifier votre manager direct.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;PERSONNIFICATION REFUSÉE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Vous ne pouvez personnifier quelqu'un avec un accès niveau système.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Vous devez sélectionner une personne à personnifier.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Si vous avez besoin de vous personnifier, on vous conseille de vous déconnecter de Swarmops et chercher un autre type d'assistance.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;PERSONNIFICATION REFUSÉE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Il semble que vous ne disposez de privilèges suffisants pour personnifier une autre personne.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Personnifier un autre utilisateur</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Personnifier</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Personne à personnifier</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;PERSONNIFICATION ACTIVE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Personnification démarrée à {0:HH:mm} UTC. Ceci est le tableau de bord en tant que la personne imitée le voit. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Cet outil de débogage vous permet d’emprunter l’identité d’un autre utilisateur pour voir et expérimenter Swarmops comme il le fait lorsque il est connecté.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AVERTISSEMENT:&lt;/strong&gt; Cet outil extrêmement intrusif ne doit être utilisé que pour le développement technique et dans le cas d'une demande d'assistance. Utiliser ceci ne devrait pas être pris à la légère. &lt;/p&gt;
+&lt;p&gt;Tous les emprunts d'identité sont consignées en permanence, toutes les actions prises lors de l'emprunt d'identité sont traçables, et l'utilisateur usurpé sera informé de l'intrusion.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Les activistes seront appelés</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(Non applicable)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Ceux qui ne sont pas encore membres s'appellent</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Organisation de premier niveau</value>
@@ -188,6 +245,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Commercial</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Gouvernement</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Non lucrative</value>
@@ -269,6 +329,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Notifications de l'administrateur du nom</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Écrasement du nom du hôte Backend</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>Le port SMTP doit être une valeur numérique. Impossible d'analyser host:port.</value>
   </data>
@@ -302,73 +365,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Vous devez vraiment, vraiment? VRAIMENT utiliser HTTPS pour un site comme tel. Mais vous le saviez déjà, n'est ce pas?</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>Écrasement du nom du hôte Backend</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>Port Websocket (front-end)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>Port Websocket (Back-end)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>Personnification active</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>Vous avez une session d'emprunt d'identité active de {0}.&lt;a href="javascript:terminateImpersonation();"&gt; Y mettre fin.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt; USURPER L’IDENTITÉ DE LA PERSONNE?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Ceci n'est pas à prendre à la légère, et si vous ne faites pas cela pour des raisons techniques, cela peut même être illégal selon les lois locales.&lt;br/&gt;&lt;br/&gt; Le but de cet outil est de corriger les défaillances techniques. Tout est consigné.&lt;br/&gt;&lt;br/&gt; Continuer?</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;USURPATION D'IDENTITÉ TERMINÉE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Usurpation terminée à {0:HH:mm} UTC. Vous êtes connecté en tant que vous même de nouveau.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt; PERSONNIFICATION REFUSÉE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Vous ne pouvez personnifier votre manager direct.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;PERSONNIFICATION REFUSÉE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Vous ne pouvez personnifier quelqu'un avec un accès niveau système.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>Vous devez sélectionner une personne à personnifier.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Si vous avez besoin de vous personnifier, on vous conseille de vous déconnecter de Swarmops et chercher un autre type d'assistance.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;PERSONNIFICATION REFUSÉE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Il semble que vous ne disposez de privilèges suffisants pour personnifier une autre personne.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>Personnifier un autre utilisateur</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>Personnifier</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>Personne à personnifier</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;PERSONNIFICATION ACTIVE&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Personnification démarrée à {0:HH:mm} UTC. Ceci est le tableau de bord en tant que la personne imitée le voit. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>&lt;p&gt;Cet outil de débogage vous permet d’emprunter l’identité d’un autre utilisateur pour voir et expérimenter Swarmops comme il le fait lorsque il est connecté.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;AVERTISSEMENT:&lt;/strong&gt; Cet outil extrêmement intrusif ne doit être utilisé que pour le développement technique et dans le cas d'une demande d'assistance. Utiliser ceci ne devrait pas être pris à la légère. &lt;/p&gt;
-&lt;p&gt;Tous les emprunts d'identité sont consignées en permanence, toutes les actions prises lors de l'emprunt d'identité sont traçables, et l'utilisateur usurpé sera informé de l'intrusion.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Ceux qui ne sont pas encore membres s'appellent</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(Non applicable)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Gouvernement</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;POUSSIERES COLLECTEES&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Le montant envoyé est inférieur au montant prévu pour vous le renvoyer, à savoir {0:N2} microcoins. L'argent que vous avez envoyé est maintenant appelé "poussière" sur le réseau Bitcoin, et ne sera plus déplacé. &lt;br/&gt; &lt;br/&gt; Envoyez un montant plus élevé pour effectuer un test d'écho.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>Port Websocket (front-end)</value>
   </data>
 </root>

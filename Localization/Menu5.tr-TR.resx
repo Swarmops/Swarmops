@@ -126,8 +126,14 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Yeni Organizasyon Oluştur</value>
   </data>
-  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
-    <value>Organizasyon Ayarları</value>
+  <data name="Menu5_Administration_Debug" xml:space="preserve">
+    <value>Hata ayıklama</value>
+  </data>
+  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
+    <value>Bitcoin Hotwallet'ı Eko Testi</value>
+  </data>
+  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
+    <value>Kişileştir</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Coğrafya Ağacı</value>
@@ -135,8 +141,35 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Organizasyon Kümeleri</value>
   </data>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Organizasyon Ayarları</value>
+  </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>Organizasyon Personeli</value>
+  </data>
   <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>Sistem Geneli Ayarlar</value>
+  </data>
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>Bağlı Hesapları Ayarlayın</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>Hesapların Grafiklerini Ayarla</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>Bordro Ayarla</value>
+  </data>
+  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
+    <value>{0:MMM d, yyyy}'de kuruldu</value>
+    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
+  </data>
+  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
+    <value>{0:N0} satır kod</value>
+  </data>
+  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
+    <value>Bir Swarmops hatası bildir (GitHub'da)</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>İletişimler</value>
@@ -190,6 +223,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Satın Alma Emri Oluştur</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Fon Bağışla</value>
+  </data>
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>İş Yardımcısı</value>
   </data>
@@ -228,6 +264,11 @@
   </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Nakit Avans Talep Et</value>
+  </data>
+  
+  <data name="Menu5_Financial_Salary" xml:space="preserve">
+    <value>Maaşım</value>
+    <comment>This lists salary payments for the logged on individual</comment>
   </data>
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>Yeni Fatura Gönder</value>
@@ -277,6 +318,15 @@
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Bilanço</value>
   </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>İşlemleri Dengele &amp; Eşleştir</value>
+  </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Bitoin Hotwallet'ı</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Bütçe vs Gerçek Değer</value>
+  </data>
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>{0} İçin Defter Kapatılamıyor</value>
   </data>
@@ -288,6 +338,10 @@
   </data>
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>Defter, Hesaplarda Hata Ayıkla</value>
+  </data>
+  
+  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
+    <value>Değer Kayıpları ve Amortismanlar</value>
   </data>
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Banka Verilerini İçe Aktar</value>
@@ -301,6 +355,10 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Bordro</value>
   </data>
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>Bordro Ayarlamaları Yapın</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Kar &amp; Zarar Beyanı</value>
   </data>
@@ -311,8 +369,22 @@
     <value>Bütçeleri ayarla</value>
     <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
   </data>
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Vergi Formları</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Bordro Vergi Formları</value>
+  </data>
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>İzlenen İşlemler</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Banka Dosyaları Yükle</value>
+  </data>
+  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
+    <value>KDV Raporları</value>
+    <comment>This is a European thing (Value Added Tax).</comment>
   </data>
   <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
     <value>Belirsiz Hesapları Listele</value>
@@ -371,6 +443,10 @@
   <data name="Menu5_People_AddPerson" xml:space="preserve">
     <value>[Regular] Ekle</value>
   </data>
+  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
+    <value>Dağıtılmış Varlıklar</value>
+    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
+  </data>
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>İnsanları Listele/Bul</value>
   </data>
@@ -386,6 +462,9 @@
   <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>Gönüllüleri Yönet</value>
   </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>Yerel Organizasyonum</value>
+  </data>
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Yeni Konferans</value>
   </data>
@@ -396,85 +475,6 @@
     <value>Kendi-Kendine Kayıt Sayfası</value>
   </data>
   
-  
-  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
-    <value>Vergi Formları</value>
-  </data>
-  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
-    <value>Bordro Vergi Formları</value>
-  </data>
-  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
-    <value>İşlemleri Dengele &amp; Eşleştir</value>
-  </data>
-  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
-    <value>Organizasyon Personeli</value>
-  </data>
-  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
-    <value>Yerel Organizasyonum</value>
-  </data>
-  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
-    <value>Fon Bağışla</value>
-  </data>
-  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
-    <value>Bütçe vs Gerçek Değer</value>
-  </data>
-  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
-    <value>Bitoin Hotwallet'ı</value>
-  </data>
-  <data name="Menu5_Beta_BuildTime" xml:space="preserve">
-    <value>{0:MMM d, yyyy}'de kuruldu</value>
-    <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
-  </data>
-  <data name="Menu5_Beta_LinesOfCode" xml:space="preserve">
-    <value>{0:N0} satır kod</value>
-  </data>
-  <data name="Menu5_Beta_ReportBug" xml:space="preserve">
-    <value>Bir Swarmops hatası bildir (GitHub'da)</value>
-  </data>
-  <data name="Menu5_Administration_Debug" xml:space="preserve">
-    <value>Hata ayıklama</value>
-  </data>
-  <data name="Menu5_Administration_Debug_Impersonate" xml:space="preserve">
-    <value>Kişileştir</value>
-  </data>
-  <data name="Menu5_Ledgers_VatReports" xml:space="preserve">
-    <value>KDV Raporları</value>
-    <comment>This is a European thing (Value Added Tax).</comment>
-  </data>
-  <data name="Menu5_Administration_Debug_BitcoinEchoTest" xml:space="preserve">
-    <value>Bitcoin Hotwallet'ı Eko Testi</value>
-  </data>
-  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
-    <value>Bağlı Hesapları Ayarlayın</value>
-    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
-  </data>
-  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
-    <value>Hesapların Grafiklerini Ayarla</value>
-    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
-  </data>
-  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
-    <value>Bordro Ayarla</value>
-  </data>
-  <data name="Menu5_Financial_Salary" xml:space="preserve">
-    <value>Maaşım</value>
-    <comment>This lists salary payments for the logged on individual</comment>
-  </data>
-  
-  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
-    <value>Değer Kayıpları ve Amortismanlar</value>
-  </data>
-  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
-    <value>Bordro Ayarlamaları Yapın</value>
-    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
-  </data>
-  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
-    <value>İzlenen İşlemler</value>
-    <comment>Tracking of special transactions</comment>
-  </data>
-  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
-    <value>Dağıtılmış Varlıklar</value>
-    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
-  </data>
   <data name="Menu5_Reports" xml:space="preserve">
     <value>Raporlar</value>
     <comment>This is financial analysis reports. "Analysis" would also work as translation.</comment>

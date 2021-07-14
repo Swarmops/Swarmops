@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
+    <value>&lt;strong&gt;САКУПЉАЊЕ ПРАШИНЕ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Износ који сте послали је мањи од износа трошкова слања и враћања средстава Вама, а он износи {0:N2} microcoin-а. Износ који сте послали се у жаргону bitcoin мреже зове "прашина" и неће бити послат.&lt;br/&gt;&lt;br/&gt;Како бисте спровели echo test, пошаљите виши износ.</value>
+  </data>
   <data name="BitcoinEchoTest_Explain" xml:space="preserve">
     <value>Ово је QR код за bitcoin echo testing који важи за читаву Swarmops инсталацију, а не само за {0}. Учитајте га из свог bitcoin новчаника на телефону како бисте урадили echo test, или га пошаљите са свог компјутера, директно на [{1}] (ово је Bitcoin Cash адреса). Износ (умањен за трошкове рударења од {2:N2} microcoin-а) ће Вам бити послат натраг за неколико тренутака.</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
@@ -144,8 +147,62 @@
   <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
     <value>Swarmops Bitcoin Echo Test</value>
   </data>
+  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
+    <value>Представљање особе је активно</value>
+    <comment>Visible on Dashboard</comment>
+  </data>
+  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
+    <value>Активирали сте секцију представљања у име {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Заврши представљање.&lt;/a&gt;</value>
+    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
+  </data>
+  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАТЕ ДРУГУ ОСОБУ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ако ово не радите из техничких разлога, онда је то озбиљно дело, које можда подлеже локалним законима.&lt;br/&gt;&lt;br/&gt;Сврха овог алата је да реши техничке проблеме. Све се уписује у регистар.&lt;br/&gt;&lt;br/&gt;Настављате?</value>
+  </data>
+  <data name="CommenceImpersonation_Ended" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ИМЕ ДРУГЕ ОСОБЕ ЈЕ ЗАВРШЕНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Представљање у име друге особе је завршено у {0:HH:mm} UTC. Сада поново представљате себе.</value>
+    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ТУЂЕ ИМЕ ЈЕ БЛОКИРАНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете да представљате свог директно надређеног.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ТУЂЕ ИМЕ ЈЕ БЛОКИРАНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете да представљате некога са приступом системском нивоу.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
+    <value>Морате да селектујете особу коју ћете да представљате.</value>
+  </data>
+  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
+    <value>Ако имате потребу да из неких разлога представљате себе, уместо себе, молимо Вас, одјавите се са Swarmops-а и потражите стручну помоћ.</value>
+  </data>
+  <data name="CommenceImpersonation_Failed" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ТУЂЕ ИМЕ ЈЕ ОНЕМОГУЋЕНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Изгледа да немате одговарајуће привилегије које би Вам то дозволиле.</value>
+  </data>
+  <data name="CommenceImpersonation_Header" xml:space="preserve">
+    <value>Представљај другог корисника</value>
+  </data>
+  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
+    <value>Представљање у туђе име</value>
+  </data>
+  <data name="CommenceImpersonation_Person" xml:space="preserve">
+    <value>Особа у чије се име представљате</value>
+  </data>
+  <data name="CommenceImpersonation_Success" xml:space="preserve">
+    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ИМЕ ДРУГЕ ОСОБЕ ЈЕ АКТИВИРАНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Представљање је отпочело у {0:HH:mm} UTC. Ово је контролна табла коју види особа у чије име радите. </value>
+    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
+  </data>
+  <data name="CommenceImpersonation_Warning" xml:space="preserve">
+    <value>&lt;p&gt;Овај алат за уклањање грешака Вам омогућава да преузмете туђи идентитет и искусите Swarmops као да сте пријављени са туђим подацима.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;УПОЗОРЕЊЕ:&lt;/strong&gt; Ово је озбиљан алат и може се користити само у случајевима када се решава технички проблем или када се тражи подршка.&lt;/p&gt;
+&lt;p&gt;Све замене идентитета се трајно снимају и сваку извршену радњу је могуће пратити. Такође, лице у чије име се ради, биће обавештено о томе.&lt;/p&gt;</value>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Активисти ће бити позвани</value>
+  </data>
+  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
+    <value>(није применљиво)</value>
+  </data>
+  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
+    <value>Позвани су људи који још нису чланови</value>
   </data>
   <data name="CreateOrganization_AsRoot" xml:space="preserve">
     <value>Организација основног нивоа</value>
@@ -188,6 +245,9 @@
   </data>
   <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
     <value>Комерцијална</value>
+  </data>
+  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
+    <value>Влада</value>
   </data>
   <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
     <value>Непрофитна</value>
@@ -269,6 +329,9 @@
   <data name="SystemSettings_AdminSender" xml:space="preserve">
     <value>Администрација обавештења, по именима</value>
   </data>
+  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
+    <value>Backend Hostname Override</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>SMTP Port мора бити нумерички. Unable to parse (програм не може да растумачи) host:port.</value>
   </data>
@@ -302,73 +365,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Заиста, ЗАИСТА, би требало да користите HTTPS за веб-сајтове попут овог. Али, то већ знате, зар не?</value>
   </data>
-  <data name="SystemSettings_BackendHostnameOverride" xml:space="preserve">
-    <value>Backend Hostname Override</value>
-  </data>
-  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
-    <value>WebSocket Порт (Frontend)</value>
-  </data>
   <data name="SystemSettings_WebsocketPortBackend" xml:space="preserve">
     <value>WebSocket Порт (Backend)</value>
   </data>
-  <data name="CommenceImpersonation_Active_Header" xml:space="preserve">
-    <value>Представљање особе је активно</value>
-    <comment>Visible on Dashboard</comment>
-  </data>
-  <data name="CommenceImpersonation_Active_Text" xml:space="preserve">
-    <value>Активирали сте секцију представљања у име {0}. &lt;a href="javascript:terminateImpersonation();"&gt;Заврши представљање.&lt;/a&gt;</value>
-    <comment>Visible on Dashboard. {0} is the impersonated name.</comment>
-  </data>
-  <data name="CommenceImpersonation_Confirm" xml:space="preserve">
-    <value>&lt;strong&gt;ПРЕДСТАВЉАТЕ ДРУГУ ОСОБУ?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Ако ово не радите из техничких разлога, онда је то озбиљно дело, које можда подлеже локалним законима.&lt;br/&gt;&lt;br/&gt;Сврха овог алата је да реши техничке проблеме. Све се уписује у регистар.&lt;br/&gt;&lt;br/&gt;Настављате?</value>
-  </data>
-  <data name="CommenceImpersonation_Ended" xml:space="preserve">
-    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ИМЕ ДРУГЕ ОСОБЕ ЈЕ ЗАВРШЕНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Представљање у име друге особе је завршено у {0:HH:mm} UTC. Сада поново представљате себе.</value>
-    <comment>{0} will be fed with a DateTime.  The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_Report" xml:space="preserve">
-    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ТУЂЕ ИМЕ ЈЕ БЛОКИРАНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете да представљате свог директно надређеног.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Authority_System" xml:space="preserve">
-    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ТУЂЕ ИМЕ ЈЕ БЛОКИРАНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Не можете да представљате некога са приступом системском нивоу.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_SelectPerson" xml:space="preserve">
-    <value>Морате да селектујете особу коју ћете да представљате.</value>
-  </data>
-  <data name="CommenceImpersonation_Error_Self" xml:space="preserve">
-    <value>Ако имате потребу да из неких разлога представљате себе, уместо себе, молимо Вас, одјавите се са Swarmops-а и потражите стручну помоћ.</value>
-  </data>
-  <data name="CommenceImpersonation_Failed" xml:space="preserve">
-    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ТУЂЕ ИМЕ ЈЕ ОНЕМОГУЋЕНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Изгледа да немате одговарајуће привилегије које би Вам то дозволиле.</value>
-  </data>
-  <data name="CommenceImpersonation_Header" xml:space="preserve">
-    <value>Представљај другог корисника</value>
-  </data>
-  <data name="CommenceImpersonation_Impersonate" xml:space="preserve">
-    <value>Представљање у туђе име</value>
-  </data>
-  <data name="CommenceImpersonation_Person" xml:space="preserve">
-    <value>Особа у чије се име представљате</value>
-  </data>
-  <data name="CommenceImpersonation_Success" xml:space="preserve">
-    <value>&lt;strong&gt;ПРЕДСТАВЉАЊЕ У ИМЕ ДРУГЕ ОСОБЕ ЈЕ АКТИВИРАНО&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Представљање је отпочело у {0:HH:mm} UTC. Ово је контролна табла коју види особа у чије име радите. </value>
-    <comment>{0} will be fed with a DateTime. The colon is rewritten automatically into the current DateTimeFormatInfo.TimeSeparator.</comment>
-  </data>
-  <data name="CommenceImpersonation_Warning" xml:space="preserve">
-    <value>&lt;p&gt;Овај алат за уклањање грешака Вам омогућава да преузмете туђи идентитет и искусите Swarmops као да сте пријављени са туђим подацима.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;УПОЗОРЕЊЕ:&lt;/strong&gt; Ово је озбиљан алат и може се користити само у случајевима када се решава технички проблем или када се тражи подршка.&lt;/p&gt;
-&lt;p&gt;Све замене идентитета се трајно снимају и сваку извршену радњу је могуће пратити. Такође, лице у чије име се ради, биће обавештено о томе.&lt;/p&gt;</value>
-  </data>
-  <data name="CreateOrganization_ApplicantTitle" xml:space="preserve">
-    <value>Позвани су људи који још нису чланови</value>
-  </data>
-  <data name="CreateOrganization_Applicants_None" xml:space="preserve">
-    <value>(није применљиво)</value>
-  </data>
-  <data name="CreateOrganization_Titles_Government" xml:space="preserve">
-    <value>Влада</value>
-  </data>
-  <data name="BitcoinEchoTest_DustCollected" xml:space="preserve">
-    <value>&lt;strong&gt;САКУПЉАЊЕ ПРАШИНЕ&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Износ који сте послали је мањи од износа трошкова слања и враћања средстава Вама, а он износи {0:N2} microcoin-а. Износ који сте послали се у жаргону bitcoin мреже зове "прашина" и неће бити послат.&lt;br/&gt;&lt;br/&gt;Како бисте спровели echo test, пошаљите виши износ.</value>
+  <data name="SystemSettings_WebsocketPortFrontend" xml:space="preserve">
+    <value>WebSocket Порт (Frontend)</value>
   </data>
 </root>
