@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Web.UI;
 using Swarmops.Common.Enums;
 using Swarmops.Frontend;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -122,17 +124,45 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         if (balanceDeltaCents == -resultsDeltaCents && closingYear < DateTime.Today.Year)
         {
-            string transactionLabel = Resources.Pages.Ledgers.CloseLedgers_AnnualProfit;
+            string transactionLabel = LocalizedStrings.Get(LocDomain.PagesLedgers, "CloseLedgers_AnnualProfit");
 
             if (balanceDeltaCents < 0)
             {
-                transactionLabel = Resources.Pages.Ledgers.CloseLedgers_AnnualLoss;
+                transactionLabel = LocalizedStrings.Get(LocDomain.PagesLedgers, "CloseLedgers_AnnualLoss");
             }
 
             FinancialTransaction resultTransaction = FinancialTransaction.Create (CurrentOrganization.Identity,
                 new DateTime (closingYear, 12, 31, 23, 59, 00), transactionLabel +  " " + closingYear);
+
+            Int64 privateWithdrawals = 0;
+            Int64 privateDeposits = 0;
+
+            if (CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits != null &&
+                CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals != null)
+            {
+                // TODO: Reset trees if there are subaccounts
+
+                privateWithdrawals =
+                    CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals
+                        .BalanceTotalCents;
+                privateDeposits =
+                    CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits
+                        .BalanceTotalCents;
+
+            }
+
             resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, CurrentUser);
-            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents, CurrentUser);
+            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents + privateWithdrawals + privateDeposits, CurrentUser);
+
+            if (privateWithdrawals != 0)
+            {
+                resultTransaction.AddRow(CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals,
+                    -privateWithdrawals, CurrentUser);
+            }
+            if (privateDeposits != 0)
+            {
+                resultTransaction.AddRow(CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits, -privateDeposits, CurrentUser)
+            }
 
             // Ledgers are now at zero-sum for the year's result accounts and from the start up until end-of-closing-year for the balance accounts.
 
