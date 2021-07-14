@@ -372,4 +372,10 @@
     <value>Maintenance Donations</value>
     <comment>This is donations toward maintenance of the Swarmops / Backoffice.Cash codebase and data.</comment>
   </data>
+  <data name="Asset_PrivateWithdrawals" xml:space="preserve">
+    <value>Private Withdrawals</value>
+  </data>
+  <data name="Debt_PrivateDeposits" xml:space="preserve">
+    <value>Private Deposits</value>
+  </data>
 </root>

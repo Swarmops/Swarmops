@@ -157,6 +157,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers {
         protected global::System.Web.UI.WebControls.Repeater RepeaterLightboxItems;
         
         /// <summary>
+        /// LabelIssueVatReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelIssueVatReport;
+        
+        /// <summary>
         /// LabelSidebarDownload control.
         /// </summary>
         /// <remarks>

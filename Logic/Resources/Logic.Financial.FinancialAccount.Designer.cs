@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bank Account.
         /// </summary>
-        public static string Asset_BankAccount {
+        internal static string Asset_BankAccount {
             get {
                 return ResourceManager.GetString("Asset_BankAccount", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bank Accounts.
         /// </summary>
-        public static string Asset_BankAccounts {
+        internal static string Asset_BankAccounts {
             get {
                 return ResourceManager.GetString("Asset_BankAccounts", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bitcoin Cold Storage.
         /// </summary>
-        public static string Asset_BitcoinCold {
+        internal static string Asset_BitcoinCold {
             get {
                 return ResourceManager.GetString("Asset_BitcoinCold", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bitcoin Hot Wallet.
         /// </summary>
-        public static string Asset_BitcoinHot {
+        internal static string Asset_BitcoinHot {
             get {
                 return ResourceManager.GetString("Asset_BitcoinHot", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cash Advances.
         /// </summary>
-        public static string Asset_CashAdvances {
+        internal static string Asset_CashAdvances {
             get {
                 return ResourceManager.GetString("Asset_CashAdvances", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hardware, Machinery, etc..
         /// </summary>
-        public static string Asset_Hardware {
+        internal static string Asset_Hardware {
             get {
                 return ResourceManager.GetString("Asset_Hardware", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Inbound VAT.
         /// </summary>
-        public static string Asset_InboundVat {
+        internal static string Asset_InboundVat {
             get {
                 return ResourceManager.GetString("Asset_InboundVat", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Surplus inbound VAT in report.
         /// </summary>
-        public static string Asset_InboundVatReported {
+        internal static string Asset_InboundVatReported {
             get {
                 return ResourceManager.GetString("Asset_InboundVatReported", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Inbound VAT to report.
         /// </summary>
-        public static string Asset_InboundVatUnreported {
+        internal static string Asset_InboundVatUnreported {
             get {
                 return ResourceManager.GetString("Asset_InboundVatUnreported", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outbound Invoices.
         /// </summary>
-        public static string Asset_OutboundInvoices {
+        internal static string Asset_OutboundInvoices {
             get {
                 return ResourceManager.GetString("Asset_OutboundInvoices", resourceCulture);
             }
@@ -153,16 +153,25 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Paypal Account.
         /// </summary>
-        public static string Asset_Paypal {
+        internal static string Asset_Paypal {
             get {
                 return ResourceManager.GetString("Asset_Paypal", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Private Withdrawals.
+        /// </summary>
+        internal static string Asset_PrivateWithdrawals {
+            get {
+                return ResourceManager.GetString("Asset_PrivateWithdrawals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Short Term Assets.
         /// </summary>
-        public static string Asset_ShortTerm {
+        internal static string Asset_ShortTerm {
             get {
                 return ResourceManager.GetString("Asset_ShortTerm", resourceCulture);
             }
@@ -171,7 +180,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Taxes Prepayment.
         /// </summary>
-        public static string Asset_TaxAdvances {
+        internal static string Asset_TaxAdvances {
             get {
                 return ResourceManager.GetString("Asset_TaxAdvances", resourceCulture);
             }
@@ -180,7 +189,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Internal Transfers in Progress.
         /// </summary>
-        public static string Asset_TransfersInProgress {
+        internal static string Asset_TransfersInProgress {
             get {
                 return ResourceManager.GetString("Asset_TransfersInProgress", resourceCulture);
             }
@@ -189,7 +198,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Accounting Errors.
         /// </summary>
-        public static string Cost_AccountingErrors {
+        internal static string Cost_AccountingErrors {
             get {
                 return ResourceManager.GetString("Cost_AccountingErrors", resourceCulture);
             }
@@ -198,7 +207,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Airfare, Airports, and Transit.
         /// </summary>
-        public static string Cost_Airfare {
+        internal static string Cost_Airfare {
             get {
                 return ResourceManager.GetString("Cost_Airfare", resourceCulture);
             }
@@ -207,7 +216,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Business or First Class.
         /// </summary>
-        public static string Cost_AirfareBusiness {
+        internal static string Cost_AirfareBusiness {
             get {
                 return ResourceManager.GetString("Cost_AirfareBusiness", resourceCulture);
             }
@@ -216,7 +225,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Coach.
         /// </summary>
-        public static string Cost_AirfareCoach {
+        internal static string Cost_AirfareCoach {
             get {
                 return ResourceManager.GetString("Cost_AirfareCoach", resourceCulture);
             }
@@ -225,7 +234,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Allocated Funds.
         /// </summary>
-        public static string Cost_AllocatedFunds {
+        internal static string Cost_AllocatedFunds {
             get {
                 return ResourceManager.GetString("Cost_AllocatedFunds", resourceCulture);
             }
@@ -234,7 +243,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Annual Profit/Loss.
         /// </summary>
-        public static string Cost_AnnualResult {
+        internal static string Cost_AnnualResult {
             get {
                 return ResourceManager.GetString("Cost_AnnualResult", resourceCulture);
             }
@@ -243,7 +252,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Asset Depreciation.
         /// </summary>
-        public static string Cost_AssetDepreciation {
+        internal static string Cost_AssetDepreciation {
             get {
                 return ResourceManager.GetString("Cost_AssetDepreciation", resourceCulture);
             }
@@ -252,7 +261,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bank Fees.
         /// </summary>
-        public static string Cost_BankFees {
+        internal static string Cost_BankFees {
             get {
                 return ResourceManager.GetString("Cost_BankFees", resourceCulture);
             }
@@ -261,7 +270,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bitcoin Miner Fees.
         /// </summary>
-        public static string Cost_BitcoinFees {
+        internal static string Cost_BitcoinFees {
             get {
                 return ResourceManager.GetString("Cost_BitcoinFees", resourceCulture);
             }
@@ -270,7 +279,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Business Services.
         /// </summary>
-        public static string Cost_BusinessServices {
+        internal static string Cost_BusinessServices {
             get {
                 return ResourceManager.GetString("Cost_BusinessServices", resourceCulture);
             }
@@ -279,7 +288,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cent Rounding.
         /// </summary>
-        public static string Cost_CentRounding {
+        internal static string Cost_CentRounding {
             get {
                 return ResourceManager.GetString("Cost_CentRounding", resourceCulture);
             }
@@ -288,7 +297,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Conferences (our own).
         /// </summary>
-        public static string Cost_Conferences {
+        internal static string Cost_Conferences {
             get {
                 return ResourceManager.GetString("Cost_Conferences", resourceCulture);
             }
@@ -297,7 +306,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Event Tickets.
         /// </summary>
-        public static string Cost_EventTickets {
+        internal static string Cost_EventTickets {
             get {
                 return ResourceManager.GetString("Cost_EventTickets", resourceCulture);
             }
@@ -306,7 +315,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Financial fees.
         /// </summary>
-        public static string Cost_FinancialFees {
+        internal static string Cost_FinancialFees {
             get {
                 return ResourceManager.GetString("Cost_FinancialFees", resourceCulture);
             }
@@ -315,7 +324,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Forex Capital Losses.
         /// </summary>
-        public static string Cost_ForexLosses {
+        internal static string Cost_ForexLosses {
             get {
                 return ResourceManager.GetString("Cost_ForexLosses", resourceCulture);
             }
@@ -324,7 +333,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hospitality.
         /// </summary>
-        public static string Cost_Hospitality {
+        internal static string Cost_Hospitality {
             get {
                 return ResourceManager.GetString("Cost_Hospitality", resourceCulture);
             }
@@ -333,7 +342,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to ICT and Infrastructure.
         /// </summary>
-        public static string Cost_IctInfrastructure {
+        internal static string Cost_IctInfrastructure {
             get {
                 return ResourceManager.GetString("Cost_IctInfrastructure", resourceCulture);
             }
@@ -342,7 +351,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Interest Losses.
         /// </summary>
-        public static string Cost_InterestLosses {
+        internal static string Cost_InterestLosses {
             get {
                 return ResourceManager.GetString("Cost_InterestLosses", resourceCulture);
             }
@@ -351,7 +360,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Legal fees.
         /// </summary>
-        public static string Cost_LegalFees {
+        internal static string Cost_LegalFees {
             get {
                 return ResourceManager.GetString("Cost_LegalFees", resourceCulture);
             }
@@ -360,7 +369,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to 5 Star.
         /// </summary>
-        public static string Cost_LodgingFiveStar {
+        internal static string Cost_LodgingFiveStar {
             get {
                 return ResourceManager.GetString("Cost_LodgingFiveStar", resourceCulture);
             }
@@ -369,7 +378,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to 4 Star.
         /// </summary>
-        public static string Cost_LodgingFourStar {
+        internal static string Cost_LodgingFourStar {
             get {
                 return ResourceManager.GetString("Cost_LodgingFourStar", resourceCulture);
             }
@@ -378,7 +387,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hostel or budget equivalent.
         /// </summary>
-        public static string Cost_LodgingHostel {
+        internal static string Cost_LodgingHostel {
             get {
                 return ResourceManager.GetString("Cost_LodgingHostel", resourceCulture);
             }
@@ -387,7 +396,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Shared lodging (AirBnB etc).
         /// </summary>
-        public static string Cost_LodgingShared {
+        internal static string Cost_LodgingShared {
             get {
                 return ResourceManager.GetString("Cost_LodgingShared", resourceCulture);
             }
@@ -396,7 +405,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to 3 Star.
         /// </summary>
-        public static string Cost_LodgingThreeStar {
+        internal static string Cost_LodgingThreeStar {
             get {
                 return ResourceManager.GetString("Cost_LodgingThreeStar", resourceCulture);
             }
@@ -405,7 +414,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Maintenance Donations.
         /// </summary>
-        public static string Cost_MaintenanceDonations {
+        internal static string Cost_MaintenanceDonations {
             get {
                 return ResourceManager.GetString("Cost_MaintenanceDonations", resourceCulture);
             }
@@ -414,7 +423,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Marketing and Campaigns.
         /// </summary>
-        public static string Cost_MarketingCampaigns {
+        internal static string Cost_MarketingCampaigns {
             get {
                 return ResourceManager.GetString("Cost_MarketingCampaigns", resourceCulture);
             }
@@ -423,7 +432,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Office Equipment.
         /// </summary>
-        public static string Cost_OfficeEquipment {
+        internal static string Cost_OfficeEquipment {
             get {
                 return ResourceManager.GetString("Cost_OfficeEquipment", resourceCulture);
             }
@@ -432,7 +441,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Offices.
         /// </summary>
-        public static string Cost_Offices {
+        internal static string Cost_Offices {
             get {
                 return ResourceManager.GetString("Cost_Offices", resourceCulture);
             }
@@ -441,7 +450,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Office Space, Maintenance.
         /// </summary>
-        public static string Cost_OfficeSpace {
+        internal static string Cost_OfficeSpace {
             get {
                 return ResourceManager.GetString("Cost_OfficeSpace", resourceCulture);
             }
@@ -450,7 +459,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Office Supplies (consumables).
         /// </summary>
-        public static string Cost_OfficeSupplies {
+        internal static string Cost_OfficeSupplies {
             get {
                 return ResourceManager.GetString("Cost_OfficeSupplies", resourceCulture);
             }
@@ -459,7 +468,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Public Transit.
         /// </summary>
-        public static string Cost_PublicTransit {
+        internal static string Cost_PublicTransit {
             get {
                 return ResourceManager.GetString("Cost_PublicTransit", resourceCulture);
             }
@@ -468,7 +477,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Research and Development.
         /// </summary>
-        public static string Cost_ResearchDevelopment {
+        internal static string Cost_ResearchDevelopment {
             get {
                 return ResourceManager.GetString("Cost_ResearchDevelopment", resourceCulture);
             }
@@ -477,7 +486,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Staff.
         /// </summary>
-        public static string Cost_Staff {
+        internal static string Cost_Staff {
             get {
                 return ResourceManager.GetString("Cost_Staff", resourceCulture);
             }
@@ -486,7 +495,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Staff Benefits.
         /// </summary>
-        public static string Cost_StaffBenefits {
+        internal static string Cost_StaffBenefits {
             get {
                 return ResourceManager.GetString("Cost_StaffBenefits", resourceCulture);
             }
@@ -495,7 +504,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Staff Expenses.
         /// </summary>
-        public static string Cost_StaffExpenses {
+        internal static string Cost_StaffExpenses {
             get {
                 return ResourceManager.GetString("Cost_StaffExpenses", resourceCulture);
             }
@@ -504,7 +513,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Staff Per-Diem.
         /// </summary>
-        public static string Cost_StaffPerDiem {
+        internal static string Cost_StaffPerDiem {
             get {
                 return ResourceManager.GetString("Cost_StaffPerDiem", resourceCulture);
             }
@@ -513,7 +522,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Staff Salaries.
         /// </summary>
-        public static string Cost_StaffSalaries {
+        internal static string Cost_StaffSalaries {
             get {
                 return ResourceManager.GetString("Cost_StaffSalaries", resourceCulture);
             }
@@ -522,7 +531,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Taxes.
         /// </summary>
-        public static string Cost_Taxes {
+        internal static string Cost_Taxes {
             get {
                 return ResourceManager.GetString("Cost_Taxes", resourceCulture);
             }
@@ -531,7 +540,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Taxi, Limo, etc.
         /// </summary>
-        public static string Cost_TaxiTransport {
+        internal static string Cost_TaxiTransport {
             get {
                 return ResourceManager.GetString("Cost_TaxiTransport", resourceCulture);
             }
@@ -540,7 +549,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Trains and Ferries.
         /// </summary>
-        public static string Cost_TrainsFerries {
+        internal static string Cost_TrainsFerries {
             get {
                 return ResourceManager.GetString("Cost_TrainsFerries", resourceCulture);
             }
@@ -549,7 +558,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Transportation.
         /// </summary>
-        public static string Cost_Transportation {
+        internal static string Cost_Transportation {
             get {
                 return ResourceManager.GetString("Cost_Transportation", resourceCulture);
             }
@@ -558,7 +567,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Travel.
         /// </summary>
-        public static string Cost_Travel {
+        internal static string Cost_Travel {
             get {
                 return ResourceManager.GetString("Cost_Travel", resourceCulture);
             }
@@ -567,7 +576,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Lodging.
         /// </summary>
-        public static string Cost_TravelLodging {
+        internal static string Cost_TravelLodging {
             get {
                 return ResourceManager.GetString("Cost_TravelLodging", resourceCulture);
             }
@@ -576,7 +585,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Per Diems.
         /// </summary>
-        public static string Cost_TravelPerDiem {
+        internal static string Cost_TravelPerDiem {
             get {
                 return ResourceManager.GetString("Cost_TravelPerDiem", resourceCulture);
             }
@@ -585,7 +594,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Unforeseen.
         /// </summary>
-        public static string Cost_Unforeseen {
+        internal static string Cost_Unforeseen {
             get {
                 return ResourceManager.GetString("Cost_Unforeseen", resourceCulture);
             }
@@ -594,7 +603,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Equity.
         /// </summary>
-        public static string Debt_Equity {
+        internal static string Debt_Equity {
             get {
                 return ResourceManager.GetString("Debt_Equity", resourceCulture);
             }
@@ -603,7 +612,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Restricted Equity.
         /// </summary>
-        public static string Debt_EquityRestricted {
+        internal static string Debt_EquityRestricted {
             get {
                 return ResourceManager.GetString("Debt_EquityRestricted", resourceCulture);
             }
@@ -612,7 +621,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Unrestricted Equity.
         /// </summary>
-        public static string Debt_EquityUnrestricted {
+        internal static string Debt_EquityUnrestricted {
             get {
                 return ResourceManager.GetString("Debt_EquityUnrestricted", resourceCulture);
             }
@@ -621,7 +630,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expense Claims.
         /// </summary>
-        public static string Debt_ExpenseClaims {
+        internal static string Debt_ExpenseClaims {
             get {
                 return ResourceManager.GetString("Debt_ExpenseClaims", resourceCulture);
             }
@@ -630,7 +639,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to General Debt.
         /// </summary>
-        public static string Debt_General {
+        internal static string Debt_General {
             get {
                 return ResourceManager.GetString("Debt_General", resourceCulture);
             }
@@ -639,7 +648,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Inbound Invoices.
         /// </summary>
-        public static string Debt_InboundInvoices {
+        internal static string Debt_InboundInvoices {
             get {
                 return ResourceManager.GetString("Debt_InboundInvoices", resourceCulture);
             }
@@ -648,7 +657,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outbound VAT.
         /// </summary>
-        public static string Debt_OutboundVat {
+        internal static string Debt_OutboundVat {
             get {
                 return ResourceManager.GetString("Debt_OutboundVat", resourceCulture);
             }
@@ -657,7 +666,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Reported VAT to pay.
         /// </summary>
-        public static string Debt_OutboundVatReported {
+        internal static string Debt_OutboundVatReported {
             get {
                 return ResourceManager.GetString("Debt_OutboundVatReported", resourceCulture);
             }
@@ -666,16 +675,25 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Outbound VAT to report.
         /// </summary>
-        public static string Debt_OutboundVatUnreported {
+        internal static string Debt_OutboundVatUnreported {
             get {
                 return ResourceManager.GetString("Debt_OutboundVatUnreported", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Private Deposits.
+        /// </summary>
+        internal static string Debt_PrivateDeposits {
+            get {
+                return ResourceManager.GetString("Debt_PrivateDeposits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Salaries Due.
         /// </summary>
-        public static string Debt_Salaries {
+        internal static string Debt_Salaries {
             get {
                 return ResourceManager.GetString("Debt_Salaries", resourceCulture);
             }
@@ -684,7 +702,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Taxes Due.
         /// </summary>
-        public static string Debt_Taxes {
+        internal static string Debt_Taxes {
             get {
                 return ResourceManager.GetString("Debt_Taxes", resourceCulture);
             }
@@ -693,7 +711,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Donations.
         /// </summary>
-        public static string Income_Donations {
+        internal static string Income_Donations {
             get {
                 return ResourceManager.GetString("Income_Donations", resourceCulture);
             }
@@ -702,7 +720,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Forex Capital Gains.
         /// </summary>
-        public static string Income_ForexGains {
+        internal static string Income_ForexGains {
             get {
                 return ResourceManager.GetString("Income_ForexGains", resourceCulture);
             }
@@ -711,7 +729,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Interest Gains.
         /// </summary>
-        public static string Income_InterestGains {
+        internal static string Income_InterestGains {
             get {
                 return ResourceManager.GetString("Income_InterestGains", resourceCulture);
             }
@@ -720,7 +738,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Membership Dues.
         /// </summary>
-        public static string Income_MembershipDues {
+        internal static string Income_MembershipDues {
             get {
                 return ResourceManager.GetString("Income_MembershipDues", resourceCulture);
             }
@@ -729,7 +747,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Sales.
         /// </summary>
-        public static string Income_Sales {
+        internal static string Income_Sales {
             get {
                 return ResourceManager.GetString("Income_Sales", resourceCulture);
             }
@@ -738,7 +756,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Subsidies and Grants.
         /// </summary>
-        public static string Income_SubsidiesGrants {
+        internal static string Income_SubsidiesGrants {
             get {
                 return ResourceManager.GetString("Income_SubsidiesGrants", resourceCulture);
             }

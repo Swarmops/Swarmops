@@ -40,7 +40,19 @@ namespace Swarmops.Frontend
 
             // BEGIN TEST CODE
 
-            // VatReports.CreateNewReports();
+            foreach (FinancialAccount account in FinancialAccounts.ForOrganization(CurrentOrganization))
+            {
+                if (account.Name == "[LOC]Asset_PrivateWithdrawals")
+                {
+                    CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals = account;
+                }
+                else if (account.Name == "[LOC]Debt_PrivateDeposits")
+                {
+                    CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits = account;
+                }
+            }
+
+            VatReports.CreateNewReports();
 
             // END TEST CODE
 

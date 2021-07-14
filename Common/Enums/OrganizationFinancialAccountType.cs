@@ -110,7 +110,7 @@
         /// <summary>
         /// For a solo entrepreneur - for moving to Equity at EOY
         /// </summary>
-        DebtsPrivateWithdrawals,
+        DebtsPrivateDeposits,
 
         /// <summary>
         ///     Root account for Value Added Tax (outbound)

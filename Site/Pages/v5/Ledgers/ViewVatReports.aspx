@@ -120,6 +120,20 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
+    
+    <!--
+    <h2 class="blue"><asp:Label ID="LabelIssueVatReport" Text="Issue VAT Report" runat="server" /><span class="arrow"></span></h2>
+    
+    <div class="box">
+        <div class="content">
+            <div class="link-row-encaps" id="linkDownloadReport" onclick="document.location='placeholder';" >
+                <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-downarrow-16px.png');background-position:-1px -1px"></div>
+                ISSUE NEXT VAT REPORT
+            </div>
+        </div>
+    </div>-->
+
+    
     <h2 class="blue"><asp:Label ID="LabelSidebarDownload" Text="Download This" runat="server" /><span class="arrow"></span></h2>
     
     <div class="box">

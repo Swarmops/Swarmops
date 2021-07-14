@@ -96,6 +96,12 @@ namespace Swarmops.Logic.Financial
             set { this[OrganizationFinancialAccountType.AssetsPaypal] = value; }
         }
 
+        public FinancialAccount AssetsPrivateWithdrawals
+        {
+            get { return this[OrganizationFinancialAccountType.AssetsPrivateWithdrawals]; }
+            set { this[OrganizationFinancialAccountType.AssetsPrivateWithdrawals] = value; }
+        }
+
         public FinancialAccount AssetsVatInbound
         {
             get { return this[OrganizationFinancialAccountType.AssetsVatInbound]; }
@@ -164,6 +170,12 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount DebtsInboundInvoices
         {
             get { return this[OrganizationFinancialAccountType.DebtsInboundInvoices]; }
+        }
+
+        public FinancialAccount DebtsPrivateDeposits
+        {
+            get { return this[OrganizationFinancialAccountType.DebtsPrivateDeposits]; }
+            set { this[OrganizationFinancialAccountType.DebtsPrivateDeposits] = value; }
         }
 
         public FinancialAccount DebtsSalary

@@ -48,7 +48,7 @@ namespace Swarmops.Logic.Financial
                     1);
                 DateTime nextReport = lastReport.AddMonths(reportMonthInterval);
 
-                DateTime nextReportGenerationTime = nextReport.AddMonths(reportMonthInterval).AddDays(0); // Make the report on the 4yh after the period has ended
+                DateTime nextReportGenerationTime = nextReport.AddMonths(reportMonthInterval).AddDays(0); // Make the report on the 4th after the period has ended
                 if (nowUtc > nextReportGenerationTime)
                 {
                     // Create a new report
