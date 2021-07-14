@@ -5,7 +5,7 @@
         /// <summary>
         ///     Undefined
         /// </summary>
-        Unknown,
+        Unknown = 0,
 
         /// <summary>
         ///     Main bank transaction account - not a savings account or similar
@@ -38,19 +38,9 @@
         AssetsOutstandingCashAdvances,
 
         /// <summary>
-        ///     Value Added Tax (inbound) root account
+        /// For a solo entrepreneur - private withdrawals, for moving to equity at EOY
         /// </summary>
-        AssetsVatInbound,
-
-        /// <summary>
-        ///     Value Added Tax (inbound) surplus from last report - clears against tax payment of this balance
-        /// </summary>
-        AssetsVatInboundReported,
-
-        /// <summary>
-        ///     Value Added Tax (inbound) that hasn't been declared yet and put on overall tax balance
-        /// </summary>
-        AssetsVatInboundUnreported,
+        AssetsPrivateWithdrawals,
 
         /// <summary>
         /// General short term holdings
@@ -68,9 +58,34 @@
         AssetsTransfersInProgress,
 
         /// <summary>
+        ///     Value Added Tax (inbound) root account
+        /// </summary>
+        AssetsVatInbound,
+
+        /// <summary>
+        ///     Value Added Tax (inbound) surplus from last report - clears against tax payment of this balance
+        /// </summary>
+        AssetsVatInboundReported,
+
+        /// <summary>
+        ///     Value Added Tax (inbound) that hasn't been declared yet and put on overall tax balance
+        /// </summary>
+        AssetsVatInboundUnreported,
+
+        /// <summary>
         ///     If virtual banking is enabled, this is where the virtual assets go
         /// </summary>
         AssetsVirtualBanking,
+
+        /// <summary>
+        ///     If virtual banking is enabled, this is the central debt to local assets
+        /// </summary>
+        DebtsEarmarkedVirtualBanking,
+
+        /// <summary>
+        ///     Earmarked assets in other ways
+        /// </summary>
+        DebtsEarmarkedOtherAssets,
 
         /// <summary>
         ///     Any expense claims on the organization that have not been paid back
@@ -93,9 +108,9 @@
         DebtsTax,
 
         /// <summary>
-        ///     Equity - the difference between debt and assets
+        /// For a solo entrepreneur - for moving to Equity at EOY
         /// </summary>
-        DebtsEquity,
+        DebtsPrivateWithdrawals,
 
         /// <summary>
         ///     Root account for Value Added Tax (outbound)
@@ -113,19 +128,14 @@
         DebtsVatOutboundReported,
 
         /// <summary>
-        ///     If virtual banking is enabled, this is the central debt to local assets
-        /// </summary>
-        DebtsEarmarkedVirtualBanking,
-
-        /// <summary>
-        ///     Earmarked assets in other ways
-        /// </summary>
-        DebtsEarmarkedOtherAssets,
-
-        /// <summary>
         ///     Other debts in general
         /// </summary>
         DebtsOther,
+
+        /// <summary>
+        ///     Equity - the difference between debt and assets
+        /// </summary>
+        DebtsEquity,
 
         /// <summary>
         ///     Income from donations - default autodonates here
