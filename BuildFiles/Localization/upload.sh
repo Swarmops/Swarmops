@@ -11,7 +11,7 @@ fi
 
 # Create structure
 
-mkdir temp/Site
+mkdir temp/Localization
 mkdir temp/Logic
 
 # Copy Site resources
