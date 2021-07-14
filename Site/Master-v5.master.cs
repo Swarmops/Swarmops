@@ -42,11 +42,11 @@ namespace Swarmops.Frontend
 
             foreach (FinancialAccount account in FinancialAccounts.ForOrganization(CurrentOrganization))
             {
-                if (account.Name == "[LOC]Asset_PrivateWithdrawals")
+                if (account.Name == "Private Withdrawals")
                 {
                     CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals = account;
                 }
-                else if (account.Name == "[LOC]Debt_PrivateDeposits")
+                else if (account.Name == "Private Deposits")
                 {
                     CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits = account;
                 }
