@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Frontend;
 using Swarmops.Localization;
@@ -103,6 +104,8 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
         FinancialAccounts accounts = FinancialAccounts.ForOrganization (CurrentOrganization);
         Int64 balanceDeltaCents = 0;
         Int64 resultsDeltaCents = 0;
+        DateTime startOfLedger = new DateTime(closingYear, 1, 1);
+        DateTime endOfLedger = new DateTime(closingYear + 1, 1, 1);
 
         foreach (FinancialAccount account in accounts)
         {
@@ -110,14 +113,13 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
             if (account.AccountType == FinancialAccountType.Asset || account.AccountType == FinancialAccountType.Debt)
             {
-                accountBalanceCents = account.GetDeltaCents (new DateTime (2006, 1, 1),
-                    new DateTime (closingYear + 1, 1, 1));
+                accountBalanceCents = account.GetDeltaCents (Constants.DateTimeLow,
+                    endOfLedger);
                 balanceDeltaCents += accountBalanceCents;
             }
             else
             {
-                accountBalanceCents = account.GetDeltaCents (new DateTime (closingYear, 1, 1),
-                    new DateTime (closingYear + 1, 1, 1));
+                accountBalanceCents = account.GetDeltaCents (startOfLedger, endOfLedger);
                 resultsDeltaCents += accountBalanceCents;
             }
         }
@@ -132,36 +134,40 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
             }
 
             FinancialTransaction resultTransaction = FinancialTransaction.Create (CurrentOrganization.Identity,
-                new DateTime (closingYear, 12, 31, 23, 59, 00), transactionLabel +  " " + closingYear);
+                new DateTime (closingYear, 12, 31, 23, 59, 50), transactionLabel +  " " + closingYear);
 
-            Int64 privateWithdrawals = 0;
-            Int64 privateDeposits = 0;
+            Int64 privateWithdrawalsCents = 0;
+            Int64 privateDepositsCents = 0;
 
-            if (CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits != null &&
-                CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals != null)
+            if (CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals != null)
+            {
+                privateWithdrawalsCents =
+                    CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals
+                        .GetDeltaCents(Constants.DateTimeLow, endOfLedger);
+
+            }
+
+            if (CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits != null)
             {
                 // TODO: Reset trees if there are subaccounts
 
-                privateWithdrawals =
-                    CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals
-                        .BalanceTotalCents;
-                privateDeposits =
+                privateDepositsCents =
                     CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits
-                        .BalanceTotalCents;
+                        .GetDeltaCents(Constants.DateTimeLow, endOfLedger);
 
             }
 
             resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, CurrentUser);
-            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents + privateWithdrawals + privateDeposits, CurrentUser);
+            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents + privateWithdrawalsCents + privateDepositsCents, CurrentUser);
 
-            if (privateWithdrawals != 0)
+            if (privateWithdrawalsCents != 0)
             {
                 resultTransaction.AddRow(CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals,
-                    -privateWithdrawals, CurrentUser);
+                    -privateWithdrawalsCents, CurrentUser);
             }
-            if (privateDeposits != 0)
+            if (privateDepositsCents != 0)
             {
-                resultTransaction.AddRow(CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits, -privateDeposits,
+                resultTransaction.AddRow(CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits, -privateDepositsCents,
                     CurrentUser);
             }
 
