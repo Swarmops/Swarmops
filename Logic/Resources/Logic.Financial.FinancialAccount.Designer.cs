@@ -169,6 +169,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Health Insurance.
+        /// </summary>
+        internal static string Asset_PrivateWithdrawals_HealthInsurance {
+            get {
+                return ResourceManager.GetString("Asset_PrivateWithdrawals_HealthInsurance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Short Term Assets.
         /// </summary>
         internal static string Asset_ShortTerm {
