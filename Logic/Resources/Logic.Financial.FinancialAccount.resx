@@ -380,5 +380,6 @@
   </data>
   <data name="Asset_PrivateWithdrawals_HealthInsurance" xml:space="preserve">
     <value>Health Insurance</value>
+    <comment>This is for one personal health insurance, for the sole business owner of the small business, when it is tax deductible (like in Germany).</comment>
   </data>
 </root>
