@@ -88,6 +88,10 @@ namespace Swarmops.Pages.Security
                 Response.Redirect (HttpContext.Current.Request ["ReturnUrl"]);  // Returns to the requested URL with auth cookie set
             }
 
+            // DEBUG: Check if this exception throws to find out exactly where the current problem is
+
+            throw new NotImplementedException();
+
             // If we're on an Open Ledgers domain, autologin as Open Ledgers
 
             Organization organizationOpenLedgers = Organization.FromOpenLedgersDomain(requestHost); // returns null if doesn't exist
