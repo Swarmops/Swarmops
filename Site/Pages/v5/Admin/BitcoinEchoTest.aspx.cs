@@ -8,7 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NBitcoin;
-using RestSharp.Serializers;
+//using RestSharp.Serializers;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Communications;

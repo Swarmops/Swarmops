@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using NGeoIP;
-using NGeoIP.Client;
+//using NGeoIP;
+//using NGeoIP.Client;
 
 namespace Swarmops.Logic.Special
 {
@@ -15,6 +15,7 @@ namespace Swarmops.Logic.Special
     /// </summary>
     public class DummyGeoLookup
     {
+        /*
         public static string Lookup (string ip)
         {
             NGeoIP.Request request = new Request()
@@ -26,6 +27,6 @@ namespace Swarmops.Logic.Special
             NGeoIP.RawData rawData = client.Execute();
 
             return rawData.CountryCode;
-        }
+        }*/
     }
 }

@@ -11,8 +11,8 @@ using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NGeoIP;
-using NGeoIP.Client;
+//using NGeoIP;
+//using NGeoIP.Client;
 using Resources;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Communications;
@@ -370,7 +370,7 @@ namespace Swarmops.Frontend.Pages.Public
             try
             {
                 string ipAddress = Logic.Support.SupportFunctions.GetMostLikelyRemoteIPAddress();
-
+                /*
                 NGeoIP.RawData rawData = (NGeoIP.RawData) GuidCache.Get(ipAddress);
 
                 if (rawData == null)
@@ -391,7 +391,7 @@ namespace Swarmops.Frontend.Pages.Public
                     GuidCache.Set(ipAddress, rawData);  // store lookup results in cache for later
 
                     return new AjaxCallResult {Success = true, DisplayMessage = rawData.CountryCode};
-                }
+                }*/
             }
             catch (Exception)
             {
