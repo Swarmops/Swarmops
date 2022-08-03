@@ -90,22 +90,7 @@ namespace Swarmops.Pages.Security
 
             // If we're on an Open Ledgers domain, autologin as Open Ledgers
 
-            // END-OF-LIFE HARDCODED AS QFE
-
-            Organization organizationOpenLedgers = null;
-
-            if (requestHost == "freiberufler.falkvinge.net")
-            {
-                organizationOpenLedgers = Organization.FromIdentity(8);
-            }
-            else if (requestHost == "openledgers.pirateacademy.eu")
-            {
-                organizationOpenLedgers = Organization.FromIdentity(7);
-            }
-
-            // The below line threw weird exceptions, solved temporarily by hardcode above
-
-            // Organization organizationOpenLedgers = Organization.FromOpenLedgersDomain(requestHost); // returns null if doesn't exist
+            Organization organizationOpenLedgers = Organization.FromOpenLedgersDomain(requestHost); // returns null if doesn't exist
 
 
             if (organizationOpenLedgers != null)
