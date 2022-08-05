@@ -10,7 +10,7 @@
 namespace Swarmops.Frontend.Pages.v5.Financial {
     
     
-    public partial class AttestCosts {
+    public partial class ApproveCosts {
         
         /// <summary>
         /// LiteralPleaseSelectBudget control.

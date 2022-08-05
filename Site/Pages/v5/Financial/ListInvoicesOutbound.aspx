@@ -24,7 +24,7 @@
         /* -- commented out -- do we need attestation logic for this page?
         loadUninitializedBudgets(); // no need to wait for doc.ready to load operating params
 
-        SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
+        SwarmopsJS.ajaxCall("/Pages/v5/Financial/ApproveCosts.aspx/GetRemainingBudgets", {}, function(data) {
             data.forEach(function(accountData, dummy1, dummy2) {
                 budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
             });

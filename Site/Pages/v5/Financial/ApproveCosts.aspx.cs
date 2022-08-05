@@ -17,7 +17,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Financial
 {
-    public partial class AttestCosts : PageV5Base
+    public partial class ApproveCosts : PageV5Base
     {
         private Dictionary<int, bool> _attestationRights;
         private List<RepeatedDocument> _documentList;
@@ -121,7 +121,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
             this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
-            this.LabelDescribeCorrect.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency.DisplayCode);
+            this.LabelDescribeCorrect.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency != null? CurrentOrganization.Currency.DisplayCode != null? CurrentOrganization.Currency.DisplayCode : "--" : "--");
             this.LabelDescribeCorrectNoVat.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeCorrectNoVat;
             this.LabelDescribeRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionRebudget;
 
