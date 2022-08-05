@@ -121,7 +121,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
             this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
-            this.LabelDescribeCorrect.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency != null? CurrentOrganization.Currency.DisplayCode != null? CurrentOrganization.Currency.DisplayCode : "--" : "--");
+            string describeOptionAmount = "What amount are you attesting instead (in {0})?";  // QFE for nullref -- find why resources are nullrefing later
+            if (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount != null)
+            {
+                describeOptionAmount = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount;
+            }
+
+            this.LabelDescribeCorrect.Text = String.Format (describeOptionAmount, CurrentOrganization.Currency != null? CurrentOrganization.Currency.DisplayCode != null? CurrentOrganization.Currency.DisplayCode : "--" : "--");
             this.LabelDescribeCorrectNoVat.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeCorrectNoVat;
             this.LabelDescribeRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionRebudget;
 
