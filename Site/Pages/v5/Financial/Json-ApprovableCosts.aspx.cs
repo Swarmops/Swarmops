@@ -23,8 +23,8 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
         this._approvableCosts = new ApprovableCosts();
         this._approvedCosts = new ApprovableCosts();
 
-        //PopulateCashAdvances();
-        //PopulateExpenses();
+        PopulateCashAdvances();
+        PopulateExpenses();
         PopulateInboundInvoices();
         //PopulateSalaries();
         //PopulateParleys();
