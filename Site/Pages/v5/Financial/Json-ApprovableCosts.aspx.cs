@@ -168,10 +168,10 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
                 bool hasDox = (dox.Count > 0 ? true : false);
 
                 ApprovableCost cost = null;
-                string expenseClaimSpec = Resources.Global.Financial_ExpenseClaimSpecification;
-                if (string.IsNullOrEmpty(expenseClaimSpec))
+                string expenseClaimLoc = Resources.Global.Financial_ExpenseClaim;
+                if (string.IsNullOrEmpty(expenseClaimLoc))
                 {
-                    expenseClaimSpec = "Expense #{0:N0}";
+                    expenseClaimLoc = "Expense";
                 }
 
                 if (vatEnabled)
@@ -179,14 +179,14 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
                     cost = new ApprovableCost(
                         "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture),
                         expenseClaim.ClaimerCanonical, expenseClaim.AmountCents - expenseClaim.VatCents, expenseClaim.Budget,
-                        expenseClaim.Description, String.Format(expenseClaimSpec, expenseClaim.Identity), hasDox, expenseClaim);
+                        expenseClaim.Description, expenseClaimLoc, hasDox, expenseClaim);
                 }
                 else
                 {
                     cost = new ApprovableCost(
                         "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture),
                         expenseClaim.ClaimerCanonical, expenseClaim.AmountCents, expenseClaim.Budget,
-                        expenseClaim.Description, String.Format(expenseClaimSpec, expenseClaim.Identity), hasDox, expenseClaim);
+                        expenseClaim.Description, expenseClaimLoc, hasDox, expenseClaim);
                 }
 
                 if (expenseClaim.Attested)
