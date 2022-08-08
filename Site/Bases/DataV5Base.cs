@@ -161,7 +161,9 @@ namespace Swarmops.Frontend
 
             if (translatedResource == null)
             {
-                throw new NotImplementedException ("Unimplemented localization resource key: \"" + resourceKey + "\"");
+                return "[FAIL] " + resourceKey;
+
+                // throw new NotImplementedException ("Unimplemented localization resource key: \"" + resourceKey + "\"");
             }
 
             if (inputParts.Length == 1)
