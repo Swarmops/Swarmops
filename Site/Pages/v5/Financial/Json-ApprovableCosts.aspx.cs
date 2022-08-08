@@ -88,8 +88,10 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
                 cost.AmountRequestedCents / 100.0, cost.Identity, cost.Budget.Identity);
             result.Append("},");
         }
-
-        result.Remove(result.Length - 1, 1); // remove last comma
+        if (result.ToString().EndsWith(","))
+        {
+            result.Remove(result.Length - 1, 1); // remove last comma
+        }
 
         result.Append ("]}");
 
@@ -166,20 +168,25 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
                 bool hasDox = (dox.Count > 0 ? true : false);
 
                 ApprovableCost cost = null;
+                string expenseClaimSpec = Resources.Global.Financial_ExpenseClaimSpecification;
+                if (string.IsNullOrEmpty(expenseClaimSpec))
+                {
+                    expenseClaimSpec = "Expense #{0:N0}";
+                }
 
                 if (vatEnabled)
                 {
                     cost = new ApprovableCost(
                         "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture),
                         expenseClaim.ClaimerCanonical, expenseClaim.AmountCents - expenseClaim.VatCents, expenseClaim.Budget,
-                        expenseClaim.Description, "Financial_ExpenseClaim", hasDox, expenseClaim);
+                        expenseClaim.Description, String.Format(expenseClaimSpec, expenseClaim.Identity), hasDox, expenseClaim);
                 }
                 else
                 {
                     cost = new ApprovableCost(
                         "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture),
                         expenseClaim.ClaimerCanonical, expenseClaim.AmountCents, expenseClaim.Budget,
-                        expenseClaim.Description, "Financial_ExpenseClaim", hasDox, expenseClaim);
+                        expenseClaim.Description, String.Format(expenseClaimSpec, expenseClaim.Identity), hasDox, expenseClaim);
                 }
 
                 if (expenseClaim.Attested)
