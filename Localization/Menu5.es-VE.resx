@@ -150,9 +150,17 @@
   <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>Configuración de sistema</value>
   </data>
-  
-  
-  
+  <data name="Menu5_Admin_SetupConnectedAccounts" xml:space="preserve">
+    <value>Configurar cuentas conectadas</value>
+    <comment>The connected accounts are those where transactions are read from an external source, like a bank account, a blockchain address, etc.</comment>
+  </data>
+  <data name="Menu5_Admin_SetupLedgerAccountStructure" xml:space="preserve">
+    <value>Configurar gráfica de cuentas</value>
+    <comment>This is the list of accounts (and sub-accounts) in the ledger</comment>
+  </data>
+  <data name="Menu5_Admin_SetupPayroll" xml:space="preserve">
+    <value>Configurar nómina</value>
+  </data>
   <data name="Menu5_Beta_BuildTime" xml:space="preserve">
     <value>Construido en {0:MMM d, yyyy}</value>
     <comment>Change date format as appropriate for language (here it's "Jan 21, 1972")</comment>
@@ -205,7 +213,10 @@
   <data name="Menu5_Financial" xml:space="preserve">
     <value>Finanzas</value>
   </data>
-  
+  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
+    <value>Aprobar costes</value>
+    <comment>This approves costs for payout from the organization</comment>
+  </data>
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Reclamar reembolso de los gastos</value>
   </data>
@@ -254,7 +265,10 @@
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Solicitar adelanto de efectivo</value>
   </data>
-  
+  <data name="Menu5_Financial_RequestReimbursement" xml:space="preserve">
+    <value>Solicitar reembolso</value>
+    <comment>This is the same as "file an expense claim", but "requesting reimbursement" is better English</comment>
+  </data>
   <data name="Menu5_Financial_Salary" xml:space="preserve">
     <value>Mi salario</value>
     <comment>This lists salary payments for the logged on individual</comment>
@@ -298,7 +312,9 @@
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Libros de contabilidad</value>
   </data>
-  
+  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
+    <value>Gráfico de cuentas</value>
+  </data>
   <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Auditar libros de auditoría</value>
   </data>
@@ -326,8 +342,12 @@
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>Depurar libros de contabilidad, cuentas</value>
   </data>
-  
-  
+  <data name="Menu5_Ledgers_DepreciatingAmortizedAssets" xml:space="preserve">
+    <value>Depreciando y amortizando activos</value>
+  </data>
+  <data name="Menu5_Ledgers_DepreciationsAmortizations" xml:space="preserve">
+    <value>Depreciaciones y amortizaciones</value>
+  </data>
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importar datos bancarios</value>
   </data>
@@ -340,19 +360,30 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Nómina</value>
   </data>
-  
+  <data name="Menu5_Ledgers_PayrollAdjustments" xml:space="preserve">
+    <value>Hacer ajustes de nómina</value>
+    <comment>As in bonuses, sick leave, lunch extras, whatever. Before or after tax.</comment>
+  </data>
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Declaración de ganancias y pérdidas</value>
   </data>
-  
-  
+  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
+    <value>Resincronizar cuenta conectada</value>
+  </data>
+  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
+    <value>Configurar presupuesto</value>
+    <comment>"Budget" as in "Cost allowed for a particular purpose" or "Revenue expected from a source".</comment>
+  </data>
   <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
     <value>Formularios de impuestos</value>
   </data>
   <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
     <value>Formularios para impuestos de nómina</value>
   </data>
-  
+  <data name="Menu5_Ledgers_TrackedTransactions" xml:space="preserve">
+    <value>Transacciones en seguimiento</value>
+    <comment>Tracking of special transactions</comment>
+  </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Cargar archivos de banca</value>
   </data>
@@ -417,7 +448,10 @@
   <data name="Menu5_People_AddPerson" xml:space="preserve">
     <value>Añadir [Regular]</value>
   </data>
-  
+  <data name="Menu5_People_DistributedAssets" xml:space="preserve">
+    <value>Activos distribuidos</value>
+    <comment>Distributed as in "out among activists"; this tracks who has what equipment</comment>
+  </data>
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>Listar/encontrar personas</value>
   </data>

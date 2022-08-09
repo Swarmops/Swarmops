@@ -119,8 +119,12 @@
   </resheader>
   
   
-  
-  
+  <data name="Attest_ExpenseClaim_Many" xml:space="preserve">
+    <value>Aprobar reclamación de gastos {0}</value>
+  </data>
+  <data name="Attest_ExpenseClaim_One" xml:space="preserve">
+    <value>Aprobar reclamación de gastos n.º {0}</value>
+  </data>
   <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
     <value>Establecer dirección de pago de Bitcoin Cash</value>
   </data>

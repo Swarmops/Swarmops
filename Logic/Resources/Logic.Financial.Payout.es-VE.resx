@@ -139,10 +139,10 @@
     <value>Gastos{0}</value>
   </data>
   <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentities" xml:space="preserve">
-    <value>Gastos{0} (menos avances {1})</value>
+    <value>Gastos {0} (adelanto mínimo {1})</value>
   </data>
   <data name="Payout_ExpenseClaimIdentitiesLessAdvanceIdentity" xml:space="preserve">
-    <value>Gastos {0} (menos avance # {1:N0}</value>
+    <value>Gastos {0} (adelanto mínimo n.º {1:N0})</value>
   </data>
   <data name="Payout_ExpenseClaimIdentitiesRecipient" xml:space="preserve">
     <value>Reclamos de gastos {0} por {1}</value>
@@ -154,7 +154,7 @@
     <value>Gastos # {0: N0} (menos adelantos {1})</value>
   </data>
   <data name="Payout_ExpenseClaimIdentityLessAdvanceIdentity" xml:space="preserve">
-    <value>Gastos #{0:N0} (menos avance #{1:N0})</value>
+    <value>Gastos n.º {0:N0} (adelanto mínimo n.º {1:N0})</value>
   </data>
   <data name="Payout_ExpenseClaimIdentityRecipient" xml:space="preserve">
     <value>Reclamo de gastos #{0:N0} por {1}</value>

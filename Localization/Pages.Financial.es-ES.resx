@@ -163,8 +163,13 @@
   
   
   
-  
-  
+  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
+    <value>Aprobar</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>Aprobar</value>
+  </data>
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Denegar</value>
     <comment>keep short</comment>
@@ -217,7 +222,9 @@
     <value>EL PRESUPUESTO FUE SOBREGIRADO.</value>
     <comment>The UPPERCASE is intentional.</comment>
   </data>
-  
+  <data name="AttestCosts_PageTitle" xml:space="preserve">
+    <value>Aprobar costes</value>
+  </data>
   
   
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
@@ -250,7 +257,10 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Aquí es donde archiva facturas recibidas en su organización ("Cuentas por pagar"). Ingrese el nombre del proveedor, el monto, la fecha de vencimiento, la referencia de la factura y cargue una imagen de la factura recibida. Además, selecciona un presupuesto. El propietario del presupuesto debe atestiguar, como de costumbre. (Las expansiones futuras de este mecanismo incluyen las órdenes de compra y las listas de proveedores)</value>
   </data>
-  
+  <data name="CreateInboundInvoice_InvoiceDate" xml:space="preserve">
+    <value>Fecha de facturación</value>
+    <comment>This refers to the date as written on the invoice. (It defaults to the date when the invoice is entered, which is usually later.)</comment>
+  </data>
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Recibió la factura entrante</value>
   </data>
@@ -367,7 +377,9 @@
     <value>Tipo de costo</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
-  
+  <data name="FileExpenseClaim_DateIncurred" xml:space="preserve">
+    <value>Fecha de gastos</value>
+  </data>
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Descripción</value>
   </data>
@@ -586,7 +598,7 @@
     <value>Total del impuesto</value>
   </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
-    <value>Cantidad de avance ( en {0})</value>
+    <value>Cantidad de adelanto (en {0})</value>
     <comment>{0} is the currency.</comment>
   </data>
   <data name="RequestCashAdvance_BankAccount" xml:space="preserve">

@@ -157,7 +157,7 @@ Si se ofreció como voluntario para asumir la responsabilidad formal, alguien (p
   
   
   <data name="Signup_Error_MailExists" xml:space="preserve">
-    <value>Ya te has registrado en este servidor de Swarmops. Utilice la función Restablecer contraseña en la pantalla de inicio de sesión en lugar de crear una cuenta nueva.</value>
+    <value>Ya te has registrado en este servidor de Swarmops. Utiliza la función «Restablecer contraseña» en la pantalla de inicio de sesión en lugar de crear una cuenta nueva.</value>
   </data>
   <data name="Signup_Error_NeedPassword" xml:space="preserve">
     <value>Seleccione y vuelva a escribir una contraseña.</value>
@@ -271,7 +271,7 @@ Si se ofreció como voluntario para asumir la responsabilidad formal, alguien (p
     <value>Su inicio de sesión</value>
   </data>
   <data name="Signup_YourLogonText" xml:space="preserve">
-    <value>Seleccione una contraseña para iniciar sesión en Swarmops (este sistema). Podrás reemplazar esto con un inicio de sesión de Twitter, Facebook o BitID para una mayor comodidad más adelante.</value>
+    <value>Selecciona una contraseña para iniciar sesión en Swarmops (este sistema). Podrás reemplazar esto con un inicio de sesión de Twitter, Facebook o BitID para mayor comodidad más adelante.</value>
   </data>
   <data name="Signup_YourName" xml:space="preserve">
     <value>Su nombre</value>

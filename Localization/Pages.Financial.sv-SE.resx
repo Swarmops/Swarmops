@@ -311,7 +311,10 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Här lägger du in fakturor som din organisation tagit emot ("leverantörsreskontra"). Lägg in leverantörens namn, fakturans belopp, förfallodatum, referensnummer, och ladda upp en bild på fakturan. Välj också en budget. Budgetägaren behöver attestera, som vanligt.</value>
   </data>
-  
+  <data name="CreateInboundInvoice_InvoiceDate" xml:space="preserve">
+    <value>Fakturadatum</value>
+    <comment>This refers to the date as written on the invoice. (It defaults to the date when the invoice is entered, which is usually later.)</comment>
+  </data>
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Mottagit faktura</value>
   </data>
@@ -428,7 +431,9 @@
     <value>Kostnadstyp</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
   </data>
-  
+  <data name="FileExpenseClaim_DateIncurred" xml:space="preserve">
+    <value>Utgiftsdatum</value>
+  </data>
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Beskrivning</value>
   </data>

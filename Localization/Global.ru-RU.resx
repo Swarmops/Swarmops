@@ -138,14 +138,20 @@
   <data name="Error_AjaxCallException" xml:space="preserve">
     <value>Произошла общая неопределенная ошибка при обращении к серверу Swarmops. Сеть все еще работает и сервер доступен?</value>
   </data>
-  
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Swarmops не может распознать количество валюты. (Одна тысяча и ноль центов написаны, как "{0:N2}".) Попробовать снова?</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
   <data name="Error_DatabaseConcurrency" xml:space="preserve">
     <value>Кажется, другой пользователь избил вас до этой операции; база данных изменилась, пока вы искали. Пожалуйста, изучите измененные условия и повторите то, что вы пытались сделать.</value>
   </data>
   <data name="Error_UnspecifiedAjaxSetValue" xml:space="preserve">
     <value>Была неопределенная ошибка, пытающаяся установить это значение.</value>
   </data>
-  
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Учетная запись</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
   <data name="Financial_Actuals" xml:space="preserve">
     <value>Фактические данные</value>
   </data>
@@ -157,16 +163,36 @@
   </data>
   
   
-  
-  
+  <data name="Financial_AmountVat" xml:space="preserve">
+    <value>НДС</value>
+    <comment>The short form of Value Added Tax.</comment>
+  </data>
+  <data name="Financial_AmountVatFull" xml:space="preserve">
+    <value>Налог на добавленную стоимость</value>
+  </data>
   <data name="Financial_Asset" xml:space="preserve">
     <value>Активы</value>
   </data>
-  
-  
-  
-  
-  
+  <data name="Financial_BitcoinChain" xml:space="preserve">
+    <value>Блокчейн</value>
+    <comment>Short for "Blockchain fork", as in "what chain are you following"</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Cash" xml:space="preserve">
+    <value>Нал</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Core" xml:space="preserve">
+    <value>Ядро</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Gold" xml:space="preserve">
+    <value>Золото</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
+  <data name="Financial_BitcoinChain_Legacy" xml:space="preserve">
+    <value>Следы</value>
+    <comment>Keep short - seven chars max</comment>
+  </data>
   <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
     <value>Бухгалтерские счета</value>
   </data>
@@ -200,7 +226,9 @@
     <value>Расходы</value>
   </data>
   
-  
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>Обязательства</value>
+  </data>
   <data name="Financial_DueDate" xml:space="preserve">
     <value>Срок сдачи</value>
     <comment>For invoices and similar</comment>
@@ -235,7 +263,9 @@
   </data>
   
   
-  
+  <data name="Financial_Income" xml:space="preserve">
+    <value>Доход</value>
+  </data>
   <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>Счет-фактура</value>
   </data>
@@ -255,26 +285,43 @@
   <data name="Financial_Parley" xml:space="preserve">
     <value>Конференция</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="Financial_Salary" xml:space="preserve">
-    <value>Зарплата</value>
+  <data name="Financial_PaymentHistory" xml:space="preserve">
+    <value>История Платежей</value>
   </data>
   
   
   
+  
+  
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>Принять Изображение {0} из {1}</value>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>Зарплата {0} за {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>Налоги за {0:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Salary" xml:space="preserve">
+    <value>Зарплата</value>
+  </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>Зарплата #{0:N0} за {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>Зарплата #{0:N0} за {1:yyyy-MMM} для {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Зарплата #{0:N0}</value>
+  </data>
   <data name="Financial_SalarySpecification" xml:space="preserve">
     <value>Зарплата за {0:гггг-МММ}</value>
     <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
   </data>
-  
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>Налоги #{0:N0} за {1:yyyy-MMM}</value>
+  </data>
   <data name="Financial_Supplier" xml:space="preserve">
     <value>Поставщик</value>
   </data>
@@ -289,27 +336,43 @@
     <comment>Used as recipient for taxes.</comment>
   </data>
   
-  
+  <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
+    <value>Тип затрат</value>
+    <comment>Second-dimension bookkeeping</comment>
+  </data>
   <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
     <value>Проект</value>
     <comment>Tagging costs/income to projects</comment>
   </data>
-  
+  <data name="Financial_UnconfirmedPayout" xml:space="preserve">
+    <value>Неподтвержденные Выводы</value>
+    <comment>This is a payout that's not yet been seen in a Connected Account, like a bank account</comment>
+  </data>
   <data name="Financial_YearlyResult" xml:space="preserve">
     <value>Годовой результат</value>
   </data>
   
   
   
-  
-  
-  
+  <data name="Financial_Zero" xml:space="preserve">
+    <value>Ноль</value>
+    <comment>This is used when a debt is zero; there is no debt to settle</comment>
+  </data>
+  <data name="Global_2FA" xml:space="preserve">
+    <value>Двухфакторная аутентификация</value>
+  </data>
+  <data name="Global_2FA_Short" xml:space="preserve">
+    <value>Двухфакторная аутентиф</value>
+  </data>
   
   <data name="Global_Action" xml:space="preserve">
     <value>Действие</value>
     <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
   </data>
-  
+  <data name="Global_Add" xml:space="preserve">
+    <value>Добавить</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
   <data name="Global_Address" xml:space="preserve">
     <value>Адрес</value>
     <comment>As in physical location</comment>
@@ -336,7 +399,10 @@
     <value>Нажмите на изображение, чтобы увеличить.</value>
     <comment>Displayed where thumbnails can be enlarged modally.</comment>
   </data>
-  
+  <data name="Global_Closed" xml:space="preserve">
+    <value>Закрыто</value>
+    <comment>As in "record or transaction closed"</comment>
+  </data>
   <data name="Global_Confirm" xml:space="preserve">
     <value>Подтвердить</value>
     <comment>Displayed as confirmation link on changing something</comment>
@@ -357,15 +423,30 @@
     <value>Пользовательское</value>
     <comment>As in "show me the advanced options"</comment>
   </data>
-  
-  
-  
-  
+  <data name="Global_Date" xml:space="preserve">
+    <value>Дата</value>
+    <comment>As in calendar date, for example January 21</comment>
+  </data>
+  <data name="Global_DateFormatLongDateMonth" xml:space="preserve">
+    <value>ММММ д</value>
+    <comment>Format used for just date and month (no year). The formats are MMMM for month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages use different ways to write month and date, for example, German would write "23. Dezember" (note the dot), a format which would be "{0:d}. {0:MMMM}".</comment>
+  </data>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>ММММ д, гггг</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
+  <data name="Global_DateFormatShortDateMonth" xml:space="preserve">
+    <value>МММ дд</value>
+    <comment>Format used for just date and month (no year). The formats are MMM for three-letter month name, dd for zero-padded two-digit date, and d for date without padding. This is included as different languages write month and date in different orders and with different separators. Do keep the month NAME though, rather than using the month number, even if that's common in the target language.</comment>
+  </data>
   <data name="Global_DateFormatShortReadable" xml:space="preserve">
     <value>ММ/ДД/ГГГГ</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  
+  <data name="Global_DateFormatShortSansWeekday" xml:space="preserve">
+    <value>МММ д, гггг</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "Dec 23, 1921".</comment>
+  </data>
   <data name="Global_DateOfBirth" xml:space="preserve">
     <value>Дата рождения</value>
     <comment>Population data record entry, rather than celebration day ("birthday")</comment>
@@ -375,8 +456,13 @@
     <value>Описание</value>
     <comment>As a general header of any description field</comment>
   </data>
-  
-  
+  <data name="Global_DownloadThis" xml:space="preserve">
+    <value>Скачай Это</value>
+  </data>
+  <data name="Global_Dox" xml:space="preserve">
+    <value>Док-ты</value>
+    <comment>Used for "Inspect documents" icon in narrow columns, so keep extremely short</comment>
+  </data>
   <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
     <value>--Выберите счет/бюджет--</value>
     <comment>Initializer in dropdown box.</comment>
@@ -385,8 +471,13 @@
     <value>--Выберите Организацию--</value>
     <comment>Initializer in dropdown box.</comment>
   </data>
-  
-  
+  <data name="Global_EmptySet" xml:space="preserve">
+    <value>Нет записей</value>
+    <comment>There are no records of the requested type</comment>
+  </data>
+  <data name="Global_EnteringSandbox" xml:space="preserve">
+    <value>Вы зашли в &lt;strong&gt;Песочницу&lt;/strong&gt; организации.&lt;br/&gt;&lt;br/&gt;Это безопасное место, где Вы можете пользоваться Swarmops без какого-либо риска и повреждения основных данных. Веселитесь и экспериментируйте на полную катушку, а когда закончите, можете вернуться к основному проекту.</value>
+  </data>
   
   <data name="Global_Error_WebsocketFailure" xml:space="preserve">
     <value>Не удается подключить WebSocket. Текущие обновления будут недоступны.</value>
@@ -396,20 +487,36 @@
     <comment>Legal gender</comment>
   </data>
   
-  
-  
+  <data name="Global_FileUploadResults" xml:space="preserve">
+    <value>Результаты выгрузки файла</value>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>Заголовки</value>
+    <comment>As in a table column header</comment>
+  </data>
   <data name="Global_Geography" xml:space="preserve">
     <value>Географическое местоположение</value>
     <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
   </data>
-  
+  <data name="Global_Go" xml:space="preserve">
+    <value>Перейти</value>
+    <comment>As in "execute", "run requested procedure"</comment>
+  </data>
   <data name="Global_GoThere" xml:space="preserve">
     <value>Перейти туда...</value>
     <comment>Link after describing something.</comment>
   </data>
-  
-  
-  
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>Картинка {0} из {1}</value>
+  </data>
+  <data name="Global_Item" xml:space="preserve">
+    <value>Элемент</value>
+    <comment>As in "record", "list item", something listed</comment>
+  </data>
+  <data name="Global_Items" xml:space="preserve">
+    <value>Элементы</value>
+    <comment>As in "records", "list items", something listed</comment>
+  </data>
   
   
   <data name="Global_Mail" xml:space="preserve">
@@ -420,13 +527,21 @@
     <value>Муж.</value>
     <comment>Legal gender</comment>
   </data>
-  
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>Мин / Макс</value>
+    <comment>note the spaces</comment>
+  </data>
   <data name="Global_Missing" xml:space="preserve">
     <value>- отсутствует -</value>
     <comment>When a record or similar is missing. Used in grids.</comment>
   </data>
-  
-  
+  <data name="Global_Month" xml:space="preserve">
+    <value>Месяц</value>
+  </data>
+  <data name="Global_MonthXtoY" xml:space="preserve">
+    <value>{0} по {1}</value>
+    <comment>For example, "January to March". The initial "from" is implied.</comment>
+  </data>
   <data name="Global_Multiple" xml:space="preserve">
     <value>- несколько -</value>
     <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
@@ -445,18 +560,28 @@
     <value>Нет</value>
     <comment>For yes/no options</comment>
   </data>
-  
-  
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>Нет элементов для срочных действий. Ура!</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(нет совпадений)</value>
+  </data>
   <data name="Global_NoOwner" xml:space="preserve">
     <value>Никто</value>
     <comment>Displayed when an account/position etc is vacant</comment>
   </data>
-  
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>Причина не указана.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
   <data name="Global_Notes" xml:space="preserve">
     <value>Примечания</value>
     <comment>Small notes in a grid, maybe in icon form</comment>
   </data>
-  
+  <data name="Global_Nuked" xml:space="preserve">
+    <value>(отменено, аннулировано, обнулено)</value>
+    <comment>Used when something is determined invalid</comment>
+  </data>
   <data name="Global_Off" xml:space="preserve">
     <value>Выкл</value>
     <comment>Off (as opposed to On)</comment>
@@ -465,12 +590,18 @@
   
   
   
-  
+  <data name="Global_Ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Shown on confirmation dialogs</comment>
+  </data>
   <data name="Global_On" xml:space="preserve">
     <value>Вкл</value>
     <comment>On (as opposed to Off)</comment>
   </data>
-  
+  <data name="Global_Opened" xml:space="preserve">
+    <value>Открыто</value>
+    <comment>As in "record or transaction opened"</comment>
+  </data>
   <data name="Global_Organization" xml:space="preserve">
     <value>Организация</value>
   </data>
@@ -496,12 +627,18 @@
   <data name="Global_PostalCode" xml:space="preserve">
     <value>Почтовый индекс</value>
   </data>
-  
+  <data name="Global_Proceed" xml:space="preserve">
+    <value>Продолжить</value>
+    <comment>Shown as "Ok" on some "Are you sure?" dialogs</comment>
+  </data>
   <data name="Global_ProcessingFile" xml:space="preserve">
     <value>Обработка файла...</value>
     <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
-  
+  <data name="Global_Progress" xml:space="preserve">
+    <value>Прогресс</value>
+    <comment>Used for something progressing through the system, i.e. progress of an invoice toward payment</comment>
+  </data>
   <data name="Global_Q1" xml:space="preserve">
     <value>1 Квартал</value>
     <comment>First quarter of the year</comment>
@@ -522,25 +659,57 @@
     <value>-- Выберите --</value>
     <comment>Shown in dropdowns when selection required</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_SendThisInMail" xml:space="preserve">
+    <value>Отправить это мне на почту</value>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(несколько)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- Несколько - выберите --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
+  <data name="Global_SkipNo" xml:space="preserve">
+    <value>Не Пропускать</value>
+    <comment>The "no" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_SkipThis" xml:space="preserve">
+    <value>пропустить</value>
+    <comment>Used to skip a list item. If "this" needs a known gender, feel free to just translate "skip".</comment>
+  </data>
+  <data name="Global_SkipYes" xml:space="preserve">
+    <value>Пропустить</value>
+    <comment>The "yes" option on the "Skip? Yes/no" dialog</comment>
+  </data>
+  <data name="Global_Submit" xml:space="preserve">
+    <value>Подтвердить</value>
+    <comment>As in "Submit this data for processing"</comment>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>Система</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
+  <data name="Global_Timestamp" xml:space="preserve">
+    <value>Отметкавремени</value>
+  </data>
   <data name="Global_Today" xml:space="preserve">
     <value>Сегодня</value>
   </data>
-  
-  
+  <data name="Global_Total" xml:space="preserve">
+    <value>Итого</value>
+    <comment>Used as footer in tables, summarizing something</comment>
+  </data>
+  <data name="Global_TwitterId" xml:space="preserve">
+    <value>Twitter ID</value>
+  </data>
   <data name="Global_UnknownUndisclosed" xml:space="preserve">
     <value>Неизвестных или нераскрытых</value>
     <comment>Used for gender et al</comment>
   </data>
-  
+  <data name="Global_Upload" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
   <data name="Global_UploadFile" xml:space="preserve">
     <value>Загрузить файл</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
@@ -553,36 +722,84 @@
     <value>Пожалуйста, выберите файл для загрузки.</value>
     <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
+  <data name="Global_View" xml:space="preserve">
+    <value>Посмотреть</value>
+    <comment>As in "inspect"</comment>
+  </data>
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Volunteer_Plural" xml:space="preserve">
+    <value>Волонтёры</value>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Завершить</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>Дальше</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>В процессе...</value>
+  </data>
+  <data name="Global_Year" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="Global_YearMonth" xml:space="preserve">
+    <value>Год/Месяц</value>
+  </data>
+  <data name="Global_YearX" xml:space="preserve">
+    <value>Год {0}</value>
+    <comment>As in "the year X".</comment>
+  </data>
   <data name="Global_Yes" xml:space="preserve">
     <value>Да</value>
     <comment>For yes/no options</comment>
   </data>
-  
+  <data name="IconTooltip_Barcode_Scanning" xml:space="preserve">
+    <value>Эта линия может быть автоматически просканирована приложением.</value>
+    <comment>This is when Swarmops can display an expense-to-be-paid in a format, that a mobile banking app can read directly, such as a QR code or other machine-readable format.</comment>
+  </data>
   <data name="Ledgers_Balance" xml:space="preserve">
     <value>Баланс</value>
     <comment>As in 'account balance', not as in staying upright</comment>
   </data>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>Кредит</value>
+  </data>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>Дебет</value>
+  </data>
+  <data name="Master_BitIdRegistered" xml:space="preserve">
+    <value>&lt;strong&gt;ДВУХФАКТОРНАЯ АУТЕНТИФИКАЦИЯ BITID УСПЕШНО АКТИВИРОВАНА&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Теперь при входе в систему Вам понадобится приложение BitId, чтобы отсканировать код.</value>
+  </data>
+  <data name="Master_BitIdRegister_Fail" xml:space="preserve">
+    <value>Двухфакторная аутентификация BitID не включена.</value>
+  </data>
+  <data name="Master_BitIdRegister_Header" xml:space="preserve">
+    <value>Отсканируйте этот код для включения BitID</value>
+  </data>
+  <data name="Master_BitIdRegister_Sidebar" xml:space="preserve">
+    <value>&lt;h3&gt;Что это?&lt;/h3&gt;
+                &lt;p&gt;BitID это более безопасный способ входа, чем 
+ ввод пароля. Его простоту проще испытать, чем объяснять, двухфакторная аутентификация использует в связке Ваш телефон.&lt;/p&gt;
+                &lt;h3&gt;Не требует ли этого того, чтобы мой телефон также был защищён?&lt;/h3&gt;
+                &lt;p&gt;Конечно да. Это Ваш телефон и Ваша защита доступа к телефону. Но Ваш телефон должен быть всегда защищён от несанкционированного доступа.&lt;/p&gt;
+                &lt;h3&gt;Требуется ли мне установить приложение на мобильный телефон?&lt;/h3&gt;
+                &lt;p&gt;В какой-то степени да. Некоторые bitcoin кошельки для мобильных устройств уже имеют встроенный BitID. Вот два примера bitcoin кошельков для мобильных устройств с поддержкой BitID {0} и {1}. Вы также можете найти отдельное приложение BitID Authenticator.&lt;/p&gt;
+                &lt;h3&gt;Как активировать BitID?&lt;/h3&gt;
+                &lt;p&gt;Просто используй свой телефон, чтобы отсканировать этот код. После данной операции Вы сможете сканировать подобные коды для входа в систему.&lt;/p&gt;</value>
+    <comment>This text is displayed as a sidebar when registering a BitID address. {0} and {1} will be replaced with examples of wallets currently supporting BitID (this changed once, forcing re-translation of this entire section, so it was better to parameterize those names).</comment>
+  </data>
+  <data name="Master_EditPerson2FAEnable" xml:space="preserve">
+    <value>BitID (биткойн подпись) двухфакторная аутентификация</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Master_EditPerson2FAEnableShort" xml:space="preserve">
+    <value> BitID двухфак. аутентиф.</value>
+  </data>
   
   
   
@@ -592,26 +809,58 @@
     <value>Двухфакторная аутентификация не была удалена и по-прежнему активна.</value>
   </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Master_EditPersonHeaderAccount" xml:space="preserve">
+    <value>Учетная запись</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurity" xml:space="preserve">
+    <value>Ваша безопасность</value>
+  </data>
+  <data name="Master_EditPersonHeaderSecurityProvisioning" xml:space="preserve">
+    <value>Обеспечение безопасности</value>
+  </data>
+  <data name="Master_EditPersonNewPassword1" xml:space="preserve">
+    <value>Задать новый пароль</value>
+  </data>
+  <data name="Master_EditPersonNewPassword2" xml:space="preserve">
+    <value>Введите новый пароль еще раз</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_SecurityError" xml:space="preserve">
+    <value>Не удалось установить новый пароль: Старый пароль не верен.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_CannotChange_TooWeak" xml:space="preserve">
+    <value>Не удалось установить новый пароль: Новый пароль слишком слабый. Используйте более сильный пароль.</value>
+  </data>
+  <data name="Master_EditPersonNewPassword_Changed" xml:space="preserve">
+    <value>&lt;strong&gt;ПАРОЛЬ ИЗМЕНЁН&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Вы успешно изменили пароль. В качестве меры предосторожности, все выводы средств в настоящее время находятся на карантине на следующие 48 часов.</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordButton" xml:space="preserve">
+    <value>Сбросить пароль</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Header" xml:space="preserve">
+    <value>Сбросить Пароль Пользователя?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordConfirm_Text" xml:space="preserve">
+    <value>Вы сбросили пароль пользователя. Этот пользователь получит на почту ссылку для сброса пароля Swarmops.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Никогда не делайте этого без специального запроса от пользователя.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Продолжить процедуру сброса пароля пользователя?</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordLabel" xml:space="preserve">
+    <value>Отправить ссылку для сброса пароля</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Header" xml:space="preserve">
+    <value>Сброс Пароля Запрещён</value>
+  </data>
+  <data name="Master_EditPersonResetPasswordProhibited_Text" xml:space="preserve">
+    <value>Адрес электронной почты данного пользователя был недавно изменён (меньше недели назад). Ссылка на сброс пароля не может быть отправлена на этот адрес из соображения обеспечения мер безопасности.</value>
+  </data>
+  <data name="Master_EditPersonResetPassword_ResetLinkSent" xml:space="preserve">
+    <value>Ссылка на сброс пароля была отправлена пользователю.</value>
+  </data>
   <data name="Master_EditPersonWarning_Phone" xml:space="preserve">
     <value>Это не похоже на действительный номер телефона, но мы храним его, как написано здесь, тем не менее.</value>
     <comment>Triggers as a notice if phone misses a regexp of 0-9, (), -, +, and space.</comment>
   </data>
-  
+  <data name="Master_EditPerson_PleaseEnable2FA" xml:space="preserve">
+    <value>Если вы можете, включите двухфакторную аутентификацию BitID.</value>
+  </data>
   <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
     <value>Вы в настоящее время вошли в &lt;strong&gt;{0}&lt;/strong&gt;. Вы желаете переключиться на другую организацию?</value>
   </data>
@@ -630,35 +879,80 @@
     <value>Информация</value>
     <comment>Information about current page</comment>
   </data>
-  
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Параметры</value>
+    <comment>For various page-specific checkboxes etc</comment>
+  </data>
   
   <data name="Sidebar_Todo" xml:space="preserve">
     <value>Список дел
 </value>
     <comment>List of todo items</comment>
   </data>
-  
-  
-  
-  
-  
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>&lt;strong&gt;Всё Чисто:&lt;/strong&gt; Нет срочных действий. Ура!</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>Элементы для действия будут здесь.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
+  </data>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>Назначенный Человек</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>Должность</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>Введите имя...</value>
+  </data>
   
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>пятилетка</value>
   </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>один-месяц</value>
+  </data>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>один-год</value>
+  </data>
+  <data name="Timespan_Selection_OneDay" xml:space="preserve">
+    <value>Один день</value>
+  </data>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>Один месяц</value>
+  </data>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>Один год</value>
+  </data>
+  <data name="Timespan_Selection_SevenDays" xml:space="preserve">
+    <value>Семь дней</value>
+  </data>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>Шесть месяцев</value>
+  </data>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>Три месяца</value>
+  </data>
+  <data name="Timespan_Selection_TwoDays" xml:space="preserve">
+    <value>Два дня</value>
+  </data>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>Два месяца</value>
+  </data>
+  <data name="Timespan_Selection_TwoWeeks" xml:space="preserve">
+    <value>Две недели</value>
+  </data>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>Два года</value>
+  </data>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>До увольнения</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
+  </data>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>два-года</value>
+    <comment>Like "a two-year membership"</comment>
+  </data>
 </root>

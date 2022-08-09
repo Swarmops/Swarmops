@@ -525,7 +525,9 @@ Detta kan inträffa efter bitcoinsplits (s.k. forks) eller liknande händelser, 
     <comment>This is displayed after (!) the ledger bitcoin balance has been updated to match the hotwallet by means of a new transaction.</comment>
   </data>
   
-  
+  <data name="EndOfMonth_Error_Header_BankTransactionFile" xml:space="preserve">
+    <value>FILEN KUNDE INTE IMPORTERAS</value>
+  </data>
   <data name="EndOfMonth_FetchTransactionDataFor" xml:space="preserve">
     <value>Automathämta transaktionsdata för {0}</value>
     <comment>Parameter zero is the account name as given by the user</comment>
@@ -538,12 +540,18 @@ Detta kan inträffa efter bitcoinsplits (s.k. forks) eller liknande händelser, 
     <value>Kryptovalutor</value>
     <comment>This is the header for various bitcoin hotwallet / cold storage operations</comment>
   </data>
-  
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Extern kontodata och matchning av betalningar</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
   <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
     <value>Löner och skatter</value>
     <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
   </data>
-  
+  <data name="EndOfMonth_Header_QuarterlyReports" xml:space="preserve">
+    <value>Kvartalsrapporter</value>
+    <comment>Presented in April, July, and October. Not in January (those are annual reports).</comment>
+  </data>
   <data name="EndOfMonth_Info" xml:space="preserve">
     <value>Det här är en checklista med saker att göra för att stänga föregående månad och börja den nya med avseende på redovisning.</value>
   </data>
@@ -559,7 +567,10 @@ Detta kan inträffa efter bitcoinsplits (s.k. forks) eller liknande händelser, 
     <value>Lönekörning: Ingen lönelista upprättad</value>
     <comment>This is shown as a disabled action item when there's no active payroll</comment>
   </data>
-  
+  <data name="EndOfMonth_SendReports" xml:space="preserve">
+    <value>Skicka rapporter till revisorer, aktieägare, etc.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
+  </data>
   <data name="EndOfMonth_SkipBankStatementDialog" xml:space="preserve">
     <value>&lt;strong&gt;SKIPPA KONTOUTDRAG?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Bankernas kontoutdrag behövs vanligen för revision av bokföringen. Det giltiga skälet att hoppa över en månads kontoutdrag är att kontot är inte öppnat ännu, och då hoppar man över månaderna innan kontot öppnades.&lt;br/&gt;&lt;br/&gt;Om du skippar detta kontoutdrag nu kommer du inte att omfrågas igen senare.</value>
   </data>
@@ -582,7 +593,9 @@ Detta kan inträffa efter bitcoinsplits (s.k. forks) eller liknande händelser, 
     <value>Verifiera kylförvarad bitcoin</value>
     <comment>This verifies that the amounts supposed to be in cold storage are indeed in cold storage</comment>
   </data>
-  
+  <data name="EndOfMonth_Warning_Header_BankTransactionFile" xml:space="preserve">
+    <value>PROBLEM MED TRANSAKTIONSFIL</value>
+  </data>
   <data name="InspectLedgers_AccountName" xml:space="preserve">
     <value>Kontonamn</value>
   </data>

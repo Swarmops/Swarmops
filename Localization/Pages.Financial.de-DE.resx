@@ -311,7 +311,10 @@
   <data name="CreateInboundInvoice_Info" xml:space="preserve">
     <value>Hier erstellen Sie Rechnungen, die Sie bei Ihrer Organisation erhalten haben ("Accounts Payable"). Geben Sie den Lieferantennamen, den Betrag, das Fälligkeitsdatum, die Rechnungsreferenz ein und laden Sie ein Bild der empfangenen Rechnung hoch. Wählen Sie auch ein Budget aus. Der Budget-Eigentümer muss wie üblich bestätigen. (Zu den Roadmap-Erweiterungen dieses Mechanismus gehören Einkaufsaufträge und Lieferantenlisten.)</value>
   </data>
-  
+  <data name="CreateInboundInvoice_InvoiceDate" xml:space="preserve">
+    <value>Rechnungsdatum</value>
+    <comment>This refers to the date as written on the invoice. (It defaults to the date when the invoice is entered, which is usually later.)</comment>
+  </data>
   <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
     <value>Eingangsrechnung erhalten</value>
   </data>

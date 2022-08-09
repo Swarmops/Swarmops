@@ -120,9 +120,9 @@
   
   
   <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
-    <value>Al intentar un pago a su dirección de pago de Bitcoin Cash, el motor de pago subyacente rechazó la dirección ([BitcoinAddress]) como inválida. Por lo tanto, ha sido borrada de su perfil.
+    <value>Al intentar realizar un pago a tu dirección de pago de Bitcoin Cash, el motor de pago subyacente rechazó la dirección ([BitcoinAddress]) por no ser válida. Por lo tanto, ha sido borrada de tu perfil.
 
-Inicie sesión en [InstallationName] en [ExternalUrl] y establezca una nueva dirección de pago de bitcoin.</value>
+Entra a [InstallationName] en [ExternalUrl] y establece una nueva dirección de pago de bitcoin.</value>
   </data>
   <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
     <value>[[OrganizationName] - OBJETO DE ACCIÓN] Mala dirección de pago de bitcoin</value>
@@ -140,7 +140,7 @@ Si hace clic en ese enlace, su cuenta será bloqueada inmediatamente sin solicit
   <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
     <value>Tienes fondos esperando el pago en [OrganizationName], pero no has establecido una dirección de pago de Bitcoin Cash.
 
-Por favor, inicie sesión en [InstallationName] en [ExternalUrl] y siga el enlace para establecer su dirección de pago - la encontrará en la lista de tareas pendientes.</value>
+Entra a [InstallationName] en [ExternalUrl] y sigue el enlace para establecer tu dirección de pago; la encontrarás en la lista de tareas pendientes.</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Por favor, establezca su dirección de pago de Bitcoin Cash</value>
@@ -191,12 +191,18 @@ Swarmops seguirá intentándolo y seguirá enviando estas notificaciones siempre
   <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
     <value>[[OrganizationName] - OBJETO DE ACCIÓN] Cartera caliente Bitcoin Cash es insuficiente para realizar pagos - coloque fondos inmediatamente</value>
   </data>
+  <data name="CashAdvance_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Tu adelanto de efectivo solicitado anteriormente con [OrganizationName] por [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], que fuer aprobado, ha sido RETRACTADO por el propietario del presupuesto. Este avance de efectivo ya no está aprobado. Esto suele deberse a problemas con tu solicitud.
+
+Mantente a la espera de que se comunique contigo el propietario del presupuesto para seguir con el asunto.</value>
+  </data>
   
-  
-  
+  <data name="CashAdvance_Approved_Body" xml:space="preserve">
+    <value>Tu adelanto de efectivo solicitado con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido atestiguado por el propietario del presupuesto. Ahora procederá a pagarte.</value>
+  </data>
   
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
-    <value>Su adelanto de efectivo con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] con respecto a [RequestPurpose] ha sido denegado. El siguiente texto contiene la razón para dicha acción:
+    <value>Tu adelanto de efectivo con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] con respecto a [RequestPurpose] ha sido denegado. El siguiente texto contiene el motivo de dicha acción:
 
 [EmbeddedPreformattedText]
 </value>
@@ -205,23 +211,41 @@ Swarmops seguirá intentándolo y seguirá enviando estas notificaciones siempre
     <value>[[OrganizationName]] Adelanto de efectivo DENEGADO: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
-    <value>Su adelanto de efectivo solicitado con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido marcado como pagado por los contadores de la organización.
+    <value>Tu adelanto de efectivo solicitado con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido marcado como pagado por los contadores de la organización.
 
 Esto significa que pronto debería ver el monto en su cuenta.</value>
   </data>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Adelanto de Efectivo Pagado: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] ha solicitado un avance de efectivo de [CurrencyCode] [BudgetAmountFloat] con el propósito de [RequestPurpose]. Este dinero es parte de su presupuesto, [BudgetName]
+
+Entra a [InstallationName] en [ExternalUrl]Financial/ApproveCosts para corroborar o denegar.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
   
+  <data name="ExpenseClaim_ApprovalRetracted_Body" xml:space="preserve">
+    <value>Tu reclamación de gastos solicitada anteriormente con [OrganizationName] por [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], que fue aprobada, ha sido RETRACTADA por el propietario del presupuesto. Esta reclamación de gastos ya no está aprobada. Esto suele deberse a problemas con tu reclamación.
+
+Mantente a la espera de que se comunique contigo el propietario del presupuesto para seguir con el asunto.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
   
+  <data name="ExpenseClaim_Approved_Body" xml:space="preserve">
+    <value>Tu reclamación de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido aprobada por el propietario del presupuesto. Se te pagará cuando los recibos se confirmen como válidos.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
   
-  
-  
-  
-  
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] ha creado una reclamo de gastos contra el presupuesto de [BudgetName] por la cantidad de [CurrencyCode] [BudgetAmountFloat]. El reclamo se refiere a [RequestPurpose]. Tendrá que atestiguar este reclamo de gastos.
+
+Entra a [InstallationName] en [ExternalUrl]Financial/ApproveCosts para corroborar o denegar.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
   
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
-    <value>Su reclamo de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] con respecto a [RequestPurpose] ha sido denegado. El siguiente texto contiene la razón para dicha acción:
+    <value>Tu reclamación de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat] con respecto a [RequestPurpose] ha sido denegada. El siguiente texto contiene la motivo de dicha acción:
 
 [EmbeddedPreformattedText]
 </value>
@@ -231,7 +255,7 @@ Esto significa que pronto debería ver el monto en su cuenta.</value>
     <value>[[OrganizationName]] Reclamo de gastos DENEGADO: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
-    <value>Su reclamo de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido marcado como pagado por los contadores de la organización.
+    <value>Tu reclamación de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], ha sido marcada como pagado por los contadores de la organización.
 
 Esto significa que pronto debería ver el monto en su cuenta.</value>
   </data>
@@ -239,17 +263,25 @@ Esto significa que pronto debería ver el monto en su cuenta.</value>
     <value>[[OrganizationName]] Reclamo de Gastos Pagado: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
-    <value>Los recibos de su reclamo de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], han sido validados por personas responsables de mantener los registros en orden.
+    <value>Los recibos de tu reclamación de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], han sido validados por personas responsables de mantener los registros en orden.
 
-El reclamo se le pagará cuando el monto también haya sido atestiguado por el propietario del presupuesto.</value>
+La reclamación se te pagará cuando el monto también haya sido atestiguado por el propietario del presupuesto.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Recibos de Reclamo de Gastos Validados: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
+  <data name="ExpenseClaim_ValidationRetracted_Body" xml:space="preserve">
+    <value>La validación de los recibos de tu reclamación de gastos con [OrganizationName] de [CurrencyCode] [BudgetAmountFloat], con respecto a [RequestPurpose], han sido RETRACTADOS por los contadores financieros de la organización. Esto generalmente indica algún tipo de problema con la documentación de tu reclamación de gastos.
+
+Mantente a la espera de que se comuniquen contigo para seguir con el asunto. Si no recibes noticias de los contadores en poco tiempo sobre este asunto, ponte tú mismo en contacto con ellos.</value>
+  </data>
   
-  
-  
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>Se ha presentado una factura de [Supplier], relacionada a [Description], contra su presupuesto de [BudgetName] por la cantidad de [CurrencyCode] [BudgetAmountFloat]. Debe corroborar esta factura antes de proceder con el pago.
+
+Entra a [InstallationName] en [ExternalUrl]Financial/ApproveCosts para corroborar o denegar.</value>
+  </data>
   
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>Un nuevo [Regular] se agregó manualmente a [OrganizationName] en una de sus áreas.</value>
@@ -268,7 +300,7 @@ El reclamo se le pagará cuando el monto también haya sido atestiguado por el p
   </data>
   <data name="NotificationFooter_Generic" xml:space="preserve">
     <value>--
-Este correo fue enviado a [Addressee] desde [OrganizationName]. Si no desea recibir estas notificaciones en el futuro, inicie sesión en [InstallationName] en [ExternalUrl] y modifique sus ajustes de notificación.</value>
+Este correo fue enviado a [Addressee] desde [OrganizationName]. Si no quieres recibir estas notificaciones en el futuro, entra a [InstallationName] en [ExternalUrl] y modifica tus ajustes de notificación.</value>
   </data>
   <data name="OutboundComm_Resolved_Body" xml:space="preserve">
     <value>Su mensaje se ha puesto en cola para la entrega y los destinatarios han sido resueltos. Su correo se enviará o se intentará enviar a [RecipientCount] personas en [GeographyName] en [OrganizationName].</value>
@@ -305,13 +337,13 @@ Gracias por su comprensión.</value>
   <data name="Password_Changed_Body" xml:space="preserve">
     <value>Su contraseña de [InstallationName] acaba de ser cambiada en [ExternalUrl].
 
-Si no realizó este cambio de contraseña, ha habido una violación de seguridad. De ser así, por favor, bloquee su cuenta INMEDIATAMENTE haciendo clic en el siguiente enlace:
+Si no has realizado este cambio de contraseña, ha habido una violación de seguridad. De ser así, debes bloquear tu cuenta INMEDIATAMENTE haciendo clic en el siguiente enlace:
 
 [ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
 
-Si confirma un bloqueo en el enlace anterior, cualquier sesión existente finalizará de inmediato, los inicios de sesión con la nueva contraseña se bloquearán y los administradores se pondrán en contacto con usted para verificar qué sucedió y trabajar con usted para volver a habilitar su cuenta.
+Si confirmas un bloqueo en el enlace anterior, cualquier sesión existente finalizará de inmediato, los inicios de sesión con la nueva contraseña se bloquearán y los administradores se pondrán en contacto contigo para verificar qué sucedió y trabajar codo con codo para reactivar tu cuenta.
 
-Sin embargo, si fue usted mismo quien cambió la contraseña en este momento, y por lo tanto provocó que se enviara esta notificación, todo está obviamente bien y como debería ser. Continúe.</value>
+Sin embargo, si fuiste tú quien cambió la contraseña en este momento y por lo tanto provocó que se enviara esta notificación, todo está correcto y como debería ser. Continúe.</value>
   </data>
   <data name="Password_Changed_Subject" xml:space="preserve">
     <value>[[InstallationName]] Contraseña Cambiada</value>
@@ -341,7 +373,7 @@ Si NO solicitó restablecer la contraseña, puede (y debe) ignorar este correo. 
   <data name="Receipts_Filed_Body" xml:space="preserve">
     <value>Se han presentado recibos que necesitan validación para que continúen sus procesos financieros.
 
-Inicie sesión en [InstallationName] en [ExternalUrl]Financial/ValidateReceipts para validarlos o rechazarlos.</value>
+Entra a [InstallationName] en [ExternalUrl]Financial/ValidateReceipts para validarlos o rechazarlos.</value>
   </data>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
     <value>[[OrganizationName] - OBJETO DE ACCIÓN] Recibos Presentados - Se Necesita Validación</value>

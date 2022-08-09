@@ -372,7 +372,14 @@
     <value>Underhållsdonationer</value>
     <comment>This is donations toward maintenance of the Swarmops / Backoffice.Cash codebase and data.</comment>
   </data>
-  
-  
-  
+  <data name="Asset_PrivateWithdrawals" xml:space="preserve">
+    <value>Privata uttag</value>
+  </data>
+  <data name="Debt_PrivateDeposits" xml:space="preserve">
+    <value>Privata insättningar</value>
+  </data>
+  <data name="Asset_PrivateWithdrawals_HealthInsurance" xml:space="preserve">
+    <value>Sjukförsäkring</value>
+    <comment>This is for one personal health insurance, for the sole business owner of the small business, when it is tax deductible (like in Germany).</comment>
+  </data>
 </root>

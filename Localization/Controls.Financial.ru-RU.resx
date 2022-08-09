@@ -117,8 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
+  <data name="Bitcoin_ClientRefusesTracking_Header" xml:space="preserve">
+    <value>Неисправность браузера</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para1" xml:space="preserve">
+    <value>Ваш браузер отказывается загружать трекеры транзакций биткоина. Трекеры необходимы, чтобы определить, когда вы совершаете транзакцию биткоина, чтобы обеспечить свой платёж.</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para2" xml:space="preserve">
+    <value>Некоторые расширения браузера, например EFF:s "Privacy Badger", могут вызвать ошибку отслеживания, принимая данную операцию за рекламу.</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para3" xml:space="preserve">
+    <value>Пожалуйста, проверьте расширения Вашего браузера и/или отключите Privacy Badger, Adblock, и т. п., для этого сайта.</value>
+  </data>
 </root>

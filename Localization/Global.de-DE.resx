@@ -889,7 +889,7 @@
     <value>Kredit</value>
   </data>
   <data name="Ledgers_Debit" xml:space="preserve">
-    <value>Lastschrift</value>
+    <value>Debet</value>
   </data>
   <data name="Master_BitIdRegistered" xml:space="preserve">
     <value>&lt;strong&gt;BITID ZWEIFAKTOR-AUTHENTISIERUNG ERFOLGREICH AKTIVIERT&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Wenn Sie sich von nun an bei diesem System anmelden, müssen Sie die BitId-Anwendung verwenden, die Sie gerade zum Scannen des Codes verwendet haben.</value>

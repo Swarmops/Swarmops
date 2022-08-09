@@ -180,7 +180,7 @@
     <comment>The {0} is the organization name.</comment>
   </data>
   <data name="Login_BitIdEnabled" xml:space="preserve">
-    <value>&lt;strong&gt; La autenticación de dos factores BitId ahora está habilitada. &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; A partir de ahora, puedes usar tu billetera de bitcoin para iniciar sesión (y &lt;strong&gt; necesitarás &lt;/strong&gt; para hacerlo asi que). Gracias por permitir una mayor seguridad. &lt;br/&gt;&lt;br/&gt;Recuerde mantener su teléfono seguro con una contraseña, también.</value>
+    <value>&lt;strong&gt; Se ha activado la autenticación de dos factores de BitId. &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; A partir de ahora, puedes usar tu cartera de bitcoin para iniciar sesión (y, de hecho, &lt;strong&gt; necesitarás &lt;/strong&gt; para hacerlo). Gracias por permitir una mayor seguridad. &lt;br/&gt;&lt;br/&gt;Recuerda mantener, además, tu teléfono seguro con una contraseña.</value>
   </data>
   <data name="Login_BitIdRequired_Dialog" xml:space="preserve">
     <value>&lt;strong&gt;INICIO DE SESIÓN BITID REQUERIDO &lt;/strong&gt;&lt;br/&gt;&lt;br/&gt; Este inicio de sesión requiere autenticación BitId, tal como lo habilitó el titular de la cuenta. No puede iniciar sesión con una combinación de nombre de usuario / contraseña.</value>
@@ -224,7 +224,7 @@
     <value>¿Buscando unirse?</value>
   </data>
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
-    <value>Swarmops no reconoce esta dirección. Inicie sesión manualmente y active su dirección antes de usarla para iniciar sesión.</value>
+    <value>Swarmops no reconoce esta dirección. Inicia sesión manualmente y activa tu dirección antes de usarla para iniciar sesión.</value>
   </data>
   <data name="Login_UseBitIdLogin" xml:space="preserve">
     <value>¿Utilizar la autenticación de dos factores BitID?</value>

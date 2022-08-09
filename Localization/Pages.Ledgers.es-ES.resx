@@ -312,7 +312,10 @@
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
-  
+  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
+    <value>Pagos pendientes (se debe saldar, coincidir o corregir)</value>
+    <comment>A "dangling payment" is a transaction that's not yet completed to have equal parts debit and credit. Typically, it's a payment that hasn't been identified.</comment>
+  </data>
   
   <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
     <value>Balance</value>
@@ -403,7 +406,10 @@
   <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
     <value>(No hay pagos adecuados para que coincida)</value>
   </data>
-  
+  <data name="BalanceTransactions_NoUnbalancedTransactions" xml:space="preserve">
+    <value>No hay transacciones desequilibradas. ¡Bien!</value>
+    <comment>Could also be translated to "everything is balanced" or similar. Try to not make it longer than the English text.</comment>
+  </data>
   <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
     <value>Cantidad dentro del 1% de tolerancia</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
@@ -492,12 +498,40 @@
     <comment>Parameter zero is the name of the VAT report as created localized in the logic layer</comment>
   </data>
   
-  
-  
+  <data name="EndOfMonth_Error_Body_BankTransactionFileFormat" xml:space="preserve">
+    <value>No se ha podido procesar el archivo de transacción. ¿Es el archivo correcto? ¿Para el banco apropiado? Vuelve a intentarlo.&lt;br/&gt;&lt;br/&gt;Si el error persiste, intenta obtener un nuevo archivo de transacción.</value>
+  </data>
+  <data name="EndOfMonth_Error_Header_BankTransactionFile" xml:space="preserve">
+    <value>ERROR AL IMPORTAR EL ARCHIVO</value>
+  </data>
   
   <data name="EndOfMonth_Header_AnnualReports" xml:space="preserve">
     <value>Informes anuales</value>
     <comment>This is the header for closing of ledgers and generation of annual reports at the end-of-month routine</comment>
+  </data>
+  
+  <data name="EndOfMonth_Header_ExternalData" xml:space="preserve">
+    <value>Coincidencias entre datos externos de cuenta y la cuenta</value>
+    <comment>This is the header for uploading bank statements and resolving unmatched transactions at end-of-month.</comment>
+  </data>
+  <data name="EndOfMonth_Header_PayrollTaxes" xml:space="preserve">
+    <value>Nómina e impuestos</value>
+    <comment>This is the header for all tax reports and payroll processing for the end-of-month (start-of-next-month) routine.</comment>
+  </data>
+  <data name="EndOfMonth_Header_QuarterlyReports" xml:space="preserve">
+    <value>Informes trimestrales</value>
+    <comment>Presented in April, July, and October. Not in January (those are annual reports).</comment>
+  </data>
+  
+  
+  
+  <data name="EndOfMonth_PayrollInactive" xml:space="preserve">
+    <value>Nómina: No hay nómina definida</value>
+    <comment>This is shown as a disabled action item when there's no active payroll</comment>
+  </data>
+  <data name="EndOfMonth_SendReports" xml:space="preserve">
+    <value>Enviar informes a contadores, accionistas, etc.</value>
+    <comment>This is the header for all items that send reports to external people at the end-of-month routine.</comment>
   </data>
   
   
@@ -505,16 +539,9 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="EndOfMonth_Warning_Header_BankTransactionFile" xml:space="preserve">
+    <value>PROBLEMA CON ARCHIVO DE TRANSACCIÓN</value>
+  </data>
   <data name="InspectLedgers_AccountName" xml:space="preserve">
     <value>Nombre de la cuenta</value>
   </data>
@@ -566,7 +593,7 @@
     <comment>(you can't really edit a transaction, just add more rows to it)</comment>
   </data>
   <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
-    <value>Detalles de seguimiento de la Transacción automática</value>
+    <value>Detalles de seguimiento de transacciones automáticas</value>
     <comment>(this means the transaction is locked from editing)</comment>
   </data>
   <data name="InspectLedgers_Header_For" xml:space="preserve">
@@ -784,7 +811,9 @@
   <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
     <value>&lt;h3&gt; El archivo del banco no se pudo importar. &lt;/h3&gt;&lt;p&gt; Esto tiene una de tres razones: omitió algunos detalles en las instrucciones de descarga, el banco cambió su formato o accidentalmente cargó el archivo incorrecto ( como una foto de su última fiesta en lugar de la lista de transacciones). No se importaron transacciones en absoluto. &lt;strong&gt; Vuelve a intentarlo &lt;/strong&gt;</value>
   </data>
-  
+  <data name="UploadBankFiles_Error_NoAutomationProfiles" xml:space="preserve">
+    <value>No hay cuentas de activos configuradas para la automatización, por lo que ninguna cuenta admite la subida de datos en este momento. Volviendo al tablón.</value>
+  </data>
   <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
     <value>Archivo esperado</value>
     <comment>The name of the expected file for uploading.</comment>
@@ -861,7 +890,10 @@
     <value>&lt;p&gt;El archivo se ha importado &lt;strong&gt; con éxito. &lt;/strong&gt;{0:N0} nuevas transacciones importadas; {1:N0} descartado como duplicados de lo que ya estaba en Swarmops. El saldo de la cuenta en Swarmops coincide con el del banco. &lt;/p&gt;&lt;p&gt;El archivo contenía transacciones de {2:yyyy-MMM-dd} a {3:yyyy-MMM-dd}&lt;/p&gt;</value>
     <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
   </data>
-  
+  <data name="UploadBankFiles_ResultsInitialBalanceSet" xml:space="preserve">
+    <value>Como esta es la primera subida a esta cuenta automatizada, el saldo inicial de &lt;strong&gt;{0} {1:N2}&lt;/strong&gt;, que va al año {2}, se ha detectado y establecido.</value>
+    <comment>{1} {2:N2} is the currency and amount, like USD 2,151.00.</comment>
+  </data>
   
   <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
     <value>&lt;br/&gt;&lt;p&gt;El archivo de pagos se importó &lt;strong&gt; con éxito. &lt;/strong&gt;{1:N0} pago (s) en {0:N0} grupo (s), totalizando {3}{2:N2}, se importaron. &lt;/p&gt;</value>

@@ -117,8 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
+  <data name="Bitcoin_ClientRefusesTracking_Header" xml:space="preserve">
+    <value>Tu navegador no funciona correctamente</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para1" xml:space="preserve">
+    <value>Tu navegador no puede cargar los seguimientos de transacciones de bitcoin. Estos seguimientos son necesarios para detectar cuando realizas una transacción de bitcoin, con el fin de honrar tu pago.</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para2" xml:space="preserve">
+    <value>Algunas extensiones de navegador evitan que se pueda cargar el seguimiento de bitcoin, ya que lo detectan como publicidad por error.</value>
+  </data>
+  <data name="Bitcoin_ClientRefusesTracking_Para3" xml:space="preserve">
+    <value>Comprueba las extensiones de tu navegador y/o desactiva bloqueadores de publicidad en esta web.</value>
+  </data>
 </root>
