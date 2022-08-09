@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Resources.Pages;
 using Swarmops.Common.Enums;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 
 namespace Swarmops.Frontend.Automation
@@ -57,28 +58,28 @@ namespace Swarmops.Frontend.Automation
             if (accountType == FinancialAccountType.Asset || accountType == FinancialAccountType.Balance ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup (FinancialAccountType.Asset, Resources.Global.Financial_Asset) +
+                response += GetAccountGroup (FinancialAccountType.Asset, LocalizedStrings.Get(LocDomain.Global, "Financial_Asset")) +
                             ",";
             }
 
             if (accountType == FinancialAccountType.Debt || accountType == FinancialAccountType.Balance ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup (FinancialAccountType.Debt, Resources.Global.Financial_Debt) + ",";
+                response += GetAccountGroup (FinancialAccountType.Debt, LocalizedStrings.Get(LocDomain.Global, "Financial_Debt")) + ", ";
             }
 
             if (accountType == FinancialAccountType.Income || accountType == FinancialAccountType.Result ||
                 accountType == FinancialAccountType.All)
             {
                 response +=
-                    GetAccountGroup(FinancialAccountType.Income, Resources.Global.Financial_Income) +
+                    GetAccountGroup(FinancialAccountType.Income, LocalizedStrings.Get(LocDomain.Global, "Financial_Income")) +
                     ",";
             }
 
             if (accountType == FinancialAccountType.Cost || accountType == FinancialAccountType.Result ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup(FinancialAccountType.Cost, Resources.Global.Financial_Cost);
+                response += GetAccountGroup(FinancialAccountType.Cost, LocalizedStrings.Get(LocDomain.Global, "Financial_Cost"));
             }
 
             response = response.TrimEnd (',');
