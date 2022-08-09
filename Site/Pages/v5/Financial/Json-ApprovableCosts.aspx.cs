@@ -5,6 +5,7 @@ using System.Text;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 using Swarmops.Frontend;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
@@ -168,7 +169,7 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
                 bool hasDox = (dox.Count > 0 ? true : false);
 
                 ApprovableCost cost = null;
-                string expenseClaimLoc = Resources.Global.Financial_ExpenseClaim;
+                string expenseClaimLoc = LocalizedStrings.Get(LocDomain.Global, "Financial_ExpenseClaim");
                 if (string.IsNullOrEmpty(expenseClaimLoc))
                 {
                     expenseClaimLoc = "Expense";
@@ -216,7 +217,7 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
             {
                 ApprovableCost cost = new ApprovableCost ("I" + invoice.Identity.ToString (CultureInfo.InvariantCulture),
                     invoice.Supplier, invoice.BudgetAmountCents, invoice.Budget, invoice.Description,
-                    "Financial_InvoiceInbound", hasDox, invoice);
+                    "[Loc]Financial_InvoiceInbound", hasDox, invoice);
 
                 if (invoice.Attested)
                 {
