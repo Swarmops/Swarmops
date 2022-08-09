@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using Swarmops.Common.Enums;
+using Swarmops.Localization;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -157,11 +158,11 @@ namespace Swarmops.Frontend
             string[] inputParts = input.Split ('|');
 
             string resourceKey = inputParts[0].Substring (5);
-            object translatedResource = GetGlobalResourceObject ("Global", resourceKey);
+            object translatedResource = LocalizedStrings.Get (LocDomain.Global, resourceKey);
 
             if (translatedResource == null)
             {
-                return "[FAIL] " + resourceKey;
+                return "[LOCFAIL] " + resourceKey;
 
                 // throw new NotImplementedException ("Unimplemented localization resource key: \"" + resourceKey + "\"");
             }

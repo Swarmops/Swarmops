@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using Resources;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -79,7 +79,7 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"",
                     payout.ProtoIdentity,
                     (payout.ExpectedTransactionDate <= today
-                        ? Global.Global_ASAP
+                        ? LocalizedStrings.Get(LocDomain.Global, "Global_ASAP")
                         : payout.ExpectedTransactionDate.ToShortDateString()),
                     JsonSanitize (TryLocalize (transferInfo.Recipient)),
                     transferInfo.Currency.Code + ", " + JsonSanitize (transferInfo.LocalizedPaymentMethodName),
