@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Text;
 using Swarmops.Common.Enums;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -18,7 +19,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             string monthString = Request.QueryString["Month"];
 
             string emptyResponse = "[{\"id\":\"-\",\"description\":\"" +
-                                   JsonSanitize (Resources.Pages.Ledgers.InspectLedgers_PleaseSelectAccount) + "\"}]";
+                                   JsonSanitize (LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_PleaseSelectAccount")) + "\"}]";
 
             if (string.IsNullOrEmpty (accountIdString) || string.IsNullOrEmpty (yearString) ||
                 string.IsNullOrEmpty (monthString) || accountIdString == "undefined")
@@ -199,7 +200,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 // If there are no transactions in this time period, say so
 
                 result.Append ("{\"description\":\"" +
-                               JsonSanitize (Resources.Pages.Ledgers.InspectLedgers_NoTransactions) + "\"},");
+                               JsonSanitize (LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_NoTransactions")) + "\"},");
             }
 
             result.Append ("{" +

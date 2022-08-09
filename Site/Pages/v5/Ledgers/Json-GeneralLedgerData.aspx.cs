@@ -6,6 +6,7 @@ using System.Text;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -216,16 +217,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 switch (accountLookup[row.FinancialAccountId].AccountType)
                 {
                     case FinancialAccountType.Asset:
-                        accountClass = Resources.Global.Financial_Asset;
+                        accountClass = LocalizedStrings.Get(LocDomain.Global, "Financial_Asset");
                         break;
                     case FinancialAccountType.Debt:
-                        accountClass = Resources.Global.Financial_Debt;
+                        accountClass = LocalizedStrings.Get(LocDomain.Global, "Financial_Debt");
                         break;
                     case FinancialAccountType.Income:
-                        accountClass = Resources.Global.Financial_Income;
+                        accountClass = LocalizedStrings.Get(LocDomain.Global, "Financial_Income");
                         break;
                     case FinancialAccountType.Cost:
-                        accountClass = Resources.Global.Financial_Cost;
+                        accountClass = LocalizedStrings.Get(LocDomain.Global, "Financial_Cost");
                         break;
                     default:
                         throw new NotImplementedException();
@@ -261,7 +262,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 // If there are no transactions in this time period, say so
 
                 result.Append ("{\"description\":\"" +
-                               JsonSanitize (Resources.Pages.Ledgers.InspectLedgers_NoTransactions) + "\"},");
+                               JsonSanitize (LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_NoTransactions")) + "\"},");
             }
 
             Response.Output.WriteLine ("[" + result.ToString().TrimEnd (',') + "]}]");
