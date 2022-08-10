@@ -86,7 +86,7 @@ namespace Swarmops.Frontend.Pages.Financial
             return new ConfirmPayoutResult
             {
                 AssignedId = payout.Identity,
-                DisplayMessage = String.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_PayoutCreated, payout.Identity"),
+                DisplayMessage = String.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_PayoutCreated"), payout.Identity,
                     payout.Recipient),
                 Success = true
             };
