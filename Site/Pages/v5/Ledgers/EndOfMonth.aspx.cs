@@ -379,7 +379,101 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 throw new InvalidOperationException("Can't close this year");
             }
 
-            throw new NotImplementedException();
+            if (!(year < DateTime.UtcNow.Year))
+            {
+                throw new InvalidOperationException("Can't close an unfinished year");
+            }
+
+            // Then, actually close the ledgers.
+
+            int closingYear = year;
+
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization(authData.CurrentOrganization);
+            Int64 balanceDeltaCents = 0;
+            Int64 resultsDeltaCents = 0;
+            DateTime startOfLedger = new DateTime(closingYear, 1, 1);
+            DateTime endOfLedger = new DateTime(closingYear + 1, 1, 1);
+
+            foreach (FinancialAccount account in accounts)
+            {
+                Int64 accountBalanceCents;
+
+                if (account.AccountType == FinancialAccountType.Asset ||
+                    account.AccountType == FinancialAccountType.Debt)
+                {
+                    accountBalanceCents = account.GetDeltaCents(Constants.DateTimeLow,
+                        endOfLedger);
+                    balanceDeltaCents += accountBalanceCents;
+                }
+                else
+                {
+                    accountBalanceCents = account.GetDeltaCents(startOfLedger, endOfLedger);
+                    resultsDeltaCents += accountBalanceCents;
+                }
+            }
+
+            if (balanceDeltaCents == -resultsDeltaCents && closingYear < DateTime.Today.Year)
+            {
+                string transactionLabel = LocalizedStrings.Get(LocDomain.PagesLedgers, "CloseLedgers_AnnualProfit");
+
+                if (balanceDeltaCents < 0)
+                {
+                    transactionLabel = LocalizedStrings.Get(LocDomain.PagesLedgers, "CloseLedgers_AnnualLoss");
+                }
+
+                FinancialTransaction resultTransaction = FinancialTransaction.Create(authData.CurrentOrganization,
+                    new DateTime(closingYear, 12, 31, 23, 59, 50), transactionLabel + " " + closingYear);
+
+                Int64 privateWithdrawalsCents = 0;
+                Int64 privateDepositsCents = 0;
+
+                if (authData.CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals != null)
+                {
+                    privateWithdrawalsCents =
+                        authData.CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals
+                            .GetDeltaCents(Constants.DateTimeLow, endOfLedger);
+
+                }
+
+                if (authData.CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits != null)
+                {
+                    // TODO: Reset trees if there are subaccounts
+
+                    privateDepositsCents =
+                        authData.CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits
+                            .GetDeltaCents(Constants.DateTimeLow, endOfLedger);
+
+                }
+
+                resultTransaction.AddRow(authData.CurrentOrganization.FinancialAccounts.CostsYearlyResult,
+                    -resultsDeltaCents, authData.CurrentUser);
+                resultTransaction.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsEquity,
+                    -balanceDeltaCents + privateWithdrawalsCents + privateDepositsCents, authData.CurrentUser);
+
+                if (privateWithdrawalsCents != 0)
+                {
+                    resultTransaction.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsPrivateWithdrawals,
+                        -privateWithdrawalsCents, authData.CurrentUser);
+                }
+                if (privateDepositsCents != 0)
+                {
+                    resultTransaction.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsPrivateDeposits,
+                        -privateDepositsCents,
+                        authData.CurrentUser);
+                }
+
+                // Ledgers are now at zero-sum for the year's result accounts and from the start up until end-of-closing-year for the balance accounts.
+
+                authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear = closingYear;
+
+                return new AjaxCallResult { Success = true };
+            }
+            else
+            {
+                Console.WriteLine("NOT creating transaction.");
+                throw new InvalidOperationException("General error closing ledgers");
+            }
+
         }
 
         [WebMethod]
