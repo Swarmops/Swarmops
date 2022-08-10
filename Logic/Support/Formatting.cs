@@ -171,6 +171,17 @@ namespace Swarmops.Logic.Support
 
             // Try invariant (US) culture as fallback
 
+            // If decimal comma in decimal point position, replace with decimal point
+
+            if (input.Length > 3)
+            {
+                if (input[input.Length - 3] == ',')
+                {
+                    input = input.Substring(0, input.Length - 3) + "." + input.Substring(input.Length - 2, 2);
+                }
+            }
+
+
             success = Double.TryParse(input,
                 NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
                 CultureInfo.InvariantCulture, out outputHolder);
