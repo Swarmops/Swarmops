@@ -158,6 +158,19 @@ namespace Swarmops.Logic.Support
                 culture = CultureInfo.CurrentCulture;
             }
 
+            // If current culture has decimal point, but decimal comma is entered, allow that
+
+            if (culture.NumberFormat.CurrencyDecimalSeparator == ".")
+            {
+                // If decimal comma in decimal point position, replace with decimal point
+
+                if (input.Length > 3 && input[input.Length - 3] == ',')
+                {
+                    input = input.Substring(0, input.Length - 3) + "." + input.Substring(input.Length - 2, 2);
+                }
+            }
+
+
             // Try current or provided culture first
 
             success = Double.TryParse(input,
@@ -170,17 +183,6 @@ namespace Swarmops.Logic.Support
             }
 
             // Try invariant (US) culture as fallback
-
-            // If decimal comma in decimal point position, replace with decimal point
-
-            if (input.Length > 3)
-            {
-                if (input[input.Length - 3] == ',')
-                {
-                    input = input.Substring(0, input.Length - 3) + "." + input.Substring(input.Length - 2, 2);
-                }
-            }
-
 
             success = Double.TryParse(input,
                 NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
