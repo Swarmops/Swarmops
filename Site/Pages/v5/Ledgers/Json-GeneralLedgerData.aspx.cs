@@ -130,7 +130,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                 doc.Identity, doc.ClientFileName.Replace("\"", "'"), transaction.Identity);
                         }
 
-                        actionHtml = String.Format(hasDoxString, row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture), documents[0].Identity, CurrentOrganization.Name + " - " + LocalizedStrings.Get(LocDomain.Global, "Financial_GeneralLedger") + " " + transaction.DateTime.ToShortDateString() + " - " + LocalizedStrings.Get(LocDomain.Global, "Financial_TransactionIdShort") + transaction.OrganizationSequenceId.ToString("N0"))) + "<span class='hiddenDocLinks'>" + actionHtml + "</span>";
+                        actionHtml = String.Format(hasDoxString, row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture), documents[0].Identity, CurrentOrganization.Name + " - " + LocalizedStrings.Get(LocDomain.Global, "Financial_GeneralLedger") + " " + transaction.DateTime.ToShortDateString() + " - " + LocalizedStrings.Get(LocDomain.Global, "Financial_TransactionIdShort") + transaction.OrganizationSequenceId.ToString("N0")) + "<span class='hiddenDocLinks'>" + actionHtml + "</span>";
                     }
 
                     result.Append("{" + String.Format(
