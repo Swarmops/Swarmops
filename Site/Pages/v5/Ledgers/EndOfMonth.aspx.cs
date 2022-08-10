@@ -215,12 +215,12 @@ namespace Swarmops.Frontend.Pages.Ledgers
             int currentYear = DateTime.UtcNow.Year;
             string dependsOn = string.Empty;
 
-            if (lastClosedYear - 1 < currentYear)
+            if (lastClosedYear < currentYear - 1)
             {
                 EomItemGroup groupReports = new EomItemGroup();
                 groupReports.Header = LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_Header_AnnualReports");
 
-                while (lastClosedYear - 1 < currentYear)
+                while (lastClosedYear < currentYear - 1)
                 {
                     lastClosedYear++; // we're using this as iterator, the year doesn't actually close on this command
 
