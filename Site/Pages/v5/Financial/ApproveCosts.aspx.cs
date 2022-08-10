@@ -7,8 +7,8 @@ using System.Threading;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
-using Resources;
 using Swarmops.Common.Enums;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -109,38 +109,38 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            PageTitle = Resources.Pages.Financial.AttestCosts_PageTitle;
-            InfoBoxLiteral = Resources.Pages.Financial.AttestCosts_Info;
-            this.LabelAttestCostsHeader.Text = Resources.Pages.Financial.AttestCosts_Header_CostsAwaitingAttestation;
-            this.LabelGridHeaderAction.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Action;
-            this.LabelGridHeaderBeneficiary.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Beneficiary;
-            this.LabelGridHeaderBudget.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Budget;
-            this.LabelGridHeaderDescription.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Description;
-            this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
-            this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
-            this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
+            PageTitle = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_PageTitle");
+            InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Info");
+            this.LabelAttestCostsHeader.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Header_CostsAwaitingAttestation");
+            this.LabelGridHeaderAction.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_GridHeader_Action");
+            this.LabelGridHeaderBeneficiary.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_GridHeader_Beneficiary");
+            this.LabelGridHeaderBudget.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_GridHeader_Budget");
+            this.LabelGridHeaderDescription.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_GridHeader_Description");
+            this.LabelGridHeaderDocs.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_GridHeader_Docs");
+            this.LabelGridHeaderItem.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_GridHeader_Item");
+            this.LabelGridHeaderRequested.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_GridHeader_Requested");
 
-            this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
+            this.LabelDescribeDeny.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_DescribeOptionDeny");
             string describeOptionAmount = "What amount are you attesting instead (in {0})?";  // QFE for nullref -- find why resources are nullrefing later
-            if (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount != null)
+            if (LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_DescribeOptionAmount") != null)
             {
-                describeOptionAmount = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount;
+                describeOptionAmount = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_DescribeOptionAmount");
             }
 
             this.LabelDescribeCorrect.Text = String.Format (describeOptionAmount, CurrentOrganization.Currency != null? CurrentOrganization.Currency.DisplayCode != null? CurrentOrganization.Currency.DisplayCode : "--" : "--");
-            this.LabelDescribeCorrectNoVat.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeCorrectNoVat;
-            this.LabelDescribeRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionRebudget;
+            this.LabelDescribeCorrectNoVat.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_DescribeCorrectNoVat");
+            this.LabelDescribeRebudget.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_DescribeOptionRebudget");
 
-            this.LabelRadioCorrect.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionAmount;
-            this.LabelRadioDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionDeny;
-            this.LabelRadioRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionRebudget;
+            this.LabelRadioCorrect.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_RadioOptionAmount");
+            this.LabelRadioDeny.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_RadioOptionDeny");
+            this.LabelRadioRebudget.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_RadioOptionRebudget");
 
-            this.LabelModalDenyHeader.Text = Resources.Pages.Financial.AttestCosts_Modal_Header;
-            this.LabelWhatProblem.Text = Resources.Pages.Financial.AttestCosts_Modal_WhatIsProblem;
+            this.LabelModalDenyHeader.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_Header");
+            this.LabelWhatProblem.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_WhatIsProblem");
 
-            this.LiteralPleaseSelectBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_Error_PleaseSelectBudget);
+            this.LiteralPleaseSelectBudget.Text = JavascriptEscape (LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Error_PleaseSelectBudget"));
             this.LiteralCannotRebudgetSalary.Text =
-                JavascriptEscape (Resources.Pages.Financial.AttestCosts_Error_CantRebudgetSalary);
+                JavascriptEscape (LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Error_CantRebudgetSalary"));
         }
 
         static protected IPayable PayableFromRecordId (string recordId)
@@ -199,7 +199,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (String.IsNullOrEmpty (reason.Trim()))
             {
-                reason = Resources.Global.Global_NoReasonGiven;
+                reason = LocalizedStrings.Get(LocDomain.Global, "Global_NoReasonGiven");
             }
 
             approvable.DenyApproval (authData.CurrentUser, reason);
@@ -241,7 +241,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return new AjaxCallResult
                 {
                     Success = false,
-                    DisplayMessage = String.Format(Resources.Global.Error_CurrencyParsing, 1000.00)
+                    DisplayMessage = String.Format(LocalizedStrings.Get(LocDomain.Global, "Error_CurrencyParsing"), 1000.00)
                 };
             }
 
@@ -250,7 +250,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return new AjaxCallResult
                 {
                     Success = false,
-                    DisplayMessage = Resources.Pages.Financial.AttestCosts_CannotAttestNegative
+                    DisplayMessage = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_CannotAttestNegative")
                 };
             }
 
@@ -259,7 +259,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return new AjaxCallResult
                 {
                     Success = false,
-                    DisplayMessage = Resources.Pages.Financial.AttestCosts_CannotAttestZero
+                    DisplayMessage = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_CannotAttestZero")
                 };
             }
 
@@ -282,12 +282,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 if (centsRemaining > 0)
                 {
-                    notEnoughFunds = String.Format (Resources.Pages.Financial.AttestCosts_OutOfBudgetPrecise,
+                    notEnoughFunds = String.Format (LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_OutOfBudgetPrecise"),
                         authData.CurrentOrganization.Currency.DisplayCode, centsRemaining/100.0, DateTime.UtcNow.Year);
                 }
                 else
                 {
-                    notEnoughFunds = String.Format (Resources.Pages.Financial.AttestCosts_BudgetIsEmpty,
+                    notEnoughFunds = String.Format (LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_BudgetIsEmpty"),
                         DateTime.UtcNow.Year);
                 }
 
@@ -392,8 +392,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     approvableItem = advance;
-                    attestedTemplate = Resources.Pages.Financial.AttestCosts_AdvanceAttested;
-                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_AdvanceDeattested;
+                    attestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_AdvanceAttested");
+                    deattestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_AdvanceDeattested");
                     beneficiary = advance.Person.Name;
                     amountCents = advance.AmountCents;
 
@@ -411,8 +411,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     approvableItem = expense;
-                    attestedTemplate = Resources.Pages.Financial.AttestCosts_ExpenseAttested;
-                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_ExpenseDeattested;
+                    attestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_ExpenseAttested");
+                    deattestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_ExpenseDeattested");
                     beneficiary = expense.Claimer.Name;
                     amountCents = expense.AmountCents;
 
@@ -430,8 +430,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     approvableItem = invoice;
-                    attestedTemplate = Resources.Pages.Financial.AttestCosts_InvoiceAttested;
-                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_InvoiceDeattested;
+                    attestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_InvoiceAttested");
+                    deattestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_InvoiceDeattested");
                     beneficiary = invoice.Supplier;
                     amountCents = invoice.AmountCents;
 
@@ -449,8 +449,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     approvableItem = salary;
-                    attestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryAttested;
-                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryDeattested;
+                    attestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_SalaryAttested");
+                    deattestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_SalaryDeattested");
                     beneficiary = salary.PayrollItem.PersonCanonical;
                     amountCents = salary.GrossSalaryCents + salary.AdditiveTaxCents;
 
@@ -468,8 +468,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     approvableItem = parley;
-                    attestedTemplate = Resources.Pages.Financial.AttestCosts_ParleyAttested;
-                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_ParleyDeattested;
+                    attestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_ParleyAttested");
+                    deattestedTemplate = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_ParleyDeattested");
                     beneficiary = parley.Person.Name;
                     amountCents = parley.BudgetCents;
 
@@ -499,7 +499,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                         if (approvableItem.Budget.Owner != null || approvableItem.Budget.GetBudgetCents() != 0)
 
-                        result = Resources.Pages.Financial.AttestCosts_Overdrafted + " ";
+                        result = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Overdrafted") + " ";
                     }
                     else
                     {
@@ -507,7 +507,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                         return new AjaxCallResult
                         {
-                            DisplayMessage = Resources.Pages.Financial.AttestCosts_OutOfBudget,
+                            DisplayMessage = LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_OutOfBudget"),
                             Success = false
                         };
                     }
@@ -547,9 +547,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 {
                     AddDocuments (expenseClaim.Documents,
                         "E" + expenseClaim.Identity.ToString (CultureInfo.InvariantCulture),
-                        String.Format (Global.Financial_ExpenseClaimSpecificationWithClaimer + " - ",
+                        String.Format (LocalizedStrings.Get(LocDomain.Global, "Financial_ExpenseClaimSpecificationWithClaimer") + " - ",
                             expenseClaim.Identity, expenseClaim.ClaimerCanonical) +
-                        Global.Financial_ReceiptSpecification);
+                        LocalizedStrings.Get(LocDomain.Global, "Financial_ReceiptSpecification"));
                 }
             }
         }
@@ -568,8 +568,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     invoice.Budget.OwnerPersonId == Person.NobodyId)
                 {
                     AddDocuments (invoice.Documents, "I" + invoice.Identity.ToString (CultureInfo.InvariantCulture),
-                        String.Format (Global.Financial_InboundInvoiceSpecificationWithSender + " - ",
-                            invoice.Identity, invoice.Supplier) + Global.Global_ImageSpecification);
+                        String.Format (LocalizedStrings.Get(LocDomain.Global, "Financial_InboundInvoiceSpecificationWithSender") + " - ",
+                            invoice.Identity, invoice.Supplier) + LocalizedStrings.Get(LocDomain.Global, "Global_ImageSpecification"));
                 }
             }
         }
@@ -623,42 +623,42 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         public string Localized_ButtonRebudget
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonRebudget); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_ButtonRebudget")); }
         }
 
         public string Localized_ButtonDeny
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonDeny); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_ButtonDeny")); }
         }
 
         public string Localized_ButtonCorrect
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Modal_ButtonAmount")); }
         }
 
         public string Localized_WarnUninitializedBudget
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_Warn_UninitializedBudget); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_Warn_UninitializedBudget")); }
         }
 
         public string Localized_ConfirmOverdraftYes
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirmYes); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_OverdraftConfirmYes")); }
         }
 
         public string Localized_ConfirmOverdraftNo
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirmNo); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_OverdraftConfirmNo")); }
         }
 
         public string Localized_ConfirmOverdraftPrompt
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirm); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_OverdraftConfirm")); }
         }
 
         public string Localized_Error_InsufficientBudget
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.AttestCosts_OutOfBudget); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "AttestCosts_OutOfBudget")); }
         }
     }
 }

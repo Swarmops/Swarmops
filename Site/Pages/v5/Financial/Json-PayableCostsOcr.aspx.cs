@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Text;
-using Resources;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -90,7 +90,7 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"" ,
                     payout.ProtoIdentity,
                     (payout.ExpectedTransactionDate <= today
-                        ? Global.Global_ASAP
+                        ? LocalizedStrings.Get(LocDomain.Global, "Global_ASAP")
                         : payout.ExpectedTransactionDate.ToShortDateString()),
                     GetReferenceOcr (payout),
                     GetAmountOcr (payout),

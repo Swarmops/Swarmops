@@ -207,6 +207,12 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
     {
         InboundInvoices invoices = InboundInvoices.ForOrganization (CurrentOrganization);
 
+        string invoiceLocString = LocalizedStrings.Get(LocDomain.Global, "Financial_InvoiceInbound");
+        if (string.IsNullOrEmpty(invoiceLocString))
+        {
+            invoiceLocString = "Invoice";
+        }
+
         foreach (InboundInvoice invoice in invoices)
         {
             Documents dox = invoice.Documents;
@@ -217,7 +223,7 @@ public partial class Pages_v5_Finance_Json_ApprovableCosts : DataV5Base
             {
                 ApprovableCost cost = new ApprovableCost ("I" + invoice.Identity.ToString (CultureInfo.InvariantCulture),
                     invoice.Supplier, invoice.BudgetAmountCents, invoice.Budget, invoice.Description,
-                    "[Loc]Financial_InvoiceInbound", hasDox, invoice);
+                    invoiceLocString, hasDox, invoice);
 
                 if (invoice.Attested)
                 {
