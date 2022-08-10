@@ -25,8 +25,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read);
             DbVersionRequired = 0; // base schema is fine
-            PageTitle = Resources.Pages.Ledgers.InspectLedgers_PageTitle;
-            InfoBoxLiteral = Resources.Pages.Ledgers.InspectLedgers_Info;
+            PageTitle = LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_PageTitle");
+            InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_Info");
             PageIcon = "iconshock-ledger-inspect";
 
             if (!Page.IsPostBack)
@@ -263,7 +263,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 case "Payout":
                     Payout payout = (Payout) someObject;
                     string result =
-                        String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_ThisIsPayoutX, payout.Identity) +
+                        String.Format (LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_TxDetail_ThisIsPayoutX"), payout.Identity) +
                         " ";
 
                     List<string> subValidations = new List<string>();
@@ -480,7 +480,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     return "<strong>" +
                            String.Format (LocalizedStrings.Get(LocDomain.Global, "Financial_SalaryIdentity"), salary.Identity) +
                            ":</strong> " +
-                           String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_SalaryDetail,
+                           String.Format (LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_TxDetail_SalaryDetail"),
                                salary.PayrollItem.Organization.Currency.Code,
                                salary.BaseSalaryCents/100.0, // base salary
                                (salary.GrossSalaryCents - salary.BaseSalaryCents)/100.0, // before-tax adjustments

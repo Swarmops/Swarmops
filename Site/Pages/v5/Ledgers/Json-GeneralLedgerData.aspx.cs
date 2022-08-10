@@ -130,7 +130,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                 doc.Identity, doc.ClientFileName.Replace("\"", "'"), transaction.Identity);
                         }
 
-                        actionHtml = String.Format(hasDoxString, row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture), documents[0].Identity, CurrentOrganization.Name + " - " + Resources.Global.Financial_GeneralLedger + " " + transaction.DateTime.ToShortDateString() + " - " + Resources.Global.Financial_TransactionIdShort + transaction.OrganizationSequenceId.ToString("N0")) + "<span class='hiddenDocLinks'>" + actionHtml + "</span>";
+                        actionHtml = String.Format(hasDoxString, row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture), documents[0].Identity, CurrentOrganization.Name + " - " + LocalizedStrings.Get(LocDomain.Global, "Financial_GeneralLedger") + " " + transaction.DateTime.ToShortDateString() + " - " + LocalizedStrings.Get(LocDomain.Global, "Financial_TransactionIdShort") + transaction.OrganizationSequenceId.ToString("N0"))) + "<span class='hiddenDocLinks'>" + actionHtml + "</span>";
                     }
 
                     result.Append("{" + String.Format(
@@ -152,12 +152,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                             VatReport report = (VatReport) dependency;
                             if (report.OpenTransactionId == transaction.Identity)
                             {
-                                info = String.Format(Resources.Pages.Ledgers.InspectLedgers_TxInfo_OpenVatReport,
+                                info = String.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_TxInfo_OpenVatReport"),
                                     report.DescriptionShort);
                             }
                             else if (report.CloseTransactionId == transaction.Identity)
                             {
-                                info = String.Format(Resources.Pages.Ledgers.InspectLedgers_TxInfo_CloseVatReport,
+                                info = String.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_TxInfo_CloseVatReport"),
                                     report.DescriptionShort);
                             }
                         }

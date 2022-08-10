@@ -126,22 +126,22 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             StringBuilder result = new StringBuilder (16384);
 
             Int64 runningBalance = 0L;
-            string startString = Resources.Pages.Ledgers.InspectLedgers_InboundBalanceZero;
-            string endString = Resources.Pages.Ledgers.InspectLedgers_OutboundBalanceZero;
+            string startString = LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_InboundBalanceZero");
+            string endString = LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_OutboundBalanceZero");
 
             if (!zeroStart)
             {
                 runningBalance = account.GetDeltaCents (balanceStart, periodStart);
-                startString = Resources.Pages.Ledgers.InspectLedgers_InboundBalance;
+                startString = LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_InboundBalance");
             }
             if (!zeroEnd)
             {
-                endString = Resources.Pages.Ledgers.InspectLedgers_OutboundBalance;
+                endString = LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_OutboundBalance");
             }
             else if (periodEnd > DateTime.Now)
             {
                 // account is zeroed at end of this period, but we're not yet at end of period, so add a "to date" disclaimer
-                endString = Resources.Pages.Ledgers.InspectLedgers_OutboundBalanceZeroToDate;
+                endString = LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_OutboundBalanceZeroToDate");
             }
 
             result.Append ("{" +
@@ -156,7 +156,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (!displayDescription)
                 {
-                    description = Resources.Pages.Ledgers.InspectLedgers_TxDetail_DescriptionWithheld;
+                    description = LocalizedStrings.Get(LocDomain.PagesLedgers, "InspectLedgers_TxDetail_DescriptionWithheld");
                 }
 
                 if (row.AmountCents < 0)
