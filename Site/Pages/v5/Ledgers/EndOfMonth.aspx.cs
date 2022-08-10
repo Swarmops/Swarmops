@@ -13,6 +13,7 @@ using System.Web.UI.WebControls;
 using Swarmops.Basic.Types.Common;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -29,9 +30,9 @@ namespace Swarmops.Frontend.Pages.Ledgers
             this.PageTitle =
                 this.Title =
                     this.LabelHeader.Text =
-                        String.Format(Resources.Pages.Ledgers.EndOfMonth_Title, DateTime.UtcNow.AddMonths(-1));
+                        String.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_Title"), DateTime.UtcNow.AddMonths(-1));
 
-            this.InfoBoxLiteral = Resources.Pages.Ledgers.EndOfMonth_Info;
+            this.InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_Info");
 
             // Check which reports are required
 
@@ -40,7 +41,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
             // Group I: External data & accounts
 
             EomItemGroup group1 = new EomItemGroup();
-            group1.Header = Resources.Pages.Ledgers.EndOfMonth_Header_ExternalData;
+            group1.Header = LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_Header_ExternalData");
             group1.Id = "ExternalData";
 
             string lastUploadItemId = string.Empty;
@@ -90,7 +91,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                         bankStatement.Id = lastId = "BankStatement-" +
                                                     assetAccount.Identity.ToString(CultureInfo.InvariantCulture) + '-' + 
                                                     monthIterator;
-                        bankStatement.Name = string.Format(Resources.Pages.Ledgers.EndOfMonth_UploadBankStatementFor,
+                        bankStatement.Name = string.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_UploadBankStatementFor"),
                             assetAccount.Name, "PDF",
                             new DateTime(monthIterator/100, monthIterator%100, 15).ToString("MMMM yyyy"));
                         bankStatement.Completed = false; // TODO
@@ -108,7 +109,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     dataUploadItem.Id = "BankTransactionData-" + assetAccount.Identity.ToString(CultureInfo.InvariantCulture);
                     dataUploadItem.Icon = "upload";
                     dataUploadItem.Completed = false; // todo
-                    dataUploadItem.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_UploadTransactionDataFor,
+                    dataUploadItem.Name = String.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_UploadTransactionDataFor"),
                         assetAccount.Name, "CSV");
                     dataUploadItem.Skippable = false;
 
@@ -135,7 +136,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                             resyncSatoshiCountItem.Completed = false;
                             resyncSatoshiCountItem.Skippable = false;
                             resyncSatoshiCountItem.Callback = "ResyncSatoshisInLedger";
-                            resyncSatoshiCountItem.Name = Resources.Pages.Ledgers.EndOfMonth_CheckLedgerAgainstHotWallet;
+                            resyncSatoshiCountItem.Name = LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_CheckLedgerAgainstHotWallet");
                             group1.Items.Add(resyncSatoshiCountItem);
                         }
                     }
@@ -153,7 +154,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 matchAccounts.Completed = false; // we already know there's at least one unbalanced
                 matchAccounts.Icon = "wrench";
                 matchAccounts.Skippable = false;
-                matchAccounts.Name = Resources.Pages.Ledgers.EndOfMonth_MatchAccounts;
+                matchAccounts.Name = LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_MatchAccounts");
 
                 group1.Items.Add(matchAccounts);
             }
@@ -166,7 +167,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
             // Group: Payroll and Taxes
             
             EomItemGroup group2 = new EomItemGroup();
-            group2.Header = Resources.Pages.Ledgers.EndOfMonth_Header_PayrollTaxes;
+            group2.Header = LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_Header_PayrollTaxes");
             group2.Id = "PayrollTaxes";
 
             ReportRequirement vatRequired = VatReport.IsRequired(this.CurrentOrganization);
@@ -177,7 +178,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 vatReport.Id = "VatReport";
                 vatReport.Callback = "CreateVatReport";
                 vatReport.Completed = (vatRequired == ReportRequirement.Completed ? true : false);
-                vatReport.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CreateVatReport,
+                vatReport.Name = String.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_CreateVatReport"),
                     (vatReport.Completed
                         ? VatReport.LastReportDescription(this.CurrentOrganization)
                         : VatReport.NextReportDescription(this.CurrentOrganization)));
@@ -198,7 +199,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                 EomItem payrollInactive = new EomItem();
                 payrollInactive.Id = "PayrollInactive";
                 payrollInactive.Completed = true;
-                payrollInactive.Name = Resources.Pages.Ledgers.EndOfMonth_PayrollInactive;
+                payrollInactive.Name = LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_PayrollInactive");
                 payrollInactive.Icon = "document";
                 group2.Items.Add(payrollInactive);
             }
@@ -217,7 +218,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
             if (lastClosedYear - 1 < currentYear)
             {
                 EomItemGroup groupReports = new EomItemGroup();
-                groupReports.Header = Resources.Pages.Ledgers.EndOfMonth_Header_AnnualReports;
+                groupReports.Header = LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_Header_AnnualReports");
 
                 while (lastClosedYear - 1 < currentYear)
                 {
@@ -228,7 +229,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                     itemCloseYear.Id = "CloseLedgers-" + (lastClosedYear).ToString(CultureInfo.InvariantCulture);
                     itemCloseYear.Callback = "PrepareCloseLedgers";
                     itemCloseYear.Icon = "document";
-                    itemCloseYear.Name = String.Format(Resources.Pages.Ledgers.EndOfMonth_CloseLedgersFor,
+                    itemCloseYear.Name = String.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_CloseLedgersFor"),
                         lastClosedYear);
 
                     groupReports.Items.Add(itemCloseYear);
@@ -312,7 +313,7 @@ namespace Swarmops.Frontend.Pages.Ledgers
                                 if (item.Skippable)
                                 {
                                     itemName += "<span class='action-skip'> (<a>" +
-                                                Server.HtmlEncode(Resources.Global.Global_SkipThis) + "</a>)</span>";
+                                                Server.HtmlEncode(LocalizedStrings.Get(LocDomain.Global, "Global_SkipThis")) + "</a>)</span>";
                                 }
 
                                 if (item.Icon == "upload")
@@ -520,14 +521,14 @@ namespace Swarmops.Frontend.Pages.Ledgers
             Int64 adjustment = cashSatoshisInHotwallet - cashSatoshisInLedger;  // positive if ledger needs upward adjustment
 
             FinancialTransaction adjustmentTx = FinancialTransaction.Create(authData.CurrentOrganization,
-                DateTime.UtcNow, Resources.Pages.Ledgers.EndOfMonth_LedgerBitcoinBalanceTransactionDescription);
+                DateTime.UtcNow, LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_LedgerBitcoinBalanceTransactionDescription"));
             adjustmentTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, 0, authData.CurrentUser).AmountForeignCents = new Money(adjustment, Currency.BitcoinCash);
 
             return new AjaxCallResult
             {
                 Success = true,
                 DisplayMessage =
-                    String.Format(Resources.Pages.Ledgers.EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch,
+                    String.Format(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_Dialog_LedgerBitcoinBalanceMismatch"),
                         cashSatoshisInHotwallet/100.0, cashSatoshisInLedger/100.0)
             };
         }
@@ -567,32 +568,32 @@ namespace Swarmops.Frontend.Pages.Ledgers
 
         public string Localized_SkipPrompt_BankStatement
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.EndOfMonth_SkipBankStatementDialog); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_SkipBankStatementDialog")); }
         }
 
         public string Localized_SkipPrompt_Generic
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.EndOfMonth_SkipDocumentDialogGeneric); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_SkipDocumentDialogGeneric")); }
         }
 
         public string Localized_SkipYes
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Global_SkipYes); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Global_SkipYes")); }
         }
 
         public string Localized_SkipNo
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.Global_SkipNo); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Global_SkipNo")); }
         }
 
         public string Localized_Error_Header_BankTransactionFile
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.EndOfMonth_Error_Header_BankTransactionFile); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_Error_Header_BankTransactionFile")); }
         }
 
         public string Localized_Error_Body_BankTransactionFileFormat
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Ledgers.EndOfMonth_Error_Body_BankTransactionFileFormat); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesLedgers, "EndOfMonth_Error_Body_BankTransactionFileFormat")); }
         }
     }
 }
