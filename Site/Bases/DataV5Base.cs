@@ -203,7 +203,7 @@ namespace Swarmops.Frontend
 
         public string Localize_GenericAjaxError
         {
-            get { return JavascriptEscape(Resources.Global.Error_AjaxCallException); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Error_AjaxCallException")); }
         }
     }
 }

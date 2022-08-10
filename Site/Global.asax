@@ -55,14 +55,6 @@
             requestPath = "/";
         }
 
-        // Test code with one plugin to see how plugin-override works; intend to replace with generic function later
-        
-        if (requestPath == "/Signup" && File.Exists (Server.MapPath("/Plugins/FalconwingMedia/Public/Signup.aspx")))
-        {
-            Context.RewritePath ("/Plugins/FalconwingMedia/Public/Signup.aspx");
-            return; // prevent further matching
-        }
-                
         // Rewrite of general URLs, candidates in order, assuming host is "dev.swarmops.com" and {0} given path
         
         string[] rewriteCandidates =

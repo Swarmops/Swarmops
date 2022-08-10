@@ -3,6 +3,7 @@ using System.IO;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using Swarmops.Localization;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -49,27 +50,27 @@ namespace Swarmops.Frontend
         // ReSharper disable InconsistentNaming
         public string Localized_AjaxCallException
         {
-            get { return JavascriptEscape (Resources.Global.Error_AjaxCallException); }
+            get { return JavascriptEscape (LocalizedStrings.Get(LocDomain.Global, "Error_AjaxCallException")); }
         }
 
         public string Localized_AjaxGeneralErrorSettingValue
         {
-            get { return JavascriptEscape (Resources.Global.Error_UnspecifiedAjaxSetValue); }
+            get { return JavascriptEscape (LocalizedStrings.Get(LocDomain.Global, "Resources.Global.Error_UnspecifiedAjaxSetValue")); }
         }
 
         public string Localized_ConfirmDialog_Ok
         {
-            get { return JavascriptEscape(Resources.Global.Global_Ok); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Resources.Global.Global_Ok")); }
         }
 
         public string Localized_ConfirmDialog_Proceed
         {
-            get { return JavascriptEscape(Resources.Global.Global_Proceed); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Resources.Global.Global_Proceed")); }
         }
 
         public string Localized_ConfirmDialog_Cancel
         {
-            get { return JavascriptEscape(Resources.Global.Global_Cancel); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Resources.Global.Global_Cancel")); }
         }
     }
 }

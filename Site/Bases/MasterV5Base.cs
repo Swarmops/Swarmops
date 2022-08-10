@@ -8,9 +8,6 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Frontend
 {
 
-    /// <summary>
-    ///     Summary description for MasterV4Base
-    /// </summary>
     public class MasterV5Base : MasterPage
     {
         public bool CurrentPageAllowed = false;

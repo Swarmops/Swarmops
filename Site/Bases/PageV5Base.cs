@@ -3,6 +3,7 @@ using System.Security;
 using System.Web;
 using System.Web.UI;
 using Swarmops.Common.Enums;
+using Swarmops.Localization;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -181,33 +182,33 @@ namespace Swarmops.Frontend
         // ReSharper disable InconsistentNaming
         public string Localized_SwitchLabelOn_Upper
         {
-            get { return JavascriptEscape(Resources.Global.Global_On.ToUpperInvariant()); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Global_On").ToUpperInvariant()); }
         }
 
         public string Localized_SwitchLabelOff_Upper
         {
-            get { return JavascriptEscape(Resources.Global.Global_Off.ToUpperInvariant()); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Global_Off").ToUpperInvariant()); }
         }
 
         public string Localized_ConfirmDialog_Ok
         {
-            get { return JavascriptEscape(Resources.Global.Global_Ok); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Global_Ok")); }
         }
 
         public string Localized_ConfirmDialog_Proceed
         {
-            get { return JavascriptEscape(Resources.Global.Global_Proceed); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Global_Proceed")); }
         }
 
         public string Localized_ConfirmDialog_Cancel
         {
-            get { return JavascriptEscape(Resources.Global.Global_Cancel); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Global_Cancel")); }
         }
 
 
         public string Localized_ConfirmDialog_Submit
         {
-            get { return JavascriptEscape(Resources.Global.Global_Submit); }
+            get { return JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "Global_Submit")); }
         }
 
         public bool SuppressStatisticHeaders { get; set; }  // defaults to false
