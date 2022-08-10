@@ -9,6 +9,7 @@ using System.Web.Services;
 using System.Web.UI;
 using Swarmops.Common;
 using Swarmops.Common.Enums;
+using Swarmops.Localization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -40,30 +41,30 @@ namespace Swarmops.Frontend.Pages.Financial
 
         private void Localize()
         {
-            PageTitle = Resources.Pages.Financial.PayOutMoney_PageTitle;
-            InfoBoxLiteral = Resources.Pages.Financial.PayOutMoney_Info;
-            this.LabelPayOutMoneyHeader.Text = Resources.Pages.Financial.PayOutMoney_Header;
-            this.LabelGridHeaderAmount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Amount;
-            this.LabelGridHeaderDue.Text = Resources.Global.Financial_DueDateShort;
-            this.LabelGridHeaderPay.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PayThis;
-            this.LabelGridHeaderRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
-            this.LabelGridHeaderCurrencyMethod.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_CurrencyMethod;
+            PageTitle = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_PageTitle");
+            InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_Info");
+            this.LabelPayOutMoneyHeader.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_Header");
+            this.LabelGridHeaderAmount.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_GridHeader_Amount");
+            this.LabelGridHeaderDue.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_DueDateShort");
+            this.LabelGridHeaderPay.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_GridHeader_PayThis");
+            this.LabelGridHeaderRecipient.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_GridHeader_Recipient");
+            this.LabelGridHeaderCurrencyMethod.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_GridHeader_CurrencyMethod");
 
-            this.LabelModalOcr1.Text = Resources.Pages.Financial.PayOutMoney_Modal_LabelOcr1;
-            this.ToggleModalMachineReadable.Label = Resources.Pages.Financial.PayOutMoney_Modal_LabelOcr2;
-            this.LabelModalRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
-            this.LabelModalReference.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference;
-            this.LabelModalHeader.Text = Resources.Pages.Financial.PayOutMoney_Modal_Header;
-            this.LabelModalCurrencyAmount.Text = Resources.Pages.Financial.PayOutMoney_Modal_CurrencyAmount;
-            this.LabelModalTransferMethod.Text = Resources.Pages.Financial.PayOutMoney_Modal_TransferMethod;
-            this.LabelModalHeaderDue.Text = Resources.Global.Financial_DueDateShort;
+            this.LabelModalOcr1.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_Modal_LabelOcr1");
+            this.ToggleModalMachineReadable.Label = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_Modal_LabelOcr2");
+            this.LabelModalRecipient.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_GridHeader_Recipient");
+            this.LabelModalReference.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_GridHeader_Reference");
+            this.LabelModalHeader.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_Modal_Header");
+            this.LabelModalCurrencyAmount.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_Modal_CurrencyAmount");
+            this.LabelModalTransferMethod.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_Modal_TransferMethod");
+            this.LabelModalHeaderDue.Text = LocalizedStrings.Get(LocDomain.Global, "Financial_DueDateShort");
 
-            this.LabelModalAutomation1.Text = Resources.Pages.Financial.PayOutMoney_AutomationFieldStart;
-            this.LabelModalAutomation2.Text = Resources.Pages.Financial.PayOutMoney_AutomationFieldNext;
-            this.LabelModalAutomation3.Text = Resources.Pages.Financial.PayOutMoney_AutomationFieldNext;
+            this.LabelModalAutomation1.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_AutomationFieldStart");
+            this.LabelModalAutomation2.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_AutomationFieldNext");
+            this.LabelModalAutomation3.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_AutomationFieldNext");
 
-            this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
-            this.LabelOptionsShowOcr.Text = Resources.Pages.Financial.PayoutMoney_OptionShowOcr;
+            this.LabelSidebarOptions.Text = LocalizedStrings.Get(LocDomain.Global, "Sidebar_Options");
+            this.LabelOptionsShowOcr.Text = LocalizedStrings.Get(LocDomain.PagesFinancial, "PayoutMoney_OptionShowOcr");
         }
 
 
@@ -85,7 +86,7 @@ namespace Swarmops.Frontend.Pages.Financial
             return new ConfirmPayoutResult
             {
                 AssignedId = payout.Identity,
-                DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
+                DisplayMessage = String.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_PayoutCreated, payout.Identity"),
                     payout.Recipient),
                 Success = true
             };
@@ -111,7 +112,7 @@ namespace Swarmops.Frontend.Pages.Financial
                 return new AjaxCallResult
                 {
                     Success = false,
-                    DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
+                    DisplayMessage = String.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_PayoutCannotUndo"),
                         databaseId)
                 };
             }
@@ -120,7 +121,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
             return new AjaxCallResult
             {
-                DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId),
+                DisplayMessage = String.Format(LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_PayoutUndone"), databaseId),
                 Success = true
             };
         }
@@ -190,7 +191,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
             if (paymentDueBy < Constants.DateTimeLowThreshold)
             {
-                result.DueBy = Resources.Global.Global_ASAP;
+                result.DueBy = LocalizedStrings.Get(LocDomain.Global, "Global_ASAP");
             }
             else
             {
@@ -198,16 +199,16 @@ namespace Swarmops.Frontend.Pages.Financial
 
                 if (paymentDueBy.Year != nowUtc.Year || paymentDueBy < nowUtc.AddMonths(-3))
                 {
-                    result.DueBy = paymentDueBy.ToString(Resources.Global.Global_DateFormatLongSansWeekday);
+                    result.DueBy = paymentDueBy.ToString(LocalizedStrings.Get(LocDomain.Global, "Global_DateFormatLongSansWeekday"));
                 }
                 else
                 {
-                    result.DueBy = paymentDueBy.ToString(Resources.Global.Global_DateFormatLongDateMonth);
+                    result.DueBy = paymentDueBy.ToString(LocalizedStrings.Get(LocDomain.Global, "Global_DateFormatLongDateMonth"));
                 }
 
                 if (paymentDueBy < nowUtc.AddDays(-1))
                 {
-                    result.DueBy += " - " + Resources.Pages.Financial.PayOutMoney_PaymentLate;
+                    result.DueBy += " - " + LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_PaymentLate");
                 }
             }
 
@@ -277,12 +278,12 @@ namespace Swarmops.Frontend.Pages.Financial
 
         public string Localized_ConfirmDialog_ConfirmPaid
         {
-            get { return CommonV5.JavascriptEscape(Resources.Pages.Financial.PayOutMoney_Modal_ConfirmPaid); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.PagesFinancial, "PayOutMoney_Modal_ConfirmPaid")); }
         }
 
         public string Localized_IconTooltip_Barcode
         {
-            get { return CommonV5.JavascriptEscape(Resources.Global.IconTooltip_Barcode_Scanning); }
+            get { return CommonV5.JavascriptEscape(LocalizedStrings.Get(LocDomain.Global, "IconTooltip_Barcode_Scanning")); }
         }
     }
 }

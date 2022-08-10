@@ -16,8 +16,8 @@ namespace Swarmops.Frontend.Pages.Ledgers
             }
 
             PageIcon = "iconshock-treasure";
-            PageTitle = Resources.Pages.Ledgers.BalanceSheet_PageTitle;
-            InfoBoxLiteral = Resources.Pages.Ledgers.BalanceSheet_Info;
+            PageTitle = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_PageTitle");
+            InfoBoxLiteral = LocalizedStrings.Get(LocDomain.PagesLedgers, "BalanceSheet_Info");
 
             // Security: If the org has open ledgers, then anyone may read. Otherwise, Financials.Read.
 
