@@ -109,12 +109,13 @@ namespace Swarmops.Logic.Financial
                 result.Culture = "sv-SE";
 
                 // Old names; changed some time 2023
-
+                /*
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Bokföringsdatum";
                 result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Text/mottagare";
                 result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Belopp";
                 result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo";
                 result.FieldNames[ExternalBankDataFieldName.NotUniqueId] = "Verifikationsnummer";
+                */
 
                 // New field names entered 2023-Sep-06
 
