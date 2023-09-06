@@ -108,11 +108,20 @@ namespace Swarmops.Logic.Financial
                 result.Country = Country.FromCode ("SE");
                 result.Culture = "sv-SE";
 
+                // Old names; changed some time 2023
+
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Bokföringsdatum";
                 result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Text/mottagare";
                 result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Belopp";
                 result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo";
                 result.FieldNames[ExternalBankDataFieldName.NotUniqueId] = "Verifikationsnummer";
+
+                // New field names entered 2023-Sep-06
+
+                result.FieldNames[ExternalBankDataFieldName.Date] = "Bokförd";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Text";
+                result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Insättningar/uttag";
+                result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Bokfört saldo";
 
                 result.LatestTransactionLocation = LatestTransactionLocation.Top;
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
