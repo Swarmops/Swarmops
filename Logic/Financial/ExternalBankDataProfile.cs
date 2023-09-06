@@ -163,7 +163,7 @@ namespace Swarmops.Logic.Financial
                 // Field names updated 2023-Sep-06
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungstag";
-                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Begünstiger / Auftraggeber";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Begünstigter / Auftraggeber";
                 result.FieldNames[ExternalBankDataFieldName.DescriptionSecondary] = "Verwendungszweck";
                 result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Betrag";
                 //result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo (€)"; # this field was removed by the bank
