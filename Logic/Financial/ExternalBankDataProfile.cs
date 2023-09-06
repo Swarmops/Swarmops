@@ -108,15 +108,6 @@ namespace Swarmops.Logic.Financial
                 result.Country = Country.FromCode ("SE");
                 result.Culture = "sv-SE";
 
-                // Old names; changed some time 2023
-                /*
-                result.FieldNames[ExternalBankDataFieldName.Date] = "Bokföringsdatum";
-                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Text/mottagare";
-                result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Belopp";
-                result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo";
-                result.FieldNames[ExternalBankDataFieldName.NotUniqueId] = "Verifikationsnummer";
-                */
-
                 // New field names entered 2023-Sep-06
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Bokförd";
@@ -169,11 +160,15 @@ namespace Swarmops.Logic.Financial
                 result.IgnoreInitialLines = 8;  // increased by one in Postbank-DE "new" interface 2019
                 result.InitialReplacements = ";|\t| €||Referenz NOTPROVIDED Verwendungszweck|";
 
-                result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungsdatum";
-                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Buchungsdetails";
-                result.FieldNames[ExternalBankDataFieldName.DescriptionSecondary] = "Umsatzart";
-                result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Betrag (€)";
-                result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo (€)";
+                // Field names updated 2023-Sep-06
+
+                result.FieldNames[ExternalBankDataFieldName.Date] = "Buchungstag";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionPrimary] = "Begünstiger / Auftraggeber";
+                result.FieldNames[ExternalBankDataFieldName.DescriptionSecondary] = "Verwendungszweck";
+                result.FieldNames[ExternalBankDataFieldName.TransactionNet] = "Betrag";
+                //result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo (€)"; # this field was removed by the bank
+
+                result.FieldNames[ExternalBankDataFieldName.IgnoreLines] = "Kontostand"; // This is the last line that's out of format because of course it is
 
                 result.LatestTransactionLocation = LatestTransactionLocation.Top;
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
@@ -243,7 +238,8 @@ namespace Swarmops.Logic.Financial
         Time,
         DateTime,
         TimeZone,
-        Currency
+        Currency,
+        IgnoreLines
     }
 
     public enum LatestTransactionLocation

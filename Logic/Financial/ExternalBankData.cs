@@ -86,6 +86,11 @@ namespace Swarmops.Logic.Financial
 
             foreach (ExternalBankDataFieldName fieldName in Profile.FieldNames.Keys)
             {
+                if (fieldName == ExternalBankDataFieldName.IgnoreLines)
+                {
+                    continue; // ignore
+                }
+
                 for (int index = 0; index < dataKeyFields.Length; index++)
                 {
                     if (StripQuotes(dataKeyFields[index]).Trim().ToLowerInvariant() == Profile.FieldNames[fieldName].ToLowerInvariant())
@@ -117,6 +122,15 @@ namespace Swarmops.Logic.Financial
                 }
 
                 string[] lineFields = line.Split('\t');
+
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.IgnoreLines))
+                {
+                    if (lineFields[0].ToLowerInvariant() ==
+                        Profile.FieldNames[ExternalBankDataFieldName.IgnoreLines].ToLowerInvariant())
+                    {
+                        continue;
+                    }
+                }
 
                 // If wrong currency, ignore
 
