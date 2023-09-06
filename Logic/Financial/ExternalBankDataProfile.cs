@@ -157,7 +157,7 @@ namespace Swarmops.Logic.Financial
                 result.Name = "DE Postbank";
                 result.Country = Country.FromCode("DE");
                 result.Culture = "de-DE";
-                result.IgnoreInitialLines = 7;
+                result.IgnoreInitialLines = 6;
                 result.InitialReplacements = ";|\t| €||Referenz NOTPROVIDED Verwendungszweck|";
 
                 // Field names updated 2023-Sep-06

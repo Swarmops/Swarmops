@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Swarmops.Common.Enums;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Support.BackendServices;
 
 
@@ -25,10 +28,27 @@ namespace Swarmops.DebugConsole
             Person testPerson = Person.FromIdentity(1);
             testPerson.GetSecureAvatarLink(64); // suppress "is never used" warning
 
-            Organization organization = Organization.FromIdentity(7);
+            Organization organization = Organization.FromIdentity(8);
 
+            // Debug debug: Try to load a CSV file for import
+
+            Person currentUser = testPerson;
+            FinancialAccount account = FinancialAccount.FromIdentity(150);
+
+            Currency accountCurrency = account.ForeignCurrency;
+            Currency presentationCurrency = organization.Currency;
+
+            ExternalBankData externalData = new ExternalBankData();
+            externalData.Profile = account.ExternalBankDataProfile;
+
+            using (StreamReader reader = new StreamReader(@"E:\Bank Files\debug.csv", externalData.Profile.Encoding == "UTF8" ? Encoding.UTF8 : Encoding.GetEncoding(1252)))
+            {
+                externalData.LoadData(reader, organization, accountCurrency);
+            }
             // TODO:
 
+
+            /*
             // 0) Check ForeignCurrency of hotwallet account
 
             FinancialAccount hotWallet = organization.FinancialAccounts.AssetsBitcoinHot;
@@ -57,7 +77,7 @@ namespace Swarmops.DebugConsole
 
             // 0.5) Re-register the initial Sandbox Echo address
 
-            /*
+            
             HotBitcoinAddress.Create(organization, BitcoinChain.Cash,
                              BitcoinUtility.BitcoinEchoTestIndex, 1);*/
 
@@ -173,7 +193,7 @@ namespace Swarmops.DebugConsole
                         }
                     }
                 }
-            }*/
+            }
 
             // 2½ - TODO) Shapeshift all Core into Cash
 
@@ -184,7 +204,7 @@ namespace Swarmops.DebugConsole
             // 3) Adjust balances of foreign cents on hotwallet
 
             // 4) Adjust value of hotwallet
-
+            */
         }
     }
 }
